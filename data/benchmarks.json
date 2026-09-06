@@ -1,0 +1,485 @@
+{
+ "meta": {
+  "campaigns": 105,
+  "brands": [
+   "Dr.Melaxin",
+   "Jenny House",
+   "Mary&May",
+   "MediAnswer",
+   "efilow"
+  ],
+  "total_spend_usd": 38380,
+  "total_views": 32892060,
+  "market": "Cambodia (KH)",
+  "period": "Oct 2024 - Jun 2026"
+ },
+ "tiktok": {
+  "n": 82,
+  "cpm": {
+   "p10": 1.424501,
+   "p25": 2.727981,
+   "p50": 7.067138,
+   "p75": 26.760865,
+   "p90": 62.5
+  },
+  "vfr": {
+   "p10": 0.014455,
+   "p25": 0.054409,
+   "p50": 0.127027,
+   "p75": 0.269444,
+   "p90": 0.627141
+  },
+  "erv": {
+   "p10": 0.03747,
+   "p25": 0.059755,
+   "p50": 0.083324,
+   "p75": 0.118727,
+   "p90": 0.169096
+  },
+  "share_rate": {
+   "p10": 0.000418,
+   "p25": 0.000925,
+   "p50": 0.001909,
+   "p75": 0.003402,
+   "p90": 0.005778
+  },
+  "comment_rate": {
+   "p10": 0.000151,
+   "p25": 0.00034,
+   "p50": 0.000527,
+   "p75": 0.001299,
+   "p90": 0.002812
+  },
+  "cpe": {
+   "p10": 0.011898,
+   "p25": 0.034626,
+   "p50": 0.076365,
+   "p75": 0.307377,
+   "p90": 0.869565
+  },
+  "agg_cpm": 3.946,
+  "tiers": [
+   {
+    "label": "Nano/Micro <100K",
+    "min": 0,
+    "max": 100000.0,
+    "n": 15,
+    "med_vfr": 0.5047,
+    "med_cpm": 4.96,
+    "avg_fee": 217,
+    "blowup_rate": 0.4
+   },
+   {
+    "label": "Mid 100-500K",
+    "min": 100000.0,
+    "max": 500000.0,
+    "n": 33,
+    "med_vfr": 0.127,
+    "med_cpm": 10.24,
+    "avg_fee": 363,
+    "blowup_rate": 0.273
+   },
+   {
+    "label": "Macro 500K-1M",
+    "min": 500000.0,
+    "max": 1000000.0,
+    "n": 18,
+    "med_vfr": 0.0881,
+    "med_cpm": 4.63,
+    "avg_fee": 489,
+    "blowup_rate": 0.278
+   },
+   {
+    "label": "Mega 1M+",
+    "min": 1000000.0,
+    "max": 9000000000.0,
+    "n": 16,
+    "med_vfr": 0.0767,
+    "med_cpm": 3.83,
+    "avg_fee": 594,
+    "blowup_rate": 0.312
+   }
+  ]
+ },
+ "facebook": {
+  "n": 61,
+  "cpm": {
+   "p10": 0.6,
+   "p25": 1.470588,
+   "p50": 13.043478,
+   "p75": 35.294118,
+   "p90": 92.592593
+  },
+  "vfr": {
+   "p10": 0.050209,
+   "p25": 0.085561,
+   "p50": 0.263261,
+   "p75": 1.218182,
+   "p90": 1.583333
+  },
+  "erv": {
+   "p10": 0.023929,
+   "p25": 0.038667,
+   "p50": 0.053083,
+   "p75": 0.066395,
+   "p90": 0.08475
+  },
+  "share_rate": {
+   "p10": 9.2e-05,
+   "p25": 0.000224,
+   "p50": 0.000426,
+   "p75": 0.000851,
+   "p90": 0.0016
+  },
+  "comment_rate": {
+   "p10": 0.000113,
+   "p25": 0.000224,
+   "p50": 0.000485,
+   "p75": 0.001125,
+   "p90": 0.002252
+  },
+  "cpe": {
+   "p10": 0.014864,
+   "p25": 0.033102,
+   "p50": 0.240385,
+   "p75": 0.75431,
+   "p90": 2.142857
+  },
+  "agg_cpm": 1.257,
+  "tiers": [
+   {
+    "label": "Nano/Micro <100K",
+    "min": 0,
+    "max": 100000.0,
+    "n": 22,
+    "med_vfr": 0.2816,
+    "med_cpm": 35.32,
+    "avg_fee": 293,
+    "blowup_rate": 0.682
+   },
+   {
+    "label": "Mid 100-500K",
+    "min": 100000.0,
+    "max": 500000.0,
+    "n": 19,
+    "med_vfr": 0.1168,
+    "med_cpm": 13.89,
+    "avg_fee": 468,
+    "blowup_rate": 0.368
+   },
+   {
+    "label": "Macro 500K-1M",
+    "min": 500000.0,
+    "max": 1000000.0,
+    "n": 11,
+    "med_vfr": 0.2693,
+    "med_cpm": 4.06,
+    "avg_fee": 609,
+    "blowup_rate": 0.091
+   },
+   {
+    "label": "Mega 1M+",
+    "min": 1000000.0,
+    "max": 9000000000.0,
+    "n": 9,
+    "med_vfr": 0.5385,
+    "med_cpm": 1.31,
+    "avg_fee": 922,
+    "blowup_rate": 0.0
+   }
+  ]
+ },
+ "auth_curve": {
+  "tiktok": {
+   "comment": {
+    "a": -1.6638,
+    "b": 0.6685,
+    "sd": 0.394
+   },
+   "like": {
+    "a": -0.9878,
+    "b": 0.9682,
+    "sd": 0.366
+   }
+  },
+  "facebook": {
+   "comment": {
+    "a": -2.2601,
+    "b": 0.778,
+    "sd": 0.444
+   }
+  }
+ },
+ "market_fee_tiktok": [
+  {
+   "label": "<50K",
+   "min": 0,
+   "max": 50000.0,
+   "p25": 100,
+   "median": 275,
+   "p75": 300
+  },
+  {
+   "label": "50-100K",
+   "min": 50000.0,
+   "max": 100000.0,
+   "p25": 100,
+   "median": 200,
+   "p75": 300
+  },
+  {
+   "label": "100-300K",
+   "min": 100000.0,
+   "max": 300000.0,
+   "p25": 200,
+   "median": 250,
+   "p75": 400
+  },
+  {
+   "label": "300-700K",
+   "min": 300000.0,
+   "max": 700000.0,
+   "p25": 200,
+   "median": 250,
+   "p75": 550
+  },
+  {
+   "label": "700K-1.5M",
+   "min": 700000.0,
+   "max": 1500000.0,
+   "p25": 200,
+   "median": 500,
+   "p75": 650
+  },
+  {
+   "label": "1.5M+",
+   "min": 1500000.0,
+   "max": 9000000000.0,
+   "p25": 300,
+   "median": 400,
+   "p75": 600
+  }
+ ],
+ "evidence": {
+  "followers_explain_views_r2": 0.124,
+  "vfr_vs_cpm_spearman": -0.691,
+  "followers_vs_cost_spearman": 0.396,
+  "cost_vs_views_spearman": 0.228,
+  "followers_vs_views_spearman": 0.372,
+  "good_half_spend_share": 0.43,
+  "good_half_view_share": 0.91,
+  "wasted_spend": 19150,
+  "views_lost": 1885449,
+  "vfr_bands": [
+   {
+    "band": "<0.05",
+    "n": 19,
+    "med_cpm": 48.61,
+    "avg_fee": 453
+   },
+   {
+    "band": "0.05-0.15",
+    "n": 26,
+    "med_cpm": 9.28,
+    "avg_fee": 433
+   },
+   {
+    "band": "0.15-0.40",
+    "n": 21,
+    "med_cpm": 4.09,
+    "avg_fee": 346
+   },
+   {
+    "band": "0.40+",
+    "n": 16,
+    "med_cpm": 2.53,
+    "avg_fee": 400
+   }
+  ],
+  "fb_multiplier_median": 1.09
+ },
+ "best": [
+  {
+   "name": "Jing Gaming",
+   "brand": "MediAnswer",
+   "followers": 2500000.0,
+   "views": 564600.0,
+   "cost": 300.0,
+   "cpm": 0.53,
+   "vfr": 0.226
+  },
+  {
+   "name": "Moniroth",
+   "brand": "efilow",
+   "followers": 3500000.0,
+   "views": 703000.0,
+   "cost": 400.0,
+   "cpm": 0.57,
+   "vfr": 0.201
+  },
+  {
+   "name": "May Lee",
+   "brand": "MediAnswer",
+   "followers": 89000.0,
+   "views": 299000.0,
+   "cost": 200.0,
+   "cpm": 0.67,
+   "vfr": 3.36
+  },
+  {
+   "name": "Wei Ying",
+   "brand": "Jenny House",
+   "followers": 2300000.0,
+   "views": 504000.0,
+   "cost": 350.0,
+   "cpm": 0.69,
+   "vfr": 0.219
+  },
+  {
+   "name": "Mariam Brown",
+   "brand": "Dr.Melaxin",
+   "followers": 1300000.0,
+   "views": 802000.0,
+   "cost": 600.0,
+   "cpm": 0.75,
+   "vfr": 0.617
+  },
+  {
+   "name": "Samnang",
+   "brand": "efilow",
+   "followers": 61000.0,
+   "views": 53000.0,
+   "cost": 50.0,
+   "cpm": 0.94,
+   "vfr": 0.869
+  },
+  {
+   "name": "Nuth",
+   "brand": "Dr.Melaxin",
+   "followers": 644000.0,
+   "views": 355000.0,
+   "cost": 350.0,
+   "cpm": 0.99,
+   "vfr": 0.551
+  },
+  {
+   "name": "Mariam Brown",
+   "brand": "Dr.Melaxin",
+   "followers": 1300000.0,
+   "views": 559300.0,
+   "cost": 600.0,
+   "cpm": 1.07,
+   "vfr": 0.43
+  },
+  {
+   "name": "Solly",
+   "brand": "efilow",
+   "followers": 825000.0,
+   "views": 70200.0,
+   "cost": 100.0,
+   "cpm": 1.42,
+   "vfr": 0.085
+  },
+  {
+   "name": "Nanac",
+   "brand": "Jenny House",
+   "followers": 1200000.0,
+   "views": 345000.0,
+   "cost": 500.0,
+   "cpm": 1.45,
+   "vfr": 0.287
+  }
+ ],
+ "worst": [
+  {
+   "name": "Daneth",
+   "brand": "Mary&May",
+   "followers": 959300.0,
+   "views": 936.0,
+   "cost": 350.0,
+   "cpm": 373.93,
+   "vfr": 0.001
+  },
+  {
+   "name": "Kalyanney",
+   "brand": "Mary&May",
+   "followers": 522700.00000000006,
+   "views": 3126.0,
+   "cost": 600.0,
+   "cpm": 191.94,
+   "vfr": 0.006
+  },
+  {
+   "name": "Noeng Haratey",
+   "brand": "Mary&May",
+   "followers": 323400.0,
+   "views": 2293.0,
+   "cost": 350.0,
+   "cpm": 152.64,
+   "vfr": 0.007
+  },
+  {
+   "name": "Jim Gaming",
+   "brand": "Mary&May",
+   "followers": 2500000.0,
+   "views": 2256.0,
+   "cost": 300.0,
+   "cpm": 132.98,
+   "vfr": 0.001
+  },
+  {
+   "name": "Niki Niki",
+   "brand": "MediAnswer",
+   "followers": 162000.0,
+   "views": 15100.0,
+   "cost": 1500.0,
+   "cpm": 99.34,
+   "vfr": 0.093
+  },
+  {
+   "name": "Marady Tep",
+   "brand": "Mary&May",
+   "followers": 87300.0,
+   "views": 3260.0,
+   "cost": 300.0,
+   "cpm": 92.02,
+   "vfr": 0.037
+  },
+  {
+   "name": "Shanel",
+   "brand": "Mary&May",
+   "followers": 653100.0,
+   "views": 8905.0,
+   "cost": 800.0,
+   "cpm": 89.84,
+   "vfr": 0.014
+  },
+  {
+   "name": "Sokly",
+   "brand": "Mary&May",
+   "followers": 325200.0,
+   "views": 3103.0,
+   "cost": 250.0,
+   "cpm": 80.57,
+   "vfr": 0.01
+  },
+  {
+   "name": "Leng leng",
+   "brand": "Mary&May",
+   "followers": 1100000.0,
+   "views": 15900.0,
+   "cost": 1000.0,
+   "cpm": 62.89,
+   "vfr": 0.014
+  },
+  {
+   "name": "Pich sothea",
+   "brand": "MediAnswer",
+   "followers": 67400.0,
+   "views": 1600.0,
+   "cost": 100.0,
+   "cpm": 62.5,
+   "vfr": 0.024
+  }
+ ]
+}

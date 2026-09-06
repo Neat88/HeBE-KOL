@@ -1,0 +1,822 @@
+<title>KOL Underwriting Desk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --paper:#F7F8FA; --surface:#FFFFFF; --sunken:#EFF1F6; --line:#DFE2EB; --line-soft:#EAECF2;
+  --ink:#14161D; --ink-2:#4A5061; --ink-3:#7E8598;
+  --accent:#2F3A8C; --accent-soft:#E7E9F6;
+  --good:#0E7C61; --good-bg:#E3F2ED; --warn:#C08A00; --warn-bg:#FBF1DA; --bad:#C0362C; --bad-bg:#FAE6E4;
+  --grid:#E4E7EF; --shadow:0 1px 2px rgba(20,22,29,.05),0 8px 24px -12px rgba(20,22,29,.12);
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  --disp:"Archivo","IBM Plex Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0E1016; --surface:#161923; --sunken:#1D2130; --line:#2A2F3E; --line-soft:#222736;
+  --ink:#E8EAF0; --ink-2:#A7AEC0; --ink-3:#767E93;
+  --accent:#8B95E8; --accent-soft:#232841;
+  --good:#1E9C7C; --good-bg:#12271F; --warn:#C79615; --warn-bg:#2A2109; --bad:#D8574A; --bad-bg:#2C1614;
+  --grid:#252A38; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}}
+:root[data-theme="dark"]{
+  --paper:#0E1016; --surface:#161923; --sunken:#1D2130; --line:#2A2F3E; --line-soft:#222736;
+  --ink:#E8EAF0; --ink-2:#A7AEC0; --ink-3:#767E93;
+  --accent:#8B95E8; --accent-soft:#232841;
+  --good:#1E9C7C; --good-bg:#12271F; --warn:#C79615; --warn-bg:#2A2109; --bad:#D8574A; --bad-bg:#2C1614;
+  --grid:#252A38; --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px 96px}
+h1,h2,h3{font-family:var(--disp);text-wrap:balance;margin:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+
+/* ---------- masthead ---------- */
+.mast{border-bottom:1px solid var(--line);background:var(--surface);position:relative}
+.mast-in{max-width:1240px;margin:0 auto;padding:22px 24px 20px;display:flex;flex-wrap:wrap;
+  align-items:flex-end;justify-content:space-between;gap:20px}
+.mast h1{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.mast .sub{color:var(--ink-2);font-size:13.5px;margin-top:3px;max-width:56ch}
+.ticker{display:flex;gap:0;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--sunken)}
+.ticker div{padding:7px 15px;border-right:1px solid var(--line)}
+.ticker div:last-child{border-right:0}
+.ticker b{display:block;font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:-.02em}
+.ticker span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:1px}
+.themebtn{position:absolute;top:14px;right:24px;background:none;border:1px solid var(--line);color:var(--ink-3);
+  width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1;display:grid;place-items:center}
+.themebtn:hover{color:var(--ink);border-color:var(--ink-3)}
+
+/* ---------- thesis strip ---------- */
+.thesis{background:var(--sunken);border-bottom:1px solid var(--line)}
+.thesis-in{max-width:1240px;margin:0 auto;padding:16px 24px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
+.tcard{border-left:2px solid var(--line);padding-left:13px}
+.tcard.hot{border-left-color:var(--bad)}
+.tcard b{font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em;display:block;line-height:1.2}
+.tcard p{margin:2px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.4}
+
+/* ---------- desk ---------- */
+.desk{display:grid;grid-template-columns:400px 1fr;gap:26px;margin-top:26px;align-items:start}
+@media (max-width:940px){.desk{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
+.panel-h{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;gap:10px}
+.panel-h h2{font-size:13px;font-weight:600;letter-spacing:.02em}
+.panel-b{padding:18px}
+.step{display:flex;align-items:baseline;gap:8px;margin:0 0 9px}
+.step em{font-family:var(--mono);font-style:normal;font-size:10px;font-weight:600;color:var(--surface);
+  background:var(--ink-3);width:16px;height:16px;border-radius:4px;display:grid;place-items:center;flex:none;
+  transform:translateY(1px)}
+.step h3{font-size:13px;font-weight:600}
+.hint{font-size:12px;color:var(--ink-3);margin:0 0 12px 24px;line-height:1.45}
+label.fl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:4px}
+input[type=text],input[type=number],select{width:100%;background:var(--paper);border:1px solid var(--line);
+  color:var(--ink);border-radius:7px;padding:8px 10px;font-family:var(--mono);font-size:13px;
+  font-variant-numeric:tabular-nums}
+input:focus,select:focus{border-color:var(--accent);background:var(--surface)}
+input::placeholder{color:var(--ink-3);opacity:.7}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.plat{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;font-weight:600;
+  letter-spacing:.06em;padding:3px 8px;border-radius:20px;background:var(--accent-soft);color:var(--accent)}
+.postbl{width:100%;border-collapse:collapse;margin-bottom:8px}
+.postbl th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
+  font-weight:500;text-align:right;padding:0 0 5px}
+.postbl th:first-child{text-align:left}
+.postbl td{padding:0 0 5px}
+.postbl td input{padding:5px 7px;font-size:12.5px;text-align:right;border-radius:5px}
+.postbl td:first-child{font-family:var(--mono);font-size:11px;color:var(--ink-3);padding-right:8px;width:20px}
+.tinybtn{background:none;border:1px dashed var(--line);color:var(--ink-3);border-radius:6px;padding:5px 10px;
+  font-family:var(--mono);font-size:11px;cursor:pointer;width:100%}
+.tinybtn:hover{border-color:var(--accent);color:var(--accent);border-style:solid}
+.adv{border-top:1px solid var(--line-soft);margin-top:14px;padding-top:12px}
+.adv summary{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);cursor:pointer;list-style:none}
+.adv summary::-webkit-details-marker{display:none}
+.adv summary::before{content:"▸ ";font-size:9px}
+.adv[open] summary::before{content:"▾ "}
+.advgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
+.chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);margin-top:10px}
+.chk input{width:auto}
+</style>
+<style>
+/* ---------- verdict ---------- */
+.verdict{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;
+  align-items:center;gap:16px}
+.vchip{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-size:19px;font-weight:700;
+  letter-spacing:-.01em;padding:9px 17px;border-radius:8px;border:1px solid}
+.vchip svg{flex:none}
+.v-good{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+.v-warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
+.v-bad{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.v-idle{background:var(--sunken);color:var(--ink-3);border-color:var(--line)}
+.vtext{font-size:13.5px;color:var(--ink-2);flex:1;min-width:220px;line-height:1.5}
+.vtext strong{color:var(--ink);font-family:var(--mono);font-weight:600}
+
+/* ---------- fee ruler (signature) ---------- */
+.ruler-wrap{padding:20px 22px;border-bottom:1px solid var(--line)}
+.ruler-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+.ruler-top h3{font-size:13px;font-weight:600}
+.ruler-legend{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.05em}
+.rulerbox{position:relative;margin-top:26px}
+.ruler{position:relative;height:34px;border-radius:6px;overflow:hidden;display:flex;background:var(--sunken)}
+.rz{height:100%;position:relative}
+.rz-good{background:var(--good-bg)}.rz-fair{background:var(--warn-bg)}.rz-bad{background:var(--bad-bg)}
+.rz span{position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+  text-transform:uppercase;white-space:nowrap}
+.rz-good span{color:var(--good)}.rz-fair span{color:var(--warn)}.rz-bad span{color:var(--bad)}
+.rpin{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink);border-radius:2px;
+  transition:left .35s cubic-bezier(.4,0,.2,1)}
+.rpin::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:10.5px;font-weight:600;white-space:nowrap;color:var(--ink);
+  background:var(--surface);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
+.rticks{display:flex;justify-content:space-between;margin-top:9px;font-family:var(--mono);font-size:10px;
+  color:var(--ink-3)}
+.feegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:18px}
+.feegrid div{background:var(--surface);padding:11px 13px}
+.feegrid b{display:block;font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-.03em;line-height:1.25}
+.feegrid span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);margin-top:2px}
+.feegrid .hl b{color:var(--accent)}
+
+/* ---------- metric meters ---------- */
+.meters{padding:6px 22px 20px}
+.meter{padding:13px 0;border-bottom:1px solid var(--line-soft)}
+.meter:last-child{border-bottom:0}
+.meter-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:7px}
+.meter-h .nm{font-size:13px;font-weight:600}
+.meter-h .nm em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ink-3);
+  letter-spacing:.06em;margin-left:6px}
+.meter-h .vl{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
+.track{position:relative;height:7px;background:var(--sunken);border-radius:4px}
+.trackfill{position:absolute;top:0;bottom:0;left:0;border-radius:4px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.tickmed{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-3);opacity:.55}
+.meter-f{display:flex;justify-content:space-between;margin-top:5px;font-family:var(--mono);font-size:10.5px;
+  color:var(--ink-3)}
+.meter-note{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.45}
+
+/* ---------- flags ---------- */
+.flags{padding:0 22px 20px}
+.flag{display:flex;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:8px;font-size:12.5px;
+  line-height:1.5;border:1px solid}
+.flag:last-child{margin-bottom:0}
+.flag b{font-weight:600}
+.f-bad{background:var(--bad-bg);border-color:color-mix(in srgb,var(--bad) 30%,transparent);color:var(--ink)}
+.f-warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--ink)}
+.f-good{background:var(--good-bg);border-color:color-mix(in srgb,var(--good) 30%,transparent);color:var(--ink)}
+.f-ico{font-family:var(--mono);font-weight:600;flex:none}
+.f-bad .f-ico{color:var(--bad)}.f-warn .f-ico{color:var(--warn)}.f-good .f-ico{color:var(--good)}
+
+/* ---------- evidence ---------- */
+.sec{margin-top:52px}
+.sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
+.sec-h h2{font-size:20px;font-weight:700;letter-spacing:-.02em}
+.sec-lede{color:var(--ink-2);font-size:14px;max-width:66ch;margin:0 0 22px;line-height:1.6}
+.split{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
+@media (max-width:940px){.split{grid-template-columns:1fr}}
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+.chartbox h3{font-size:14px;font-weight:600;margin-bottom:2px}
+.chartbox .cap{font-size:12.5px;color:var(--ink-2);margin:0 0 14px;line-height:1.45}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--ink-2)}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.svgwrap{overflow-x:auto}
+table.bench{width:100%;border-collapse:collapse;font-size:13px}
+table.bench th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;text-align:right;padding:0 0 8px;border-bottom:1px solid var(--line)}
+table.bench th:first-child{text-align:left}
+table.bench td{padding:9px 0;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px}
+table.bench td:first-child{text-align:left;font-family:var(--sans);font-size:13px}
+table.bench tr:last-child td{border-bottom:0}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px}
+.p-good{background:var(--good-bg);color:var(--good)}
+.p-warn{background:var(--warn-bg);color:var(--warn)}
+.p-bad{background:var(--bad-bg);color:var(--bad)}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.rule{background:var(--surface);padding:17px 18px}
+.rule .eyebrow{margin-bottom:7px;display:block}
+.rule h3{font-size:14.5px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
+.rule p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.55}
+.rule p code{font-family:var(--mono);font-size:12px;background:var(--sunken);padding:1px 4px;border-radius:3px;
+  color:var(--ink)}
+.method{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 24px;font-size:13px;
+  color:var(--ink-2);line-height:1.65}
+.method h3{font-size:13.5px;font-weight:600;color:var(--ink);margin:18px 0 6px}
+.method h3:first-child{margin-top:0}
+.method code{font-family:var(--mono);font-size:12px;background:var(--sunken);padding:1px 5px;border-radius:3px;color:var(--ink)}
+.method ul{margin:6px 0;padding-left:19px}
+.method li{margin-bottom:4px}
+.foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+<header class="mast">
+  <button class="themebtn" id="themebtn" aria-label="Switch theme">◐</button>
+  <div class="mast-in">
+    <div>
+      <h1>KOL Underwriting Desk</h1>
+      <p class="sub">Price a Cambodian beauty KOL before you book them &mdash; scored against 105 campaigns
+        HeBE actually paid for.</p>
+    </div>
+    <div class="ticker">
+      <div><b>105</b><span>campaigns</span></div>
+      <div><b>$38,380</b><span>spend audited</span></div>
+      <div><b>32.9M</b><span>views bought</span></div>
+      <div><b>$1.17</b><span>blended CPM</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="thesis">
+  <div class="thesis-in">
+    <div class="tcard hot">
+      <b>12%</b>
+      <p>of view variance is explained by follower count. You are pricing on a number that decides
+         almost nothing.</p>
+    </div>
+    <div class="tcard hot">
+      <b>43% &rarr; 91%</b>
+      <p>Your cheapest-per-view half of deals took 43% of the budget and delivered 91% of the views.</p>
+    </div>
+    <div class="tcard hot">
+      <b>$19,150</b>
+      <p>went to below-median deals. At your own median CPM that money was worth 1.9M more views.</p>
+    </div>
+    <div class="tcard">
+      <b>&minus;0.69</b>
+      <p>Views-per-follower vs. cost efficiency. The one number that does predict a good buy &mdash;
+         and it is visible before you pay.</p>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+<div class="desk">
+
+  <!-- ============ INPUT RAIL ============ -->
+  <form class="panel" id="deskform" autocomplete="off">
+    <div class="panel-h">
+      <h2>Screen a creator</h2>
+      <span class="plat" id="platchip">TikTok</span>
+    </div>
+    <div class="panel-b">
+
+      <div class="step"><em>1</em><h3>Drop the profile link</h3></div>
+      <p class="hint">TikTok or Facebook. The link sets the platform and benchmark set &mdash;
+         it does not fetch numbers, so fill in step 2 from what you see on the profile.</p>
+      <div style="margin-bottom:14px">
+        <label class="fl" for="url">Profile URL</label>
+        <input type="text" id="url" placeholder="https://www.tiktok.com/@handle" value="https://www.tiktok.com/@example.kol">
+      </div>
+
+      <div class="step"><em>2</em><h3>Their public numbers</h3></div>
+      <p class="hint">Followers, then the last 5 non-pinned posts. Copy the counts straight off the
+         profile &mdash; median is used, so one viral outlier will not skew the read.</p>
+      <div class="row2">
+        <div>
+          <label class="fl" for="followers">Followers</label>
+          <input type="text" id="followers" placeholder="e.g. 250K" value="180K">
+        </div>
+        <div>
+          <label class="fl" for="fee">Asking fee (USD)</label>
+          <input type="number" id="fee" min="0" step="10" value="400">
+        </div>
+      </div>
+
+      <table class="postbl">
+        <thead><tr><th>#</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th></tr></thead>
+        <tbody id="posts"></tbody>
+      </table>
+      <button type="button" class="tinybtn" id="addpost">+ add another post</button>
+
+      <details class="adv">
+        <summary>Assumptions</summary>
+        <div class="advgrid">
+          <div>
+            <label class="fl" for="decay">Sponsored reach factor</label>
+            <input type="number" id="decay" min="0.3" max="1.2" step="0.05" value="0.75">
+          </div>
+          <div>
+            <label class="fl" for="target">Target CPM (USD)</label>
+            <select id="target">
+              <option value="2.73">$2.73 &mdash; top quartile</option>
+              <option value="7.07" selected>$7.07 &mdash; portfolio median</option>
+              <option value="1.42">$1.42 &mdash; top decile</option>
+            </select>
+          </div>
+        </div>
+        <label class="chk"><input type="checkbox" id="crossfb" checked>
+          Creator will also post to Facebook</label>
+      </details>
+    </div>
+  </form>
+
+  <!-- ============ VERDICT ============ -->
+  <div class="panel" id="out">
+    <div class="verdict">
+      <span class="vchip v-idle" id="vchip">&mdash;</span>
+      <p class="vtext" id="vtext">Enter a creator to see the read.</p>
+    </div>
+
+    <div class="ruler-wrap">
+      <div class="ruler-top">
+        <h3>What this creator is worth to you</h3>
+        <span class="ruler-legend" id="rlegend"></span>
+      </div>
+      <div class="rulerbox">
+        <div class="ruler" id="ruler">
+          <div class="rz rz-good" id="rzg"><span>Good buy</span></div>
+          <div class="rz rz-fair" id="rzf"><span>Fair</span></div>
+          <div class="rz rz-bad" id="rzb"><span>Overpay</span></div>
+        </div>
+        <div class="rpin" id="rpin" data-lbl="$400" style="left:50%"></div>
+      </div>
+      <div class="rticks"><span>$0</span><span id="rmid"></span><span id="rmax"></span></div>
+      <div class="feegrid">
+        <div><b class="num" id="f-views">&mdash;</b><span>forecast views</span></div>
+        <div><b class="num" id="f-cpm">&mdash;</b><span>CPM at their price</span></div>
+        <div class="hl"><b class="num" id="f-fair">&mdash;</b><span>fair fee</span></div>
+        <div><b class="num" id="f-walk">&mdash;</b><span>walk-away above</span></div>
+      </div>
+    </div>
+
+    <div class="meters" id="meters"></div>
+    <div class="flags" id="flags"></div>
+  </div>
+</div>
+<!-- ============ EVIDENCE ============ -->
+<section class="sec">
+  <div class="sec-h"><span class="eyebrow">The evidence</span><h2>Why the price you pay and the reach you get come apart</h2></div>
+  <p class="sec-lede">Every dot is one campaign HeBE ran on TikTok. If followers bought reach, the cloud would
+    hug a rising line. It does not &mdash; and the red dots, the deals that cost more than $7.07 per thousand
+    views, are spread right across the follower range.</p>
+  <div class="split">
+    <div class="chartbox">
+      <h3>Followers bought vs. views delivered</h3>
+      <p class="cap">82 TikTok campaigns, log scale on both axes. Follower count explains
+        <strong>12%</strong> of the variance in views (R&sup2; = 0.124).</p>
+      <div class="svgwrap"><svg id="scatter" viewBox="0 0 640 400" width="100%" style="min-width:460px" role="img"
+        aria-label="Scatter of follower count against views delivered for 82 TikTok campaigns"></svg></div>
+      <div class="legend">
+        <span><i style="background:var(--good)"></i>Efficient &mdash; CPM at or under $7.07</span>
+        <span><i style="background:var(--bad)"></i>Wasteful &mdash; CPM over $7.07</span>
+      </div>
+    </div>
+    <div class="chartbox">
+      <h3>The gate that does work</h3>
+      <p class="cap">Campaigns grouped by views-per-follower, the ratio you can read off any public
+        profile. Fees barely moved across these bands &mdash; results moved 19&times;.</p>
+      <div class="svgwrap"><svg id="bands" viewBox="0 0 400 300" width="100%" style="min-width:330px" role="img"
+        aria-label="Median cost per thousand views by views-per-follower band"></svg></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-h"><span class="eyebrow">Four rules</span><h2>What the data says to change on Monday</h2></div>
+  <div class="rules">
+    <div class="rule">
+      <span class="eyebrow">Rule 01</span>
+      <h3>Screen on views, never followers</h3>
+      <p>Ask for the last five posts before you ask their rate. A 67K creator delivered 204,900 views at
+        <code>$1.46</code> CPM; a 2.5M creator delivered 2,256 views at <code>$132.98</code>. Both were beauty posts
+        in the same quarter.</p>
+    </div>
+    <div class="rule">
+      <span class="eyebrow">Rule 02</span>
+      <h3>Ignore engagement rate as a value signal</h3>
+      <p>Engagement per view runs <em>against</em> reach in your data &mdash; comment rate correlates
+        <code>+0.45</code> with a worse CPM, because small posts have concentrated ratios. Use engagement to
+        check an audience is real, never to rank who to book.</p>
+    </div>
+    <div class="rule">
+      <span class="eyebrow">Rule 03</span>
+      <h3>Facebook is the opposite market</h3>
+      <p>On TikTok, big accounts under-deliver. On Facebook they do not: 1M+ pages ran <code>$1.31</code> CPM with
+        zero blow-ups, against <code>$35.32</code> for pages under 100K. Buy small on TikTok and big on Facebook.</p>
+    </div>
+    <div class="rule">
+      <span class="eyebrow">Rule 04</span>
+      <h3>Always contract the cross-post</h3>
+      <p>Where a creator posted to both platforms, Facebook added a median <code>109%</code> on top of TikTok reach
+        for the same fee. Sixty-two of your 105 deals did this; the rest left that reach on the table.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-h"><span class="eyebrow">Benchmarks</span><h2>The book you are pricing against</h2></div>
+  <p class="sec-lede">Percentiles from the campaigns in your file. The desk above scores every creator
+    against these columns.</p>
+  <div class="split">
+    <div class="chartbox">
+      <h3>TikTok &mdash; by follower tier</h3>
+      <p class="cap">&ldquo;Blow-ups&rdquo; are deals that landed above $20 CPM.</p>
+      <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med. VFR</th><th>Med. CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
+      <tbody id="ttiers"></tbody></table>
+    </div>
+    <div class="chartbox">
+      <h3>Facebook &mdash; by follower tier</h3>
+      <p class="cap">Note the direction reverses against TikTok.</p>
+      <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med. VFR</th><th>Med. CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
+      <tbody id="ftiers"></tbody></table>
+    </div>
+  </div>
+  <div class="split" style="margin-top:22px">
+    <div class="chartbox">
+      <h3>Best ten buys in the book</h3>
+      <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Followers</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
+      <tbody id="tbest"></tbody></table>
+    </div>
+    <div class="chartbox">
+      <h3>Ten the money should not have gone to</h3>
+      <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Followers</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
+      <tbody id="tworst"></tbody></table>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="sec-h"><span class="eyebrow">Methodology</span><h2>How the number is built</h2></div>
+  <div class="method">
+    <h3>Forecast reach</h3>
+    <p>Median views across the recent posts you enter, multiplied by the sponsored reach factor
+      (default <code>0.75</code>). Median resists a single viral post. The 0.75 is a convention, not something
+      your file can prove &mdash; it holds no organic baseline for the same creators, so it is exposed as a dial.
+      Where a Facebook cross-post is contracted, forecast reach is lifted by the median <code>+109%</code>
+      observed across your 62 dual-platform posts.</p>
+    <h3>Fair fee</h3>
+    <p><code>fair fee = forecast views &divide; 1000 &times; target CPM</code>. Default target is your portfolio
+      median of <code>$7.07</code>; switch to <code>$2.73</code> to buy only at top-quartile efficiency. Walk-away is
+      set at 2&times; fair.</p>
+    <h3>Scoring</h3>
+    <p>Each metric is placed as a percentile against the campaigns in your file, split by platform. Views-per-follower
+      carries the read because it is the only input that tracks cost efficiency
+      (Spearman <code>&minus;0.69</code> against CPM). Consistency is the ratio of your weakest entered post to the
+      median &mdash; it separates a reliable creator from one who hit the algorithm once. Engagement metrics are
+      scored as an authenticity check only, against a fitted expectation curve
+      (<code>log&#8321;&#8320;(comments) = &minus;1.66 + 0.669 &times; log&#8321;&#8320;(views)</code> on TikTok), never as
+      a value driver.</p>
+    <h3>What this does not do</h3>
+    <p>It does not read the profile for you &mdash; TikTok and Meta both block that from a browser page, and any
+      tool claiming otherwise is either using a paid data vendor or guessing. It forecasts reach, not sales:
+      your file records no conversion, promo-code or revenue data, so cost per view is as far as the evidence
+      goes. Adding a sales column against these campaigns is the single highest-value thing you could do to
+      this model.</p>
+    <h3>Data quality notes</h3>
+    <ul>
+      <li>3 of 105 rows carry no fee; 23 carry no TikTok view count. Those rows sit out of the affected benchmarks.</li>
+      <li>One row (V Spring, MediAnswer) records 5.7 likes against 36.4K views &mdash; almost certainly 5.7K mistyped.</li>
+      <li>Jenny House and efilow rows are largely missing follower counts, so they inform CPM but not VFR.</li>
+    </ul>
+  </div>
+</section>
+
+<div class="foot">
+  <span>HeBE Cambodia &middot; 105 campaigns &middot; Oct 2024 &ndash; Jun 2026 &middot; Dr.Melaxin, Jenny House, Mary&amp;May, MediAnswer, efilow</span>
+  <span>All figures USD</span>
+</div>
+</div>
+<script>
+const HEBE={"meta":{"campaigns":105,"brands":["Dr.Melaxin","Jenny House","Mary&May","MediAnswer","efilow"],"total_spend_usd":38380,"total_views":32892060,"market":"Cambodia (KH)","period":"Oct 2024 - Jun 2026"},"tiktok":{"n":82,"cpm":{"p10":1.424501,"p25":2.727981,"p50":7.067138,"p75":26.760865,"p90":62.5},"vfr":{"p10":0.014455,"p25":0.054409,"p50":0.127027,"p75":0.269444,"p90":0.627141},"erv":{"p10":0.03747,"p25":0.059755,"p50":0.083324,"p75":0.118727,"p90":0.169096},"share_rate":{"p10":0.000418,"p25":0.000925,"p50":0.001909,"p75":0.003402,"p90":0.005778},"comment_rate":{"p10":0.000151,"p25":0.00034,"p50":0.000527,"p75":0.001299,"p90":0.002812},"cpe":{"p10":0.011898,"p25":0.034626,"p50":0.076365,"p75":0.307377,"p90":0.869565},"agg_cpm":3.946,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":15,"med_vfr":0.5047,"med_cpm":4.96,"avg_fee":217,"blowup_rate":0.4},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":33,"med_vfr":0.127,"med_cpm":10.24,"avg_fee":363,"blowup_rate":0.273},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":18,"med_vfr":0.0881,"med_cpm":4.63,"avg_fee":489,"blowup_rate":0.278},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":16,"med_vfr":0.0767,"med_cpm":3.83,"avg_fee":594,"blowup_rate":0.312}]},"facebook":{"n":61,"cpm":{"p10":0.6,"p25":1.470588,"p50":13.043478,"p75":35.294118,"p90":92.592593},"vfr":{"p10":0.050209,"p25":0.085561,"p50":0.263261,"p75":1.218182,"p90":1.583333},"erv":{"p10":0.023929,"p25":0.038667,"p50":0.053083,"p75":0.066395,"p90":0.08475},"share_rate":{"p10":9.2e-05,"p25":0.000224,"p50":0.000426,"p75":0.000851,"p90":0.0016},"comment_rate":{"p10":0.000113,"p25":0.000224,"p50":0.000485,"p75":0.001125,"p90":0.002252},"cpe":{"p10":0.014864,"p25":0.033102,"p50":0.240385,"p75":0.75431,"p90":2.142857},"agg_cpm":1.257,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":22,"med_vfr":0.2816,"med_cpm":35.32,"avg_fee":293,"blowup_rate":0.682},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":19,"med_vfr":0.1168,"med_cpm":13.89,"avg_fee":468,"blowup_rate":0.368},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":11,"med_vfr":0.2693,"med_cpm":4.06,"avg_fee":609,"blowup_rate":0.091},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":9,"med_vfr":0.5385,"med_cpm":1.31,"avg_fee":922,"blowup_rate":0.0}]},"auth_curve":{"tiktok":{"comment":{"a":-1.6638,"b":0.6685,"sd":0.394},"like":{"a":-0.9878,"b":0.9682,"sd":0.366}},"facebook":{"comment":{"a":-2.2601,"b":0.778,"sd":0.444}}},"market_fee_tiktok":[{"label":"<50K","min":0,"max":50000.0,"p25":100,"median":275,"p75":300},{"label":"50-100K","min":50000.0,"max":100000.0,"p25":100,"median":200,"p75":300},{"label":"100-300K","min":100000.0,"max":300000.0,"p25":200,"median":250,"p75":400},{"label":"300-700K","min":300000.0,"max":700000.0,"p25":200,"median":250,"p75":550},{"label":"700K-1.5M","min":700000.0,"max":1500000.0,"p25":200,"median":500,"p75":650},{"label":"1.5M+","min":1500000.0,"max":9000000000.0,"p25":300,"median":400,"p75":600}],"evidence":{"followers_explain_views_r2":0.124,"vfr_vs_cpm_spearman":-0.691,"followers_vs_cost_spearman":0.396,"cost_vs_views_spearman":0.228,"followers_vs_views_spearman":0.372,"good_half_spend_share":0.43,"good_half_view_share":0.91,"wasted_spend":19150,"views_lost":1885449,"vfr_bands":[{"band":"<0.05","n":19,"med_cpm":48.61,"avg_fee":453},{"band":"0.05-0.15","n":26,"med_cpm":9.28,"avg_fee":433},{"band":"0.15-0.40","n":21,"med_cpm":4.09,"avg_fee":346},{"band":"0.40+","n":16,"med_cpm":2.53,"avg_fee":400}],"fb_multiplier_median":1.09},"best":[{"name":"Jing Gaming","brand":"MediAnswer","followers":2500000.0,"views":564600.0,"cost":300.0,"cpm":0.53,"vfr":0.226},{"name":"Moniroth","brand":"efilow","followers":3500000.0,"views":703000.0,"cost":400.0,"cpm":0.57,"vfr":0.201},{"name":"May Lee","brand":"MediAnswer","followers":89000.0,"views":299000.0,"cost":200.0,"cpm":0.67,"vfr":3.36},{"name":"Wei Ying","brand":"Jenny House","followers":2300000.0,"views":504000.0,"cost":350.0,"cpm":0.69,"vfr":0.219},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":802000.0,"cost":600.0,"cpm":0.75,"vfr":0.617},{"name":"Samnang","brand":"efilow","followers":61000.0,"views":53000.0,"cost":50.0,"cpm":0.94,"vfr":0.869},{"name":"Nuth","brand":"Dr.Melaxin","followers":644000.0,"views":355000.0,"cost":350.0,"cpm":0.99,"vfr":0.551},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":559300.0,"cost":600.0,"cpm":1.07,"vfr":0.43},{"name":"Solly","brand":"efilow","followers":825000.0,"views":70200.0,"cost":100.0,"cpm":1.42,"vfr":0.085},{"name":"Nanac","brand":"Jenny House","followers":1200000.0,"views":345000.0,"cost":500.0,"cpm":1.45,"vfr":0.287}],"worst":[{"name":"Daneth","brand":"Mary&May","followers":959300.0,"views":936.0,"cost":350.0,"cpm":373.93,"vfr":0.001},{"name":"Kalyanney","brand":"Mary&May","followers":522700.00000000006,"views":3126.0,"cost":600.0,"cpm":191.94,"vfr":0.006},{"name":"Noeng Haratey","brand":"Mary&May","followers":323400.0,"views":2293.0,"cost":350.0,"cpm":152.64,"vfr":0.007},{"name":"Jim Gaming","brand":"Mary&May","followers":2500000.0,"views":2256.0,"cost":300.0,"cpm":132.98,"vfr":0.001},{"name":"Niki Niki","brand":"MediAnswer","followers":162000.0,"views":15100.0,"cost":1500.0,"cpm":99.34,"vfr":0.093},{"name":"Marady Tep","brand":"Mary&May","followers":87300.0,"views":3260.0,"cost":300.0,"cpm":92.02,"vfr":0.037},{"name":"Shanel","brand":"Mary&May","followers":653100.0,"views":8905.0,"cost":800.0,"cpm":89.84,"vfr":0.014},{"name":"Sokly","brand":"Mary&May","followers":325200.0,"views":3103.0,"cost":250.0,"cpm":80.57,"vfr":0.01},{"name":"Leng leng","brand":"Mary&May","followers":1100000.0,"views":15900.0,"cost":1000.0,"cpm":62.89,"vfr":0.014},{"name":"Pich sothea","brand":"MediAnswer","followers":67400.0,"views":1600.0,"cost":100.0,"cpm":62.5,"vfr":0.024}],"scatter":[[1300000,802000,0.75,"Mariam Brown","Dr.Melaxin",600],[1300000,559300,1.07,"Mariam Brown","Dr.Melaxin",600],[644000,355000,0.99,"Nuth","Dr.Melaxin",350],[561500,81900,2.44,"Reddy Kim","Dr.Melaxin",200],[1300000,151700,3.96,"Mariam Brown","Dr.Melaxin",600],[103000,9500,31.58,"Kael","Dr.Melaxin",300],[239000,18100,19.34,"Mey Jelly","Dr.Melaxin",350],[225000,32000,6.25,"Liza","Jenny House",200],[2300000,504000,0.69,"Wei Ying","Jenny House",350],[194000,50400,4.96,"Young","Jenny House",250],[1200000,345000,1.45,"Nanac","Jenny House",500],[100200,26700,14.98,"Hong & Hui","Mary&May",400],[2500000,2256,132.98,"Jim Gaming","Mary&May",300],[88100,7936,37.8,"Kael","Mary&May",300],[2500000,4020,24.88,"MaNa-MaNeth","Mary&May",100],[87300,3260,92.02,"Marady Tep","Mary&May",300],[42800,7947,31.46,"Nelly","Mary&May",250],[139200,10800,16.67,"Roi","Mary&May",180],[45000,7537,39.8,"Sak","Mary&May",300],[6600000,359100,2.23,"Samreth","Mary&May",800],[682400,28300,7.07,"Sivelang","Mary&May",200],[130700,122600,3.26,"Terk Kalok","Mary&May",400],[764300,184000,5.16,"Tith HavHeang","Mary&May",950],[434300,70200,2.85,"Narong","Mary&May",200],[59700,69200,2.89,"Siam","Mary&May",200],[959300,936,373.93,"Daneth","Mary&May",350],[770400,188700,2.65,"Dimple","Mary&May",500],[110800,9342,26.76,"Neat","Mary&May",250],[522700,3126,191.94,"Kalyanney","Mary&May",600],[1100000,15900,62.89,"Leng leng","Mary&May",1000],[16400,33200,3.01,"Munichenda","Mary&May",100],[323400,2293,152.64,"Noeng Haratey","Mary&May",350],[653100,8905,89.84,"Shanel","Mary&May",800],[325200,3103,80.57,"Sokly","Mary&May",250],[66900,21400,4.67,"Glowy","MediAnswer",100],[242000,7200,48.61,"Vann David","MediAnswer",350],[363000,15900,12.58,"Cney","MediAnswer",200],[75900,47600,2.1,"Monyneath","MediAnswer",100],[331000,17700,8.47,"Krim boramey","MediAnswer",150],[67400,1600,62.5,"Pich sothea","MediAnswer",100],[269000,36400,6.87,"V Spring","MediAnswer",250],[183000,16600,10.24,"Bella Jing","MediAnswer",170],[124000,24100,12.45,"Jin Ju","MediAnswer",300],[74900,37800,7.94,"Mark Roy","MediAnswer",300],[89000,299000,0.67,"May Lee","MediAnswer",200],[293000,314800,3.81,"Sinora","MediAnswer",1200],[151000,29600,10.14,"So Panha","MediAnswer",300],[1000000,40400,3.71,"You You","MediAnswer",150],[148000,18800,10.64,"Huang Huang","MediAnswer",200],[224000,23100,8.66,"Lii Ly","MediAnswer",200],[212000,24700,8.1,"Pich Diamond","MediAnswer",200],[782000,71200,2.81,"Por Eii","MediAnswer",200],[4100000,33500,22.39,"Phan Rong","MediAnswer",750],[2500000,564600,0.53,"Jing Gaming","MediAnswer",300],[438000,193000,2.85,"Lim Alice","MediAnswer",550],[162000,15100,99.34,"Niki Niki","MediAnswer",1500],[1100000,103000,14.56,"Lin","MediAnswer",1500],[568400,171200,4.09,"Nuth","MediAnswer",700],[668600,47400,25.32,"Xing","MediAnswer",1200],[874000,36500,41.1,"Melia","MediAnswer",1500],[349000,97100,1.54,"Hak beam","MediAnswer",150],[83000,60500,4.96,"Kael","MediAnswer",300],[1100000,65700,9.89,"Nanac","MediAnswer",650],[546000,86500,2.31,"Reddy Kim","MediAnswer",200],[248000,13800,39.86,"Riki","MediAnswer",550],[151000,5807,43.05,"Shuy","MediAnswer",250],[652000,59800,2.51,"Chi lii","MediAnswer",150],[309000,45500,6.59,"Danin","MediAnswer",300],[67000,204900,1.46,"Elnaly","MediAnswer",300],[17300,7402,47.28,"Fern Seng","MediAnswer",350],[108000,29100,13.75,"Neath","MediAnswer",400],[706000,41800,7.18,"Lunlyly","MediAnswer",300],[514000,128300,2.73,"Meov","MediAnswer",350],[444000,360800,2.22,"Tithphally","MediAnswer",800],[1100000,32700,27.52,"Zorng","MediAnswer",900],[216000,12800,35.16,"Joby","MediAnswer",450],[237000,44900,2.67,"Harry","efilow",120],[825000,70200,1.42,"Solly","efilow",100],[516000,22600,6.64,"Meov","efilow",150],[191000,57400,4.36,"Nan","efilow",250],[3500000,703000,0.57,"Moniroth","efilow",400],[61000,53000,0.94,"Samnang","efilow",50]]};</script>
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const B=HEBE;
+
+/* ---------- helpers ---------- */
+function parseNum(s){
+  if(s===null||s===undefined)return null;
+  if(typeof s==="number")return isFinite(s)?s:null;
+  let t=String(s).trim().replace(/[, ]/g,"");
+  if(!t)return null;
+  let m=1, last=t.slice(-1).toLowerCase();
+  if(last==="k"){m=1e3;t=t.slice(0,-1);}
+  else if(last==="m"){m=1e6;t=t.slice(0,-1);}
+  else if(last==="b"){m=1e9;t=t.slice(0,-1);}
+  const v=parseFloat(t);
+  return isFinite(v)?v*m:null;
+}
+const fmt=n=>{
+  if(n==null||!isFinite(n))return "—";
+  if(n>=1e6)return (n/1e6).toFixed(n>=1e7?0:1)+"M";
+  if(n>=1e3)return (n/1e3).toFixed(n>=1e5?0:1)+"K";
+  return Math.round(n).toLocaleString();
+};
+const money=n=>n==null||!isFinite(n)?"—":"$"+Math.round(n).toLocaleString();
+const cpmF=n=>n==null||!isFinite(n)?"—":"$"+(n<10?n.toFixed(2):n.toFixed(0));
+const median=a=>{const s=[...a].sort((x,y)=>x-y);if(!s.length)return null;
+  const m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
+
+/* percentile of a value against the p10..p90 anchors, piecewise-linear */
+function pctOf(v,d){
+  const pts=[[0,0.02],[d.p10,0.10],[d.p25,0.25],[d.p50,0.50],[d.p75,0.75],[d.p90,0.90]];
+  if(v<=pts[0][0])return 0.02;
+  for(let i=1;i<pts.length;i++){
+    if(v<=pts[i][0]){
+      const[a,pa]=pts[i-1],[b,pb]=pts[i];
+      return b===a?pb:pa+(v-a)/(b-a)*(pb-pa);
+    }
+  }
+  const last=pts[pts.length-1];
+  return Math.min(0.99,last[1]+(v-last[0])/(last[0]||1)*0.09);
+}
+function tierOf(f,plat){
+  const t=B[plat].tiers;
+  for(const x of t){if(f>=x.min&&f<x.max)return x;}
+  return t[t.length-1];
+}
+function detectPlatform(u){
+  const s=(u||"").toLowerCase();
+  if(s.includes("facebook.")||s.includes("fb.com")||s.includes("fb.watch"))return "facebook";
+  return "tiktok";
+}
+function handleOf(u){
+  const m=(u||"").match(/@([A-Za-z0-9._\-]+)/);
+  if(m)return "@"+m[1];
+  const p=(u||"").replace(/https?:\/\/(www\.)?/,"").split(/[/?#]/).filter(Boolean);
+  return p.length>1?p[1]:"this creator";
+}
+
+/* ---------- post rows ---------- */
+const SEED=[["120K","9.4K","62","310"],["86K","6.1K","41","190"],["210K","17K","130","640"],
+            ["64K","4.8K","33","150"],["98K","7.2K","55","240"]];
+function addRow(vals){
+  const tb=$("posts"), i=tb.children.length+1;
+  const tr=document.createElement("tr");
+  tr.innerHTML='<td>'+i+'</td>'+["v","l","c","s"].map((k,j)=>
+    '<td><input type="text" data-k="'+k+'" value="'+(vals?vals[j]:"")+'"></td>').join("");
+  tb.appendChild(tr);
+}
+SEED.forEach(addRow);
+$("addpost").addEventListener("click",()=>{addRow(null);run();});
+
+function readPosts(){
+  const out=[];
+  [...$("posts").children].forEach(tr=>{
+    const g=k=>parseNum(tr.querySelector('[data-k="'+k+'"]').value);
+    const v=g("v");
+    if(v&&v>0)out.push({v:v,l:g("l")||0,c:g("c")||0,s:g("s")||0});
+  });
+  return out;
+}
+
+/* ---------- the engine ---------- */
+function run(){
+  const url=$("url").value.trim();
+  const plat=detectPlatform(url);
+  $("platchip").textContent=plat==="facebook"?"Facebook":"TikTok";
+  const bm=B[plat];
+  const followers=parseNum($("followers").value);
+  const fee=parseFloat($("fee").value);
+  const decay=parseFloat($("decay").value)||0.75;
+  const target=parseFloat($("target").value);
+  const cross=$("crossfb").checked&&plat==="tiktok";
+  const posts=readPosts();
+
+  if(!posts.length||!followers){
+    $("vchip").className="vchip v-idle";$("vchip").textContent="—";
+    $("vtext").textContent="Add a follower count and at least one recent post to see the read.";
+    ["f-views","f-cpm","f-fair","f-walk"].forEach(k=>$(k).textContent="—");
+    $("meters").innerHTML="";$("flags").innerHTML="";
+    return;
+  }
+
+  const medV=median(posts.map(p=>p.v));
+  const minV=Math.min(...posts.map(p=>p.v));
+  const consistency=medV?minV/medV:0;
+  const totalEng=posts.reduce((a,p)=>a+p.l+p.c+p.s,0);
+  const totalV=posts.reduce((a,p)=>a+p.v,0);
+  const erv=totalV?totalEng/totalV:0;
+  const cr=totalV?posts.reduce((a,p)=>a+p.c,0)/totalV:0;
+  const sr=totalV?posts.reduce((a,p)=>a+p.s,0)/totalV:0;
+  const vfr=medV/followers;
+
+  let views=medV*decay;
+  const crossLift=cross?B.evidence.fb_multiplier_median:0;
+  if(cross)views=views*(1+crossLift);
+
+  const cpm=fee>0&&views>0?fee/views*1000:null;
+  const fair=views/1000*target;
+  const walk=fair*2;
+  const tier=tierOf(followers,plat);
+
+  /* ---- verdict ---- */
+  let cls,label,ico,msg;
+  const h=handleOf(url);
+  if(cpm==null){cls="v-idle";label="—";msg="Enter an asking fee.";}
+  else if(fee<=fair){
+    cls="v-good";label="BOOK";
+    msg="At <strong>"+money(fee)+"</strong> this lands at <strong>"+cpmF(cpm)+
+      "</strong> CPM — better than "+Math.round((1-pctOf(cpm,bm.cpm))*100)+
+      "% of what you have paid. Forecast <strong>"+fmt(views)+"</strong> views.";
+  } else if(fee<=walk){
+    cls="v-warn";label="NEGOTIATE";
+    msg="Their <strong>"+money(fee)+"</strong> gives <strong>"+cpmF(cpm)+
+      "</strong> CPM. Counter at <strong>"+money(fair)+"</strong> — that is what "+fmt(views)+
+      " forecast views is worth at your target.";
+  } else {
+    cls="v-bad";label="PASS";
+    msg="<strong>"+money(fee)+"</strong> buys <strong>"+cpmF(cpm)+"</strong> CPM against a fair price of <strong>"+
+      money(fair)+"</strong>. You would be paying "+(fee/fair).toFixed(1)+
+      "× over. Only book "+h+" at or under "+money(fair)+".";
+  }
+  const check='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>';
+  const warn='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.4v3.2"/><circle cx="8" cy="11.7" r=".5" fill="currentColor"/></svg>';
+  const cross_i='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>';
+  $("vchip").className="vchip "+cls;
+  $("vchip").innerHTML=(cls==="v-good"?check:cls==="v-warn"?warn:cls==="v-bad"?cross_i:"")+label;
+  $("vtext").innerHTML=msg;
+
+  /* ---- ruler ---- */
+  const scaleMax=Math.max(walk*1.35,fee*1.15,fair*2.6);
+  const pc=x=>Math.max(0,Math.min(100,x/scaleMax*100));
+  $("rzg").style.width=pc(fair)+"%";
+  $("rzf").style.width=(pc(walk)-pc(fair))+"%";
+  $("rzb").style.width=(100-pc(walk))+"%";
+  $("rpin").style.left=pc(fee)+"%";
+  $("rpin").setAttribute("data-lbl","asking "+money(fee));
+  $("rmid").textContent=money(scaleMax/2);
+  $("rmax").textContent=money(scaleMax);
+  $("rlegend").textContent="target "+cpmF(target)+" CPM · "+fmt(views)+" forecast views";
+  $("f-views").textContent=fmt(views);
+  $("f-cpm").textContent=cpmF(cpm);
+  $("f-fair").textContent=money(fair);
+  $("f-walk").textContent=money(walk);
+
+  /* ---- meters ---- */
+  const meters=[
+    {nm:"Views per follower",ab:"VFR",v:vfr,d:bm.vfr,fmtv:x=>x.toFixed(2)+"×",hi:true,
+     note:"Their reach engine. Book median is "+bm.vfr.p50.toFixed(2)+"× on "+
+       (plat==="facebook"?"Facebook":"TikTok")+"; tier median is "+tier.med_vfr.toFixed(2)+"×."},
+    {nm:"Reach consistency",ab:"MIN/MED",v:consistency,d:{p10:0.15,p25:0.30,p50:0.50,p75:0.70,p90:0.85},
+     fmtv:x=>Math.round(x*100)+"%",hi:true,
+     note:consistency<0.3?"Weakest post is far below their median — this account is a lottery, not a channel."
+       :"Their floor holds near their median, so the forecast is dependable."},
+    {nm:"Engagement per view",ab:"ER-V",v:erv,d:bm.erv,fmtv:x=>(x*100).toFixed(1)+"%",hi:true,
+     note:"Authenticity check only — not a value signal. In your book, engagement rate runs against reach."},
+    {nm:"Share rate",ab:"SHARES/VIEW",v:sr,d:bm.share_rate,fmtv:x=>(x*100).toFixed(2)+"%",hi:true,
+     note:"Shares are the closest free proxy you have to intent — they carry the post beyond the creator's own feed."}
+  ];
+  $("meters").innerHTML=meters.map(m=>{
+    const p=pctOf(m.v,m.d), pcNow=Math.round(p*100);
+    const col=p>=0.6?"var(--good)":p>=0.35?"var(--warn)":"var(--bad)";
+    const pill=p>=0.6?"p-good":p>=0.35?"p-warn":"p-bad";
+    return '<div class="meter"><div class="meter-h"><span class="nm">'+m.nm+'<em>'+m.ab+'</em></span>'+
+      '<span class="vl">'+m.fmtv(m.v)+' <span class="pill '+pill+'">p'+pcNow+'</span></span></div>'+
+      '<div class="track"><div class="trackfill" style="width:'+Math.max(2,pcNow)+'%;background:'+col+'"></div>'+
+      '<div class="tickmed" style="left:50%"></div></div>'+
+      '<div class="meter-f"><span>book p10 '+m.fmtv(m.d.p10)+'</span><span>median '+m.fmtv(m.d.p50)+
+      '</span><span>p90 '+m.fmtv(m.d.p90)+'</span></div>'+
+      '<p class="meter-note">'+m.note+'</p></div>';
+  }).join("");
+
+  /* ---- flags ---- */
+  const flags=[];
+  const ac=B.auth_curve[plat]?B.auth_curve[plat].comment:B.auth_curve.tiktok.comment;
+  const expC=Math.pow(10,ac.a+ac.b*Math.log10(Math.max(medV,1)));
+  const gotC=median(posts.map(p=>p.c))||0;
+  if(gotC<expC*0.3&&medV>5000)
+    flags.push(["f-bad","!","Audience looks thin.","At "+fmt(medV)+" views your book expects around "+
+      Math.round(expC)+" comments; these posts average "+Math.round(gotC)+
+      ". Low conversation at high view counts is the signature of bought views or a disengaged audience."]);
+  if(vfr<0.05)
+    flags.push(["f-bad","!","Dead reach.","Below 0.05× views-per-follower. The 19 campaigns in this band ran a median $48.61 CPM on an average fee of $453 — the worst money you have spent."]);
+  else if(vfr>=0.40)
+    flags.push(["f-good","✓","Distribution engine.","Above 0.40× views-per-follower. The 16 campaigns in this band ran a median $2.53 CPM — for the same average fee as the worst band."]);
+  if(consistency<0.3&&posts.length>=3)
+    flags.push(["f-warn","△","One-hit risk.","Weakest post is "+Math.round(consistency*100)+
+      "% of their median. Price against their floor, not their best post — or ask for a second post in the deal."]);
+  if(plat==="tiktok"&&followers>=1e6&&vfr<0.15)
+    flags.push(["f-bad","!","Paying for the follower count.","A "+fmt(followers)+
+      " account converting at "+vfr.toFixed(2)+"×. Mega accounts blow up on 31% of your TikTok deals at an average $594 fee — the highest fees for the weakest conversion."]);
+  if(plat==="facebook"&&followers>=1e6)
+    flags.push(["f-good","✓","Right side of the Facebook curve.","1M+ Facebook pages ran $1.31 median CPM across 9 deals with no blow-ups — the one place in your book where scale pays."]);
+  if(plat==="facebook"&&followers<1e5)
+    flags.push(["f-warn","△","Wrong side of the Facebook curve.","Pages under 100K ran a $35.32 median CPM and blew up on 68% of deals. Small works on TikTok, not here."]);
+  if(cross)
+    flags.push(["f-good","✓","Cross-post priced in.","Forecast includes the median +109% Facebook lift. Put the Facebook post in the contract — that lift is the cheapest reach in your book."]);
+  if(fee>0&&fee>tier.avg_fee*1.5)
+    flags.push(["f-warn","△","Above tier rate.","You have averaged "+money(tier.avg_fee)+" for "+
+      tier.label+" creators. This ask is "+(fee/tier.avg_fee).toFixed(1)+"× that."]);
+  $("flags").innerHTML=flags.map(f=>'<div class="flag '+f[0]+'"><span class="f-ico">'+f[1]+
+    '</span><span><b>'+f[2]+'</b> '+f[3]+'</span></div>').join("");
+}
+/* ---------- scatter ---------- */
+function drawScatter(){
+  const svg=$("scatter"),W=640,H=400,L=58,R=16,T=14,Bo=44;
+  const pw=W-L-R,ph=H-T-Bo;
+  const pts=B.scatter;
+  const xs=pts.map(p=>Math.log10(p[0])),ys=pts.map(p=>Math.log10(p[1]));
+  const x0=4,x1=7,y0=2.5,y1=7;
+  const X=v=>L+(v-x0)/(x1-x0)*pw, Y=v=>T+ph-(v-y0)/(y1-y0)*ph;
+  let s="";
+  const xt=[[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]];
+  const yt=[[3,"1K"],[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]];
+  yt.forEach(t=>{ if(t[0]<y0)return;
+    s+='<line x1="'+L+'" y1="'+Y(t[0]).toFixed(1)+'" x2="'+(W-R)+'" y2="'+Y(t[0]).toFixed(1)+
+       '" stroke="var(--grid)" stroke-width="1"/>';
+    s+='<text x="'+(L-9)+'" y="'+(Y(t[0])+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-3)" '+
+       'font-family="IBM Plex Mono, monospace" font-size="10">'+t[1]+'</text>';});
+  xt.forEach(t=>{
+    s+='<line x1="'+X(t[0]).toFixed(1)+'" y1="'+T+'" x2="'+X(t[0]).toFixed(1)+'" y2="'+(T+ph)+
+       '" stroke="var(--grid)" stroke-width="1"/>';
+    s+='<text x="'+X(t[0]).toFixed(1)+'" y="'+(T+ph+17)+'" text-anchor="middle" fill="var(--ink-3)" '+
+       'font-family="IBM Plex Mono, monospace" font-size="10">'+t[1]+'</text>';});
+  /* least-squares fit line */
+  const n=xs.length,mx=xs.reduce((a,b)=>a+b,0)/n,my=ys.reduce((a,b)=>a+b,0)/n;
+  let sxy=0,sxx=0;
+  for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)*(xs[i]-mx);}
+  const b1=sxy/sxx,b0=my-b1*mx;
+  s+='<line x1="'+X(x0)+'" y1="'+Y(b0+b1*x0).toFixed(1)+'" x2="'+X(x1)+'" y2="'+Y(b0+b1*x1).toFixed(1)+
+     '" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 4" opacity=".75"/>';
+  s+='<text x="'+(X(6.55))+'" y="'+(Y(b0+b1*6.55)-11).toFixed(1)+'" text-anchor="middle" fill="var(--ink-3)" '+
+     'font-family="IBM Plex Mono, monospace" font-size="10">fit · R² 0.12</text>';
+  /* points: 2px surface ring on overlap */
+  pts.forEach(p=>{
+    const c=p[2]<=7.07?"var(--good)":"var(--bad)";
+    s+='<circle cx="'+X(Math.log10(p[0])).toFixed(1)+'" cy="'+Y(Math.log10(p[1])).toFixed(1)+
+       '" r="5" fill="'+c+'" fill-opacity=".8" stroke="var(--surface)" stroke-width="2"><title>'+
+       p[3]+' · '+p[4]+' — '+fmt(p[0])+' followers, '+fmt(p[1])+' views, $'+p[5]+' fee, $'+p[2]+' CPM</title></circle>';
+  });
+  s+='<text x="'+(L+pw/2)+'" y="'+(H-7)+'" text-anchor="middle" fill="var(--ink-3)" '+
+     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">FOLLOWERS →</text>';
+  s+='<text transform="translate(15,'+(T+ph/2)+') rotate(-90)" text-anchor="middle" fill="var(--ink-3)" '+
+     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">VIEWS DELIVERED →</text>';
+  svg.innerHTML=s;
+}
+
+/* ---------- band bars ---------- */
+function drawBands(){
+  const svg=$("bands"),W=400,H=300,L=92,R=86,T=10,Bo=42;
+  const pw=W-L-R,ph=H-T-Bo;
+  const d=B.evidence.vfr_bands, max=55;
+  const bh=ph/d.length, gap=10;
+  let s="";
+  [0,20,40].forEach(v=>{
+    s+='<line x1="'+(L+v/max*pw).toFixed(1)+'" y1="'+T+'" x2="'+(L+v/max*pw).toFixed(1)+'" y2="'+(T+ph)+
+       '" stroke="var(--grid)" stroke-width="1"/>';
+    s+='<text x="'+(L+v/max*pw).toFixed(1)+'" y="'+(T+ph+16)+'" text-anchor="middle" fill="var(--ink-3)" '+
+       'font-family="IBM Plex Mono, monospace" font-size="10">$'+v+'</text>';});
+  d.forEach((b,i)=>{
+    const y=T+i*bh+gap/2, h=bh-gap;
+    const w=Math.max(3,b.med_cpm/max*pw);
+    const col=b.med_cpm>20?"var(--bad)":b.med_cpm>7.07?"var(--warn)":"var(--good)";
+    s+='<rect x="'+L+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+
+       '" rx="4" fill="'+col+'"><title>VFR '+b.band+' — median $'+b.med_cpm+' CPM across '+b.n+
+       ' campaigns, average fee $'+b.avg_fee+'</title></rect>';
+    s+='<text x="'+(L-9)+'" y="'+(y+h/2+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-2)" '+
+       'font-family="IBM Plex Mono, monospace" font-size="10.5">'+b.band+'</text>';
+    s+='<text x="'+(L+w+8).toFixed(1)+'" y="'+(y+h/2+3.5).toFixed(1)+'" fill="var(--ink)" '+
+       'font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">$'+b.med_cpm.toFixed(2)+
+       '<tspan fill="var(--ink-3)" font-weight="400" font-size="9.5">  n='+b.n+'</tspan></text>';
+  });
+  s+='<text x="'+(L+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" fill="var(--ink-3)" '+
+     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">MEDIAN CPM →</text>';
+  s+='<text x="4" y="'+(T+8)+'" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" '+
+     'font-size="9.5" letter-spacing=".08em">VFR BAND</text>';
+  svg.innerHTML=s;
+}
+
+/* ---------- tables ---------- */
+function fillTables(){
+  const tr=(cells)=>"<tr>"+cells.map((c,i)=>"<td>"+c+"</td>").join("")+"</tr>";
+  const tierRows=(plat,el)=>{
+    $(el).innerHTML=B[plat].tiers.map(t=>{
+      const p=t.med_cpm<=7.07?"p-good":t.med_cpm<=20?"p-warn":"p-bad";
+      return tr([t.label,t.n,t.med_vfr.toFixed(2)+"×",'<span class="pill '+p+'">$'+t.med_cpm.toFixed(2)+"</span>",
+        "$"+t.avg_fee,Math.round(t.blowup_rate*100)+"%"]);
+    }).join("");
+  };
+  tierRows("tiktok","ttiers");tierRows("facebook","ftiers");
+  const perf=(arr,el,good)=>{
+    $(el).innerHTML=arr.map(r=>tr([r.name,r.brand,fmt(r.followers),fmt(r.views),"$"+r.cost,
+      '<span class="pill '+(good?"p-good":"p-bad")+'">$'+r.cpm.toFixed(2)+"</span>"])).join("");
+  };
+  perf(B.best,"tbest",true);perf(B.worst,"tworst",false);
+}
+
+/* ---------- theme ---------- */
+$("themebtn").addEventListener("click",()=>{
+  const cur=document.documentElement.getAttribute("data-theme");
+  const sysDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const next=cur?(cur==="dark"?"light":"dark"):(sysDark?"light":"dark");
+  document.documentElement.setAttribute("data-theme",next);
+  try{localStorage.setItem("hebe-theme",next);}catch(e){}
+});
+try{const t=localStorage.getItem("hebe-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
+
+$("deskform").addEventListener("input",run);
+$("deskform").addEventListener("change",run);
+$("deskform").addEventListener("submit",e=>e.preventDefault());
+drawScatter();drawBands();fillTables();run();
+})();
+</script>
