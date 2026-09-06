@@ -30,50 +30,61 @@
 *{box-sizing:border-box}
 body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55;
   -webkit-font-smoothing:antialiased}
-.wrap{max-width:1240px;margin:0 auto;padding:0 24px 96px}
-h1,h2,h3{font-family:var(--disp);text-wrap:balance;margin:0}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px 80px}
+h1,h2,h3,h4{font-family:var(--disp);text-wrap:balance;margin:0}
 .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
-.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--ink-3)}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
 
-/* ---------- masthead ---------- */
-.mast{border-bottom:1px solid var(--line);background:var(--surface);position:relative}
-.mast-in{max-width:1240px;margin:0 auto;padding:22px 24px 20px;display:flex;flex-wrap:wrap;
-  align-items:flex-end;justify-content:space-between;gap:20px}
-.mast h1{font-size:23px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
-.mast .sub{color:var(--ink-2);font-size:13.5px;margin-top:3px;max-width:56ch}
-.ticker{display:flex;gap:0;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--sunken)}
-.ticker div{padding:7px 15px;border-right:1px solid var(--line)}
+/* ---------- masthead + tabs ---------- */
+.mast{background:var(--surface);border-bottom:1px solid var(--line);position:relative}
+.mast-in{max-width:1200px;margin:0 auto;padding:20px 24px 0}
+.mast-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:18px;
+  padding-bottom:16px}
+.mast h1{font-size:21px;font-weight:700;letter-spacing:-.02em;line-height:1.15}
+.mast .sub{color:var(--ink-2);font-size:13px;margin-top:2px;max-width:60ch}
+.ticker{display:flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;background:var(--sunken)}
+.ticker div{padding:6px 14px;border-right:1px solid var(--line)}
 .ticker div:last-child{border-right:0}
-.ticker b{display:block;font-family:var(--mono);font-size:15px;font-weight:600;letter-spacing:-.02em}
-.ticker span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:1px}
-.themebtn{position:absolute;top:14px;right:24px;background:none;border:1px solid var(--line);color:var(--ink-3);
-  width:28px;height:28px;border-radius:6px;cursor:pointer;font-size:13px;line-height:1;display:grid;place-items:center}
+.ticker b{display:block;font-family:var(--mono);font-size:14px;font-weight:600;letter-spacing:-.02em}
+.ticker span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:1px}
+.themebtn{position:absolute;top:16px;right:24px;background:none;border:1px solid var(--line);
+  color:var(--ink-3);width:27px;height:27px;border-radius:6px;cursor:pointer;font-size:13px;
+  line-height:1;display:grid;place-items:center}
 .themebtn:hover{color:var(--ink);border-color:var(--ink-3)}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-3);
+  font-family:var(--sans);font-size:13.5px;font-weight:500;padding:10px 15px 11px;cursor:pointer;
+  white-space:nowrap;display:flex;align-items:center;gap:7px}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
+.tab i{font-family:var(--mono);font-style:normal;font-size:10px;font-weight:600;color:var(--ink-3);
+  background:var(--sunken);border-radius:4px;padding:1px 5px}
+.tab[aria-selected="true"] i{background:var(--accent-soft);color:var(--accent)}
+.pane{display:none;padding-top:26px}
+.pane.on{display:block}
+.pane-lede{color:var(--ink-2);font-size:14px;max-width:72ch;margin:0 0 22px;line-height:1.6}
+.pane-lede strong{color:var(--ink);font-weight:600}
 
-/* ---------- thesis strip ---------- */
-.thesis{background:var(--sunken);border-bottom:1px solid var(--line)}
-.thesis-in{max-width:1240px;margin:0 auto;padding:16px 24px;display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px}
-.tcard{border-left:2px solid var(--line);padding-left:13px}
-.tcard.hot{border-left-color:var(--bad)}
-.tcard b{font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em;display:block;line-height:1.2}
-.tcard p{margin:2px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.4}
-
-/* ---------- desk ---------- */
-.desk{display:grid;grid-template-columns:400px 1fr;gap:26px;margin-top:26px;align-items:start}
-@media (max-width:940px){.desk{grid-template-columns:1fr}}
+/* ---------- shared blocks ---------- */
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow)}
 .panel-h{padding:13px 18px;border-bottom:1px solid var(--line);display:flex;align-items:center;
   justify-content:space-between;gap:10px}
-.panel-h h2{font-size:13px;font-weight:600;letter-spacing:.02em}
+.panel-h h2,.panel-h h3{font-size:13px;font-weight:600;letter-spacing:.01em}
 .panel-b{padding:18px}
-.step{display:flex;align-items:baseline;gap:8px;margin:0 0 9px}
-.step em{font-family:var(--mono);font-style:normal;font-size:10px;font-weight:600;color:var(--surface);
-  background:var(--ink-3);width:16px;height:16px;border-radius:4px;display:grid;place-items:center;flex:none;
-  transform:translateY(1px)}
-.step h3{font-size:13px;font-weight:600}
-.hint{font-size:12px;color:var(--ink-3);margin:0 0 12px 24px;line-height:1.45}
+.sec{margin-top:38px}
+.sec:first-child{margin-top:0}
+.sec-h{display:flex;align-items:baseline;gap:13px;margin-bottom:7px;flex-wrap:wrap}
+.sec-h h2{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.pill{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 7px;
+  border-radius:20px;white-space:nowrap}
+.p-good{background:var(--good-bg);color:var(--good)}
+.p-warn{background:var(--warn-bg);color:var(--warn)}
+.p-bad{background:var(--bad-bg);color:var(--bad)}
+.p-mute{background:var(--sunken);color:var(--ink-3)}
 label.fl{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--ink-3);margin-bottom:4px}
 input[type=text],input[type=number],select{width:100%;background:var(--paper);border:1px solid var(--line);
@@ -81,19 +92,55 @@ input[type=text],input[type=number],select{width:100%;background:var(--paper);bo
   font-variant-numeric:tabular-nums}
 input:focus,select:focus{border-color:var(--accent);background:var(--surface)}
 input::placeholder{color:var(--ink-3);opacity:.7}
+table.bench{width:100%;border-collapse:collapse;font-size:13px}
+table.bench th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;text-align:right;padding:0 0 8px;border-bottom:1px solid var(--line)}
+table.bench th:first-child{text-align:left}
+table.bench td{padding:8px 0;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px}
+table.bench td:first-child{text-align:left;font-family:var(--sans);font-size:13px}
+table.bench tr:last-child td{border-bottom:0}
+.tblwrap{overflow-x:auto}
+</style>
+<style>
+/* ---------- evaluate tab ---------- */
+.deskgrid{display:grid;grid-template-columns:378px 1fr;gap:24px;align-items:start}
+@media (max-width:920px){.deskgrid{grid-template-columns:1fr}}
+.objrow{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:16px}
+.objbtn{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 8px;
+  cursor:pointer;text-align:left;font-family:var(--sans);color:var(--ink-2)}
+.objbtn b{display:block;font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.3}
+.objbtn span{display:block;font-size:10.5px;color:var(--ink-3);margin-top:1px;line-height:1.3}
+.objbtn[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.objbtn[aria-pressed="true"] b,.objbtn[aria-pressed="true"] span{color:var(--accent)}
+.step{display:flex;align-items:baseline;gap:8px;margin:0 0 8px}
+.step em{font-family:var(--mono);font-style:normal;font-size:10px;font-weight:600;color:var(--surface);
+  background:var(--ink-3);width:16px;height:16px;border-radius:4px;display:grid;place-items:center;
+  flex:none;transform:translateY(1px)}
+.step h3{font-size:12.5px;font-weight:600}
+.hint{font-size:11.5px;color:var(--ink-3);margin:0 0 11px 24px;line-height:1.45}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
-.plat{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;font-weight:600;
-  letter-spacing:.06em;padding:3px 8px;border-radius:20px;background:var(--accent-soft);color:var(--accent)}
+.plat{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:10.5px;
+  font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:20px;
+  background:var(--accent-soft);color:var(--accent)}
 .postbl{width:100%;border-collapse:collapse;margin-bottom:8px}
-.postbl th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);
-  font-weight:500;text-align:right;padding:0 0 5px}
+.postbl th{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;text-align:right;padding:0 0 5px}
 .postbl th:first-child{text-align:left}
 .postbl td{padding:0 0 5px}
 .postbl td input{padding:5px 7px;font-size:12.5px;text-align:right;border-radius:5px}
-.postbl td:first-child{font-family:var(--mono);font-size:11px;color:var(--ink-3);padding-right:8px;width:20px}
-.tinybtn{background:none;border:1px dashed var(--line);color:var(--ink-3);border-radius:6px;padding:5px 10px;
-  font-family:var(--mono);font-size:11px;cursor:pointer;width:100%}
+.postbl td:first-child{font-family:var(--mono);font-size:11px;color:var(--ink-3);padding-right:8px;width:18px}
+.tinybtn{background:none;border:1px dashed var(--line);color:var(--ink-3);border-radius:6px;
+  padding:5px 10px;font-family:var(--mono);font-size:11px;cursor:pointer;width:100%}
 .tinybtn:hover{border-color:var(--accent);color:var(--accent);border-style:solid}
+.fitlist{display:flex;flex-direction:column;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:8px;overflow:hidden;margin-top:4px}
+.fitlist label{display:flex;align-items:flex-start;gap:9px;background:var(--surface);padding:9px 11px;
+  font-size:12.5px;cursor:pointer;line-height:1.4}
+.fitlist label:hover{background:var(--sunken)}
+.fitlist input{width:auto;margin:2px 0 0;flex:none;accent-color:var(--good)}
+.fitlist b{font-weight:600;display:block;font-size:12.5px}
+.fitlist span{color:var(--ink-3);font-size:11.5px;display:block;margin-top:1px}
 .adv{border-top:1px solid var(--line-soft);margin-top:14px;padding-top:12px}
 .adv summary{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink-3);cursor:pointer;list-style:none}
@@ -101,33 +148,55 @@ input::placeholder{color:var(--ink-3);opacity:.7}
 .adv summary::before{content:"▸ ";font-size:9px}
 .adv[open] summary::before{content:"▾ "}
 .advgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:11px}
-.chk{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);margin-top:10px}
-.chk input{width:auto}
-</style>
-<style>
-/* ---------- verdict ---------- */
-.verdict{padding:20px 22px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;
-  align-items:center;gap:16px}
-.vchip{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-size:19px;font-weight:700;
-  letter-spacing:-.01em;padding:9px 17px;border-radius:8px;border:1px solid}
-.vchip svg{flex:none}
+
+/* verdict header */
+.vhead{display:flex;gap:20px;padding:20px 22px;border-bottom:1px solid var(--line);align-items:center;
+  flex-wrap:wrap}
+.gradebox{width:96px;flex:none;text-align:center;border-radius:10px;padding:11px 6px 9px;border:1px solid}
+.gradebox b{display:block;font-family:var(--disp);font-size:38px;font-weight:700;line-height:1;
+  letter-spacing:-.03em}
+.gradebox span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.1em;
+  text-transform:uppercase;margin-top:5px;opacity:.85}
+.g-good{background:var(--good-bg);color:var(--good);border-color:var(--good)}
+.g-warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
+.g-bad{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.g-idle{background:var(--sunken);color:var(--ink-3);border-color:var(--line)}
+.vmain{flex:1;min-width:230px}
+.vchip{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-size:17px;
+  font-weight:700;letter-spacing:-.01em;padding:6px 13px;border-radius:7px;border:1px solid;
+  margin-bottom:7px}
 .v-good{background:var(--good-bg);color:var(--good);border-color:var(--good)}
 .v-warn{background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
 .v-bad{background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
 .v-idle{background:var(--sunken);color:var(--ink-3);border-color:var(--line)}
-.vtext{font-size:13.5px;color:var(--ink-2);flex:1;min-width:220px;line-height:1.5}
+.vtext{font-size:13.5px;color:var(--ink-2);line-height:1.55;margin:0}
 .vtext strong{color:var(--ink);font-family:var(--mono);font-weight:600}
 
-/* ---------- fee ruler (signature) ---------- */
-.ruler-wrap{padding:20px 22px;border-bottom:1px solid var(--line)}
-.ruler-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:12px;flex-wrap:wrap}
+/* pillars */
+.pillars{padding:16px 22px 4px}
+.pillar{display:grid;grid-template-columns:150px 1fr 84px;gap:12px;align-items:center;
+  padding:9px 0;border-bottom:1px solid var(--line-soft)}
+.pillar:last-child{border-bottom:0}
+@media (max-width:560px){.pillar{grid-template-columns:1fr 70px;}.pillar .ptrack{grid-column:1/-1}}
+.pname{font-size:12.5px;font-weight:600;line-height:1.25}
+.pname em{display:block;font-style:normal;font-family:var(--mono);font-size:9.5px;color:var(--ink-3);
+  letter-spacing:.05em;font-weight:400;margin-top:1px}
+.ptrack{position:relative;height:7px;background:var(--sunken);border-radius:4px}
+.pfill{position:absolute;top:0;bottom:0;left:0;border-radius:4px;transition:width .35s cubic-bezier(.4,0,.2,1)}
+.pval{text-align:right;font-family:var(--mono);font-size:13px;font-weight:600;
+  font-variant-numeric:tabular-nums}
+.pw{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);font-weight:400}
+
+/* fee ruler */
+.ruler-wrap{padding:18px 22px 20px;border-top:1px solid var(--line)}
+.ruler-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
 .ruler-top h3{font-size:13px;font-weight:600}
 .ruler-legend{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.05em}
-.rulerbox{position:relative;margin-top:26px}
-.ruler{position:relative;height:34px;border-radius:6px;overflow:hidden;display:flex;background:var(--sunken)}
+.rulerbox{position:relative;margin-top:28px}
+.ruler{position:relative;height:32px;border-radius:6px;overflow:hidden;display:flex;background:var(--sunken)}
 .rz{height:100%;position:relative}
 .rz-good{background:var(--good-bg)}.rz-fair{background:var(--warn-bg)}.rz-bad{background:var(--bad-bg)}
-.rz span{position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;
+.rz span{position:absolute;bottom:5px;left:7px;font-family:var(--mono);font-size:9px;letter-spacing:.06em;
   text-transform:uppercase;white-space:nowrap}
 .rz-good span{color:var(--good)}.rz-fair span{color:var(--warn)}.rz-bad span{color:var(--bad)}
 .rpin{position:absolute;top:-6px;bottom:-6px;width:2px;background:var(--ink);border-radius:2px;
@@ -135,235 +204,563 @@ input::placeholder{color:var(--ink-3);opacity:.7}
 .rpin::after{content:attr(data-lbl);position:absolute;top:-22px;left:50%;transform:translateX(-50%);
   font-family:var(--mono);font-size:10.5px;font-weight:600;white-space:nowrap;color:var(--ink);
   background:var(--surface);padding:1px 5px;border-radius:4px;border:1px solid var(--line)}
-.rticks{display:flex;justify-content:space-between;margin-top:9px;font-family:var(--mono);font-size:10px;
+.rticks{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--mono);font-size:10px;
   color:var(--ink-3)}
-.feegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:18px}
-.feegrid div{background:var(--surface);padding:11px 13px}
-.feegrid b{display:block;font-family:var(--mono);font-size:20px;font-weight:600;letter-spacing:-.03em;line-height:1.25}
-.feegrid span{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-3);margin-top:2px}
+.feegrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;
+  background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:16px}
+.feegrid div{background:var(--surface);padding:10px 12px}
+.feegrid b{display:block;font-family:var(--mono);font-size:19px;font-weight:600;letter-spacing:-.03em;
+  line-height:1.25}
+.feegrid span{display:block;font-family:var(--mono);font-size:9px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);margin-top:2px}
 .feegrid .hl b{color:var(--accent)}
-
-/* ---------- metric meters ---------- */
-.meters{padding:6px 22px 20px}
-.meter{padding:13px 0;border-bottom:1px solid var(--line-soft)}
-.meter:last-child{border-bottom:0}
-.meter-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:7px}
-.meter-h .nm{font-size:13px;font-weight:600}
-.meter-h .nm em{font-style:normal;font-family:var(--mono);font-size:10px;color:var(--ink-3);
-  letter-spacing:.06em;margin-left:6px}
-.meter-h .vl{font-family:var(--mono);font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
-.track{position:relative;height:7px;background:var(--sunken);border-radius:4px}
-.trackfill{position:absolute;top:0;bottom:0;left:0;border-radius:4px;transition:width .35s cubic-bezier(.4,0,.2,1)}
-.tickmed{position:absolute;top:-3px;bottom:-3px;width:1px;background:var(--ink-3);opacity:.55}
-.meter-f{display:flex;justify-content:space-between;margin-top:5px;font-family:var(--mono);font-size:10.5px;
-  color:var(--ink-3)}
-.meter-note{font-size:12px;color:var(--ink-2);margin-top:6px;line-height:1.45}
-
-/* ---------- flags ---------- */
-.flags{padding:0 22px 20px}
-.flag{display:flex;gap:10px;padding:10px 12px;border-radius:8px;margin-bottom:8px;font-size:12.5px;
+.flags{padding:2px 22px 20px}
+.flag{display:flex;gap:9px;padding:9px 11px;border-radius:8px;margin-bottom:7px;font-size:12.5px;
   line-height:1.5;border:1px solid}
 .flag:last-child{margin-bottom:0}
 .flag b{font-weight:600}
-.f-bad{background:var(--bad-bg);border-color:color-mix(in srgb,var(--bad) 30%,transparent);color:var(--ink)}
-.f-warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 30%,transparent);color:var(--ink)}
-.f-good{background:var(--good-bg);border-color:color-mix(in srgb,var(--good) 30%,transparent);color:var(--ink)}
+.f-bad{background:var(--bad-bg);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+.f-warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.f-good{background:var(--good-bg);border-color:color-mix(in srgb,var(--good) 30%,transparent)}
 .f-ico{font-family:var(--mono);font-weight:600;flex:none}
 .f-bad .f-ico{color:var(--bad)}.f-warn .f-ico{color:var(--warn)}.f-good .f-ico{color:var(--good)}
+</style>
+<style>
+/* ---------- data tab ---------- */
+.brandbar{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:18px}
+.bchip{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:5px 13px;
+  font-family:var(--sans);font-size:12.5px;color:var(--ink-2);cursor:pointer;display:flex;
+  align-items:center;gap:7px}
+.bchip:hover{border-color:var(--ink-3);color:var(--ink)}
+.bchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.bchip u{text-decoration:none;font-family:var(--mono);font-size:10px;opacity:.7}
+.bcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(214px,1fr));gap:12px;margin-bottom:22px}
+.bcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 15px;
+  box-shadow:var(--shadow)}
+.bcard h3{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.bcard .per{font-family:var(--mono);font-size:9.5px;color:var(--ink-3);letter-spacing:.06em;
+  margin-bottom:11px;display:block}
+.bcard dl{display:grid;grid-template-columns:1fr auto;gap:4px 10px;margin:0;font-size:12px}
+.bcard dt{color:var(--ink-3)}
+.bcard dd{margin:0;font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;
+  font-weight:500;font-size:12px}
+.bcard .bfoot{margin-top:11px;padding-top:10px;border-top:1px solid var(--line-soft);font-size:11.5px;
+  color:var(--ink-2);line-height:1.5}
+.bcard .bfoot b{font-weight:600}
+.dtools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.dtools input[type=text]{width:250px}
+.dtools select{width:auto;padding:7px 10px}
+.dcount{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-left:auto}
+table.data{width:100%;border-collapse:collapse;font-size:12.5px}
+table.data th{position:sticky;top:0;background:var(--surface);font-family:var(--mono);font-size:9px;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);font-weight:500;text-align:right;
+  padding:9px 9px;border-bottom:1px solid var(--line);cursor:pointer;white-space:nowrap;z-index:1}
+table.data th:first-child,table.data th:nth-child(2){text-align:left}
+table.data th:hover{color:var(--ink)}
+table.data th[data-dir]::after{content:" ↓";opacity:.6}
+table.data th[data-dir="asc"]::after{content:" ↑";opacity:.6}
+table.data td{padding:7px 9px;border-bottom:1px solid var(--line-soft);text-align:right;
+  font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+table.data td:first-child,table.data td:nth-child(2){text-align:left;font-family:var(--sans)}
+table.data tbody tr:hover{background:var(--sunken)}
+.scrollbox{max-height:560px;overflow:auto;border:1px solid var(--line);border-radius:10px;
+  background:var(--surface)}
 
-/* ---------- evidence ---------- */
-.sec{margin-top:52px}
-.sec-h{display:flex;align-items:baseline;gap:14px;margin-bottom:6px;flex-wrap:wrap}
-.sec-h h2{font-size:20px;font-weight:700;letter-spacing:-.02em}
-.sec-lede{color:var(--ink-2);font-size:14px;max-width:66ch;margin:0 0 22px;line-height:1.6}
-.split{display:grid;grid-template-columns:1.35fr 1fr;gap:22px;align-items:start}
-@media (max-width:940px){.split{grid-template-columns:1fr}}
-.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;box-shadow:var(--shadow)}
+/* ---------- how / guide tabs ---------- */
+.steps{display:flex;flex-direction:column;gap:14px;counter-reset:s}
+.stepcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px 20px;
+  box-shadow:var(--shadow);display:grid;grid-template-columns:30px 1fr;gap:16px}
+.stepcard::before{counter-increment:s;content:counter(s);font-family:var(--mono);font-size:12px;
+  font-weight:600;color:var(--accent);background:var(--accent-soft);width:30px;height:30px;
+  border-radius:8px;display:grid;place-items:center}
+.stepcard h3{font-size:15px;font-weight:600;letter-spacing:-.01em;margin-bottom:5px}
+.stepcard p{margin:0 0 9px;font-size:13.5px;color:var(--ink-2);line-height:1.6;max-width:70ch}
+.stepcard p:last-child{margin-bottom:0}
+.eq{background:var(--sunken);border-radius:7px;padding:11px 14px;font-family:var(--mono);font-size:12.5px;
+  line-height:1.7;overflow-x:auto;margin:0 0 9px;border-left:2px solid var(--accent)}
+.eq b{color:var(--accent);font-weight:600}
+.eq .cm{color:var(--ink-3)}
+.worked{background:var(--paper);border:1px solid var(--line);border-radius:7px;padding:11px 14px;
+  font-size:12.5px;margin-top:9px}
+.worked .wh{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:6px}
+.worked table{width:100%;border-collapse:collapse;font-family:var(--mono);font-size:12px;
+  font-variant-numeric:tabular-nums}
+.worked td{padding:2px 0}
+.worked td:last-child{text-align:right;font-weight:600}
+.worked tr.tot td{border-top:1px solid var(--line);padding-top:6px;color:var(--accent)}
+.why{font-size:12.5px;color:var(--ink-2);background:var(--accent-soft);border-radius:7px;padding:9px 12px;
+  line-height:1.55;margin-top:9px}
+.why b{color:var(--accent);font-weight:600}
+
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.mcard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px 18px;
+  box-shadow:var(--shadow)}
+.mcard .mtop{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:3px}
+.mcard h3{font-size:14.5px;font-weight:600;letter-spacing:-.01em}
+.mcard .abbr{font-family:var(--mono);font-size:10px;color:var(--ink-3);letter-spacing:.06em}
+.mcard .form{font-family:var(--mono);font-size:11.5px;color:var(--accent);background:var(--accent-soft);
+  border-radius:5px;padding:4px 8px;display:inline-block;margin:5px 0 9px}
+.mcard p{margin:0 0 9px;font-size:13px;color:var(--ink-2);line-height:1.55}
+.mcard .mrow{display:flex;gap:8px;font-size:11.5px;padding:5px 0;border-top:1px solid var(--line-soft);
+  align-items:baseline}
+.mcard .mrow b{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;width:62px;flex:none}
+.mcard .mrow span{flex:1;color:var(--ink-2);line-height:1.45}
+.tier1{border-left:3px solid var(--good)}
+.tier2{border-left:3px solid var(--accent)}
+.tier3{border-left:3px solid var(--ink-3)}
+.objtable{width:100%;border-collapse:collapse;font-size:13px;background:var(--surface);
+  border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.objtable th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink-3);font-weight:500;text-align:center;padding:10px 8px;border-bottom:1px solid var(--line);
+  background:var(--sunken)}
+.objtable th:first-child{text-align:left}
+.objtable td{padding:9px 8px;border-bottom:1px solid var(--line-soft);text-align:center;
+  font-family:var(--mono);font-size:12.5px;font-variant-numeric:tabular-nums}
+.objtable td:first-child{text-align:left;font-family:var(--sans);font-size:13px}
+.objtable tr:last-child td{border-bottom:0}
+.objtable td.top{background:var(--accent-soft);color:var(--accent);font-weight:600}
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;
+  box-shadow:var(--shadow)}
 .chartbox h3{font-size:14px;font-weight:600;margin-bottom:2px}
 .chartbox .cap{font-size:12.5px;color:var(--ink-2);margin:0 0 14px;line-height:1.45}
 .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:var(--ink-2)}
-.legend i{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:middle}
+.legend i{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:6px;
+  vertical-align:middle}
+.split{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start}
+@media (max-width:920px){.split{grid-template-columns:1fr}}
 .svgwrap{overflow-x:auto}
-table.bench{width:100%;border-collapse:collapse;font-size:13px}
-table.bench th{font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--ink-3);font-weight:500;text-align:right;padding:0 0 8px;border-bottom:1px solid var(--line)}
-table.bench th:first-child{text-align:left}
-table.bench td{padding:9px 0;border-bottom:1px solid var(--line-soft);text-align:right;
-  font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:12.5px}
-table.bench td:first-child{text-align:left;font-family:var(--sans);font-size:13px}
-table.bench tr:last-child td{border-bottom:0}
-.pill{display:inline-block;font-family:var(--mono);font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px}
-.p-good{background:var(--good-bg);color:var(--good)}
-.p-warn{background:var(--warn-bg);color:var(--warn)}
-.p-bad{background:var(--bad-bg);color:var(--bad)}
-.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:var(--line);
-  border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.rule{background:var(--surface);padding:17px 18px}
-.rule .eyebrow{margin-bottom:7px;display:block}
-.rule h3{font-size:14.5px;font-weight:600;margin-bottom:5px;letter-spacing:-.01em}
-.rule p{margin:0;font-size:13px;color:var(--ink-2);line-height:1.55}
-.rule p code{font-family:var(--mono);font-size:12px;background:var(--sunken);padding:1px 4px;border-radius:3px;
-  color:var(--ink)}
-.method{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px 24px;font-size:13px;
-  color:var(--ink-2);line-height:1.65}
-.method h3{font-size:13.5px;font-weight:600;color:var(--ink);margin:18px 0 6px}
-.method h3:first-child{margin-top:0}
-.method code{font-family:var(--mono);font-size:12px;background:var(--sunken);padding:1px 5px;border-radius:3px;color:var(--ink)}
-.method ul{margin:6px 0;padding-left:19px}
-.method li{margin-bottom:4px}
-.foot{margin-top:44px;padding-top:20px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);
+.note{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--warn);
+  border-radius:8px;padding:14px 17px;font-size:13px;color:var(--ink-2);line-height:1.6;margin-top:16px}
+.note b{color:var(--ink);font-weight:600}
+.note ul{margin:7px 0 0;padding-left:18px}
+.note li{margin-bottom:4px}
+.foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3);
   display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <header class="mast">
   <button class="themebtn" id="themebtn" aria-label="Switch theme">◐</button>
   <div class="mast-in">
-    <div>
-      <h1>KOL Underwriting Desk</h1>
-      <p class="sub">Price a Cambodian beauty KOL before you book them &mdash; scored against 105 campaigns
-        HeBE actually paid for.</p>
+    <div class="mast-top">
+      <div>
+        <h1>KOL Underwriting Desk</h1>
+        <p class="sub">Score a creator before you book them, against 105 campaigns HeBE actually paid for.</p>
+      </div>
+      <div class="ticker">
+        <div><b>105</b><span>campaigns</span></div>
+        <div><b>$38,380</b><span>spend</span></div>
+        <div><b>32.9M</b><span>views</span></div>
+        <div><b>5</b><span>brands</span></div>
+      </div>
     </div>
-    <div class="ticker">
-      <div><b>105</b><span>campaigns</span></div>
-      <div><b>$38,380</b><span>spend audited</span></div>
-      <div><b>32.9M</b><span>views bought</span></div>
-      <div><b>$1.17</b><span>blended CPM</span></div>
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" id="t-eval"  aria-selected="true"  aria-controls="p-eval">Evaluate a KOL</button>
+      <button class="tab" role="tab" id="t-data"  aria-selected="false" aria-controls="p-data">Past KOL data <i>105</i></button>
+      <button class="tab" role="tab" id="t-calc"  aria-selected="false" aria-controls="p-calc">How it's calculated</button>
+      <button class="tab" role="tab" id="t-guide" aria-selected="false" aria-controls="p-guide">Metric guide</button>
+      <button class="tab" role="tab" id="t-bench" aria-selected="false" aria-controls="p-bench">Benchmarks</button>
     </div>
   </div>
 </header>
 
-<section class="thesis">
-  <div class="thesis-in">
-    <div class="tcard hot">
-      <b>12%</b>
-      <p>of view variance is explained by follower count. You are pricing on a number that decides
-         almost nothing.</p>
+<div class="wrap">
+
+<!-- ================= TAB 1 : EVALUATE ================= -->
+<section class="pane on" id="p-eval" role="tabpanel" aria-labelledby="t-eval">
+  <p class="pane-lede">Fill the left panel from the creator's public profile. The desk scores them on
+    <strong>five pillars</strong>, weighted by the campaign goal you pick, and returns a fair fee and a
+    book / negotiate / pass call.</p>
+
+  <div class="deskgrid">
+    <!-- INPUTS -->
+    <form class="panel" id="deskform" autocomplete="off">
+      <div class="panel-h"><h2>Creator input</h2><span class="plat" id="platchip">TikTok</span></div>
+      <div class="panel-b">
+
+        <div class="step"><em>1</em><h3>What is this campaign for?</h3></div>
+        <p class="hint">This sets which pillars carry the score. An awareness buy and a conversion buy
+           are not won by the same creator.</p>
+        <div class="objrow" id="objrow">
+          <button type="button" class="objbtn" data-obj="awareness" aria-pressed="true">
+            <b>Awareness</b><span>Cheapest reach</span></button>
+          <button type="button" class="objbtn" data-obj="engagement" aria-pressed="false">
+            <b>Engagement</b><span>Conversation</span></button>
+          <button type="button" class="objbtn" data-obj="conversion" aria-pressed="false">
+            <b>Conversion</b><span>Clicks &amp; sales</span></button>
+        </div>
+
+        <div class="step"><em>2</em><h3>Profile link</h3></div>
+        <p class="hint">TikTok or Facebook &mdash; sets the platform and benchmark set. It does not fetch
+           numbers; both platforms block that.</p>
+        <div style="margin-bottom:13px">
+          <label class="fl" for="url">Profile URL</label>
+          <input type="text" id="url" placeholder="https://www.tiktok.com/@handle"
+                 value="https://www.tiktok.com/@example.kol">
+        </div>
+
+        <div class="step"><em>3</em><h3>Their public numbers</h3></div>
+        <p class="hint">Followers, then the last 5 non-pinned posts. Median is used, so one viral post
+           will not skew the read.</p>
+        <div class="row2">
+          <div><label class="fl" for="followers">Followers</label>
+            <input type="text" id="followers" placeholder="e.g. 250K" value="180K"></div>
+          <div><label class="fl" for="fee">Asking fee (USD)</label>
+            <input type="number" id="fee" min="0" step="10" value="400"></div>
+        </div>
+        <table class="postbl">
+          <thead><tr><th>#</th><th>Views</th><th>Likes</th><th>Comm.</th><th>Shares</th></tr></thead>
+          <tbody id="posts"></tbody>
+        </table>
+        <button type="button" class="tinybtn" id="addpost">+ add another post</button>
+
+        <div class="step" style="margin-top:18px"><em>4</em><h3>Fit &amp; risk checks</h3></div>
+        <p class="hint">No dataset can answer these &mdash; you check them by eye. They carry real weight
+           on conversion campaigns.</p>
+        <div class="fitlist" id="fitlist">
+          <label><input type="checkbox" data-fit="geo" checked>
+            <span><b>Audience is in Cambodia</b><span>Comments in Khmer, local tags. Foreign audience = no sale.</span></span></label>
+          <label><input type="checkbox" data-fit="cat" checked>
+            <span><b>Posts beauty or skincare already</b><span>Category fit beats raw reach for conversion.</span></span></label>
+          <label><input type="checkbox" data-fit="sat" checked>
+            <span><b>Under ~1 in 3 posts is sponsored</b><span>Ad saturation kills response.</span></span></label>
+          <label><input type="checkbox" data-fit="rival">
+            <span><b>No competing brand in last 60 days</b><span>Recent rival post reads as paid, not trusted.</span></span></label>
+          <label><input type="checkbox" data-fit="comm" checked>
+            <span><b>Comments look human</b><span>Real questions, not emoji strings or one-word bot replies.</span></span></label>
+        </div>
+
+        <details class="adv">
+          <summary>Assumptions</summary>
+          <div class="advgrid">
+            <div><label class="fl" for="decay">Sponsored reach factor</label>
+              <input type="number" id="decay" min="0.3" max="1.2" step="0.05" value="0.75"></div>
+            <div><label class="fl" for="target">Target CPM</label>
+              <select id="target">
+                <option value="2.73">$2.73 &mdash; top quartile</option>
+                <option value="7.07" selected>$7.07 &mdash; portfolio median</option>
+                <option value="1.42">$1.42 &mdash; top decile</option>
+              </select></div>
+          </div>
+          <label style="display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--ink-2);margin-top:10px">
+            <input type="checkbox" id="crossfb" checked style="width:auto">
+            Creator will also post to Facebook</label>
+        </details>
+      </div>
+    </form>
+
+    <!-- OUTPUT -->
+    <div class="panel" id="out">
+      <div class="vhead">
+        <div class="gradebox g-idle" id="gradebox"><b id="gradeltr">&ndash;</b><span id="gradenum">score</span></div>
+        <div class="vmain">
+          <span class="vchip v-idle" id="vchip">&mdash;</span>
+          <p class="vtext" id="vtext">Enter a creator to see the read.</p>
+        </div>
+      </div>
+      <div class="pillars" id="pillars"></div>
+      <div class="ruler-wrap">
+        <div class="ruler-top"><h3>What this creator is worth to you</h3>
+          <span class="ruler-legend" id="rlegend"></span></div>
+        <div class="rulerbox">
+          <div class="ruler" id="ruler">
+            <div class="rz rz-good" id="rzg"><span>Good buy</span></div>
+            <div class="rz rz-fair" id="rzf"><span>Fair</span></div>
+            <div class="rz rz-bad" id="rzb"><span>Overpay</span></div>
+          </div>
+          <div class="rpin" id="rpin" data-lbl="$400" style="left:50%"></div>
+        </div>
+        <div class="rticks"><span>$0</span><span id="rmid"></span><span id="rmax"></span></div>
+        <div class="feegrid">
+          <div><b class="num" id="f-views">&mdash;</b><span>forecast views</span></div>
+          <div><b class="num" id="f-cpm">&mdash;</b><span>CPM at their price</span></div>
+          <div class="hl"><b class="num" id="f-fair">&mdash;</b><span>fair fee</span></div>
+          <div><b class="num" id="f-walk">&mdash;</b><span>walk away above</span></div>
+        </div>
+      </div>
+      <div class="flags" id="flags"></div>
     </div>
-    <div class="tcard hot">
-      <b>43% &rarr; 91%</b>
-      <p>Your cheapest-per-view half of deals took 43% of the budget and delivered 91% of the views.</p>
+  </div>
+</section>
+<!-- ================= TAB 2 : PAST DATA ================= -->
+<section class="pane" id="p-data" role="tabpanel" aria-labelledby="t-data">
+  <p class="pane-lede">Every campaign in the file, by brand. <strong>CPM is the ranking column</strong> &mdash;
+    it is what you paid for a thousand views, combining TikTok and Facebook. Click any header to sort.</p>
+  <div class="brandbar" id="brandbar"></div>
+  <div class="bcards" id="bcards"></div>
+  <div class="sec">
+    <div class="sec-h"><h2>Campaign log</h2><span class="eyebrow" id="dsub"></span></div>
+    <div class="dtools">
+      <input type="text" id="dsearch" placeholder="Search creator or product…">
+      <select id="dplat">
+        <option value="all">All platforms</option>
+        <option value="tt">Has TikTok data</option>
+        <option value="fb">Has Facebook data</option>
+      </select>
+      <select id="dgrade">
+        <option value="all">All results</option>
+        <option value="good">Efficient (≤ $7.07 CPM)</option>
+        <option value="bad">Wasteful (&gt; $7.07 CPM)</option>
+        <option value="blow">Blow-ups (&gt; $20 CPM)</option>
+      </select>
+      <span class="dcount" id="dcount"></span>
     </div>
-    <div class="tcard hot">
-      <b>$19,150</b>
-      <p>went to below-median deals. At your own median CPM that money was worth 1.9M more views.</p>
-    </div>
-    <div class="tcard">
-      <b>&minus;0.69</b>
-      <p>Views-per-follower vs. cost efficiency. The one number that does predict a good buy &mdash;
-         and it is visible before you pay.</p>
+    <div class="scrollbox">
+      <table class="data" id="dtable">
+        <thead><tr>
+          <th data-k="n">Creator</th><th data-k="b">Brand</th><th data-k="ym">Date</th>
+          <th data-k="c">Fee</th><th data-k="tf">TT foll.</th><th data-k="tv">TT views</th>
+          <th data-k="ff">FB foll.</th><th data-k="fv">FB views</th>
+          <th data-k="tot">Total views</th><th data-k="vfr">VFR</th><th data-k="cpm">CPM</th>
+        </tr></thead>
+        <tbody id="dbody"></tbody>
+      </table>
     </div>
   </div>
 </section>
 
-<div class="wrap">
-<div class="desk">
+<!-- ================= TAB 3 : HOW IT'S CALCULATED ================= -->
+<section class="pane" id="p-calc" role="tabpanel" aria-labelledby="t-calc">
+  <p class="pane-lede">Six steps from a public profile to a fee you can defend in a negotiation. Every number
+    the desk shows comes from this chain &mdash; nothing is hidden. The worked example follows one real
+    creator profile end to end.</p>
+  <div class="steps">
 
-  <!-- ============ INPUT RAIL ============ -->
-  <form class="panel" id="deskform" autocomplete="off">
-    <div class="panel-h">
-      <h2>Screen a creator</h2>
-      <span class="plat" id="platchip">TikTok</span>
-    </div>
-    <div class="panel-b">
+    <div class="stepcard"><div>
+      <h3>Read the reach the creator actually gets</h3>
+      <p>Take the view count of their last five non-pinned posts and use the <b>median</b>, never the
+         average. One viral post can be 10&times; their normal reach; an average lets them price off
+         that outlier, a median does not.</p>
+      <div class="eq">median_views = <b>median</b>(v₁, v₂, v₃, v₄, v₅)</div>
+      <div class="worked"><div class="wh">Worked example — @example.kol</div>
+        <table><tr><td>Posts: 120K, 86K, 210K, 64K, 98K</td><td></td></tr>
+          <tr><td>Sorted: 64K, 86K, <b>98K</b>, 120K, 210K</td><td></td></tr>
+          <tr class="tot"><td>median_views</td><td>98,000</td></tr></table></div>
+      <div class="why"><b>Why this first:</b> reach is the only thing you are really buying, and it is the
+        only input that survives contact with the platform algorithm. Followers are a historical number;
+        views are a current one.</div>
+    </div></div>
 
-      <div class="step"><em>1</em><h3>Drop the profile link</h3></div>
-      <p class="hint">TikTok or Facebook. The link sets the platform and benchmark set &mdash;
-         it does not fetch numbers, so fill in step 2 from what you see on the profile.</p>
-      <div style="margin-bottom:14px">
-        <label class="fl" for="url">Profile URL</label>
-        <input type="text" id="url" placeholder="https://www.tiktok.com/@handle" value="https://www.tiktok.com/@example.kol">
-      </div>
+    <div class="stepcard"><div>
+      <h3>Discount it to a sponsored post</h3>
+      <p>A branded post reaches fewer people than an organic one &mdash; the audience scrolls past ads and
+         the algorithm gives paid-looking content less push. Multiply by the sponsored reach factor.</p>
+      <div class="eq">forecast_views = median_views × <b>0.75</b>  <span class="cm">← the dial in Assumptions</span></div>
+      <div class="worked"><div class="wh">Continuing</div>
+        <table><tr><td>98,000 × 0.75</td><td>73,500</td></tr></table></div>
+      <div class="why"><b>Be honest about this one:</b> 0.75 is an industry convention, not something your
+        105 campaigns can prove &mdash; the file holds no organic baseline for the same creators to compare
+        against. It is exposed as a dial for exactly that reason. Ask a creator for their last sponsored
+        post's views and you can replace the assumption with a fact.</div>
+    </div></div>
 
-      <div class="step"><em>2</em><h3>Their public numbers</h3></div>
-      <p class="hint">Followers, then the last 5 non-pinned posts. Copy the counts straight off the
-         profile &mdash; median is used, so one viral outlier will not skew the read.</p>
-      <div class="row2">
-        <div>
-          <label class="fl" for="followers">Followers</label>
-          <input type="text" id="followers" placeholder="e.g. 250K" value="180K">
-        </div>
-        <div>
-          <label class="fl" for="fee">Asking fee (USD)</label>
-          <input type="number" id="fee" min="0" step="10" value="400">
-        </div>
-      </div>
+    <div class="stepcard"><div>
+      <h3>Add the cross-post if it is in the deal</h3>
+      <p>Where a creator posted the same content to Facebook as well as TikTok, Facebook added a
+         median <b>+109%</b> across your 62 dual-platform campaigns &mdash; for the same fee.</p>
+      <div class="eq">forecast_views = forecast_views × (1 + <b>1.09</b>)  <span class="cm">← if Facebook post contracted</span></div>
+      <div class="worked"><div class="wh">Continuing</div>
+        <table><tr><td>73,500 × 2.09</td><td>153,615</td></tr>
+          <tr class="tot"><td>forecast_views</td><td>≈ 154,000</td></tr></table></div>
+      <div class="why"><b>Negotiation lever:</b> this is the cheapest reach available to you. If a creator
+        will not include the Facebook post, that is a price reduction, not a rounding error.</div>
+    </div></div>
 
-      <table class="postbl">
-        <thead><tr><th>#</th><th>Views</th><th>Likes</th><th>Comments</th><th>Shares</th></tr></thead>
-        <tbody id="posts"></tbody>
-      </table>
-      <button type="button" class="tinybtn" id="addpost">+ add another post</button>
+    <div class="stepcard"><div>
+      <h3>Convert reach into a fee</h3>
+      <p>Price the forecast at the CPM you are willing to pay. CPM &mdash; cost per thousand views &mdash;
+         is the media-buying unit that makes a 40K creator and a 2M creator directly comparable.</p>
+      <div class="eq">CPM = fee ÷ forecast_views × 1000
+<b>fair_fee</b> = forecast_views ÷ 1000 × target_CPM
+walk_away = fair_fee × 2</div>
+      <div class="worked"><div class="wh">Continuing — target $7.07 (your portfolio median)</div>
+        <table><tr><td>154,000 ÷ 1000 × $7.07</td><td>$1,086</td></tr>
+          <tr><td>Their ask</td><td>$400</td></tr>
+          <tr class="tot"><td>CPM at their ask</td><td>$2.60</td></tr></table></div>
+      <div class="why"><b>Reading it:</b> $400 for 154K forecast views is $2.60 CPM &mdash; better than 76%
+        of what you have ever paid. Set the target to $2.73 to only ever buy at top-quartile efficiency.</div>
+    </div></div>
 
-      <details class="adv">
-        <summary>Assumptions</summary>
-        <div class="advgrid">
-          <div>
-            <label class="fl" for="decay">Sponsored reach factor</label>
-            <input type="number" id="decay" min="0.3" max="1.2" step="0.05" value="0.75">
-          </div>
-          <div>
-            <label class="fl" for="target">Target CPM (USD)</label>
-            <select id="target">
-              <option value="2.73">$2.73 &mdash; top quartile</option>
-              <option value="7.07" selected>$7.07 &mdash; portfolio median</option>
-              <option value="1.42">$1.42 &mdash; top decile</option>
-            </select>
-          </div>
-        </div>
-        <label class="chk"><input type="checkbox" id="crossfb" checked>
-          Creator will also post to Facebook</label>
-      </details>
-    </div>
-  </form>
+    <div class="stepcard"><div>
+      <h3>Score the five pillars against the book</h3>
+      <p>Each pillar is a percentile against the campaigns in your file, on the matching platform. A score
+         of 50 means "exactly typical for what HeBE has bought"; 80 means top fifth.</p>
+      <div class="eq"><b>Cost efficiency</b>   CPM vs. book, inverted     <span class="cm">cheap = high</span>
+<b>Reach power</b>       views ÷ followers (VFR)
+<b>Audience response</b> engagement, shares, comments per view
+<b>Reliability</b>       weakest post ÷ median post
+<b>Trust &amp; fit</b>       comment-curve residual + your checklist</div>
+      <div class="why"><b>Why five and not one:</b> a single number hides why a creator failed. A cheap
+        creator with a fake audience and a trustworthy creator who is overpriced both score badly &mdash;
+        but you do completely different things about it. One you drop, the other you negotiate.</div>
+    </div></div>
 
-  <!-- ============ VERDICT ============ -->
-  <div class="panel" id="out">
-    <div class="verdict">
-      <span class="vchip v-idle" id="vchip">&mdash;</span>
-      <p class="vtext" id="vtext">Enter a creator to see the read.</p>
-    </div>
-
-    <div class="ruler-wrap">
-      <div class="ruler-top">
-        <h3>What this creator is worth to you</h3>
-        <span class="ruler-legend" id="rlegend"></span>
-      </div>
-      <div class="rulerbox">
-        <div class="ruler" id="ruler">
-          <div class="rz rz-good" id="rzg"><span>Good buy</span></div>
-          <div class="rz rz-fair" id="rzf"><span>Fair</span></div>
-          <div class="rz rz-bad" id="rzb"><span>Overpay</span></div>
-        </div>
-        <div class="rpin" id="rpin" data-lbl="$400" style="left:50%"></div>
-      </div>
-      <div class="rticks"><span>$0</span><span id="rmid"></span><span id="rmax"></span></div>
-      <div class="feegrid">
-        <div><b class="num" id="f-views">&mdash;</b><span>forecast views</span></div>
-        <div><b class="num" id="f-cpm">&mdash;</b><span>CPM at their price</span></div>
-        <div class="hl"><b class="num" id="f-fair">&mdash;</b><span>fair fee</span></div>
-        <div><b class="num" id="f-walk">&mdash;</b><span>walk-away above</span></div>
-      </div>
-    </div>
-
-    <div class="meters" id="meters"></div>
-    <div class="flags" id="flags"></div>
+    <div class="stepcard"><div>
+      <h3>Weight the pillars by what the campaign is for</h3>
+      <p>This is the step most brands skip. An awareness buy is won on cheap reach; a conversion buy is won
+         on trust and audience fit. The same creator can be an A for one and a D for the other.</p>
+      <div class="eq">score = Σ (pillar_score × weight<sub>objective</sub>) ÷ 100</div>
+      <table class="objtable" style="margin-top:11px"><thead><tr>
+        <th>Pillar</th><th>Awareness</th><th>Engagement</th><th>Conversion</th></tr></thead>
+        <tbody>
+          <tr><td>Cost efficiency</td><td class="top">35</td><td>20</td><td>20</td></tr>
+          <tr><td>Reach power</td><td class="top">30</td><td>20</td><td>15</td></tr>
+          <tr><td>Audience response</td><td>5</td><td class="top">30</td><td>25</td></tr>
+          <tr><td>Reliability</td><td>15</td><td>10</td><td>10</td></tr>
+          <tr><td>Trust &amp; fit</td><td>15</td><td>20</td><td class="top">30</td></tr>
+        </tbody></table>
+      <div class="why" style="margin-top:11px"><b>The override:</b> whatever the objective, a creator scoring
+        under 35 is a pass at any price. Cheap access to a fake audience is not a bargain &mdash; it is the
+        most common way brands waste KOL money.</div>
+    </div></div>
   </div>
-</div>
-<!-- ============ EVIDENCE ============ -->
-<section class="sec">
-  <div class="sec-h"><span class="eyebrow">The evidence</span><h2>Why the price you pay and the reach you get come apart</h2></div>
-  <p class="sec-lede">Every dot is one campaign HeBE ran on TikTok. If followers bought reach, the cloud would
-    hug a rising line. It does not &mdash; and the red dots, the deals that cost more than $7.07 per thousand
-    views, are spread right across the follower range.</p>
+
+  <div class="note"><b>What this chain does not do.</b>
+    <ul>
+      <li>It forecasts <b>reach, not sales</b>. Your file records no promo codes, clicks or revenue, so cost
+        per view is as far as the evidence honestly goes.</li>
+      <li>It does not read profiles automatically. TikTok and Meta both block that from a web page &mdash;
+        any tool that claims otherwise is paying a data vendor or guessing.</li>
+      <li>It assumes the creator's next post behaves like their last five. A creator who just changed
+        content format, or bought followers last month, will read wrong.</li>
+    </ul>
+  </div>
+</section>
+<!-- ================= TAB 4 : METRIC GUIDE ================= -->
+<section class="pane" id="p-guide" role="tabpanel" aria-labelledby="t-guide">
+  <p class="pane-lede">The metrics professional influencer teams actually underwrite on, in the order they
+    matter &mdash; and what each one looks like when it goes wrong. Benchmark figures are from your own
+    105 campaigns, not an industry average.</p>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Tier 1</span><h2>Decide the buy on these</h2></div>
+    <p class="pane-lede">Three numbers settle most bookings. If these are wrong, nothing else rescues the deal.</p>
+    <div class="mgrid">
+      <div class="mcard tier1">
+        <div class="mtop"><h3>Cost per thousand views</h3><span class="abbr">CPM</span></div>
+        <div class="form">fee ÷ views × 1000</div>
+        <p>The media-buying unit. It is the only metric that lets you compare a $100 nano creator against a
+           $950 macro creator on the same axis, and the number a CFO will recognise.</p>
+        <div class="mrow"><b>Your book</b><span>Median <b>$7.07</b> · top quartile under $2.73 · p90 $62.50</span></div>
+        <div class="mrow"><b>Good</b><span>Under $5 on TikTok. Under $4 on Facebook for 500K+ pages.</span></div>
+        <div class="mrow"><b>Red flag</b><span>Over $20 — a "blow-up". 27 of your 82 scored TikTok deals landed here.</span></div>
+      </div>
+      <div class="mcard tier1">
+        <div class="mtop"><h3>Views per follower</h3><span class="abbr">VFR · REACH RATE</span></div>
+        <div class="form">median views ÷ followers</div>
+        <p>How much of their audience the algorithm actually serves. The single strongest predictor of a
+           good buy in your data (<b>&minus;0.69</b> against CPM), and readable off any public profile
+           before you commit a dollar.</p>
+        <div class="mrow"><b>Your book</b><span>Median <b>0.13×</b> TikTok · p25 0.05× · p90 0.63×</span></div>
+        <div class="mrow"><b>Good</b><span>Above 0.40× — those 16 campaigns ran $2.53 median CPM.</span></div>
+        <div class="mrow"><b>Red flag</b><span>Under 0.05× — 19 campaigns, $48.61 median CPM, on $453 average fees.</span></div>
+      </div>
+      <div class="mcard tier1">
+        <div class="mtop"><h3>Reach consistency</h3><span class="abbr">MIN ÷ MEDIAN</span></div>
+        <div class="form">weakest recent post ÷ median post</div>
+        <p>Separates a channel from a lottery ticket. A creator whose floor is close to their median will
+           deliver roughly what you forecast; one with a single viral spike will quote you off that spike.</p>
+        <div class="mrow"><b>Good</b><span>Above 0.50 — their bad post is still half their normal.</span></div>
+        <div class="mrow"><b>Red flag</b><span>Under 0.30. Price against their floor, or buy two posts to average it out.</span></div>
+        <div class="mrow"><b>Seen here</b><span>Kael swung 0.09× to 0.73× VFR across three bookings; Reddy Kim held 0.15/0.16.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Tier 2</span><h2>Check the audience is real</h2></div>
+    <p class="pane-lede">These do not tell you who to book. They tell you who to <em>disqualify</em> &mdash;
+      and that is a different job, which is why they are weighted as a gate, not a driver.</p>
+    <div class="mgrid">
+      <div class="mcard tier2">
+        <div class="mtop"><h3>Engagement rate by view</h3><span class="abbr">ER-V</span></div>
+        <div class="form">(likes + comments + shares) ÷ views</div>
+        <p>The correct engagement denominator on algorithmic feeds. Most agencies still quote engagement
+           over <em>followers</em>, which on TikTok is close to meaningless &mdash; the audience that sees a
+           post is mostly not the follower base.</p>
+        <div class="mrow"><b>Your book</b><span>Median <b>8.3%</b> · p25 6.0% · p90 16.9%</span></div>
+        <div class="mrow"><b>Warning</b><span>In your data ER-V runs <em>against</em> reach. Do not rank on it.</span></div>
+      </div>
+      <div class="mcard tier2">
+        <div class="mtop"><h3>Comment rate</h3><span class="abbr">COMMENTS ÷ VIEWS</span></div>
+        <div class="form">comments ÷ views, vs. expected for that view level</div>
+        <p>The hardest metric to fake and the best bot detector you have for free. Bought views and bought
+           likes are cheap; a thread of real questions is not. Judge it against the level curve, since
+           comment rates fall naturally as reach grows.</p>
+        <div class="mrow"><b>Expected</b><span>≈10 comments at 10K views · 48 at 100K · 222 at 1M</span></div>
+        <div class="mrow"><b>Red flag</b><span>Under a third of expected — the desk raises "audience looks thin".</span></div>
+      </div>
+      <div class="mcard tier2">
+        <div class="mtop"><h3>Share rate</h3><span class="abbr">SHARES ÷ VIEWS</span></div>
+        <div class="form">shares ÷ views</div>
+        <p>The closest free proxy to intent. A like is a reflex; a share is someone putting their own name
+           behind the product. On beauty, shares to private messages are the buying signal.</p>
+        <div class="mrow"><b>Your book</b><span>Median <b>0.19%</b> · p75 0.34% · p90 0.58%</span></div>
+        <div class="mrow"><b>Good</b><span>Above 0.34% — weighted heavily on conversion campaigns.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Tier 3</span><h2>What no dataset can tell you</h2></div>
+    <p class="pane-lede">Every experienced buyer checks these by eye before signing. They are the checklist
+      in step 4 of the Evaluate tab, and they carry 30% of the score on a conversion campaign.</p>
+    <div class="mgrid">
+      <div class="mcard tier3"><div class="mtop"><h3>Audience geography</h3></div>
+        <p>A Cambodian brand paying for a largely Thai or Vietnamese audience is buying nothing. Scan the
+           comments &mdash; are they in Khmer? This is the most expensive silent failure in the category.</p></div>
+      <div class="mcard tier3"><div class="mtop"><h3>Category fit</h3></div>
+        <p>A gaming creator posting a serum reads as an advert to their audience and converts accordingly.
+           Jim Gaming: 2.5M followers, 2,256 views on a Mary&amp;May eye cream, <b>$132.98</b> CPM.</p></div>
+      <div class="mcard tier3"><div class="mtop"><h3>Sponsored saturation</h3></div>
+        <p>Count branded posts in their last fifteen. Above roughly one in three, the audience has learned
+           to scroll past and your post inherits that habit.</p></div>
+      <div class="mcard tier3"><div class="mtop"><h3>Competitor recency</h3></div>
+        <p>A creator who posted for a rival skincare brand last month cannot credibly recommend yours.
+           Sixty days is the usual exclusivity floor; write it into the contract.</p></div>
+      <div class="mcard tier3"><div class="mtop"><h3>Comment authenticity</h3></div>
+        <p>Read twenty comments. Real audiences ask about price, shade and shipping. Bot audiences post
+           emoji strings, "nice", and generic praise with no product noun in it.</p></div>
+      <div class="mcard tier3"><div class="mtop"><h3>Deal terms beyond the fee</h3></div>
+        <p>Usage rights, whitelisting for paid amplification, and a re-post clause are worth real money and
+           cost the creator little. A cheap fee with no usage rights is often the more expensive deal.</p></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-h"><span class="eyebrow">Priorities</span><h2>Which metric leads, by objective</h2></div>
+    <p class="pane-lede">The most common expert mistake is applying one metric hierarchy to every campaign.
+      These are the weights the Evaluate tab applies when you pick a goal.</p>
+    <table class="objtable"><thead><tr>
+      <th>Pillar</th><th>Awareness</th><th>Engagement</th><th>Conversion</th></tr></thead>
+      <tbody>
+        <tr><td>Cost efficiency <span class="pill p-mute">CPM</span></td><td class="top">35</td><td>20</td><td>20</td></tr>
+        <tr><td>Reach power <span class="pill p-mute">VFR</span></td><td class="top">30</td><td>20</td><td>15</td></tr>
+        <tr><td>Audience response <span class="pill p-mute">ER-V, shares</span></td><td>5</td><td class="top">30</td><td>25</td></tr>
+        <tr><td>Reliability <span class="pill p-mute">min ÷ median</span></td><td>15</td><td>10</td><td>10</td></tr>
+        <tr><td>Trust &amp; fit <span class="pill p-mute">checklist</span></td><td>15</td><td>20</td><td class="top">30</td></tr>
+      </tbody></table>
+    <div class="note"><b>The one finding that contradicts standard practice.</b> Most agency decks rank
+      creators by engagement rate. In your 105 campaigns, comment rate correlates <b>+0.45</b> with a
+      <em>worse</em> CPM, and share rate <b>+0.22</b> — because engagement ratios are mechanically inflated
+      on low-reach posts, where the denominator is small. Ranking on engagement rate systematically selects
+      creators who cannot distribute. That is why this desk scores engagement as an authenticity gate and
+      never as a value driver.</div>
+  </div>
+</section>
+<!-- ================= TAB 5 : BENCHMARKS ================= -->
+<section class="pane" id="p-bench" role="tabpanel" aria-labelledby="t-bench">
+  <p class="pane-lede">The distributions every score on the Evaluate tab is measured against, and the
+    evidence behind the model's central choice: <strong>screen on views, not followers</strong>.</p>
+
   <div class="split">
     <div class="chartbox">
       <h3>Followers bought vs. views delivered</h3>
-      <p class="cap">82 TikTok campaigns, log scale on both axes. Follower count explains
-        <strong>12%</strong> of the variance in views (R&sup2; = 0.124).</p>
-      <div class="svgwrap"><svg id="scatter" viewBox="0 0 640 400" width="100%" style="min-width:460px" role="img"
-        aria-label="Scatter of follower count against views delivered for 82 TikTok campaigns"></svg></div>
+      <p class="cap">82 TikTok campaigns, log scale both axes. Follower count explains <strong>12%</strong>
+        of the variance in views (R&sup2; = 0.124). Hover any dot for the campaign.</p>
+      <div class="svgwrap"><svg id="scatter" viewBox="0 0 640 400" width="100%" style="min-width:440px"
+        role="img" aria-label="Follower count against views delivered, 82 TikTok campaigns"></svg></div>
       <div class="legend">
         <span><i style="background:var(--good)"></i>Efficient &mdash; CPM at or under $7.07</span>
         <span><i style="background:var(--bad)"></i>Wasteful &mdash; CPM over $7.07</span>
@@ -371,110 +768,58 @@ table.bench tr:last-child td{border-bottom:0}
     </div>
     <div class="chartbox">
       <h3>The gate that does work</h3>
-      <p class="cap">Campaigns grouped by views-per-follower, the ratio you can read off any public
-        profile. Fees barely moved across these bands &mdash; results moved 19&times;.</p>
-      <div class="svgwrap"><svg id="bands" viewBox="0 0 400 300" width="100%" style="min-width:330px" role="img"
-        aria-label="Median cost per thousand views by views-per-follower band"></svg></div>
+      <p class="cap">Campaigns grouped by views-per-follower &mdash; the ratio you can read off any public
+        profile. Fees barely moved across these bands; results moved 19&times;.</p>
+      <div class="svgwrap"><svg id="bands" viewBox="0 0 400 300" width="100%" style="min-width:320px"
+        role="img" aria-label="Median CPM by views-per-follower band"></svg></div>
     </div>
   </div>
-</section>
 
-<section class="sec">
-  <div class="sec-h"><span class="eyebrow">Four rules</span><h2>What the data says to change on Monday</h2></div>
-  <div class="rules">
-    <div class="rule">
-      <span class="eyebrow">Rule 01</span>
-      <h3>Screen on views, never followers</h3>
-      <p>Ask for the last five posts before you ask their rate. A 67K creator delivered 204,900 views at
-        <code>$1.46</code> CPM; a 2.5M creator delivered 2,256 views at <code>$132.98</code>. Both were beauty posts
-        in the same quarter.</p>
-    </div>
-    <div class="rule">
-      <span class="eyebrow">Rule 02</span>
-      <h3>Ignore engagement rate as a value signal</h3>
-      <p>Engagement per view runs <em>against</em> reach in your data &mdash; comment rate correlates
-        <code>+0.45</code> with a worse CPM, because small posts have concentrated ratios. Use engagement to
-        check an audience is real, never to rank who to book.</p>
-    </div>
-    <div class="rule">
-      <span class="eyebrow">Rule 03</span>
-      <h3>Facebook is the opposite market</h3>
-      <p>On TikTok, big accounts under-deliver. On Facebook they do not: 1M+ pages ran <code>$1.31</code> CPM with
-        zero blow-ups, against <code>$35.32</code> for pages under 100K. Buy small on TikTok and big on Facebook.</p>
-    </div>
-    <div class="rule">
-      <span class="eyebrow">Rule 04</span>
-      <h3>Always contract the cross-post</h3>
-      <p>Where a creator posted to both platforms, Facebook added a median <code>109%</code> on top of TikTok reach
-        for the same fee. Sixty-two of your 105 deals did this; the rest left that reach on the table.</p>
+  <div class="sec">
+    <div class="sec-h"><h2>Percentiles by platform</h2><span class="eyebrow">what "typical" means here</span></div>
+    <div class="split">
+      <div class="chartbox"><h3>TikTok</h3>
+        <p class="cap">82 campaigns with fee, views and follower count.</p>
+        <table class="bench"><thead><tr><th>Metric</th><th>p10</th><th>p25</th><th>Median</th><th>p75</th><th>p90</th></tr></thead>
+        <tbody id="ttpct"></tbody></table></div>
+      <div class="chartbox"><h3>Facebook</h3>
+        <p class="cap">61 campaigns. Note how differently this platform behaves.</p>
+        <table class="bench"><thead><tr><th>Metric</th><th>p10</th><th>p25</th><th>Median</th><th>p75</th><th>p90</th></tr></thead>
+        <tbody id="fbpct"></tbody></table></div>
     </div>
   </div>
-</section>
 
-<section class="sec">
-  <div class="sec-h"><span class="eyebrow">Benchmarks</span><h2>The book you are pricing against</h2></div>
-  <p class="sec-lede">Percentiles from the campaigns in your file. The desk above scores every creator
-    against these columns.</p>
-  <div class="split">
-    <div class="chartbox">
-      <h3>TikTok &mdash; by follower tier</h3>
-      <p class="cap">&ldquo;Blow-ups&rdquo; are deals that landed above $20 CPM.</p>
-      <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med. VFR</th><th>Med. CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
-      <tbody id="ttiers"></tbody></table>
-    </div>
-    <div class="chartbox">
-      <h3>Facebook &mdash; by follower tier</h3>
-      <p class="cap">Note the direction reverses against TikTok.</p>
-      <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med. VFR</th><th>Med. CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
-      <tbody id="ftiers"></tbody></table>
+  <div class="sec">
+    <div class="sec-h"><h2>By follower tier</h2><span class="eyebrow">the two platforms run opposite</span></div>
+    <div class="split">
+      <div class="chartbox"><h3>TikTok &mdash; bigger is not better</h3>
+        <p class="cap">Fees climb with follower count while views-per-follower falls.</p>
+        <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med VFR</th><th>Med CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
+        <tbody id="ttiers"></tbody></table></div>
+      <div class="chartbox"><h3>Facebook &mdash; bigger is better</h3>
+        <p class="cap">The one place in your book where paying for scale pays back.</p>
+        <table class="bench"><thead><tr><th>Tier</th><th>n</th><th>Med VFR</th><th>Med CPM</th><th>Avg fee</th><th>Blow-ups</th></tr></thead>
+        <tbody id="ftiers"></tbody></table></div>
     </div>
   </div>
-  <div class="split" style="margin-top:22px">
-    <div class="chartbox">
-      <h3>Best ten buys in the book</h3>
-      <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Followers</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
-      <tbody id="tbest"></tbody></table>
-    </div>
-    <div class="chartbox">
-      <h3>Ten the money should not have gone to</h3>
-      <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Followers</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
-      <tbody id="tworst"></tbody></table>
-    </div>
-  </div>
-</section>
 
-<section class="sec">
-  <div class="sec-h"><span class="eyebrow">Methodology</span><h2>How the number is built</h2></div>
-  <div class="method">
-    <h3>Forecast reach</h3>
-    <p>Median views across the recent posts you enter, multiplied by the sponsored reach factor
-      (default <code>0.75</code>). Median resists a single viral post. The 0.75 is a convention, not something
-      your file can prove &mdash; it holds no organic baseline for the same creators, so it is exposed as a dial.
-      Where a Facebook cross-post is contracted, forecast reach is lifted by the median <code>+109%</code>
-      observed across your 62 dual-platform posts.</p>
-    <h3>Fair fee</h3>
-    <p><code>fair fee = forecast views &divide; 1000 &times; target CPM</code>. Default target is your portfolio
-      median of <code>$7.07</code>; switch to <code>$2.73</code> to buy only at top-quartile efficiency. Walk-away is
-      set at 2&times; fair.</p>
-    <h3>Scoring</h3>
-    <p>Each metric is placed as a percentile against the campaigns in your file, split by platform. Views-per-follower
-      carries the read because it is the only input that tracks cost efficiency
-      (Spearman <code>&minus;0.69</code> against CPM). Consistency is the ratio of your weakest entered post to the
-      median &mdash; it separates a reliable creator from one who hit the algorithm once. Engagement metrics are
-      scored as an authenticity check only, against a fitted expectation curve
-      (<code>log&#8321;&#8320;(comments) = &minus;1.66 + 0.669 &times; log&#8321;&#8320;(views)</code> on TikTok), never as
-      a value driver.</p>
-    <h3>What this does not do</h3>
-    <p>It does not read the profile for you &mdash; TikTok and Meta both block that from a browser page, and any
-      tool claiming otherwise is either using a paid data vendor or guessing. It forecasts reach, not sales:
-      your file records no conversion, promo-code or revenue data, so cost per view is as far as the evidence
-      goes. Adding a sales column against these campaigns is the single highest-value thing you could do to
-      this model.</p>
-    <h3>Data quality notes</h3>
+  <div class="sec">
+    <div class="sec-h"><h2>The extremes</h2><span class="eyebrow">same market, same category, same quarter</span></div>
+    <div class="split">
+      <div class="chartbox"><h3>Best ten buys</h3>
+        <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Foll.</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
+        <tbody id="tbest"></tbody></table></div>
+      <div class="chartbox"><h3>Ten the money should not have gone to</h3>
+        <table class="bench"><thead><tr><th>Creator</th><th>Brand</th><th>Foll.</th><th>Views</th><th>Fee</th><th>CPM</th></tr></thead>
+        <tbody id="tworst"></tbody></table></div>
+    </div>
+  </div>
+
+  <div class="note"><b>Data quality.</b>
     <ul>
-      <li>3 of 105 rows carry no fee; 23 carry no TikTok view count. Those rows sit out of the affected benchmarks.</li>
+      <li>3 of 105 rows carry no fee and 23 no TikTok view count; those rows sit out of the affected benchmarks.</li>
       <li>One row (V Spring, MediAnswer) records 5.7 likes against 36.4K views &mdash; almost certainly 5.7K mistyped.</li>
-      <li>Jenny House and efilow rows are largely missing follower counts, so they inform CPM but not VFR.</li>
+      <li>Jenny House and efilow rows largely lack follower counts, so they inform CPM but not the VFR benchmark.</li>
     </ul>
   </div>
 </section>
@@ -485,20 +830,19 @@ table.bench tr:last-child td{border-bottom:0}
 </div>
 </div>
 <script>
-const HEBE={"meta":{"campaigns":105,"brands":["Dr.Melaxin","Jenny House","Mary&May","MediAnswer","efilow"],"total_spend_usd":38380,"total_views":32892060,"market":"Cambodia (KH)","period":"Oct 2024 - Jun 2026"},"tiktok":{"n":82,"cpm":{"p10":1.424501,"p25":2.727981,"p50":7.067138,"p75":26.760865,"p90":62.5},"vfr":{"p10":0.014455,"p25":0.054409,"p50":0.127027,"p75":0.269444,"p90":0.627141},"erv":{"p10":0.03747,"p25":0.059755,"p50":0.083324,"p75":0.118727,"p90":0.169096},"share_rate":{"p10":0.000418,"p25":0.000925,"p50":0.001909,"p75":0.003402,"p90":0.005778},"comment_rate":{"p10":0.000151,"p25":0.00034,"p50":0.000527,"p75":0.001299,"p90":0.002812},"cpe":{"p10":0.011898,"p25":0.034626,"p50":0.076365,"p75":0.307377,"p90":0.869565},"agg_cpm":3.946,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":15,"med_vfr":0.5047,"med_cpm":4.96,"avg_fee":217,"blowup_rate":0.4},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":33,"med_vfr":0.127,"med_cpm":10.24,"avg_fee":363,"blowup_rate":0.273},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":18,"med_vfr":0.0881,"med_cpm":4.63,"avg_fee":489,"blowup_rate":0.278},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":16,"med_vfr":0.0767,"med_cpm":3.83,"avg_fee":594,"blowup_rate":0.312}]},"facebook":{"n":61,"cpm":{"p10":0.6,"p25":1.470588,"p50":13.043478,"p75":35.294118,"p90":92.592593},"vfr":{"p10":0.050209,"p25":0.085561,"p50":0.263261,"p75":1.218182,"p90":1.583333},"erv":{"p10":0.023929,"p25":0.038667,"p50":0.053083,"p75":0.066395,"p90":0.08475},"share_rate":{"p10":9.2e-05,"p25":0.000224,"p50":0.000426,"p75":0.000851,"p90":0.0016},"comment_rate":{"p10":0.000113,"p25":0.000224,"p50":0.000485,"p75":0.001125,"p90":0.002252},"cpe":{"p10":0.014864,"p25":0.033102,"p50":0.240385,"p75":0.75431,"p90":2.142857},"agg_cpm":1.257,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":22,"med_vfr":0.2816,"med_cpm":35.32,"avg_fee":293,"blowup_rate":0.682},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":19,"med_vfr":0.1168,"med_cpm":13.89,"avg_fee":468,"blowup_rate":0.368},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":11,"med_vfr":0.2693,"med_cpm":4.06,"avg_fee":609,"blowup_rate":0.091},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":9,"med_vfr":0.5385,"med_cpm":1.31,"avg_fee":922,"blowup_rate":0.0}]},"auth_curve":{"tiktok":{"comment":{"a":-1.6638,"b":0.6685,"sd":0.394},"like":{"a":-0.9878,"b":0.9682,"sd":0.366}},"facebook":{"comment":{"a":-2.2601,"b":0.778,"sd":0.444}}},"market_fee_tiktok":[{"label":"<50K","min":0,"max":50000.0,"p25":100,"median":275,"p75":300},{"label":"50-100K","min":50000.0,"max":100000.0,"p25":100,"median":200,"p75":300},{"label":"100-300K","min":100000.0,"max":300000.0,"p25":200,"median":250,"p75":400},{"label":"300-700K","min":300000.0,"max":700000.0,"p25":200,"median":250,"p75":550},{"label":"700K-1.5M","min":700000.0,"max":1500000.0,"p25":200,"median":500,"p75":650},{"label":"1.5M+","min":1500000.0,"max":9000000000.0,"p25":300,"median":400,"p75":600}],"evidence":{"followers_explain_views_r2":0.124,"vfr_vs_cpm_spearman":-0.691,"followers_vs_cost_spearman":0.396,"cost_vs_views_spearman":0.228,"followers_vs_views_spearman":0.372,"good_half_spend_share":0.43,"good_half_view_share":0.91,"wasted_spend":19150,"views_lost":1885449,"vfr_bands":[{"band":"<0.05","n":19,"med_cpm":48.61,"avg_fee":453},{"band":"0.05-0.15","n":26,"med_cpm":9.28,"avg_fee":433},{"band":"0.15-0.40","n":21,"med_cpm":4.09,"avg_fee":346},{"band":"0.40+","n":16,"med_cpm":2.53,"avg_fee":400}],"fb_multiplier_median":1.09},"best":[{"name":"Jing Gaming","brand":"MediAnswer","followers":2500000.0,"views":564600.0,"cost":300.0,"cpm":0.53,"vfr":0.226},{"name":"Moniroth","brand":"efilow","followers":3500000.0,"views":703000.0,"cost":400.0,"cpm":0.57,"vfr":0.201},{"name":"May Lee","brand":"MediAnswer","followers":89000.0,"views":299000.0,"cost":200.0,"cpm":0.67,"vfr":3.36},{"name":"Wei Ying","brand":"Jenny House","followers":2300000.0,"views":504000.0,"cost":350.0,"cpm":0.69,"vfr":0.219},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":802000.0,"cost":600.0,"cpm":0.75,"vfr":0.617},{"name":"Samnang","brand":"efilow","followers":61000.0,"views":53000.0,"cost":50.0,"cpm":0.94,"vfr":0.869},{"name":"Nuth","brand":"Dr.Melaxin","followers":644000.0,"views":355000.0,"cost":350.0,"cpm":0.99,"vfr":0.551},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":559300.0,"cost":600.0,"cpm":1.07,"vfr":0.43},{"name":"Solly","brand":"efilow","followers":825000.0,"views":70200.0,"cost":100.0,"cpm":1.42,"vfr":0.085},{"name":"Nanac","brand":"Jenny House","followers":1200000.0,"views":345000.0,"cost":500.0,"cpm":1.45,"vfr":0.287}],"worst":[{"name":"Daneth","brand":"Mary&May","followers":959300.0,"views":936.0,"cost":350.0,"cpm":373.93,"vfr":0.001},{"name":"Kalyanney","brand":"Mary&May","followers":522700.00000000006,"views":3126.0,"cost":600.0,"cpm":191.94,"vfr":0.006},{"name":"Noeng Haratey","brand":"Mary&May","followers":323400.0,"views":2293.0,"cost":350.0,"cpm":152.64,"vfr":0.007},{"name":"Jim Gaming","brand":"Mary&May","followers":2500000.0,"views":2256.0,"cost":300.0,"cpm":132.98,"vfr":0.001},{"name":"Niki Niki","brand":"MediAnswer","followers":162000.0,"views":15100.0,"cost":1500.0,"cpm":99.34,"vfr":0.093},{"name":"Marady Tep","brand":"Mary&May","followers":87300.0,"views":3260.0,"cost":300.0,"cpm":92.02,"vfr":0.037},{"name":"Shanel","brand":"Mary&May","followers":653100.0,"views":8905.0,"cost":800.0,"cpm":89.84,"vfr":0.014},{"name":"Sokly","brand":"Mary&May","followers":325200.0,"views":3103.0,"cost":250.0,"cpm":80.57,"vfr":0.01},{"name":"Leng leng","brand":"Mary&May","followers":1100000.0,"views":15900.0,"cost":1000.0,"cpm":62.89,"vfr":0.014},{"name":"Pich sothea","brand":"MediAnswer","followers":67400.0,"views":1600.0,"cost":100.0,"cpm":62.5,"vfr":0.024}],"scatter":[[1300000,802000,0.75,"Mariam Brown","Dr.Melaxin",600],[1300000,559300,1.07,"Mariam Brown","Dr.Melaxin",600],[644000,355000,0.99,"Nuth","Dr.Melaxin",350],[561500,81900,2.44,"Reddy Kim","Dr.Melaxin",200],[1300000,151700,3.96,"Mariam Brown","Dr.Melaxin",600],[103000,9500,31.58,"Kael","Dr.Melaxin",300],[239000,18100,19.34,"Mey Jelly","Dr.Melaxin",350],[225000,32000,6.25,"Liza","Jenny House",200],[2300000,504000,0.69,"Wei Ying","Jenny House",350],[194000,50400,4.96,"Young","Jenny House",250],[1200000,345000,1.45,"Nanac","Jenny House",500],[100200,26700,14.98,"Hong & Hui","Mary&May",400],[2500000,2256,132.98,"Jim Gaming","Mary&May",300],[88100,7936,37.8,"Kael","Mary&May",300],[2500000,4020,24.88,"MaNa-MaNeth","Mary&May",100],[87300,3260,92.02,"Marady Tep","Mary&May",300],[42800,7947,31.46,"Nelly","Mary&May",250],[139200,10800,16.67,"Roi","Mary&May",180],[45000,7537,39.8,"Sak","Mary&May",300],[6600000,359100,2.23,"Samreth","Mary&May",800],[682400,28300,7.07,"Sivelang","Mary&May",200],[130700,122600,3.26,"Terk Kalok","Mary&May",400],[764300,184000,5.16,"Tith HavHeang","Mary&May",950],[434300,70200,2.85,"Narong","Mary&May",200],[59700,69200,2.89,"Siam","Mary&May",200],[959300,936,373.93,"Daneth","Mary&May",350],[770400,188700,2.65,"Dimple","Mary&May",500],[110800,9342,26.76,"Neat","Mary&May",250],[522700,3126,191.94,"Kalyanney","Mary&May",600],[1100000,15900,62.89,"Leng leng","Mary&May",1000],[16400,33200,3.01,"Munichenda","Mary&May",100],[323400,2293,152.64,"Noeng Haratey","Mary&May",350],[653100,8905,89.84,"Shanel","Mary&May",800],[325200,3103,80.57,"Sokly","Mary&May",250],[66900,21400,4.67,"Glowy","MediAnswer",100],[242000,7200,48.61,"Vann David","MediAnswer",350],[363000,15900,12.58,"Cney","MediAnswer",200],[75900,47600,2.1,"Monyneath","MediAnswer",100],[331000,17700,8.47,"Krim boramey","MediAnswer",150],[67400,1600,62.5,"Pich sothea","MediAnswer",100],[269000,36400,6.87,"V Spring","MediAnswer",250],[183000,16600,10.24,"Bella Jing","MediAnswer",170],[124000,24100,12.45,"Jin Ju","MediAnswer",300],[74900,37800,7.94,"Mark Roy","MediAnswer",300],[89000,299000,0.67,"May Lee","MediAnswer",200],[293000,314800,3.81,"Sinora","MediAnswer",1200],[151000,29600,10.14,"So Panha","MediAnswer",300],[1000000,40400,3.71,"You You","MediAnswer",150],[148000,18800,10.64,"Huang Huang","MediAnswer",200],[224000,23100,8.66,"Lii Ly","MediAnswer",200],[212000,24700,8.1,"Pich Diamond","MediAnswer",200],[782000,71200,2.81,"Por Eii","MediAnswer",200],[4100000,33500,22.39,"Phan Rong","MediAnswer",750],[2500000,564600,0.53,"Jing Gaming","MediAnswer",300],[438000,193000,2.85,"Lim Alice","MediAnswer",550],[162000,15100,99.34,"Niki Niki","MediAnswer",1500],[1100000,103000,14.56,"Lin","MediAnswer",1500],[568400,171200,4.09,"Nuth","MediAnswer",700],[668600,47400,25.32,"Xing","MediAnswer",1200],[874000,36500,41.1,"Melia","MediAnswer",1500],[349000,97100,1.54,"Hak beam","MediAnswer",150],[83000,60500,4.96,"Kael","MediAnswer",300],[1100000,65700,9.89,"Nanac","MediAnswer",650],[546000,86500,2.31,"Reddy Kim","MediAnswer",200],[248000,13800,39.86,"Riki","MediAnswer",550],[151000,5807,43.05,"Shuy","MediAnswer",250],[652000,59800,2.51,"Chi lii","MediAnswer",150],[309000,45500,6.59,"Danin","MediAnswer",300],[67000,204900,1.46,"Elnaly","MediAnswer",300],[17300,7402,47.28,"Fern Seng","MediAnswer",350],[108000,29100,13.75,"Neath","MediAnswer",400],[706000,41800,7.18,"Lunlyly","MediAnswer",300],[514000,128300,2.73,"Meov","MediAnswer",350],[444000,360800,2.22,"Tithphally","MediAnswer",800],[1100000,32700,27.52,"Zorng","MediAnswer",900],[216000,12800,35.16,"Joby","MediAnswer",450],[237000,44900,2.67,"Harry","efilow",120],[825000,70200,1.42,"Solly","efilow",100],[516000,22600,6.64,"Meov","efilow",150],[191000,57400,4.36,"Nan","efilow",250],[3500000,703000,0.57,"Moniroth","efilow",400],[61000,53000,0.94,"Samnang","efilow",50]]};</script>
+const HEBE={"meta":{"campaigns":105,"brands":["Dr.Melaxin","Jenny House","Mary&May","MediAnswer","efilow"],"total_spend_usd":38380,"total_views":32892060,"market":"Cambodia (KH)","period":"Oct 2024 - Jun 2026"},"tiktok":{"n":82,"cpm":{"p10":1.424501,"p25":2.727981,"p50":7.067138,"p75":26.760865,"p90":62.5},"vfr":{"p10":0.014455,"p25":0.054409,"p50":0.127027,"p75":0.269444,"p90":0.627141},"erv":{"p10":0.03747,"p25":0.059755,"p50":0.083324,"p75":0.118727,"p90":0.169096},"share_rate":{"p10":0.000418,"p25":0.000925,"p50":0.001909,"p75":0.003402,"p90":0.005778},"comment_rate":{"p10":0.000151,"p25":0.00034,"p50":0.000527,"p75":0.001299,"p90":0.002812},"cpe":{"p10":0.011898,"p25":0.034626,"p50":0.076365,"p75":0.307377,"p90":0.869565},"agg_cpm":3.946,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":15,"med_vfr":0.5047,"med_cpm":4.96,"avg_fee":217,"blowup_rate":0.4},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":33,"med_vfr":0.127,"med_cpm":10.24,"avg_fee":363,"blowup_rate":0.273},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":18,"med_vfr":0.0881,"med_cpm":4.63,"avg_fee":489,"blowup_rate":0.278},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":16,"med_vfr":0.0767,"med_cpm":3.83,"avg_fee":594,"blowup_rate":0.312}]},"facebook":{"n":61,"cpm":{"p10":0.6,"p25":1.470588,"p50":13.043478,"p75":35.294118,"p90":92.592593},"vfr":{"p10":0.050209,"p25":0.085561,"p50":0.263261,"p75":1.218182,"p90":1.583333},"erv":{"p10":0.023929,"p25":0.038667,"p50":0.053083,"p75":0.066395,"p90":0.08475},"share_rate":{"p10":9.2e-05,"p25":0.000224,"p50":0.000426,"p75":0.000851,"p90":0.0016},"comment_rate":{"p10":0.000113,"p25":0.000224,"p50":0.000485,"p75":0.001125,"p90":0.002252},"cpe":{"p10":0.014864,"p25":0.033102,"p50":0.240385,"p75":0.75431,"p90":2.142857},"agg_cpm":1.257,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":22,"med_vfr":0.2816,"med_cpm":35.32,"avg_fee":293,"blowup_rate":0.682},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":19,"med_vfr":0.1168,"med_cpm":13.89,"avg_fee":468,"blowup_rate":0.368},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":11,"med_vfr":0.2693,"med_cpm":4.06,"avg_fee":609,"blowup_rate":0.091},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":9,"med_vfr":0.5385,"med_cpm":1.31,"avg_fee":922,"blowup_rate":0.0}]},"auth_curve":{"tiktok":{"comment":{"a":-1.6638,"b":0.6685,"sd":0.394},"like":{"a":-0.9878,"b":0.9682,"sd":0.366}},"facebook":{"comment":{"a":-2.2601,"b":0.778,"sd":0.444}}},"market_fee_tiktok":[{"label":"<50K","min":0,"max":50000.0,"p25":100,"median":275,"p75":300},{"label":"50-100K","min":50000.0,"max":100000.0,"p25":100,"median":200,"p75":300},{"label":"100-300K","min":100000.0,"max":300000.0,"p25":200,"median":250,"p75":400},{"label":"300-700K","min":300000.0,"max":700000.0,"p25":200,"median":250,"p75":550},{"label":"700K-1.5M","min":700000.0,"max":1500000.0,"p25":200,"median":500,"p75":650},{"label":"1.5M+","min":1500000.0,"max":9000000000.0,"p25":300,"median":400,"p75":600}],"evidence":{"followers_explain_views_r2":0.124,"vfr_vs_cpm_spearman":-0.691,"followers_vs_cost_spearman":0.396,"cost_vs_views_spearman":0.228,"followers_vs_views_spearman":0.372,"good_half_spend_share":0.43,"good_half_view_share":0.91,"wasted_spend":19150,"views_lost":1885449,"vfr_bands":[{"band":"<0.05","n":19,"med_cpm":48.61,"avg_fee":453},{"band":"0.05-0.15","n":26,"med_cpm":9.28,"avg_fee":433},{"band":"0.15-0.40","n":21,"med_cpm":4.09,"avg_fee":346},{"band":"0.40+","n":16,"med_cpm":2.53,"avg_fee":400}],"fb_multiplier_median":1.09},"best":[{"name":"Jing Gaming","brand":"MediAnswer","followers":2500000.0,"views":564600.0,"cost":300.0,"cpm":0.53,"vfr":0.226},{"name":"Moniroth","brand":"efilow","followers":3500000.0,"views":703000.0,"cost":400.0,"cpm":0.57,"vfr":0.201},{"name":"May Lee","brand":"MediAnswer","followers":89000.0,"views":299000.0,"cost":200.0,"cpm":0.67,"vfr":3.36},{"name":"Wei Ying","brand":"Jenny House","followers":2300000.0,"views":504000.0,"cost":350.0,"cpm":0.69,"vfr":0.219},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":802000.0,"cost":600.0,"cpm":0.75,"vfr":0.617},{"name":"Samnang","brand":"efilow","followers":61000.0,"views":53000.0,"cost":50.0,"cpm":0.94,"vfr":0.869},{"name":"Nuth","brand":"Dr.Melaxin","followers":644000.0,"views":355000.0,"cost":350.0,"cpm":0.99,"vfr":0.551},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":559300.0,"cost":600.0,"cpm":1.07,"vfr":0.43},{"name":"Solly","brand":"efilow","followers":825000.0,"views":70200.0,"cost":100.0,"cpm":1.42,"vfr":0.085},{"name":"Nanac","brand":"Jenny House","followers":1200000.0,"views":345000.0,"cost":500.0,"cpm":1.45,"vfr":0.287}],"worst":[{"name":"Daneth","brand":"Mary&May","followers":959300.0,"views":936.0,"cost":350.0,"cpm":373.93,"vfr":0.001},{"name":"Kalyanney","brand":"Mary&May","followers":522700.00000000006,"views":3126.0,"cost":600.0,"cpm":191.94,"vfr":0.006},{"name":"Noeng Haratey","brand":"Mary&May","followers":323400.0,"views":2293.0,"cost":350.0,"cpm":152.64,"vfr":0.007},{"name":"Jim Gaming","brand":"Mary&May","followers":2500000.0,"views":2256.0,"cost":300.0,"cpm":132.98,"vfr":0.001},{"name":"Niki Niki","brand":"MediAnswer","followers":162000.0,"views":15100.0,"cost":1500.0,"cpm":99.34,"vfr":0.093},{"name":"Marady Tep","brand":"Mary&May","followers":87300.0,"views":3260.0,"cost":300.0,"cpm":92.02,"vfr":0.037},{"name":"Shanel","brand":"Mary&May","followers":653100.0,"views":8905.0,"cost":800.0,"cpm":89.84,"vfr":0.014},{"name":"Sokly","brand":"Mary&May","followers":325200.0,"views":3103.0,"cost":250.0,"cpm":80.57,"vfr":0.01},{"name":"Leng leng","brand":"Mary&May","followers":1100000.0,"views":15900.0,"cost":1000.0,"cpm":62.89,"vfr":0.014},{"name":"Pich sothea","brand":"MediAnswer","followers":67400.0,"views":1600.0,"cost":100.0,"cpm":62.5,"vfr":0.024}],"scatter":[[1300000,802000,0.75,"Mariam Brown","Dr.Melaxin",600],[1300000,559300,1.07,"Mariam Brown","Dr.Melaxin",600],[644000,355000,0.99,"Nuth","Dr.Melaxin",350],[561500,81900,2.44,"Reddy Kim","Dr.Melaxin",200],[1300000,151700,3.96,"Mariam Brown","Dr.Melaxin",600],[103000,9500,31.58,"Kael","Dr.Melaxin",300],[239000,18100,19.34,"Mey Jelly","Dr.Melaxin",350],[225000,32000,6.25,"Liza","Jenny House",200],[2300000,504000,0.69,"Wei Ying","Jenny House",350],[194000,50400,4.96,"Young","Jenny House",250],[1200000,345000,1.45,"Nanac","Jenny House",500],[100200,26700,14.98,"Hong & Hui","Mary&May",400],[2500000,2256,132.98,"Jim Gaming","Mary&May",300],[88100,7936,37.8,"Kael","Mary&May",300],[2500000,4020,24.88,"MaNa-MaNeth","Mary&May",100],[87300,3260,92.02,"Marady Tep","Mary&May",300],[42800,7947,31.46,"Nelly","Mary&May",250],[139200,10800,16.67,"Roi","Mary&May",180],[45000,7537,39.8,"Sak","Mary&May",300],[6600000,359100,2.23,"Samreth","Mary&May",800],[682400,28300,7.07,"Sivelang","Mary&May",200],[130700,122600,3.26,"Terk Kalok","Mary&May",400],[764300,184000,5.16,"Tith HavHeang","Mary&May",950],[434300,70200,2.85,"Narong","Mary&May",200],[59700,69200,2.89,"Siam","Mary&May",200],[959300,936,373.93,"Daneth","Mary&May",350],[770400,188700,2.65,"Dimple","Mary&May",500],[110800,9342,26.76,"Neat","Mary&May",250],[522700,3126,191.94,"Kalyanney","Mary&May",600],[1100000,15900,62.89,"Leng leng","Mary&May",1000],[16400,33200,3.01,"Munichenda","Mary&May",100],[323400,2293,152.64,"Noeng Haratey","Mary&May",350],[653100,8905,89.84,"Shanel","Mary&May",800],[325200,3103,80.57,"Sokly","Mary&May",250],[66900,21400,4.67,"Glowy","MediAnswer",100],[242000,7200,48.61,"Vann David","MediAnswer",350],[363000,15900,12.58,"Cney","MediAnswer",200],[75900,47600,2.1,"Monyneath","MediAnswer",100],[331000,17700,8.47,"Krim boramey","MediAnswer",150],[67400,1600,62.5,"Pich sothea","MediAnswer",100],[269000,36400,6.87,"V Spring","MediAnswer",250],[183000,16600,10.24,"Bella Jing","MediAnswer",170],[124000,24100,12.45,"Jin Ju","MediAnswer",300],[74900,37800,7.94,"Mark Roy","MediAnswer",300],[89000,299000,0.67,"May Lee","MediAnswer",200],[293000,314800,3.81,"Sinora","MediAnswer",1200],[151000,29600,10.14,"So Panha","MediAnswer",300],[1000000,40400,3.71,"You You","MediAnswer",150],[148000,18800,10.64,"Huang Huang","MediAnswer",200],[224000,23100,8.66,"Lii Ly","MediAnswer",200],[212000,24700,8.1,"Pich Diamond","MediAnswer",200],[782000,71200,2.81,"Por Eii","MediAnswer",200],[4100000,33500,22.39,"Phan Rong","MediAnswer",750],[2500000,564600,0.53,"Jing Gaming","MediAnswer",300],[438000,193000,2.85,"Lim Alice","MediAnswer",550],[162000,15100,99.34,"Niki Niki","MediAnswer",1500],[1100000,103000,14.56,"Lin","MediAnswer",1500],[568400,171200,4.09,"Nuth","MediAnswer",700],[668600,47400,25.32,"Xing","MediAnswer",1200],[874000,36500,41.1,"Melia","MediAnswer",1500],[349000,97100,1.54,"Hak beam","MediAnswer",150],[83000,60500,4.96,"Kael","MediAnswer",300],[1100000,65700,9.89,"Nanac","MediAnswer",650],[546000,86500,2.31,"Reddy Kim","MediAnswer",200],[248000,13800,39.86,"Riki","MediAnswer",550],[151000,5807,43.05,"Shuy","MediAnswer",250],[652000,59800,2.51,"Chi lii","MediAnswer",150],[309000,45500,6.59,"Danin","MediAnswer",300],[67000,204900,1.46,"Elnaly","MediAnswer",300],[17300,7402,47.28,"Fern Seng","MediAnswer",350],[108000,29100,13.75,"Neath","MediAnswer",400],[706000,41800,7.18,"Lunlyly","MediAnswer",300],[514000,128300,2.73,"Meov","MediAnswer",350],[444000,360800,2.22,"Tithphally","MediAnswer",800],[1100000,32700,27.52,"Zorng","MediAnswer",900],[216000,12800,35.16,"Joby","MediAnswer",450],[237000,44900,2.67,"Harry","efilow",120],[825000,70200,1.42,"Solly","efilow",100],[516000,22600,6.64,"Meov","efilow",150],[191000,57400,4.36,"Nan","efilow",250],[3500000,703000,0.57,"Moniroth","efilow",400],[61000,53000,0.94,"Samnang","efilow",50]],"rows":[{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":802000.0,"ff":363000.0,"fv":8600000.0,"tot":9402000.0,"eng":120504.0,"cpm":0.06,"vfr":0.617,"fvfr":23.691,"erv":0.0128},{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":559300.0,"ff":363000.0,"fv":1000000.0,"tot":1559300.0,"eng":109958.0,"cpm":0.38,"vfr":0.43,"fvfr":2.755,"erv":0.0705},{"n":"Nuth","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":350.0,"tf":644000.0,"tv":355000.0,"ff":394000.0,"fv":403000.0,"tot":758000.0,"eng":50453.0,"cpm":0.46,"vfr":0.551,"fvfr":1.023,"erv":0.0666},{"n":"Reddy Kim","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel Shot","c":200.0,"tf":561500.0,"tv":81900.0,"ff":241000.0,"fv":11000.0,"tot":92900.0,"eng":9399.0,"cpm":2.15,"vfr":0.146,"fvfr":0.046,"erv":0.1012},{"n":"Mariam Brown","b":"Dr.Melaxin","m":4,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":151700.0,"ff":363000.0,"fv":350000.0,"tot":501700.0,"eng":44741.0,"cpm":1.2,"vfr":0.117,"fvfr":0.964,"erv":0.0892},{"n":"Kael","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel shot","c":300.0,"tf":103000.0,"tv":9500.0,"ff":19000.0,"fv":5400.0,"tot":14900.0,"eng":2178.0,"cpm":20.13,"vfr":0.092,"fvfr":0.284,"erv":0.1462},{"n":"Mey Jelly","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel Shot","c":350.0,"tf":239000.0,"tv":18100.0,"ff":239000.0,"fv":12000.0,"tot":30100.0,"eng":1298.0,"cpm":11.63,"vfr":0.076,"fvfr":0.05,"erv":0.0431},{"n":"Liza","b":"Jenny House","m":5,"y":2025,"p":"","c":200.0,"tf":225000.0,"tv":32000.0,"ff":null,"fv":null,"tot":32000.0,"eng":1541.0,"cpm":6.25,"vfr":0.142,"fvfr":null,"erv":0.0482},{"n":"Mong Chi","b":"Jenny House","m":5,"y":2025,"p":"","c":150.0,"tf":636000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Wei Ying","b":"Jenny House","m":5,"y":2025,"p":"","c":350.0,"tf":2300000.0,"tv":504000.0,"ff":687000.0,"fv":885000.0,"tot":1389000.0,"eng":43168.0,"cpm":0.25,"vfr":0.219,"fvfr":1.288,"erv":0.0311},{"n":"Young","b":"Jenny House","m":5,"y":2025,"p":"","c":250.0,"tf":194000.0,"tv":50400.0,"ff":304000.0,"fv":18000.0,"tot":68400.0,"eng":2831.0,"cpm":3.65,"vfr":0.26,"fvfr":0.059,"erv":0.0414},{"n":"Nanac","b":"Jenny House","m":6,"y":2025,"p":"","c":500.0,"tf":1200000.0,"tv":345000.0,"ff":786000.0,"fv":660000.0,"tot":1005000.0,"eng":58979.0,"cpm":0.5,"vfr":0.287,"fvfr":0.84,"erv":0.0587},{"n":"You You","b":"Jenny House","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":45000.0,"ff":null,"fv":19000.0,"tot":64000.0,"eng":6649.0,"cpm":2.34,"vfr":null,"fvfr":null,"erv":0.1039},{"n":"Hong & Hui","b":"Mary&May","m":3,"y":2026,"p":"Both","c":400.0,"tf":100200.0,"tv":26700.0,"ff":137000.0,"fv":28000.0,"tot":54700.0,"eng":2766.0,"cpm":7.31,"vfr":0.266,"fvfr":0.204,"erv":0.0506},{"n":"Jim Gaming","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":2500000.0,"tv":2256.0,"ff":9000.0,"fv":12000.0,"tot":14256.0,"eng":1548.0,"cpm":21.04,"vfr":0.001,"fvfr":1.333,"erv":0.1086},{"n":"Kael","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":88100.0,"tv":7936.0,"ff":6000.0,"fv":23000.0,"tot":30936.0,"eng":3452.0,"cpm":9.7,"vfr":0.09,"fvfr":3.833,"erv":0.1116},{"n":"MaNa-MaNeth","b":"Mary&May","m":3,"y":2026,"p":"Both","c":100.0,"tf":2500000.0,"tv":4020.0,"ff":41000.0,"fv":3000.0,"tot":7020.0,"eng":431.0,"cpm":14.25,"vfr":0.002,"fvfr":0.073,"erv":0.0614},{"n":"Marady Tep","b":"Mary&May","m":3,"y":2026,"p":"Both","c":300.0,"tf":87300.0,"tv":3260.0,"ff":55000.0,"fv":4700.0,"tot":7960.0,"eng":596.0,"cpm":37.69,"vfr":0.037,"fvfr":0.085,"erv":0.0749},{"n":"Nan Nan","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":600.0,"tf":4300000.0,"tv":null,"ff":890000.0,"fv":1100000.0,"tot":1100000.0,"eng":80738.0,"cpm":0.55,"vfr":null,"fvfr":1.236,"erv":0.0734},{"n":"Nelly","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":250.0,"tf":42800.0,"tv":7947.0,"ff":3500.0,"fv":535.0,"tot":8482.0,"eng":2248.0,"cpm":29.47,"vfr":0.186,"fvfr":0.153,"erv":0.265},{"n":"Roi","b":"Mary&May","m":3,"y":2026,"p":"Both","c":180.0,"tf":139200.0,"tv":10800.0,"ff":1800.0,"fv":null,"tot":10800.0,"eng":775.0,"cpm":16.67,"vfr":0.078,"fvfr":null,"erv":0.0718},{"n":"Sak","b":"Mary&May","m":3,"y":2026,"p":"Both","c":300.0,"tf":45000.0,"tv":7537.0,"ff":10000.0,"fv":21000.0,"tot":28537.0,"eng":1874.0,"cpm":10.51,"vfr":0.167,"fvfr":2.1,"erv":0.0657},{"n":"Samreth","b":"Mary&May","m":3,"y":2026,"p":"Both","c":800.0,"tf":6600000.0,"tv":359100.0,"ff":1200000.0,"fv":240000.0,"tot":599100.0,"eng":23558.0,"cpm":1.34,"vfr":0.054,"fvfr":0.2,"erv":0.0393},{"n":"Sivelang","b":"Mary&May","m":3,"y":2026,"p":"Both","c":200.0,"tf":682400.0,"tv":28300.0,"ff":505000.0,"fv":136000.0,"tot":164300.0,"eng":12669.0,"cpm":1.22,"vfr":0.041,"fvfr":0.269,"erv":0.0771},{"n":"Terk Kalok","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":400.0,"tf":130699.99999999999,"tv":122600.0,"ff":259000.0,"fv":329000.0,"tot":451600.0,"eng":28989.0,"cpm":0.89,"vfr":0.938,"fvfr":1.27,"erv":0.0642},{"n":"Tith HavHeang","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":950.0,"tf":764300.0,"tv":184000.0,"ff":1200000.0,"fv":1900000.0,"tot":2084000.0,"eng":116239.0,"cpm":0.46,"vfr":0.241,"fvfr":1.583,"erv":0.0558},{"n":"Narong","b":"Mary&May","m":4,"y":2026,"p":"PDRN Cream/Soothing Gel","c":200.0,"tf":434300.0,"tv":70200.0,"ff":66000.0,"fv":5500.0,"tot":75700.0,"eng":17602.0,"cpm":2.64,"vfr":0.162,"fvfr":0.083,"erv":0.2325},{"n":"Siam","b":"Mary&May","m":4,"y":2026,"p":"PDRN Cream/Soothing Gel","c":200.0,"tf":59700.0,"tv":69200.0,"ff":78000.0,"fv":12000.0,"tot":81200.0,"eng":5071.0,"cpm":2.46,"vfr":1.159,"fvfr":0.154,"erv":0.0625},{"n":"Daneth","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":350.0,"tf":959300.0,"tv":936.0,"ff":641000.0,"fv":5200.0,"tot":6136.0,"eng":342.0,"cpm":57.04,"vfr":0.001,"fvfr":0.008,"erv":0.0557},{"n":"Dimple","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":500.0,"tf":770400.0,"tv":188700.0,"ff":null,"fv":null,"tot":188700.0,"eng":12440.0,"cpm":2.65,"vfr":0.245,"fvfr":null,"erv":0.0659},{"n":"Neat","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":250.0,"tf":110800.0,"tv":9342.0,"ff":50000.0,"fv":48000.0,"tot":57342.0,"eng":1533.0,"cpm":4.36,"vfr":0.084,"fvfr":0.96,"erv":0.0267},{"n":"Kalyanney","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":600.0,"tf":522700.00000000006,"tv":3126.0,"ff":43000.0,"fv":12000.0,"tot":15126.0,"eng":443.0,"cpm":39.67,"vfr":0.006,"fvfr":0.279,"erv":0.0293},{"n":"Leng leng","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":1000.0,"tf":1100000.0,"tv":15900.0,"ff":808000.0,"fv":76000.0,"tot":91900.0,"eng":5561.0,"cpm":10.88,"vfr":0.014,"fvfr":0.094,"erv":0.0605},{"n":"Munichenda","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":100.0,"tf":16400.0,"tv":33200.0,"ff":null,"fv":null,"tot":33200.0,"eng":2162.0,"cpm":3.01,"vfr":2.024,"fvfr":null,"erv":0.0651},{"n":"Noeng Haratey","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":350.0,"tf":323400.0,"tv":2293.0,"ff":189000.0,"fv":12000.0,"tot":14293.0,"eng":846.0,"cpm":24.49,"vfr":0.007,"fvfr":0.063,"erv":0.0592},{"n":"Shanel","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":800.0,"tf":653100.0,"tv":8905.0,"ff":1700000.0,"fv":424000.0,"tot":432905.0,"eng":21833.0,"cpm":1.85,"vfr":0.014,"fvfr":0.249,"erv":0.0504},{"n":"Sokly","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":250.0,"tf":325200.0,"tv":3103.0,"ff":119000.0,"fv":8200.0,"tot":11303.0,"eng":718.0,"cpm":22.12,"vfr":0.01,"fvfr":0.069,"erv":0.0635},{"n":"Dy Dy","b":"MediAnswer","m":10,"y":2024,"p":"","c":120.0,"tf":759000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jinny","b":"MediAnswer","m":10,"y":2024,"p":"","c":null,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"San Kosoma","b":"MediAnswer","m":10,"y":2024,"p":"","c":600.0,"tf":443000.0,"tv":null,"ff":523000.0,"fv":47000.0,"tot":47000.0,"eng":850.0,"cpm":12.77,"vfr":null,"fvfr":0.09,"erv":0.0181},{"n":"Glowy","b":"MediAnswer","m":11,"y":2024,"p":"","c":100.0,"tf":66900.0,"tv":21400.0,"ff":null,"fv":null,"tot":21400.0,"eng":2033.0,"cpm":4.67,"vfr":0.32,"fvfr":null,"erv":0.095},{"n":"Vann David","b":"MediAnswer","m":11,"y":2024,"p":"","c":350.0,"tf":242000.0,"tv":7200.0,"ff":null,"fv":null,"tot":7200.0,"eng":658.0,"cpm":48.61,"vfr":0.03,"fvfr":null,"erv":0.0914},{"n":"Cney","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":363000.0,"tv":15900.0,"ff":null,"fv":null,"tot":15900.0,"eng":580.0,"cpm":12.58,"vfr":0.044,"fvfr":null,"erv":0.0365},{"n":"Kimmo","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":774000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lin souma","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Monyneath","b":"MediAnswer","m":12,"y":2024,"p":"","c":100.0,"tf":75900.0,"tv":47600.0,"ff":null,"fv":null,"tot":47600.0,"eng":8200.0,"cpm":2.1,"vfr":0.627,"fvfr":null,"erv":0.1723},{"n":"Krim boramey","b":"MediAnswer","m":2,"y":2025,"p":"","c":150.0,"tf":331000.0,"tv":17700.0,"ff":null,"fv":null,"tot":17700.0,"eng":983.0,"cpm":8.47,"vfr":0.053,"fvfr":null,"erv":0.0555},{"n":"Mey Jelly","b":"MediAnswer","m":2,"y":2025,"p":"","c":200.0,"tf":641000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Pich sothea","b":"MediAnswer","m":2,"y":2025,"p":"","c":100.0,"tf":67400.0,"tv":1600.0,"ff":null,"fv":null,"tot":1600.0,"eng":140.0,"cpm":62.5,"vfr":0.024,"fvfr":null,"erv":0.0875},{"n":"V Spring","b":"MediAnswer","m":2,"y":2025,"p":"","c":250.0,"tf":269000.0,"tv":36400.0,"ff":null,"fv":null,"tot":36400.0,"eng":44.7,"cpm":6.87,"vfr":0.135,"fvfr":null,"erv":0.0012},{"n":"Bella Jing","b":"MediAnswer","m":3,"y":2025,"p":"","c":170.0,"tf":183000.0,"tv":16600.0,"ff":null,"fv":null,"tot":16600.0,"eng":622.0,"cpm":10.24,"vfr":0.091,"fvfr":null,"erv":0.0375},{"n":"Jin Ju","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":124000.0,"tv":24100.0,"ff":null,"fv":null,"tot":24100.0,"eng":5133.0,"cpm":12.45,"vfr":0.194,"fvfr":null,"erv":0.213},{"n":"Mark Roy","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":74900.0,"tv":37800.0,"ff":null,"fv":null,"tot":37800.0,"eng":4846.0,"cpm":7.94,"vfr":0.505,"fvfr":null,"erv":0.1282},{"n":"May Lee","b":"MediAnswer","m":3,"y":2025,"p":"","c":200.0,"tf":89000.0,"tv":299000.0,"ff":61000.0,"fv":3300.0,"tot":302300.0,"eng":23487.0,"cpm":0.66,"vfr":3.36,"fvfr":0.054,"erv":0.0777},{"n":"Sinora","b":"MediAnswer","m":3,"y":2025,"p":"","c":1200.0,"tf":293000.0,"tv":314800.0,"ff":1000000.0,"fv":917000.0,"tot":1231800.0,"eng":84762.0,"cpm":0.97,"vfr":1.074,"fvfr":0.917,"erv":0.0688},{"n":"So Panha","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":151000.0,"tv":29600.0,"ff":null,"fv":null,"tot":29600.0,"eng":1085.0,"cpm":10.14,"vfr":0.196,"fvfr":null,"erv":0.0367},{"n":"You You","b":"MediAnswer","m":3,"y":2025,"p":"","c":150.0,"tf":1000000.0,"tv":40400.0,"ff":225000.0,"fv":13000.0,"tot":53400.0,"eng":4083.0,"cpm":2.81,"vfr":0.04,"fvfr":0.058,"erv":0.0765},{"n":"Calixa","b":"MediAnswer","m":4,"y":2025,"p":"","c":100.0,"tf":103000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Huang Huang","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":148000.0,"tv":18800.0,"ff":null,"fv":null,"tot":18800.0,"eng":2619.0,"cpm":10.64,"vfr":0.127,"fvfr":null,"erv":0.1393},{"n":"Julie","b":"MediAnswer","m":4,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Kim Lang","b":"MediAnswer","m":4,"y":2025,"p":"","c":210.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lii Ly","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":224000.0,"tv":23100.0,"ff":null,"fv":null,"tot":23100.0,"eng":2784.0,"cpm":8.66,"vfr":0.103,"fvfr":null,"erv":0.1205},{"n":"Pich Diamond","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":212000.0,"tv":24700.0,"ff":null,"fv":null,"tot":24700.0,"eng":5182.0,"cpm":8.1,"vfr":0.117,"fvfr":null,"erv":0.2098},{"n":"Por Eii","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":782000.0,"tv":71200.0,"ff":null,"fv":null,"tot":71200.0,"eng":3030.0,"cpm":2.81,"vfr":0.091,"fvfr":null,"erv":0.0426},{"n":"Seav Fang","b":"MediAnswer","m":4,"y":2025,"p":"","c":380.0,"tf":1100000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Yan Socheata","b":"MediAnswer","m":4,"y":2025,"p":"","c":null,"tf":619000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Phan Rong","b":"MediAnswer","m":5,"y":2025,"p":"","c":750.0,"tf":4099999.9999999995,"tv":33500.0,"ff":2600000.0,"fv":1400000.0,"tot":1433500.0,"eng":52411.0,"cpm":0.52,"vfr":0.008,"fvfr":0.538,"erv":0.0366},{"n":"Salat sreylang","b":"MediAnswer","m":5,"y":2025,"p":"","c":500.0,"tf":2700000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jing Gaming","b":"MediAnswer","m":6,"y":2025,"p":"","c":300.0,"tf":2500000.0,"tv":564600.0,"ff":1000000.0,"fv":138000.0,"tot":702600.0,"eng":57554.0,"cpm":0.43,"vfr":0.226,"fvfr":0.138,"erv":0.0819},{"n":"Lim Alice","b":"MediAnswer","m":6,"y":2025,"p":"","c":550.0,"tf":438000.0,"tv":193000.0,"ff":509000.0,"fv":134000.0,"tot":327000.0,"eng":12951.0,"cpm":1.68,"vfr":0.441,"fvfr":0.263,"erv":0.0396},{"n":"Niki Niki","b":"MediAnswer","m":8,"y":2025,"p":"","c":1500.0,"tf":162000.0,"tv":15100.0,"ff":1200000.0,"fv":244000.0,"tot":259100.0,"eng":9264.0,"cpm":5.79,"vfr":0.093,"fvfr":0.203,"erv":0.0358},{"n":"Lin","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1500.0,"tf":1100000.0,"tv":103000.0,"ff":631000.0,"fv":319000.0,"tot":422000.0,"eng":24995.0,"cpm":3.55,"vfr":0.094,"fvfr":0.506,"erv":0.0592},{"n":"Nuth","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":700.0,"tf":568400.0,"tv":171200.0,"ff":394000.0,"fv":543000.0,"tot":714200.0,"eng":43317.0,"cpm":0.98,"vfr":0.301,"fvfr":1.378,"erv":0.0607},{"n":"Xing","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1200.0,"tf":668600.0,"tv":47400.0,"ff":1400000.0,"fv":1300000.0,"tot":1347400.0,"eng":76228.0,"cpm":0.89,"vfr":0.071,"fvfr":0.929,"erv":0.0566},{"n":"Melia","b":"MediAnswer","m":12,"y":2025,"p":"Nanoshot","c":1500.0,"tf":874000.0,"tv":36500.0,"ff":374000.0,"fv":32000.0,"tot":68500.0,"eng":7910.0,"cpm":21.9,"vfr":0.042,"fvfr":0.086,"erv":0.1155},{"n":"Hak beam","b":"MediAnswer","m":1,"y":2026,"p":"Toner Pad","c":150.0,"tf":349000.0,"tv":97100.0,"ff":null,"fv":null,"tot":97100.0,"eng":7388.0,"cpm":1.54,"vfr":0.278,"fvfr":null,"erv":0.0761},{"n":"Kael","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":300.0,"tf":83000.0,"tv":60500.0,"ff":14000.0,"fv":2800.0,"tot":63300.0,"eng":7250.0,"cpm":4.74,"vfr":0.729,"fvfr":0.2,"erv":0.1145},{"n":"Nanac","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":650.0,"tf":1100000.0,"tv":65700.0,"ff":697000.0,"fv":160000.0,"tot":225700.0,"eng":10745.0,"cpm":2.88,"vfr":0.06,"fvfr":0.23,"erv":0.0476},{"n":"Reddy Kim","b":"MediAnswer","m":1,"y":2026,"p":"Vita Pad","c":200.0,"tf":546000.0,"tv":86500.0,"ff":241000.0,"fv":37000.0,"tot":123500.0,"eng":14884.0,"cpm":1.62,"vfr":0.158,"fvfr":0.154,"erv":0.1205},{"n":"Riki","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":550.0,"tf":248000.0,"tv":13800.0,"ff":12000.0,"fv":16000.0,"tot":29800.0,"eng":3672.0,"cpm":18.46,"vfr":0.056,"fvfr":1.333,"erv":0.1232},{"n":"Shuy","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":250.0,"tf":151000.0,"tv":5807.0,"ff":61000.0,"fv":2700.0,"tot":8507.0,"eng":429.0,"cpm":29.39,"vfr":0.038,"fvfr":0.044,"erv":0.0504},{"n":"Chi lii","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":150.0,"tf":652000.0,"tv":59800.0,"ff":77000.0,"fv":28000.0,"tot":87800.0,"eng":5848.0,"cpm":1.71,"vfr":0.092,"fvfr":0.364,"erv":0.0666},{"n":"Danin","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/PDRN serum","c":300.0,"tf":309000.0,"tv":45500.0,"ff":69000.0,"fv":2800.0,"tot":48300.0,"eng":7169.0,"cpm":6.21,"vfr":0.147,"fvfr":0.041,"erv":0.1484},{"n":"Elnaly","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":300.0,"tf":67000.0,"tv":204900.0,"ff":19000.0,"fv":38000.0,"tot":242900.0,"eng":19499.0,"cpm":1.24,"vfr":3.058,"fvfr":2.0,"erv":0.0803},{"n":"Fern Seng","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot","c":350.0,"tf":17300.0,"tv":7402.0,"ff":7200.0,"fv":9900.0,"tot":17302.0,"eng":642.0,"cpm":20.23,"vfr":0.428,"fvfr":1.375,"erv":0.0371},{"n":"Neath","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/Toner Pad","c":400.0,"tf":108000.0,"tv":29100.0,"ff":50000.0,"fv":21000.0,"tot":50100.0,"eng":6678.0,"cpm":7.98,"vfr":0.269,"fvfr":0.42,"erv":0.1333},{"n":"Lunlyly","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":300.0,"tf":706000.0,"tv":41800.0,"ff":71000.0,"fv":8500.0,"tot":50300.0,"eng":3323.0,"cpm":5.96,"vfr":0.059,"fvfr":0.12,"erv":0.0661},{"n":"Meov","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":350.0,"tf":514000.0,"tv":128300.00000000001,"ff":220000.0,"fv":268000.0,"tot":396300.0,"eng":22660.0,"cpm":0.88,"vfr":0.25,"fvfr":1.218,"erv":0.0572},{"n":"Tithphally","b":"MediAnswer","m":5,"y":2026,"p":"Nanoshot","c":800.0,"tf":444000.0,"tv":360800.0,"ff":1100000.0,"fv":1600000.0,"tot":1960800.0,"eng":202796.0,"cpm":0.41,"vfr":0.813,"fvfr":1.455,"erv":0.1034},{"n":"Zorng","b":"MediAnswer","m":5,"y":2026,"p":"PDRN Serum","c":900.0,"tf":1100000.0,"tv":32700.000000000004,"ff":274000.0,"fv":32000.0,"tot":64700.0,"eng":7423.0,"cpm":13.91,"vfr":0.03,"fvfr":0.117,"erv":0.1147},{"n":"Joby","b":"MediAnswer","m":6,"y":2026,"p":"Nanoshot","c":450.0,"tf":216000.0,"tv":12800.0,"ff":300000.0,"fv":745.0,"tot":13545.0,"eng":1519.0,"cpm":33.22,"vfr":0.059,"fvfr":0.002,"erv":0.1121},{"n":"Harry","b":"efilow","m":12,"y":2024,"p":"","c":120.0,"tf":237000.0,"tv":44900.0,"ff":null,"fv":null,"tot":44900.0,"eng":1323.0,"cpm":2.67,"vfr":0.189,"fvfr":null,"erv":0.0295},{"n":"Solly","b":"efilow","m":12,"y":2024,"p":"","c":100.0,"tf":825000.0,"tv":70200.0,"ff":null,"fv":null,"tot":70200.0,"eng":9542.0,"cpm":1.42,"vfr":0.085,"fvfr":null,"erv":0.1359},{"n":"Meov","b":"efilow","m":4,"y":2025,"p":"","c":150.0,"tf":516000.0,"tv":22600.0,"ff":null,"fv":null,"tot":22600.0,"eng":4332.0,"cpm":6.64,"vfr":0.044,"fvfr":null,"erv":0.1917},{"n":"Hong & Hui","b":"efilow","m":5,"y":2025,"p":"","c":300.0,"tf":null,"tv":24400.0,"ff":158000.0,"fv":266.0,"tot":24666.0,"eng":770.0,"cpm":12.16,"vfr":null,"fvfr":0.002,"erv":0.0312},{"n":"Nan","b":"efilow","m":5,"y":2025,"p":"","c":250.0,"tf":191000.0,"tv":57400.0,"ff":251.0,"fv":444.0,"tot":57844.0,"eng":6761.0,"cpm":4.32,"vfr":0.301,"fvfr":1.769,"erv":0.1169},{"n":"Moniroth","b":"efilow","m":6,"y":2025,"p":"","c":400.0,"tf":3500000.0,"tv":703000.0,"ff":689000.0,"fv":487000.0,"tot":1190000.0,"eng":65664.0,"cpm":0.34,"vfr":0.201,"fvfr":0.707,"erv":0.0552},{"n":"Samnang","b":"efilow","m":6,"y":2025,"p":"","c":50.0,"tf":61000.0,"tv":53000.0,"ff":null,"fv":null,"tot":53000.0,"eng":1767.0,"cpm":0.94,"vfr":0.869,"fvfr":null,"erv":0.0333},{"n":"Bella Jing","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":10500.0,"ff":null,"fv":null,"tot":10500.0,"eng":478.0,"cpm":14.29,"vfr":null,"fvfr":null,"erv":0.0455},{"n":"Calixa","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Krim boramey","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":42300.0,"ff":null,"fv":null,"tot":42300.0,"eng":2618.0,"cpm":3.55,"vfr":null,"fvfr":null,"erv":0.0619},{"n":"May Lee","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":9500.0,"ff":null,"fv":2500.0,"tot":12000.0,"eng":735.0,"cpm":16.67,"vfr":null,"fvfr":null,"erv":0.0612},{"n":"Mey Jelly","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Vann David","b":"efilow","m":6,"y":2025,"p":"","c":null,"tf":null,"tv":9000.0,"ff":null,"fv":null,"tot":9000.0,"eng":1074.0,"cpm":null,"vfr":null,"fvfr":null,"erv":0.1193},{"n":"You You","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":68800.0,"ff":null,"fv":17000.0,"tot":85800.0,"eng":8728.0,"cpm":1.75,"vfr":null,"fvfr":null,"erv":0.1017}],"brands":[{"brand":"MediAnswer","n":54,"spend":21730,"views":10782454,"cpm":2.02,"med_cpm":5.96,"avg_fee":418,"eng":757677,"blowups":6,"scored":43,"best":{"n":"Tithphally","cpm":0.41,"v":1960800.0,"c":800.0},"worst":{"n":"Pich sothea","cpm":62.5,"v":1600.0,"c":100.0},"period":"10/2024\u20136/2026"},{"brand":"Mary&May","n":24,"spend":9680,"views":5569496,"cpm":1.74,"med_cpm":8.5,"avg_fee":403,"eng":344434,"blowups":7,"scored":24,"best":{"n":"Tith HavHeang","cpm":0.46,"v":2084000.0,"c":950.0},"worst":{"n":"Daneth","cpm":57.04,"v":6136.0,"c":350.0},"period":"3/2026\u20136/2026"},{"brand":"Dr.Melaxin","n":7,"spend":3000,"views":12358900,"cpm":0.24,"med_cpm":1.2,"avg_fee":429,"eng":338531,"blowups":1,"scored":7,"best":{"n":"Mariam Brown","cpm":0.06,"v":9402000.0,"c":600.0},"worst":{"n":"Kael","cpm":20.13,"v":14900.0,"c":300.0},"period":"3/2026\u20136/2026"},{"brand":"efilow","n":14,"spend":2370,"views":1622810,"cpm":1.46,"med_cpm":3.55,"avg_fee":182,"eng":103792,"blowups":0,"scored":11,"best":{"n":"Moniroth","cpm":0.34,"v":1190000.0,"c":400.0},"worst":{"n":"May Lee","cpm":16.67,"v":12000.0,"c":200.0},"period":"12/2024\u20136/2025"},{"brand":"Jenny House","n":6,"spend":1600,"views":2558400,"cpm":0.63,"med_cpm":2.34,"avg_fee":267,"eng":113168,"blowups":0,"scored":5,"best":{"n":"Wei Ying","cpm":0.25,"v":1389000.0,"c":350.0},"worst":{"n":"Liza","cpm":6.25,"v":32000.0,"c":200.0},"period":"5/2025\u20136/2025"}],"objectives":{"awareness":{"label":"Awareness","goal":"Cheapest possible reach","primary":"CPM","w":{"cost":35,"reach":30,"response":5,"reliability":15,"trust":15}},"engagement":{"label":"Engagement","goal":"Conversation and saves","primary":"ER-V / CPE","w":{"cost":20,"reach":20,"response":30,"reliability":10,"trust":20}},"conversion":{"label":"Conversion","goal":"Clicks and purchases","primary":"Share rate + trust","w":{"cost":20,"reach":15,"response":25,"reliability":10,"trust":30}}}};</script>
 <script>
 (function(){
 "use strict";
 const $=id=>document.getElementById(id);
 const B=HEBE;
 
-/* ---------- helpers ---------- */
 function parseNum(s){
   if(s===null||s===undefined)return null;
   if(typeof s==="number")return isFinite(s)?s:null;
   let t=String(s).trim().replace(/[, ]/g,"");
   if(!t)return null;
-  let m=1, last=t.slice(-1).toLowerCase();
+  let m=1,last=t.slice(-1).toLowerCase();
   if(last==="k"){m=1e3;t=t.slice(0,-1);}
   else if(last==="m"){m=1e6;t=t.slice(0,-1);}
   else if(last==="b"){m=1e9;t=t.slice(0,-1);}
@@ -515,42 +859,67 @@ const money=n=>n==null||!isFinite(n)?"—":"$"+Math.round(n).toLocaleString();
 const cpmF=n=>n==null||!isFinite(n)?"—":"$"+(n<10?n.toFixed(2):n.toFixed(0));
 const median=a=>{const s=[...a].sort((x,y)=>x-y);if(!s.length)return null;
   const m=s.length>>1;return s.length%2?s[m]:(s[m-1]+s[m])/2;};
+const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 
-/* percentile of a value against the p10..p90 anchors, piecewise-linear */
+/* percentile of v against p10..p90 anchors, piecewise-linear */
 function pctOf(v,d){
   const pts=[[0,0.02],[d.p10,0.10],[d.p25,0.25],[d.p50,0.50],[d.p75,0.75],[d.p90,0.90]];
   if(v<=pts[0][0])return 0.02;
   for(let i=1;i<pts.length;i++){
-    if(v<=pts[i][0]){
-      const[a,pa]=pts[i-1],[b,pb]=pts[i];
-      return b===a?pb:pa+(v-a)/(b-a)*(pb-pa);
-    }
+    if(v<=pts[i][0]){const[a,pa]=pts[i-1],[b,pb]=pts[i];
+      return b===a?pb:pa+(v-a)/(b-a)*(pb-pa);}
   }
-  const last=pts[pts.length-1];
-  return Math.min(0.99,last[1]+(v-last[0])/(last[0]||1)*0.09);
+  const L=pts[pts.length-1];
+  return Math.min(0.99,L[1]+(v-L[0])/(L[0]||1)*0.09);
 }
-function tierOf(f,plat){
-  const t=B[plat].tiers;
-  for(const x of t){if(f>=x.min&&f<x.max)return x;}
-  return t[t.length-1];
-}
-function detectPlatform(u){
-  const s=(u||"").toLowerCase();
-  if(s.includes("facebook.")||s.includes("fb.com")||s.includes("fb.watch"))return "facebook";
-  return "tiktok";
-}
+const tierOf=(f,plat)=>B[plat].tiers.find(x=>f>=x.min&&f<x.max)||B[plat].tiers[B[plat].tiers.length-1];
+const detectPlatform=u=>{const s=(u||"").toLowerCase();
+  return (s.includes("facebook.")||s.includes("fb.com")||s.includes("fb.watch"))?"facebook":"tiktok";};
 function handleOf(u){
   const m=(u||"").match(/@([A-Za-z0-9._\-]+)/);
   if(m)return "@"+m[1];
   const p=(u||"").replace(/https?:\/\/(www\.)?/,"").split(/[/?#]/).filter(Boolean);
   return p.length>1?p[1]:"this creator";
 }
+const ICO={
+  ok:'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>',
+  warn:'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.4v3.2"/><circle cx="8" cy="11.7" r=".5" fill="currentColor"/></svg>',
+  no:'<svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>'
+};
 
-/* ---------- post rows ---------- */
+/* ---------------- tabs ---------------- */
+const TABS=["eval","data","calc","guide","bench"];
+function showTab(k){
+  TABS.forEach(t=>{
+    const on=t===k;
+    $("t-"+t).setAttribute("aria-selected",on?"true":"false");
+    $("p-"+t).classList.toggle("on",on);
+  });
+  try{localStorage.setItem("hebe-tab",k);}catch(e){}
+  window.scrollTo({top:0,behavior:"instant"});
+}
+TABS.forEach(t=>$("t-"+t).addEventListener("click",()=>showTab(t)));
+$("t-eval").parentElement.addEventListener("keydown",e=>{
+  if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+  const cur=TABS.findIndex(t=>$("t-"+t).getAttribute("aria-selected")==="true");
+  const nx=(cur+(e.key==="ArrowRight"?1:TABS.length-1))%TABS.length;
+  showTab(TABS[nx]);$("t-"+TABS[nx]).focus();e.preventDefault();
+});
+
+/* ---------------- objective ---------------- */
+let OBJ="awareness";
+$("objrow").addEventListener("click",e=>{
+  const b=e.target.closest(".objbtn"); if(!b)return;
+  OBJ=b.dataset.obj;
+  [...$("objrow").children].forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  run();
+});
+
+/* ---------------- post rows ---------------- */
 const SEED=[["120K","9.4K","62","310"],["86K","6.1K","41","190"],["210K","17K","130","640"],
             ["64K","4.8K","33","150"],["98K","7.2K","55","240"]];
 function addRow(vals){
-  const tb=$("posts"), i=tb.children.length+1;
+  const tb=$("posts"),i=tb.children.length+1;
   const tr=document.createElement("tr");
   tr.innerHTML='<td>'+i+'</td>'+["v","l","c","s"].map((k,j)=>
     '<td><input type="text" data-k="'+k+'" value="'+(vals?vals[j]:"")+'"></td>').join("");
@@ -558,7 +927,6 @@ function addRow(vals){
 }
 SEED.forEach(addRow);
 $("addpost").addEventListener("click",()=>{addRow(null);run();});
-
 function readPosts(){
   const out=[];
   [...$("posts").children].forEach(tr=>{
@@ -568,8 +936,7 @@ function readPosts(){
   });
   return out;
 }
-
-/* ---------- the engine ---------- */
+/* ---------------- the scoring engine ---------------- */
 function run(){
   const url=$("url").value.trim();
   const plat=detectPlatform(url);
@@ -581,64 +948,106 @@ function run(){
   const target=parseFloat($("target").value);
   const cross=$("crossfb").checked&&plat==="tiktok";
   const posts=readPosts();
+  const fits=[...$("fitlist").querySelectorAll("input")];
+  const fitPass=fits.filter(f=>f.checked).length, fitTotal=fits.length;
 
   if(!posts.length||!followers){
+    $("gradebox").className="gradebox g-idle";$("gradeltr").textContent="–";
+    $("gradenum").textContent="score";
     $("vchip").className="vchip v-idle";$("vchip").textContent="—";
     $("vtext").textContent="Add a follower count and at least one recent post to see the read.";
     ["f-views","f-cpm","f-fair","f-walk"].forEach(k=>$(k).textContent="—");
-    $("meters").innerHTML="";$("flags").innerHTML="";
+    $("pillars").innerHTML="";$("flags").innerHTML="";
     return;
   }
 
+  /* --- raw measures --- */
   const medV=median(posts.map(p=>p.v));
   const minV=Math.min(...posts.map(p=>p.v));
   const consistency=medV?minV/medV:0;
-  const totalEng=posts.reduce((a,p)=>a+p.l+p.c+p.s,0);
   const totalV=posts.reduce((a,p)=>a+p.v,0);
-  const erv=totalV?totalEng/totalV:0;
+  const erv=totalV?posts.reduce((a,p)=>a+p.l+p.c+p.s,0)/totalV:0;
   const cr=totalV?posts.reduce((a,p)=>a+p.c,0)/totalV:0;
   const sr=totalV?posts.reduce((a,p)=>a+p.s,0)/totalV:0;
   const vfr=medV/followers;
 
   let views=medV*decay;
-  const crossLift=cross?B.evidence.fb_multiplier_median:0;
-  if(cross)views=views*(1+crossLift);
-
-  const cpm=fee>0&&views>0?fee/views*1000:null;
+  if(cross)views*=(1+B.evidence.fb_multiplier_median);
+  const cpm=(fee>0&&views>0)?fee/views*1000:null;
   const fair=views/1000*target;
   const walk=fair*2;
   const tier=tierOf(followers,plat);
 
-  /* ---- verdict ---- */
-  let cls,label,ico,msg;
+  /* --- pillar scores 0..100 --- */
+  const sCost=cpm==null?50:Math.round(clamp((1-pctOf(cpm,bm.cpm))*100,2,99));
+  const sReach=Math.round(clamp(pctOf(vfr,bm.vfr)*100,2,99));
+  const sResp=Math.round(clamp((pctOf(erv,bm.erv)*0.35+pctOf(sr,bm.share_rate)*0.4+
+                pctOf(cr,bm.comment_rate)*0.25)*100,2,99));
+  const confidence=clamp(posts.length/5,0.5,1);
+  const sRel=Math.round(clamp(pctOf(consistency,{p10:0.15,p25:0.30,p50:0.50,p75:0.70,p90:0.85})*100*confidence,2,99));
+  const ac=(B.auth_curve[plat]||B.auth_curve.tiktok).comment;
+  const expC=Math.pow(10,ac.a+ac.b*Math.log10(Math.max(medV,1)));
+  const gotC=median(posts.map(p=>p.c))||0;
+  const authRatio=expC>0?gotC/expC:1;
+  const sAuth=clamp(authRatio>=1?85:authRatio<=0.15?8:8+(authRatio-0.15)/0.85*77,2,99);
+  const sTrust=Math.round(clamp(sAuth*0.55+(fitPass/fitTotal)*100*0.45,2,99));
+
+  const W=B.objectives[OBJ].w;
+  const score=Math.round((sCost*W.cost+sReach*W.reach+sResp*W.response+
+                          sRel*W.reliability+sTrust*W.trust)/100);
+  const grade=score>=80?"A":score>=65?"B":score>=50?"C":score>=35?"D":"F";
+  const gcls=score>=65?"g-good":score>=50?"g-warn":"g-bad";
+  $("gradebox").className="gradebox "+gcls;
+  $("gradeltr").textContent=grade;
+  $("gradenum").textContent=score+" / 100";
+
+  /* --- verdict: score gates price --- */
   const h=handleOf(url);
-  if(cpm==null){cls="v-idle";label="—";msg="Enter an asking fee.";}
-  else if(fee<=fair){
-    cls="v-good";label="BOOK";
-    msg="At <strong>"+money(fee)+"</strong> this lands at <strong>"+cpmF(cpm)+
-      "</strong> CPM — better than "+Math.round((1-pctOf(cpm,bm.cpm))*100)+
-      "% of what you have paid. Forecast <strong>"+fmt(views)+"</strong> views.";
+  let cls,label,ico,msg;
+  if(score<35){
+    cls="v-bad";label="PASS";ico=ICO.no;
+    msg="Scores <strong>"+score+"/100</strong> for "+(OBJ==="awareness"?"an ":"a ")+B.objectives[OBJ].label.toLowerCase()+
+      " campaign — below the floor at any price. The cheapest access to a weak audience is still wasted money.";
+  } else if(cpm==null){
+    cls="v-idle";label="—";ico="";msg="Enter an asking fee to price this creator.";
+  } else if(fee<=fair){
+    cls="v-good";label="BOOK";ico=ICO.ok;
+    msg="<strong>"+money(fee)+"</strong> lands at <strong>"+cpmF(cpm)+"</strong> CPM — better than "+
+      Math.round((1-pctOf(cpm,bm.cpm))*100)+"% of what you have paid. Forecast <strong>"+fmt(views)+
+      "</strong> views.";
   } else if(fee<=walk){
-    cls="v-warn";label="NEGOTIATE";
+    cls="v-warn";label="NEGOTIATE";ico=ICO.warn;
     msg="Their <strong>"+money(fee)+"</strong> gives <strong>"+cpmF(cpm)+
-      "</strong> CPM. Counter at <strong>"+money(fair)+"</strong> — that is what "+fmt(views)+
+      "</strong> CPM. Counter at <strong>"+money(fair)+"</strong> — what "+fmt(views)+
       " forecast views is worth at your target.";
   } else {
-    cls="v-bad";label="PASS";
-    msg="<strong>"+money(fee)+"</strong> buys <strong>"+cpmF(cpm)+"</strong> CPM against a fair price of <strong>"+
-      money(fair)+"</strong>. You would be paying "+(fee/fair).toFixed(1)+
-      "× over. Only book "+h+" at or under "+money(fair)+".";
+    cls="v-bad";label="PASS";ico=ICO.no;
+    msg="<strong>"+money(fee)+"</strong> is <strong>"+(fee/fair).toFixed(1)+"×</strong> the fair price of "+
+      money(fair)+". Only book "+h+" at or under that.";
   }
-  const check='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 8.5l3.5 3.5 7.5-8"/></svg>';
-  const warn='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8L15 14H1z"/><path d="M8 6.4v3.2"/><circle cx="8" cy="11.7" r=".5" fill="currentColor"/></svg>';
-  const cross_i='<svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M3.5 3.5l9 9M12.5 3.5l-9 9"/></svg>';
-  $("vchip").className="vchip "+cls;
-  $("vchip").innerHTML=(cls==="v-good"?check:cls==="v-warn"?warn:cls==="v-bad"?cross_i:"")+label;
+  $("vchip").className="vchip "+cls;$("vchip").innerHTML=ico+label;
   $("vtext").innerHTML=msg;
 
-  /* ---- ruler ---- */
+  /* --- pillar bars --- */
+  const P=[
+    ["Cost efficiency","CPM vs book",sCost,W.cost],
+    ["Reach power","views ÷ followers",sReach,W.reach],
+    ["Audience response","engagement, shares",sResp,W.response],
+    ["Reliability","weakest ÷ median post",sRel,W.reliability],
+    ["Trust &amp; fit","bot check + checklist",sTrust,W.trust]
+  ];
+  const maxW=Math.max(...P.map(p=>p[3]));
+  $("pillars").innerHTML=P.map(p=>{
+    const col=p[2]>=60?"var(--good)":p[2]>=38?"var(--warn)":"var(--bad)";
+    const lead=p[3]===maxW?' style="color:var(--accent);font-weight:600"':"";
+    return '<div class="pillar"><div class="pname">'+p[0]+'<em>'+p[1]+'</em></div>'+
+      '<div class="ptrack"><div class="pfill" style="width:'+Math.max(2,p[2])+'%;background:'+col+'"></div></div>'+
+      '<div class="pval">'+p[2]+' <span class="pw"'+lead+'>×'+p[3]+'%</span></div></div>';
+  }).join("");
+
+  /* --- ruler --- */
   const scaleMax=Math.max(walk*1.35,fee*1.15,fair*2.6);
-  const pc=x=>Math.max(0,Math.min(100,x/scaleMax*100));
+  const pc=x=>clamp(x/scaleMax*100,0,100);
   $("rzg").style.width=pc(fair)+"%";
   $("rzf").style.width=(pc(walk)-pc(fair))+"%";
   $("rzb").style.width=(100-pc(walk))+"%";
@@ -646,153 +1055,211 @@ function run(){
   $("rpin").setAttribute("data-lbl","asking "+money(fee));
   $("rmid").textContent=money(scaleMax/2);
   $("rmax").textContent=money(scaleMax);
-  $("rlegend").textContent="target "+cpmF(target)+" CPM · "+fmt(views)+" forecast views";
+  $("rlegend").textContent=B.objectives[OBJ].label+" · target "+cpmF(target)+" CPM · "+fmt(views)+" forecast views";
   $("f-views").textContent=fmt(views);
   $("f-cpm").textContent=cpmF(cpm);
   $("f-fair").textContent=money(fair);
   $("f-walk").textContent=money(walk);
 
-  /* ---- meters ---- */
-  const meters=[
-    {nm:"Views per follower",ab:"VFR",v:vfr,d:bm.vfr,fmtv:x=>x.toFixed(2)+"×",hi:true,
-     note:"Their reach engine. Book median is "+bm.vfr.p50.toFixed(2)+"× on "+
-       (plat==="facebook"?"Facebook":"TikTok")+"; tier median is "+tier.med_vfr.toFixed(2)+"×."},
-    {nm:"Reach consistency",ab:"MIN/MED",v:consistency,d:{p10:0.15,p25:0.30,p50:0.50,p75:0.70,p90:0.85},
-     fmtv:x=>Math.round(x*100)+"%",hi:true,
-     note:consistency<0.3?"Weakest post is far below their median — this account is a lottery, not a channel."
-       :"Their floor holds near their median, so the forecast is dependable."},
-    {nm:"Engagement per view",ab:"ER-V",v:erv,d:bm.erv,fmtv:x=>(x*100).toFixed(1)+"%",hi:true,
-     note:"Authenticity check only — not a value signal. In your book, engagement rate runs against reach."},
-    {nm:"Share rate",ab:"SHARES/VIEW",v:sr,d:bm.share_rate,fmtv:x=>(x*100).toFixed(2)+"%",hi:true,
-     note:"Shares are the closest free proxy you have to intent — they carry the post beyond the creator's own feed."}
-  ];
-  $("meters").innerHTML=meters.map(m=>{
-    const p=pctOf(m.v,m.d), pcNow=Math.round(p*100);
-    const col=p>=0.6?"var(--good)":p>=0.35?"var(--warn)":"var(--bad)";
-    const pill=p>=0.6?"p-good":p>=0.35?"p-warn":"p-bad";
-    return '<div class="meter"><div class="meter-h"><span class="nm">'+m.nm+'<em>'+m.ab+'</em></span>'+
-      '<span class="vl">'+m.fmtv(m.v)+' <span class="pill '+pill+'">p'+pcNow+'</span></span></div>'+
-      '<div class="track"><div class="trackfill" style="width:'+Math.max(2,pcNow)+'%;background:'+col+'"></div>'+
-      '<div class="tickmed" style="left:50%"></div></div>'+
-      '<div class="meter-f"><span>book p10 '+m.fmtv(m.d.p10)+'</span><span>median '+m.fmtv(m.d.p50)+
-      '</span><span>p90 '+m.fmtv(m.d.p90)+'</span></div>'+
-      '<p class="meter-note">'+m.note+'</p></div>';
-  }).join("");
-
-  /* ---- flags ---- */
-  const flags=[];
-  const ac=B.auth_curve[plat]?B.auth_curve[plat].comment:B.auth_curve.tiktok.comment;
-  const expC=Math.pow(10,ac.a+ac.b*Math.log10(Math.max(medV,1)));
-  const gotC=median(posts.map(p=>p.c))||0;
+  /* --- flags --- */
+  const F=[];
   if(gotC<expC*0.3&&medV>5000)
-    flags.push(["f-bad","!","Audience looks thin.","At "+fmt(medV)+" views your book expects around "+
-      Math.round(expC)+" comments; these posts average "+Math.round(gotC)+
-      ". Low conversation at high view counts is the signature of bought views or a disengaged audience."]);
+    F.push(["f-bad","!","Audience looks thin.","At "+fmt(medV)+" views your book expects about "+
+      Math.round(expC)+" comments; these posts run "+Math.round(gotC)+
+      ". Low conversation at high view counts is the signature of bought views."]);
   if(vfr<0.05)
-    flags.push(["f-bad","!","Dead reach.","Below 0.05× views-per-follower. The 19 campaigns in this band ran a median $48.61 CPM on an average fee of $453 — the worst money you have spent."]);
+    F.push(["f-bad","!","Dead reach.","Below 0.05× views-per-follower. Those 19 campaigns ran a median $48.61 CPM on $453 average fees — the worst money in your book."]);
   else if(vfr>=0.40)
-    flags.push(["f-good","✓","Distribution engine.","Above 0.40× views-per-follower. The 16 campaigns in this band ran a median $2.53 CPM — for the same average fee as the worst band."]);
+    F.push(["f-good","✓","Distribution engine.","Above 0.40× views-per-follower. Those 16 campaigns ran a median $2.53 CPM, for the same average fee as the worst band."]);
   if(consistency<0.3&&posts.length>=3)
-    flags.push(["f-warn","△","One-hit risk.","Weakest post is "+Math.round(consistency*100)+
-      "% of their median. Price against their floor, not their best post — or ask for a second post in the deal."]);
+    F.push(["f-warn","△","One-hit risk.","Weakest post is "+Math.round(consistency*100)+
+      "% of their median. Price against their floor, or contract two posts to average it out."]);
   if(plat==="tiktok"&&followers>=1e6&&vfr<0.15)
-    flags.push(["f-bad","!","Paying for the follower count.","A "+fmt(followers)+
-      " account converting at "+vfr.toFixed(2)+"×. Mega accounts blow up on 31% of your TikTok deals at an average $594 fee — the highest fees for the weakest conversion."]);
+    F.push(["f-bad","!","Paying for the follower count.","A "+fmt(followers)+" account converting at "+
+      vfr.toFixed(2)+"×. Mega accounts blow up on 31% of your TikTok deals at the highest average fee, $594."]);
   if(plat==="facebook"&&followers>=1e6)
-    flags.push(["f-good","✓","Right side of the Facebook curve.","1M+ Facebook pages ran $1.31 median CPM across 9 deals with no blow-ups — the one place in your book where scale pays."]);
+    F.push(["f-good","✓","Right side of the Facebook curve.","1M+ pages ran $1.31 median CPM across 9 deals with no blow-ups — the one place scale pays."]);
   if(plat==="facebook"&&followers<1e5)
-    flags.push(["f-warn","△","Wrong side of the Facebook curve.","Pages under 100K ran a $35.32 median CPM and blew up on 68% of deals. Small works on TikTok, not here."]);
+    F.push(["f-warn","△","Wrong side of the Facebook curve.","Pages under 100K ran $35.32 median CPM and blew up on 68% of deals."]);
+  if(fitPass<fitTotal){
+    const miss=fits.filter(f=>!f.checked).map(f=>f.parentElement.querySelector("b").textContent.toLowerCase());
+    F.push([fitPass<=fitTotal-3?"f-bad":"f-warn",fitPass<=fitTotal-3?"!":"△",
+      "Fit gap ("+fitPass+"/"+fitTotal+" checks).","Unresolved: "+miss.join("; ")+
+      ". This carries "+W.trust+"% of the score on "+(OBJ==="awareness"?"an ":"a ")+B.objectives[OBJ].label.toLowerCase()+" buy."]);
+  }
   if(cross)
-    flags.push(["f-good","✓","Cross-post priced in.","Forecast includes the median +109% Facebook lift. Put the Facebook post in the contract — that lift is the cheapest reach in your book."]);
+    F.push(["f-good","✓","Cross-post priced in.","Forecast includes the median +109% Facebook lift. Put that post in the contract — it is the cheapest reach in your book."]);
   if(fee>0&&fee>tier.avg_fee*1.5)
-    flags.push(["f-warn","△","Above tier rate.","You have averaged "+money(tier.avg_fee)+" for "+
-      tier.label+" creators. This ask is "+(fee/tier.avg_fee).toFixed(1)+"× that."]);
-  $("flags").innerHTML=flags.map(f=>'<div class="flag '+f[0]+'"><span class="f-ico">'+f[1]+
+    F.push(["f-warn","△","Above tier rate.","You have averaged "+money(tier.avg_fee)+" for "+tier.label+
+      " creators. This ask is "+(fee/tier.avg_fee).toFixed(1)+"× that."]);
+  $("flags").innerHTML=F.map(f=>'<div class="flag '+f[0]+'"><span class="f-ico">'+f[1]+
     '</span><span><b>'+f[2]+'</b> '+f[3]+'</span></div>').join("");
 }
-/* ---------- scatter ---------- */
+/* ---------------- data tab ---------------- */
+let BRAND="all", SORT={k:"cpm",dir:"asc"};
+function brandBar(){
+  const all=[{brand:"all",n:B.rows.length}].concat(B.brands);
+  $("brandbar").innerHTML=all.map(b=>
+    '<button type="button" class="bchip" data-b="'+b.brand+'" aria-pressed="'+
+    (b.brand===BRAND)+'">'+(b.brand==="all"?"All brands":b.brand)+' <u>'+b.n+'</u></button>').join("");
+}
+$("brandbar").addEventListener("click",e=>{
+  const b=e.target.closest(".bchip"); if(!b)return;
+  BRAND=b.dataset.b;
+  [...$("brandbar").children].forEach(x=>x.setAttribute("aria-pressed",x===b?"true":"false"));
+  brandCards();dataTable();
+});
+function brandCards(){
+  const list=BRAND==="all"?B.brands:B.brands.filter(b=>b.brand===BRAND);
+  $("bcards").innerHTML=list.map(b=>{
+    const p=b.med_cpm<=7.07?"p-good":b.med_cpm<=20?"p-warn":"p-bad";
+    return '<div class="bcard"><h3>'+b.brand+'</h3><span class="per">'+b.period+' · '+b.n+' campaigns</span>'+
+      '<dl><dt>Spend</dt><dd>$'+b.spend.toLocaleString()+'</dd>'+
+      '<dt>Views</dt><dd>'+fmt(b.views)+'</dd>'+
+      '<dt>Blended CPM</dt><dd>$'+b.cpm.toFixed(2)+'</dd>'+
+      '<dt>Median CPM</dt><dd><span class="pill '+p+'">$'+b.med_cpm.toFixed(2)+'</span></dd>'+
+      '<dt>Avg fee</dt><dd>$'+b.avg_fee+'</dd>'+
+      '<dt>Blow-ups</dt><dd>'+b.blowups+' / '+b.scored+'</dd></dl>'+
+      (b.best?'<div class="bfoot">Best <b>'+b.best.n+'</b> · $'+b.best.cpm.toFixed(2)+' CPM<br>'+
+        'Worst <b>'+b.worst.n+'</b> · $'+b.worst.cpm.toFixed(2)+' CPM</div>':"")+
+      '</div>';
+  }).join("");
+}
+function dataTable(){
+  const q=$("dsearch").value.trim().toLowerCase();
+  const fp=$("dplat").value, fg=$("dgrade").value;
+  let rows=B.rows.filter(r=>{
+    if(BRAND!=="all"&&r.b!==BRAND)return false;
+    if(q&&!((r.n||"").toLowerCase().includes(q)||(r.p||"").toLowerCase().includes(q)))return false;
+    if(fp==="tt"&&!r.tv)return false;
+    if(fp==="fb"&&!r.fv)return false;
+    if(fg==="good"&&!(r.cpm!=null&&r.cpm<=7.07))return false;
+    if(fg==="bad"&&!(r.cpm!=null&&r.cpm>7.07))return false;
+    if(fg==="blow"&&!(r.cpm!=null&&r.cpm>20))return false;
+    return true;
+  });
+  const k=SORT.k,dir=SORT.dir==="asc"?1:-1;
+  rows.sort((a,b)=>{
+    let x=k==="ym"?(a.y*12+a.m):a[k], y=k==="ym"?(b.y*12+b.m):b[k];
+    if(typeof x==="string"||typeof y==="string")
+      return String(x||"").localeCompare(String(y||""))*dir;
+    if(x==null&&y==null)return 0;
+    if(x==null)return 1;            /* nulls always last */
+    if(y==null)return -1;
+    return (x-y)*dir;
+  });
+  const cell=(v,f)=>v==null?'<span style="color:var(--ink-3)">—</span>':(f?f(v):v);
+  $("dbody").innerHTML=rows.map(r=>{
+    const p=r.cpm==null?"":(r.cpm<=7.07?"p-good":r.cpm<=20?"p-warn":"p-bad");
+    return "<tr><td>"+r.n+"</td><td>"+r.b+"</td><td>"+r.m+"/"+r.y+"</td>"+
+      "<td>"+cell(r.c,v=>"$"+v)+"</td><td>"+cell(r.tf,fmt)+"</td><td>"+cell(r.tv,fmt)+"</td>"+
+      "<td>"+cell(r.ff,fmt)+"</td><td>"+cell(r.fv,fmt)+"</td><td>"+cell(r.tot,fmt)+"</td>"+
+      "<td>"+cell(r.vfr,v=>v.toFixed(2)+"×")+"</td>"+
+      "<td>"+(r.cpm==null?'<span style="color:var(--ink-3)">—</span>':
+        '<span class="pill '+p+'">$'+r.cpm.toFixed(2)+"</span>")+"</td></tr>";
+  }).join("");
+  $("dcount").textContent=rows.length+" of "+B.rows.length+" campaigns";
+  const sp=rows.reduce((a,r)=>a+(r.c||0),0), vw=rows.reduce((a,r)=>a+(r.tot||0),0);
+  $("dsub").textContent=vw?("$"+sp.toLocaleString()+" · "+fmt(vw)+" views · $"+(sp/vw*1000).toFixed(2)+" blended CPM"):"";
+  [...$("dtable").querySelectorAll("th")].forEach(th=>{
+    if(th.dataset.k===SORT.k)th.setAttribute("data-dir",SORT.dir); else th.removeAttribute("data-dir");
+  });
+}
+$("dtable").querySelector("thead").addEventListener("click",e=>{
+  const th=e.target.closest("th"); if(!th)return;
+  const k=th.dataset.k;
+  /* text columns default A→Z; numeric columns default high→low, except CPM where low is best */
+  if(SORT.k===k)SORT.dir=SORT.dir==="asc"?"desc":"asc";
+  else{SORT.k=k;SORT.dir=(k==="n"||k==="b"||k==="cpm"||k==="ym")?"asc":"desc";}
+  dataTable();
+});
+["dsearch","dplat","dgrade"].forEach(id=>$(id).addEventListener("input",dataTable));
+/* ---------------- charts ---------------- */
 function drawScatter(){
   const svg=$("scatter"),W=640,H=400,L=58,R=16,T=14,Bo=44;
-  const pw=W-L-R,ph=H-T-Bo;
-  const pts=B.scatter;
+  const pw=W-L-R,ph=H-T-Bo,pts=B.scatter;
   const xs=pts.map(p=>Math.log10(p[0])),ys=pts.map(p=>Math.log10(p[1]));
   const x0=4,x1=7,y0=2.5,y1=7;
   const X=v=>L+(v-x0)/(x1-x0)*pw, Y=v=>T+ph-(v-y0)/(y1-y0)*ph;
+  const MF='font-family="IBM Plex Mono, monospace"';
   let s="";
-  const xt=[[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]];
-  const yt=[[3,"1K"],[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]];
-  yt.forEach(t=>{ if(t[0]<y0)return;
+  [[3,"1K"],[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]].forEach(t=>{ if(t[0]<y0)return;
     s+='<line x1="'+L+'" y1="'+Y(t[0]).toFixed(1)+'" x2="'+(W-R)+'" y2="'+Y(t[0]).toFixed(1)+
-       '" stroke="var(--grid)" stroke-width="1"/>';
-    s+='<text x="'+(L-9)+'" y="'+(Y(t[0])+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-3)" '+
-       'font-family="IBM Plex Mono, monospace" font-size="10">'+t[1]+'</text>';});
-  xt.forEach(t=>{
+       '" stroke="var(--grid)" stroke-width="1"/>'+
+       '<text x="'+(L-9)+'" y="'+(Y(t[0])+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-3)" '+MF+
+       ' font-size="10">'+t[1]+'</text>';});
+  [[4,"10K"],[5,"100K"],[6,"1M"],[7,"10M"]].forEach(t=>{
     s+='<line x1="'+X(t[0]).toFixed(1)+'" y1="'+T+'" x2="'+X(t[0]).toFixed(1)+'" y2="'+(T+ph)+
-       '" stroke="var(--grid)" stroke-width="1"/>';
-    s+='<text x="'+X(t[0]).toFixed(1)+'" y="'+(T+ph+17)+'" text-anchor="middle" fill="var(--ink-3)" '+
-       'font-family="IBM Plex Mono, monospace" font-size="10">'+t[1]+'</text>';});
-  /* least-squares fit line */
+       '" stroke="var(--grid)" stroke-width="1"/>'+
+       '<text x="'+X(t[0]).toFixed(1)+'" y="'+(T+ph+17)+'" text-anchor="middle" fill="var(--ink-3)" '+MF+
+       ' font-size="10">'+t[1]+'</text>';});
   const n=xs.length,mx=xs.reduce((a,b)=>a+b,0)/n,my=ys.reduce((a,b)=>a+b,0)/n;
   let sxy=0,sxx=0;
   for(let i=0;i<n;i++){sxy+=(xs[i]-mx)*(ys[i]-my);sxx+=(xs[i]-mx)*(xs[i]-mx);}
   const b1=sxy/sxx,b0=my-b1*mx;
   s+='<line x1="'+X(x0)+'" y1="'+Y(b0+b1*x0).toFixed(1)+'" x2="'+X(x1)+'" y2="'+Y(b0+b1*x1).toFixed(1)+
-     '" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 4" opacity=".75"/>';
-  s+='<text x="'+(X(6.55))+'" y="'+(Y(b0+b1*6.55)-11).toFixed(1)+'" text-anchor="middle" fill="var(--ink-3)" '+
-     'font-family="IBM Plex Mono, monospace" font-size="10">fit · R² 0.12</text>';
-  /* points: 2px surface ring on overlap */
+     '" stroke="var(--ink-3)" stroke-width="2" stroke-dasharray="5 4" opacity=".75"/>'+
+     '<text x="'+X(6.55)+'" y="'+(Y(b0+b1*6.55)-11).toFixed(1)+'" text-anchor="middle" fill="var(--ink-3)" '+
+     MF+' font-size="10">fit · R² 0.12</text>';
   pts.forEach(p=>{
-    const c=p[2]<=7.07?"var(--good)":"var(--bad)";
     s+='<circle cx="'+X(Math.log10(p[0])).toFixed(1)+'" cy="'+Y(Math.log10(p[1])).toFixed(1)+
-       '" r="5" fill="'+c+'" fill-opacity=".8" stroke="var(--surface)" stroke-width="2"><title>'+
-       p[3]+' · '+p[4]+' — '+fmt(p[0])+' followers, '+fmt(p[1])+' views, $'+p[5]+' fee, $'+p[2]+' CPM</title></circle>';
-  });
-  s+='<text x="'+(L+pw/2)+'" y="'+(H-7)+'" text-anchor="middle" fill="var(--ink-3)" '+
-     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">FOLLOWERS →</text>';
-  s+='<text transform="translate(15,'+(T+ph/2)+') rotate(-90)" text-anchor="middle" fill="var(--ink-3)" '+
-     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">VIEWS DELIVERED →</text>';
+       '" r="5" fill="'+(p[2]<=7.07?"var(--good)":"var(--bad)")+
+       '" fill-opacity=".8" stroke="var(--surface)" stroke-width="2"><title>'+p[3]+' · '+p[4]+' — '+
+       fmt(p[0])+' followers, '+fmt(p[1])+' views, $'+p[5]+' fee, $'+p[2]+' CPM</title></circle>';});
+  s+='<text x="'+(L+pw/2)+'" y="'+(H-7)+'" text-anchor="middle" fill="var(--ink-3)" '+MF+
+     ' font-size="10" letter-spacing=".08em">FOLLOWERS →</text>'+
+     '<text transform="translate(15,'+(T+ph/2)+') rotate(-90)" text-anchor="middle" fill="var(--ink-3)" '+MF+
+     ' font-size="10" letter-spacing=".08em">VIEWS DELIVERED →</text>';
   svg.innerHTML=s;
 }
-
-/* ---------- band bars ---------- */
 function drawBands(){
   const svg=$("bands"),W=400,H=300,L=92,R=86,T=10,Bo=42;
-  const pw=W-L-R,ph=H-T-Bo;
-  const d=B.evidence.vfr_bands, max=55;
-  const bh=ph/d.length, gap=10;
+  const pw=W-L-R,ph=H-T-Bo,d=B.evidence.vfr_bands,max=55;
+  const bh=ph/d.length,gap=10,MF='font-family="IBM Plex Mono, monospace"';
   let s="";
   [0,20,40].forEach(v=>{
     s+='<line x1="'+(L+v/max*pw).toFixed(1)+'" y1="'+T+'" x2="'+(L+v/max*pw).toFixed(1)+'" y2="'+(T+ph)+
-       '" stroke="var(--grid)" stroke-width="1"/>';
-    s+='<text x="'+(L+v/max*pw).toFixed(1)+'" y="'+(T+ph+16)+'" text-anchor="middle" fill="var(--ink-3)" '+
-       'font-family="IBM Plex Mono, monospace" font-size="10">$'+v+'</text>';});
+       '" stroke="var(--grid)" stroke-width="1"/>'+
+       '<text x="'+(L+v/max*pw).toFixed(1)+'" y="'+(T+ph+16)+'" text-anchor="middle" fill="var(--ink-3)" '+
+       MF+' font-size="10">$'+v+'</text>';});
   d.forEach((b,i)=>{
-    const y=T+i*bh+gap/2, h=bh-gap;
-    const w=Math.max(3,b.med_cpm/max*pw);
+    const y=T+i*bh+gap/2,h=bh-gap,w=Math.max(3,b.med_cpm/max*pw);
     const col=b.med_cpm>20?"var(--bad)":b.med_cpm>7.07?"var(--warn)":"var(--good)";
     s+='<rect x="'+L+'" y="'+y.toFixed(1)+'" width="'+w.toFixed(1)+'" height="'+h.toFixed(1)+
        '" rx="4" fill="'+col+'"><title>VFR '+b.band+' — median $'+b.med_cpm+' CPM across '+b.n+
-       ' campaigns, average fee $'+b.avg_fee+'</title></rect>';
-    s+='<text x="'+(L-9)+'" y="'+(y+h/2+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-2)" '+
-       'font-family="IBM Plex Mono, monospace" font-size="10.5">'+b.band+'</text>';
-    s+='<text x="'+(L+w+8).toFixed(1)+'" y="'+(y+h/2+3.5).toFixed(1)+'" fill="var(--ink)" '+
-       'font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600">$'+b.med_cpm.toFixed(2)+
-       '<tspan fill="var(--ink-3)" font-weight="400" font-size="9.5">  n='+b.n+'</tspan></text>';
-  });
-  s+='<text x="'+(L+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" fill="var(--ink-3)" '+
-     'font-family="IBM Plex Mono, monospace" font-size="10" letter-spacing=".08em">MEDIAN CPM →</text>';
-  s+='<text x="4" y="'+(T+8)+'" fill="var(--ink-3)" font-family="IBM Plex Mono, monospace" '+
-     'font-size="9.5" letter-spacing=".08em">VFR BAND</text>';
+       ' campaigns, average fee $'+b.avg_fee+'</title></rect>'+
+       '<text x="'+(L-9)+'" y="'+(y+h/2+3.5).toFixed(1)+'" text-anchor="end" fill="var(--ink-2)" '+MF+
+       ' font-size="10.5">'+b.band+'</text>'+
+       '<text x="'+(L+w+8).toFixed(1)+'" y="'+(y+h/2+3.5).toFixed(1)+'" fill="var(--ink)" '+MF+
+       ' font-size="11" font-weight="600">$'+b.med_cpm.toFixed(2)+
+       '<tspan fill="var(--ink-3)" font-weight="400" font-size="9.5">  n='+b.n+'</tspan></text>';});
+  s+='<text x="'+(L+pw/2)+'" y="'+(H-6)+'" text-anchor="middle" fill="var(--ink-3)" '+MF+
+     ' font-size="10" letter-spacing=".08em">MEDIAN CPM →</text>'+
+     '<text x="4" y="'+(T+8)+'" fill="var(--ink-3)" '+MF+' font-size="9.5" letter-spacing=".08em">VFR BAND</text>';
   svg.innerHTML=s;
 }
 
-/* ---------- tables ---------- */
+/* ---------------- benchmark tables ---------------- */
 function fillTables(){
-  const tr=(cells)=>"<tr>"+cells.map((c,i)=>"<td>"+c+"</td>").join("")+"</tr>";
+  const tr=c=>"<tr>"+c.map(x=>"<td>"+x+"</td>").join("")+"</tr>";
+  const pctRows=(plat,el)=>{
+    const b=B[plat],m=$(el);
+    const D=(d,f)=>[f(d.p10),f(d.p25),f(d.p50),f(d.p75),f(d.p90)];
+    const c=v=>"$"+v.toFixed(2), x=v=>v.toFixed(2)+"×", pc=v=>(v*100).toFixed(2)+"%";
+    m.innerHTML=[
+      tr(["CPM"].concat(D(b.cpm,c))),
+      tr(["Views per follower"].concat(D(b.vfr,x))),
+      tr(["Engagement / view"].concat(D(b.erv,pc))),
+      tr(["Share rate"].concat(D(b.share_rate,pc))),
+      tr(["Comment rate"].concat(D(b.comment_rate,pc)))
+    ].join("");
+  };
+  pctRows("tiktok","ttpct");pctRows("facebook","fbpct");
   const tierRows=(plat,el)=>{
     $(el).innerHTML=B[plat].tiers.map(t=>{
       const p=t.med_cpm<=7.07?"p-good":t.med_cpm<=20?"p-warn":"p-bad";
-      return tr([t.label,t.n,t.med_vfr.toFixed(2)+"×",'<span class="pill '+p+'">$'+t.med_cpm.toFixed(2)+"</span>",
+      return tr([t.label,t.n,t.med_vfr.toFixed(2)+"×",
+        '<span class="pill '+p+'">$'+t.med_cpm.toFixed(2)+"</span>",
         "$"+t.avg_fee,Math.round(t.blowup_rate*100)+"%"]);
     }).join("");
   };
@@ -804,7 +1271,7 @@ function fillTables(){
   perf(B.best,"tbest",true);perf(B.worst,"tworst",false);
 }
 
-/* ---------- theme ---------- */
+/* ---------------- theme + boot ---------------- */
 $("themebtn").addEventListener("click",()=>{
   const cur=document.documentElement.getAttribute("data-theme");
   const sysDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -813,10 +1280,11 @@ $("themebtn").addEventListener("click",()=>{
   try{localStorage.setItem("hebe-theme",next);}catch(e){}
 });
 try{const t=localStorage.getItem("hebe-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}
+try{const k=localStorage.getItem("hebe-tab");if(k&&TABS.includes(k))showTab(k);}catch(e){}
 
 $("deskform").addEventListener("input",run);
 $("deskform").addEventListener("change",run);
 $("deskform").addEventListener("submit",e=>e.preventDefault());
-drawScatter();drawBands();fillTables();run();
+brandBar();brandCards();dataTable();drawScatter();drawBands();fillTables();run();
 })();
 </script>

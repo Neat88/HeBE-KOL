@@ -7,6 +7,30 @@ Paste a creator's TikTok or Facebook profile link, enter their public numbers, a
 returns a forecast reach, a fair fee, a walk-away price, and a book / negotiate / pass verdict
 scored against what HeBE has actually paid.
 
+## Tabs
+
+| Tab | Job |
+|---|---|
+| **Evaluate a KOL** | The calculator. Pick a campaign objective, enter the profile numbers, get a graded verdict. |
+| **Past KOL data** | All 105 campaigns by brand — summary cards plus a sortable, searchable, filterable log. |
+| **How it's calculated** | The six-step chain from profile to fee, with formulas and a worked example. |
+| **Metric guide** | The metrics professional teams underwrite on, tiered, with your own benchmarks and red flags. |
+| **Benchmarks** | Percentile distributions, follower-tier tables, and the evidence charts. |
+
+## Scoring
+
+Five pillars, each a percentile against the campaigns in the file, weighted by campaign objective:
+
+| Pillar | Awareness | Engagement | Conversion |
+|---|---|---|---|
+| Cost efficiency (CPM) | **35** | 20 | 20 |
+| Reach power (VFR) | **30** | 20 | 15 |
+| Audience response (ER-V, shares) | 5 | **30** | 25 |
+| Reliability (min ÷ median post) | 15 | 10 | 10 |
+| Trust & fit (bot check + checklist) | 15 | 20 | **30** |
+
+A creator scoring under 35 is a pass at any price — cheap access to a weak audience is not a bargain.
+
 ## What the audit found
 
 | Finding | Figure |
