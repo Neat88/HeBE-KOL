@@ -7,6 +7,25 @@ Paste a creator's TikTok or Facebook profile link, enter their public numbers, a
 returns a forecast reach, a fair fee, a walk-away price, and a book / negotiate / pass verdict
 scored against what HeBE has actually paid.
 
+## Getting the numbers in
+
+The tool cannot read a profile from a bare link — TikTok and Meta both block cross-origin reads, and
+no browser page can work around that. Three routes get the numbers in instead:
+
+1. **One-click button (bookmarklet).** Drag "Grab KOL stats" to the bookmarks bar, open the creator's
+   profile, click it. It reads the visible counts in the user's own browser — followers, following,
+   total likes, and the view count on each post in the grid — and copies a compact `HEBE1|…` line.
+   Paste that into the tool and press Read profile. Nothing is sent anywhere.
+2. **Copy the page.** Ctrl+A / Ctrl+C on the profile, paste the whole blob. A local parser pulls out
+   followers, following and post views; when it comes up short the page asks Claude to parse the text
+   (the `sample` capability) as a fallback.
+3. **By hand.** Type into the fields, as before.
+
+TikTok's grid shows views but not per-post likes, comments or shares, so an auto-filled creator starts
+with engagement unmeasured. Gates G6 and G8 report **not measured** rather than failing, and the
+audience-response pillar scores neutral (50) instead of zero — a views-only import is never punished
+for data it could not see. Add engagement by opening a few posts if the campaign needs it.
+
 ## Tabs
 
 | Tab | Job |

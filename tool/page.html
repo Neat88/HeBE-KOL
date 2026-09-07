@@ -383,6 +383,42 @@ table.data tbody tr:hover{background:var(--sunken)}
 .assessbox p{margin:0;font-size:13px;line-height:1.65;color:var(--ink-2)}
 .assessbox p strong{color:var(--ink);font-weight:600}
 .sig{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:4px}
+/* ---------- import block ---------- */
+.import{border:1px solid var(--accent);border-radius:10px;background:var(--accent-soft);
+  padding:14px 15px;margin-bottom:16px}
+.import h3{font-size:13px;font-weight:600;color:var(--accent);margin-bottom:3px}
+.import .isub{font-size:12px;color:var(--ink-2);line-height:1.45;margin:0 0 10px}
+.import textarea{width:100%;min-height:74px;resize:vertical;background:var(--surface);
+  border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:9px 10px;
+  font-family:var(--mono);font-size:11.5px;line-height:1.5}
+.import textarea:focus{border-color:var(--accent);outline:none}
+.irow{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap;align-items:center}
+.btn{background:var(--accent);border:1px solid var(--accent);color:#fff;border-radius:7px;
+  padding:7px 15px;font-family:var(--sans);font-size:12.5px;font-weight:600;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn:disabled{opacity:.5;cursor:default}
+.btn.ghost{background:var(--surface);color:var(--accent)}
+.istatus{font-family:var(--mono);font-size:11px;color:var(--ink-3);flex:1;min-width:120px;line-height:1.4}
+.istatus.ok{color:var(--good)}
+.istatus.err{color:var(--bad)}
+.bmk{margin-top:11px;border-top:1px solid color-mix(in srgb,var(--accent) 25%,transparent);padding-top:10px}
+.bmk summary{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);cursor:pointer;list-style:none;font-weight:600}
+.bmk summary::-webkit-details-marker{display:none}
+.bmk summary::before{content:"▸ ";font-size:9px}
+.bmk[open] summary::before{content:"▾ "}
+.bmk ol{margin:9px 0 0;padding-left:19px;font-size:12.5px;color:var(--ink-2);line-height:1.6}
+.bmk li{margin-bottom:5px}
+.bmklink{display:inline-block;background:var(--ink);color:var(--paper);border-radius:7px;
+  padding:7px 14px;font-family:var(--sans);font-size:12.5px;font-weight:600;text-decoration:none;
+  margin:3px 0;cursor:grab}
+.bmklink:hover{filter:brightness(1.2)}
+.bmknote{font-size:11.5px;color:var(--ink-3);line-height:1.5;margin:8px 0 0}
+.routes{display:flex;flex-direction:column;gap:0;margin:0 0 12px}
+.route{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:12px;color:var(--ink-2);
+  line-height:1.45}
+.route b{font-family:var(--mono);font-size:9.5px;font-weight:600;background:var(--surface);
+  color:var(--accent);border-radius:4px;padding:2px 6px;flex:none;letter-spacing:.05em}
 </style>
 <header class="mast">
   <button class="themebtn" id="themebtn" aria-label="Switch theme">◐</button>
@@ -422,6 +458,40 @@ table.data tbody tr:hover{background:var(--sunken)}
     <form class="panel" id="deskform" autocomplete="off">
       <div class="panel-h"><h2>Creator input</h2><span class="plat" id="platchip">TikTok</span></div>
       <div class="panel-b">
+
+        <div class="import">
+          <h3>Auto-fill from the profile</h3>
+          <p class="isub">TikTok and Meta both block a web page from reading their profiles directly,
+            so nothing can turn a bare link into numbers on its own. These three routes get the numbers
+            in without typing them.</p>
+          <div class="routes">
+            <div class="route"><b>FASTEST</b><span>Use the one-click button below &mdash; open the
+              creator's profile, click it, paste here.</span></div>
+            <div class="route"><b>NO SETUP</b><span>On the profile page press Ctrl+A then Ctrl+C, and
+              paste the whole thing here.</span></div>
+            <div class="route"><b>MANUAL</b><span>Skip this and fill the fields below by hand.</span></div>
+          </div>
+          <textarea id="pastebox" placeholder="Paste the copied profile here, then press Read profile…"></textarea>
+          <div class="irow">
+            <button type="button" class="btn" id="parsebtn">Read profile</button>
+            <button type="button" class="btn ghost" id="clearbtn">Clear</button>
+            <span class="istatus" id="istatus">Nothing read yet.</span>
+          </div>
+          <details class="bmk">
+            <summary>Get the one-click button</summary>
+            <ol>
+              <li>Show your bookmarks bar (Ctrl+Shift+B, or &#8984;+Shift+B on Mac).</li>
+              <li>Drag this button onto it: <a class="bmklink" id="bmklink" href="#">Grab KOL stats</a></li>
+              <li>Open the creator's TikTok or Facebook profile and scroll so their recent posts load.</li>
+              <li>Click <b>Grab KOL stats</b> in your bookmarks bar &mdash; it copies their numbers.</li>
+              <li>Come back here, paste into the box above, and press <b>Read profile</b>.</li>
+            </ol>
+            <p class="bmknote">The button runs inside your own browser on a page you are already viewing,
+              so it reads what you can see &mdash; no account, no API, nothing sent anywhere. TikTok shows
+              view counts on the grid but not per-post likes or comments, so those stay blank and the
+              engagement gates report as not measured until you add them.</p>
+          </details>
+        </div>
 
         <div class="step"><em>1</em><h3>What is this campaign for?</h3></div>
         <p class="hint">This sets which pillars carry the score. An awareness buy and a conversion buy
@@ -1048,6 +1118,7 @@ function runGates(ctx){
   var totalV=sum(posts.map(function(p){return p.v;}));
   var ver=totalV?sum(posts.map(function(p){return p.l+p.c;}))/totalV:0;
   var ser=totalV?sum(posts.map(function(p){return p.s;}))/totalV:0;
+  var hasEng=posts.some(function(p){return (p.l+p.c+p.s)>0;});
   var spike=medV?mean/medV:0;
   var floorR=medV?p25/medV:0;
   var peak=medV?maxV/medV:0;
@@ -1064,12 +1135,12 @@ function runGates(ctx){
     posts.length<4?"—":Math.round(top3*100)+"%","≤55%",2));
   g.push(G("G5","View rate",band(vfr,gt.vr_green,gt.vr_amber),
     (vfr*100).toFixed(1)+"%","≥"+(gt.vr_green*100).toFixed(0)+"% ("+tk+")",5,"KEY"));
-  g.push(G("G6","Engagement rate",band(ver,gt.ver_green,gt.ver_amber),
-    (ver*100).toFixed(1)+"%","≥"+(gt.ver_green*100).toFixed(1)+"%",4,"KEY"));
+  g.push(G("G6","Engagement rate",hasEng?band(ver,gt.ver_green,gt.ver_amber):"na",
+    hasEng?(ver*100).toFixed(1)+"%":"not measured","≥"+(gt.ver_green*100).toFixed(1)+"%",4,"KEY"));
   g.push(G("G7","View floor",followers<1e5?"na":band(medV,gt.minv_green,gt.minv_green*0.5),
     followers<1e5?"exempt":fmt(medV),followers<1e5?"micro exempt":"≥"+fmt(gt.minv_green),2));
-  g.push(G("G8","Share rate",band(ser,B.gates.share.green,B.gates.share.amber),
-    (ser*100).toFixed(2)+"%","≥"+(B.gates.share.green*100).toFixed(2)+"%",2));
+  g.push(G("G8","Share rate",hasEng?band(ser,B.gates.share.green,B.gates.share.amber):"na",
+    hasEng?(ser*100).toFixed(2)+"%":"not measured","≥"+(B.gates.share.green*100).toFixed(2)+"%",2));
   g.push(G("G9","Cost efficiency",cpm==null?"na":bandLow(cpm,gt.cpm_green,gt.cpm_amber),
     cpm==null?"—":cpmF(cpm),"≤"+cpmF(gt.cpm_green)+" ("+tk+")",4));
   g.push(G("G10","Follow-back ratio",following==null?"na":bandLow(ff,0.10,0.35),
@@ -1081,7 +1152,7 @@ function runGates(ctx){
     podrepeat==null?"—":podrepeat+" repeat","0 repeat",2,"FRAUD"));
   g.push(G("G13","Category fit",cfr==null?"na":band(cfr,0.40,0.20),
     cfr==null?"—":Math.round(cfr*100)+"%","≥40% beauty",3));
-  return {gates:g,spike:spike,floorR:floorR,peak:peak,top3:top3,ver:ver,ser:ser,ff:ff,cfr:cfr,tier:tk};
+  return {gates:g,spike:spike,floorR:floorR,peak:peak,top3:top3,ver:ver,ser:ser,ff:ff,cfr:cfr,tier:tk,hasEng:hasEng};
 }
 function priceBand(fee,fair){
   if(!(fee>0)||!(fair>0))return null;
@@ -1150,8 +1221,10 @@ function run(){
   })();
   const sCost=cpm==null?50:Math.round(clamp((1-pctOf(cpm,bm.cpm))*100,2,99));
   const sReach=Math.round(clamp(pctOf(vfr,bm.vfr)*100,2,99));
-  const sResp=Math.round(clamp((pctOf(erv,bm.erv)*0.35+pctOf(sr,bm.share_rate)*0.4+
-                pctOf(cr,bm.comment_rate)*0.25)*100,2,99));
+  const sResp=GG.hasEng
+    ? Math.round(clamp((pctOf(erv,bm.erv)*0.35+pctOf(sr,bm.share_rate)*0.4+
+        pctOf(cr,bm.comment_rate)*0.25)*100,2,99))
+    : 50;  /* unmeasured: score neutral rather than punish a views-only import */
   const confidence=clamp(posts.length/5,0.5,1);
   const floorScore=pctOf(GG.floorR,{p10:0.15,p25:0.30,p50:0.50,p75:0.70,p90:0.85})*100;
   const spikePen=GG.spike>3.5?26:GG.spike>2.5?13:0;
@@ -1159,7 +1232,7 @@ function run(){
   const ac=(B.auth_curve[plat]||B.auth_curve.tiktok).comment;
   const expC=Math.pow(10,ac.a+ac.b*Math.log10(Math.max(medV,1)));
   const gotC=median(posts.map(p=>p.c))||0;
-  const authRatio=expC>0?gotC/expC:1;
+  const authRatio=(expC>0&&posts.some(function(p){return p.c>0;}))?gotC/expC:1;
   const sAuth=clamp(authRatio>=1?85:authRatio<=0.15?8:8+(authRatio-0.15)/0.85*77,2,99);
   const fraud=GG.gates.filter(function(g){return g.tag==="FRAUD";});
   const fraudPen=fraud.reduce(function(a,g){
@@ -1207,7 +1280,7 @@ function run(){
   const P=[
     ["Cost efficiency","CPM vs book",sCost,W.cost],
     ["Reach power","views ÷ followers",sReach,W.reach],
-    ["Audience response","engagement, shares",sResp,W.response],
+    ["Audience response",GG.hasEng?"engagement, shares":"not measured yet",sResp,W.response],
     ["Reliability","floor ÷ median, spike-adj.",sRel,W.reliability],
     ["Trust &amp; fit","bot check + checklist",sTrust,W.trust]
   ];
@@ -1238,7 +1311,7 @@ function run(){
 
   /* --- flags --- */
   const F=[];
-  if(gotC<expC*0.3&&medV>5000)
+  if(GG.hasEng&&gotC<expC*0.3&&medV>5000)
     F.push(["f-bad","!","Audience looks thin.","At "+fmt(medV)+" views your book expects about "+
       Math.round(expC)+" comments; these posts run "+Math.round(gotC)+
       ". Low conversation at high view counts is the signature of bought views."]);
@@ -1534,6 +1607,165 @@ $("copybtn").addEventListener("click",function(){
   else{var ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);
     ta.select();try{document.execCommand("copy");done();}catch(e){}document.body.removeChild(ta);}
 });
+
+/* ---------------- profile importer ---------------- */
+/* The bookmarklet runs in the viewer's own browser on a profile they are
+   already looking at, reads the visible counts, and copies a compact line. */
+var BOOKMARKLET = "javascript:(function(){"+
+ "var q=function(s){var e=document.querySelector(s);return e?e.textContent.trim():'';};"+
+ "var all=function(s){return Array.prototype.slice.call(document.querySelectorAll(s))"+
+   ".map(function(e){return e.textContent.trim();}).filter(Boolean);};"+
+ "var f=q('[data-e2e=\"followers-count\"]');"+
+ "var g=q('[data-e2e=\"following-count\"]');"+
+ "var l=q('[data-e2e=\"likes-count\"]');"+
+ "var v=all('[data-e2e=\"video-views\"]').slice(0,12);"+
+ "var out;"+
+ "if(f||v.length){out='HEBE1|U='+location.href+'|F='+f+'|G='+g+'|L='+l+'|V='+v.join(',');}"+
+ "else{out='HEBE1|U='+location.href+'|RAW='+(document.body.innerText||'').slice(0,6000);}"+
+ "var done=function(){alert('KOL stats copied. Paste them into the Underwriting Desk.');};"+
+ "if(navigator.clipboard&&navigator.clipboard.writeText){"+
+   "navigator.clipboard.writeText(out).then(done,function(){window.prompt('Copy this:',out);});}"+
+ "else{window.prompt('Copy this:',out);}"+
+"})();";
+
+/* tolerant number reader: 1.3M / 45,2K / 802k / 1234 */
+function readCount(t){
+  if(!t)return null;
+  var m=String(t).replace(/\s/g,"").match(/([\d.,]+)\s*([KkMmBb])?/);
+  if(!m)return null;
+  var n=parseFloat(m[1].replace(/,/g,""));
+  if(!isFinite(n))return null;
+  var u=(m[2]||"").toLowerCase();
+  return n*(u==="k"?1e3:u==="m"?1e6:u==="b"?1e9:1);
+}
+
+/* Parse either the bookmarklet line or a raw copy of the profile page. */
+function parseProfile(txt){
+  var out={url:null,followers:null,following:null,likes:null,views:[],source:null};
+  if(!txt||!txt.trim())return out;
+  var t=txt.trim();
+
+  if(t.indexOf("HEBE1|")===0){
+    out.source="button";
+    var parts=t.split("|");
+    parts.forEach(function(p){
+      if(p.indexOf("U=")===0)out.url=p.slice(2);
+      else if(p.indexOf("F=")===0)out.followers=readCount(p.slice(2));
+      else if(p.indexOf("G=")===0)out.following=readCount(p.slice(2));
+      else if(p.indexOf("L=")===0)out.likes=readCount(p.slice(2));
+      else if(p.indexOf("V=")===0&&p.length>2)
+        out.views=p.slice(2).split(",").map(readCount).filter(function(x){return x&&x>0;});
+      else if(p.indexOf("RAW=")===0)t=p.slice(4);
+    });
+    if(out.followers||out.views.length)return out;
+  }
+
+  out.source=out.source||"paste";
+  var u=t.match(/https?:\/\/[^\s"']*(?:tiktok|facebook|fb)\.[^\s"']*/i);
+  if(u)out.url=u[0];
+
+  /* labelled counts, number before or after the word, EN + common KH */
+  var lab=function(words){
+    var w="(?:"+words+")";
+    var re1=new RegExp("([\\d.,]+\\s*[KkMmBb]?)\\s*"+w,"i");
+    var re2=new RegExp(w+"\\s*[:\\s]\\s*([\\d.,]+\\s*[KkMmBb]?)","i");
+    var m=t.match(re1)||t.match(re2);
+    return m?readCount(m[1]):null;
+  };
+  out.followers=out.followers||lab("followers?|អ្នកតាមដាន");
+  out.following=out.following||lab("following|កំពុងតាមដាន");
+  out.likes=out.likes||lab("likes?|ចូលចិត្ត");
+
+  if(!out.views.length){
+    /* view counts on a TikTok grid appear as bare compact numbers; take plausible ones */
+    var cand=t.match(/(?:^|[\s|])([\d.,]+\s*[KkMm])(?=[\s|]|$)/g)||[];
+    var nums=cand.map(readCount).filter(function(x){return x&&x>=100;});
+    /* drop values equal to the profile aggregates so totals are not mistaken for posts */
+    var drop={};
+    [out.followers,out.following,out.likes].forEach(function(x){if(x)drop[x]=1;});
+    nums=nums.filter(function(x){return !drop[x];});
+    out.views=nums.slice(0,12);
+  }
+  return out;
+}
+
+function applyProfile(pr){
+  var filled=[];
+  if(pr.url){$("url").value=pr.url;filled.push("link");}
+  if(pr.followers){$("followers").value=fmt(pr.followers);filled.push("followers");}
+  if(pr.following!=null)$("following").value=pr.following?fmt(pr.following):"0";
+  if(pr.views&&pr.views.length){
+    var tb=$("posts");tb.innerHTML="";
+    pr.views.slice(0,10).forEach(function(v){addRow([fmt(v),"","",""]);});
+    filled.push(pr.views.length+" posts");
+  }
+  run();
+  return filled;
+}
+
+function setStatus(msg,cls){
+  var el=$("istatus");el.textContent=msg;
+  el.className="istatus"+(cls?" "+cls:"");
+}
+
+/* Claude-assisted parse, used only when the local parser comes up short. */
+function claudeParse(txt){
+  if(typeof window.claude==="undefined"||!window.claude||!window.claude.use)
+    return Promise.resolve(null);
+  return window.claude.use("sample").then(function(sample){
+    if(!sample)return null;
+    setStatus("Asking Claude to read it…");
+    return sample.json(
+      "Extract this creator profile as JSON. Keys: followers (number), following (number), "+
+      "likes (number), views (array of numbers, most recent posts first, max 10), "+
+      "url (string or null). Numbers must be plain integers with K/M expanded. "+
+      "Return only JSON, no prose. Use null for anything absent.\n\n"+txt.slice(0,12000),
+      {modelTier:"quick"}
+    ).then(function(j){
+      if(!j)return null;
+      return {url:j.url||null,followers:j.followers||null,following:j.following,
+        likes:j.likes||null,
+        views:(Array.isArray(j.views)?j.views:[]).filter(function(x){return x>0;}),
+        source:"claude"};
+    });
+  }).catch(function(){return null;});
+}
+
+$("bmklink").setAttribute("href",BOOKMARKLET);
+$("bmklink").addEventListener("click",function(e){
+  e.preventDefault();
+  setStatus("Drag that button to your bookmarks bar — clicking it here does nothing.","err");
+});
+$("clearbtn").addEventListener("click",function(){
+  $("pastebox").value="";setStatus("Nothing read yet.");
+});
+$("parsebtn").addEventListener("click",function(){
+  var txt=$("pastebox").value;
+  if(!txt.trim()){setStatus("Paste the copied profile first.","err");return;}
+  var pr=parseProfile(txt);
+  var enough=pr.followers&&pr.views.length>=3;
+  if(enough){
+    var f=applyProfile(pr);
+    setStatus("Read "+f.join(", ")+(pr.source==="button"?" (one-click button)":"")+
+      ". Check the fields, then add likes and comments if you have them.","ok");
+    return;
+  }
+  var btn=$("parsebtn");btn.disabled=true;
+  setStatus("Could not read it cleanly — trying Claude…");
+  claudeParse(txt).then(function(cp){
+    btn.disabled=false;
+    var best=(cp&&cp.followers&&cp.views.length)?cp:(pr.followers||pr.views.length?pr:null);
+    if(!best){
+      setStatus("Could not find follower or view counts. Copy the profile header and the post grid "+
+        "together, or fill the fields below by hand.","err");
+      return;
+    }
+    var f=applyProfile(best);
+    setStatus(f.length?("Read "+f.join(", ")+". Check the fields before trusting the score."):
+      "Partly read — please check every field.", f.length?"ok":"err");
+  });
+});
+
 $("deskform").addEventListener("input",run);
 $("deskform").addEventListener("change",run);
 $("deskform").addEventListener("submit",e=>e.preventDefault());
