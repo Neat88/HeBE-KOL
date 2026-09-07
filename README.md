@@ -60,6 +60,36 @@ Near-identical fees, 19× apart in outcome.
 **Facebook runs the other way.** 1M+ pages: $1.31 median CPM, zero blow-ups. Under 100K:
 $35.32 median CPM, 68% blow-up rate. Buy small on TikTok, big on Facebook.
 
+## Gate check — 14 tests
+
+Alongside the pillar scoring, every creator is run through 14 pass/caution/fail gates adapted from a
+KOL vetting report supplied by the team, with thresholds recalibrated to HeBE's own campaigns.
+
+| Code | Test | Measure | Catches |
+|---|---|---|---|
+| G0 | Data sufficiency | posts entered | accounts too thin to judge |
+| G1 | Spike ratio | mean ÷ median views | reach carried by one or two viral hits |
+| G2 | Floor ratio | p25 ÷ median views | only the wins show |
+| G3 | Peak ratio | max ÷ median views | one mega-hit distorting the average |
+| G4 | Top-3 share | top 3 ÷ all views | reach concentrated in three posts |
+| G5 | View rate **KEY** | median views ÷ followers | vanity follower counts |
+| G6 | Engagement rate **KEY** | (likes + comments) ÷ views | watched but ignored |
+| G7 | View floor | median views vs tier floor | many followers, dead views |
+| G8 | Share rate | shares ÷ views | no organic spread |
+| G9 | Cost efficiency | CPM vs tier bar | price above what reach is worth |
+| G10 | Follow-back ratio **FRAUD** | following ÷ followers | follow-for-follow padding |
+| G11 | Upload consistency | posts in last 30 days | unreliable delivery |
+| G12 | Comment-pod signal **FRAUD** | repeat commenters across posts | engagement pods |
+| G13 | Category fit (CFR) | beauty posts ÷ last 15 | off-category creator |
+
+G5–G9 bars are set per follower tier from HeBE's own data (view rate: micro 50%, mid 13%, macro 9%,
+mega 6%). Structural and fraud tests use standard conventions, since one campaign row per creator
+cannot calibrate them.
+
+Output is a two-axis read — **quality** (score and grade) and **price** (great value / good deal /
+slightly overpriced / overpriced) shown separately, because they call for different actions — plus a
+plain-prose assessment sized for a deal memo.
+
 ## Layout
 
 - `tool/page.html` — the calculator (self-contained; benchmarks embedded)

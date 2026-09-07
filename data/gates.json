@@ -1,0 +1,46 @@
+{
+ "micro": {
+  "n": 15,
+  "vr_green": 0.5047,
+  "vr_amber": 0.1675,
+  "cpm_green": 2.1,
+  "cpm_amber": 4.96,
+  "ver_green": 0.094,
+  "ver_amber": 0.0646,
+  "minv_green": 7537
+ },
+ "mid": {
+  "n": 33,
+  "vr_green": 0.127,
+  "vr_amber": 0.0757,
+  "cpm_green": 4.96,
+  "cpm_amber": 10.24,
+  "ver_green": 0.0838,
+  "ver_amber": 0.0448,
+  "minv_green": 13800
+ },
+ "macro": {
+  "n": 18,
+  "vr_green": 0.0851,
+  "vr_amber": 0.0418,
+  "cpm_green": 2.51,
+  "cpm_amber": 4.09,
+  "ver_green": 0.0717,
+  "ver_amber": 0.06,
+  "minv_green": 28300
+ },
+ "mega": {
+  "n": 16,
+  "vr_green": 0.0597,
+  "vr_amber": 0.0145,
+  "cpm_green": 0.75,
+  "cpm_amber": 3.71,
+  "ver_green": 0.0781,
+  "ver_amber": 0.0569,
+  "minv_green": 32700
+ },
+ "share": {
+  "green": 0.00191,
+  "amber": 0.00092
+ }
+}
