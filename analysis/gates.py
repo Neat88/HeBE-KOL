@@ -1,6 +1,7 @@
 import json, statistics as st
-S='/tmp/claude-0/-home-user-HeBE-KOL/e7909b51-e34c-500b-a163-0fd30d39b367/scratchpad/'
-recs=json.load(open(S+'recs.json'))
+from paths import o
+
+recs=json.load(open(o('recs.json')))
 tt=[r for r in recs if r['cost'] and r['tt_v'] and r['tt_f']]
 for r in tt:
     r['cpm']=r['cost']/r['tt_v']*1000; r['vfr']=r['tt_v']/r['tt_f']
@@ -31,4 +32,4 @@ out['share']={"green":round(q(ser,.50),5),"amber":round(q(ser,.25),5)}
 print("\nShare rate (all tiers): GREEN ≥%.2f%%  amber ≥%.2f%%"%(out['share']['green']*100,out['share']['amber']*100))
 print("\nJin report used: micro VR≥5.5%%, mid VR≥3.5%%, macro VR≥2%%, eCPM ≤$4/$6/$8, VER≥2.5%%, SER≥0.4%%")
 print("Those VR bars sit far BELOW HeBE's real medians — they would pass almost anything.")
-json.dump(out,open(S+'gates.json','w'),indent=1)
+json.dump(out,open(o('gates.json'),'w'),indent=1)

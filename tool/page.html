@@ -419,6 +419,102 @@ table.data tbody tr:hover{background:var(--sunken)}
   line-height:1.45}
 .route b{font-family:var(--mono);font-size:9.5px;font-weight:600;background:var(--surface);
   color:var(--accent);border-radius:4px;padding:2px 6px;flex:none;letter-spacing:.05em}
+
+/* ---------- AI intake ---------- */
+.modes{display:flex;gap:6px;margin:0 0 11px;flex-wrap:wrap}
+.mode{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);border-radius:7px;
+  padding:6px 11px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;
+  display:flex;align-items:center;gap:6px}
+.mode.on{border-color:var(--accent);color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.mode i{font-family:var(--mono);font-style:normal;font-size:9px;letter-spacing:.06em;
+  background:var(--accent);color:#fff;border-radius:3px;padding:1px 4px}
+.mbody{display:none}
+.mbody.on{display:block}
+.mhint{font-size:12px;color:var(--ink-2);line-height:1.45;margin:0 0 9px}
+.drop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  border:1.5px dashed var(--accent);border-radius:9px;background:var(--surface);
+  padding:18px 12px;cursor:pointer;text-align:center}
+.drop.over{background:var(--accent-soft)}
+.drop b{font-size:13px;color:var(--accent);font-weight:600}
+.drop span{font-size:11.5px;color:var(--ink-3)}
+.thumbs{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}
+.thumb{position:relative;width:62px;height:62px;border-radius:7px;overflow:hidden;
+  border:1px solid var(--line);background:var(--sunken)}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb button{position:absolute;top:2px;right:2px;width:17px;height:17px;border-radius:50%;
+  border:none;background:rgba(0,0,0,.62);color:#fff;font-size:11px;line-height:1;cursor:pointer;padding:0}
+.shotlist{margin:9px 0 0;padding-left:17px;font-size:12px;color:var(--ink-2);line-height:1.55}
+.shotlist li{margin-bottom:3px}
+.airead{margin-top:12px;border-top:1px solid color-mix(in srgb,var(--accent) 25%,transparent);
+  padding-top:10px}
+.airead h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);margin:0 0 6px;font-weight:600}
+.airead p{font-size:12.5px;color:var(--ink-2);line-height:1.55;margin:0 0 8px}
+.airead .flags2{display:flex;flex-wrap:wrap;gap:5px}
+.airead .flag2{font-family:var(--mono);font-size:10px;border-radius:4px;padding:2px 7px;
+  background:var(--warn-bg);color:var(--warn);
+  border:1px solid color-mix(in srgb,var(--warn) 30%,transparent)}
+.airead .flag2.ok{background:var(--good-bg);color:var(--good);
+  border-color:color-mix(in srgb,var(--good) 30%,transparent)}
+.airead .flag2.bad{background:var(--bad-bg);color:var(--bad);
+  border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+.aiop{margin-top:12px}
+.aiop .assessbox{border-color:var(--accent)}
+.opinion{white-space:pre-wrap;font-size:13px;line-height:1.6;color:var(--ink-2);margin:0}
+.opinion.wait{color:var(--ink-3);font-style:italic}
+
+/* ---------- past-booking record ---------- */
+.history{margin:0 0 14px;border:1px solid var(--line);border-radius:9px;background:var(--sunken);
+  padding:11px 12px}
+.history.known{border-color:var(--accent);background:var(--accent-soft)}
+.hh{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:7px}
+.hh h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--accent);margin:0;font-weight:600}
+.hh em{font-family:var(--mono);font-style:normal;font-size:10.5px;color:var(--ink-3)}
+.hsum{font-size:12.5px;color:var(--ink-2);line-height:1.5;margin:0 0 8px}
+.htab{width:100%;border-collapse:collapse;font-size:11.5px}
+.htab th{font-family:var(--mono);font-size:9.5px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-3);text-align:right;padding:3px 5px;font-weight:500;border-bottom:1px solid var(--line)}
+.htab th:first-child,.htab td:first-child{text-align:left}
+.htab td{padding:4px 5px;text-align:right;border-bottom:1px solid var(--line-soft);color:var(--ink-2)}
+.htab td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.htab tr:last-child td{border-bottom:none}
+.hband{font-family:var(--mono);font-size:9.5px;border-radius:4px;padding:1px 6px;white-space:nowrap}
+.hband.b-good{background:var(--good-bg);color:var(--good)}
+.hband.b-ok{background:var(--accent-soft);color:var(--accent)}
+.hband.b-warn{background:var(--warn-bg);color:var(--warn)}
+.hband.b-bad{background:var(--bad-bg);color:var(--bad)}
+.hnew{font-size:12px;color:var(--ink-3);line-height:1.5;margin:0}
+
+/* ---------- market study ---------- */
+.pcard{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:15px 16px;
+  margin-bottom:12px;box-shadow:var(--shadow)}
+.pcard-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;
+  margin-bottom:4px}
+.pcard-h h3{font-size:16px}
+.pcard-h .price{font-family:var(--mono);font-size:11px;color:var(--ink-3);white-space:nowrap}
+.pcard .role{font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:7px}
+.pcard p{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin:0 0 9px}
+.pcard .take{border-left:2px solid var(--accent);padding-left:11px;font-size:13px;color:var(--ink);
+  line-height:1.55;margin:0}
+.pcard .take b{color:var(--accent)}
+.ctab{width:100%;border-collapse:collapse;font-size:12.5px;margin:6px 0 18px}
+.ctab th{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;
+  color:var(--ink-3);text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);font-weight:500}
+.ctab td{padding:8px;border-bottom:1px solid var(--line-soft);color:var(--ink-2);
+  vertical-align:top;line-height:1.5}
+.ctab td:first-child{color:var(--ink);font-weight:500}
+.ctab .y{color:var(--good);font-weight:600}
+.ctab .n{color:var(--bad)}
+.ctab .part{color:var(--warn)}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tablewrap .ctab{min-width:520px}
+
+/* keep wide charts inside their grid cell — the svg scrolls, the page does not */
+.split>*{min-width:0}
+.chartbox{min-width:0}
+.svgwrap{max-width:100%}
 </style>
 <header class="mast">
   <button class="themebtn" id="themebtn" aria-label="Switch theme">◐</button>
@@ -426,21 +522,22 @@ table.data tbody tr:hover{background:var(--sunken)}
     <div class="mast-top">
       <div>
         <h1>KOL Underwriting Desk</h1>
-        <p class="sub">Score a creator before you book them, against 105 campaigns HeBE actually paid for.</p>
+        <p class="sub">Score a creator before you book them, against 107 campaigns HeBE actually paid for.</p>
       </div>
       <div class="ticker">
-        <div><b>105</b><span>campaigns</span></div>
-        <div><b>$38,380</b><span>spend</span></div>
-        <div><b>32.9M</b><span>views</span></div>
+        <div><b>107</b><span>campaigns</span></div>
+        <div><b>$39,450</b><span>spend</span></div>
+        <div><b>33.0M</b><span>views</span></div>
         <div><b>5</b><span>brands</span></div>
       </div>
     </div>
     <div class="tabs" role="tablist">
       <button class="tab" role="tab" id="t-eval"  aria-selected="true"  aria-controls="p-eval">Evaluate a KOL</button>
-      <button class="tab" role="tab" id="t-data"  aria-selected="false" aria-controls="p-data">Past KOL data <i>105</i></button>
+      <button class="tab" role="tab" id="t-data"  aria-selected="false" aria-controls="p-data">Past KOL data <i>107</i></button>
       <button class="tab" role="tab" id="t-calc"  aria-selected="false" aria-controls="p-calc">How it's calculated</button>
       <button class="tab" role="tab" id="t-guide" aria-selected="false" aria-controls="p-guide">Metric guide</button>
       <button class="tab" role="tab" id="t-bench" aria-selected="false" aria-controls="p-bench">Benchmarks</button>
+      <button class="tab" role="tab" id="t-market" aria-selected="false" aria-controls="p-market">How the big platforms do it</button>
     </div>
   </div>
 </header>
@@ -460,37 +557,68 @@ table.data tbody tr:hover{background:var(--sunken)}
       <div class="panel-b">
 
         <div class="import">
-          <h3>Auto-fill from the profile</h3>
-          <p class="isub">TikTok and Meta both block a web page from reading their profiles directly,
-            so nothing can turn a bare link into numbers on its own. These three routes get the numbers
-            in without typing them.</p>
-          <div class="routes">
-            <div class="route"><b>FASTEST</b><span>Use the one-click button below &mdash; open the
-              creator's profile, click it, paste here.</span></div>
-            <div class="route"><b>NO SETUP</b><span>On the profile page press Ctrl+A then Ctrl+C, and
-              paste the whole thing here.</span></div>
-            <div class="route"><b>MANUAL</b><span>Skip this and fill the fields below by hand.</span></div>
+          <h3>Let AI read the profile</h3>
+          <p class="isub">No website can turn a bare TikTok or Facebook link into numbers &mdash; both
+            platforms block it, which is why the paid tools buy API access instead. So the profile comes
+            in as <b>what is already on your screen</b>, and Claude reads it the way a buyer would:
+            the counts <em>and</em> what the feed is actually about.</p>
+
+          <div class="modes" id="modes">
+            <button type="button" class="mode on" data-mode="shot">Screenshots <i>AI</i></button>
+            <button type="button" class="mode" data-mode="paste">Paste the page <i>AI</i></button>
+            <button type="button" class="mode" data-mode="button">One-click button</button>
           </div>
-          <textarea id="pastebox" placeholder="Paste the copied profile here, then press Read profile…"></textarea>
-          <div class="irow">
-            <button type="button" class="btn" id="parsebtn">Read profile</button>
-            <button type="button" class="btn ghost" id="clearbtn">Clear</button>
-            <span class="istatus" id="istatus">Nothing read yet.</span>
-          </div>
-          <details class="bmk">
-            <summary>Get the one-click button</summary>
-            <ol>
-              <li>Show your bookmarks bar (Ctrl+Shift+B, or &#8984;+Shift+B on Mac).</li>
-              <li>Drag this button onto it: <a class="bmklink" id="bmklink" href="#">Grab KOL stats</a></li>
-              <li>Open the creator's TikTok or Facebook profile and scroll so their recent posts load.</li>
-              <li>Click <b>Grab KOL stats</b> in your bookmarks bar &mdash; it copies their numbers.</li>
-              <li>Come back here, paste into the box above, and press <b>Read profile</b>.</li>
+
+          <div class="mbody on" id="m-shot">
+            <p class="mhint">Screenshot the creator's profile and drop the images here. Claude pulls out
+              every number it can see and writes a read on the account.</p>
+            <label class="drop" id="drop">
+              <input type="file" id="shots" accept="image/*" multiple hidden>
+              <b>Drop screenshots here</b>
+              <span>or click to choose &mdash; up to <span id="shotmax">4</span> images</span>
+            </label>
+            <div class="thumbs" id="thumbs"></div>
+            <ol class="shotlist">
+              <li>The profile header &mdash; followers, following, total likes.</li>
+              <li>The post grid, with the view counts showing.</li>
+              <li>Optional: one or two opened posts, so likes, comments and shares can be read too.</li>
             </ol>
-            <p class="bmknote">The button runs inside your own browser on a page you are already viewing,
-              so it reads what you can see &mdash; no account, no API, nothing sent anywhere. TikTok shows
-              view counts on the grid but not per-post likes or comments, so those stay blank and the
-              engagement gates report as not measured until you add them.</p>
-          </details>
+            <div class="irow">
+              <button type="button" class="btn" id="shotbtn">Read with AI</button>
+              <button type="button" class="btn ghost" id="shotclear">Clear</button>
+              <span class="istatus" id="shotstatus">No screenshots yet.</span>
+            </div>
+          </div>
+
+          <div class="mbody" id="m-paste">
+            <p class="mhint">On the profile press Ctrl+A then Ctrl+C and paste the whole thing below.
+              A local parser reads it first; anything it cannot resolve goes to Claude.</p>
+            <textarea id="pastebox" placeholder="Paste the copied profile here, then press Read profile&hellip;"></textarea>
+            <div class="irow">
+              <button type="button" class="btn" id="parsebtn">Read profile</button>
+              <button type="button" class="btn ghost" id="clearbtn">Clear</button>
+              <span class="istatus" id="istatus">Nothing read yet.</span>
+            </div>
+          </div>
+
+          <div class="mbody" id="m-button">
+            <p class="mhint">A bookmark that reads the counts off the profile you are looking at and
+              copies them. Nothing is sent anywhere &mdash; it runs in your own browser.</p>
+            <ol class="shotlist">
+              <li>Show your bookmarks bar (Ctrl+Shift+B, or &#8984;+Shift+B on Mac).</li>
+              <li>Drag this onto it: <a class="bmklink" id="bmklink" href="#">Grab KOL stats</a></li>
+              <li>Open the creator's profile and scroll so the recent posts load.</li>
+              <li>Click <b>Grab KOL stats</b>, then paste into the <b>Paste the page</b> tab above.</li>
+            </ol>
+            <p class="bmknote">TikTok shows view counts on the grid but not per-post likes or comments,
+              so those stay blank and the engagement gates report as not measured until you add them.</p>
+          </div>
+
+          <div class="airead" id="airead" hidden>
+            <h4>What Claude saw on the profile</h4>
+            <p id="airead-txt"></p>
+            <div class="flags2" id="airead-flags"></div>
+          </div>
         </div>
 
         <div class="step"><em>1</em><h3>What is this campaign for?</h3></div>
@@ -505,14 +633,19 @@ table.data tbody tr:hover{background:var(--sunken)}
             <b>Conversion</b><span>Clicks &amp; sales</span></button>
         </div>
 
-        <div class="step"><em>2</em><h3>Profile link</h3></div>
-        <p class="hint">TikTok or Facebook &mdash; sets the platform and benchmark set. It does not fetch
-           numbers; both platforms block that.</p>
-        <div style="margin-bottom:13px">
-          <label class="fl" for="url">Profile URL</label>
-          <input type="text" id="url" placeholder="https://www.tiktok.com/@handle"
-                 value="https://www.tiktok.com/@example.kol">
+        <div class="step"><em>2</em><h3>Who is it?</h3></div>
+        <p class="hint">The link sets the platform and benchmark set. The name is matched against every
+           creator HeBE has already paid &mdash; book them before, and their record shows up underneath.</p>
+        <div class="row2" style="margin-bottom:13px">
+          <div><label class="fl" for="kolname">Creator name</label>
+            <input type="text" id="kolname" list="pastnames" autocomplete="off"
+                   placeholder="e.g. Mey Jelly"></div>
+          <div><label class="fl" for="url">Profile URL</label>
+            <input type="text" id="url" placeholder="https://www.tiktok.com/@handle"
+                   value="https://www.tiktok.com/@example.kol"></div>
         </div>
+        <datalist id="pastnames"></datalist>
+        <div class="history" id="history" hidden></div>
 
         <div class="step"><em>3</em><h3>Their public numbers</h3></div>
         <p class="hint">Followers, then the last 5 non-pinned posts. Median is used, so one viral post
@@ -616,10 +749,158 @@ table.data tbody tr:hover{background:var(--sunken)}
             <button type="button" class="copybtn" id="copybtn">Copy for deal memo</button></div>
           <p id="assesstext">&mdash;</p>
         </div>
+        <div class="assessbox aiop" id="aiopbox" hidden>
+          <div class="assess-h"><h3>Claude's second opinion</h3>
+            <button type="button" class="copybtn" id="opbtn">Ask Claude</button></div>
+          <p class="opinion" id="opiniontext">Claude re-reads the same numbers against HeBE's own book
+            and argues the buy &mdash; including what it would still want checked.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
+<!-- ================= TAB 6 : MARKET STUDY ================= -->
+<section class="pane" id="p-market" role="tabpanel" aria-labelledby="t-market">
+  <p class="pane-lede">What the industry-standard evaluation platforms actually measure, and which of
+    it this desk can and cannot reproduce. The short version: <strong>they buy platform API access,
+    which is the one thing a self-built tool cannot have</strong> &mdash; but the judgement they sell
+    on top of it is mostly arithmetic you already have the data for.</p>
+
+  <div class="sec-h"><span class="eyebrow">The five</span><h2>Who does this, and what they are for</h2></div>
+
+  <div class="pcard">
+    <div class="pcard-h"><h3>HypeAuditor</h3><span class="price">free audits &middot; paid tiers above</span></div>
+    <div class="role">The fraud auditor</div>
+    <p>Roughly 227M creator accounts across Instagram, TikTok, YouTube, X and Twitch. Its headline output
+      is the <b>Audience Quality Score</b>, 1&ndash;100, built from engagement rate, the share of the
+      audience judged real, follower growth and engagement authenticity. Machine learning over
+      dozens of behavioural signals &mdash; follow patterns, empty profiles, growth spikes, comment
+      patterns &mdash; estimates what share of a following is fake or unreachable. Reports run to 35+
+      metrics per creator.</p>
+    <p class="take">What this desk borrows: the idea that <b>audience quality is a separate number from
+      price</b>, and that the fraud checks are structural rather than opinion. Gates G10 and G12 are
+      follow-back padding and comment-pod detection. What it cannot copy: the fake-follower share
+      itself, which needs the audience list, not the public profile.</p>
+  </div>
+
+  <div class="pcard">
+    <div class="pcard-h"><h3>Modash</h3><span class="price">from about $199&ndash;$499 / month</span></div>
+    <div class="role">Discovery plus commerce</div>
+    <p>200M+ profiles, searchable by audience demographics as well as creator attributes, with fake-follower
+      detection and campaign tracking. Its distinguishing half is commerce: Shopify gifting, affiliate
+      links, creator payments and return-on-ad-spend attribution, so a booking is traced to orders.</p>
+    <p class="take">What this desk borrows: <b>nothing about discovery</b> &mdash; you already know who
+      you are considering. The commerce half is the honest gap in this tool: your file records no promo
+      code, order or revenue column, so the desk forecasts <b>reach, not sales</b>. Adding a sales column
+      against these 107 campaigns is the single highest-value extension available to you.</p>
+  </div>
+
+  <div class="pcard">
+    <div class="pcard-h"><h3>Upfluence</h3><span class="price">quote-based</span></div>
+    <div class="role">Ecommerce-native</div>
+    <p>Built around deep ecommerce integration &mdash; Shopify, WooCommerce, Klaviyo &mdash; with product
+      seeding, discount codes and global creator payouts. Its signature trick is scanning your existing
+      customer database to find which of your own customers are creators, on the theory that a customer
+      who already buys converts better than a stranger with a bigger following.</p>
+    <p class="take">What this desk borrows: the <b>customer-first instinct</b>. Your data agrees with it
+      from a different direction &mdash; follower count explains only 12% of the variation in views
+      delivered, so who the creator is matters far more than how big they are.</p>
+  </div>
+
+  <div class="pcard">
+    <div class="pcard-h"><h3>CreatorIQ</h3><span class="price">about $35k&ndash;$200k / year</span></div>
+    <div class="role">Enterprise governance</div>
+    <p>Aimed at multinational teams running many programmes at once: AI semantic search over creator
+      behaviour and brand affinity, real-time data pulled directly from the TikTok, Meta and YouTube
+      APIs, brand-safety governance, standardised workflow and reporting. Implementation typically runs
+      four to eight weeks.</p>
+    <p class="take">What this desk borrows: <b>brand safety as a scored gate rather than a vibe</b>. The
+      fit-and-risk checklist and the category-fit gate (G13) are the small version of it. What it cannot
+      copy: live API data. That is the real wall between a bought platform and a built one.</p>
+  </div>
+
+  <div class="pcard">
+    <div class="pcard-h"><h3>Traackr</h3><span class="price">about $25k&ndash;$55k / year</span></div>
+    <div class="role">Benchmarking and budget discipline</div>
+    <p>Performance-led: benchmarking against category norms, budget optimisation and ROI analysis across
+      markets, with an emphasis on tracking the same creators over time rather than treating each booking
+      as a fresh decision.</p>
+    <p class="take">This is the closest cousin to what you are doing, and the model for two things here:
+      <b>every creator is scored against your own book rather than a global average</b>, and the desk now
+      opens a creator's <b>own delivery record</b> the moment their name matches the log. Traackr charges
+      five figures a year for the same instinct.</p>
+  </div>
+
+  <div class="sec-h"><span class="eyebrow">Feature by feature</span><h2>What you get, what you don't</h2></div>
+  <div class="tablewrap">
+  <table class="ctab">
+    <thead><tr><th>Capability</th><th>The big five</th><th>This desk</th></tr></thead>
+    <tbody>
+      <tr><td>Creator discovery / search</td><td class="y">200M+ indexed profiles</td>
+        <td class="n">None &mdash; you bring the candidate</td></tr>
+      <tr><td>Reads a profile from a bare link</td><td class="y">Yes, via paid platform APIs</td>
+        <td class="part">Screenshots or copied text, read by Claude</td></tr>
+      <tr><td>Fake-follower share</td><td class="y">Modelled from the audience list</td>
+        <td class="part">Proxy only: follow-back ratio, pod signal, comment-authenticity curve</td></tr>
+      <tr><td>Audience demographics (age, sex, country)</td><td class="y">Yes</td>
+        <td class="n">Not obtainable without API access &mdash; check by hand</td></tr>
+      <tr><td>Follower growth history</td><td class="y">Tracked continuously</td>
+        <td class="n">No history is collected</td></tr>
+      <tr><td>Engagement authenticity</td><td class="y">ML over behavioural signals</td>
+        <td class="y">Fitted curve on your own data: log₁₀(comments) = &minus;1.66 + 0.669 × log₁₀(views)</td></tr>
+      <tr><td>Benchmarks</td><td class="part">Category and global averages</td>
+        <td class="y">Your own 107 campaigns, by platform and follower tier</td></tr>
+      <tr><td>Fair-price estimate</td><td class="part">Rate ranges, where offered</td>
+        <td class="y">Priced off your own target CPM and forecast reach</td></tr>
+      <tr><td>Prior performance with this creator</td><td class="y">Creator CRM</td>
+        <td class="y">Full record, matched on name or handle</td></tr>
+      <tr><td>Sales / ROAS attribution</td><td class="y">Native Shopify and Klaviyo</td>
+        <td class="n">No revenue data exists in the file</td></tr>
+      <tr><td>Cost</td><td class="part">$199/mo to $200k/yr</td><td class="y">Nothing</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sec-h"><span class="eyebrow">The standard workflow</span><h2>Eight checks, and where each lands here</h2></div>
+  <div class="tablewrap">
+  <table class="ctab">
+    <thead><tr><th>Industry vetting step</th><th>Where it happens on this desk</th></tr></thead>
+    <tbody>
+      <tr><td>1. Verify the account is active</td><td>Gate G11, posts in the last 30 days</td></tr>
+      <tr><td>2. Check follower authenticity</td><td>Gates G10 and G5 &mdash; follow-back ratio, view rate</td></tr>
+      <tr><td>3. Calculate real engagement</td><td>Gate G6, engagement per view rather than per follower</td></tr>
+      <tr><td>4. Analyse engagement composition</td><td>Gates G8 and G12, plus the comment-authenticity curve</td></tr>
+      <tr><td>5. Review audience demographics</td><td class="part">Not automatable here &mdash; the fit checklist asks you</td></tr>
+      <tr><td>6. Measure audience overlap</td><td class="part">Partial: the past-booking record shows repeat buys</td></tr>
+      <tr><td>7. Audit content history</td><td>Gate G13 category fit, plus Claude's read of the screenshots</td></tr>
+      <tr><td>8. Check competitor partnerships</td><td class="part">On the fit checklist &mdash; you check it by eye</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="sec-h"><span class="eyebrow">Where the industry advice is wrong for you</span>
+    <h2>Two published benchmarks your data contradicts</h2></div>
+  <div class="pcard">
+    <p><b>&ldquo;A views-to-follower ratio under 3&ndash;5% is suspicious; organic accounts run
+      10&ndash;30%.&rdquo;</b> Directionally right, far too lenient for this market. In your book the
+      median TikTok view rate is <b>12.7%</b>, and it varies enormously by tier &mdash; micro accounts
+      run a <b>50.5%</b> median, mega accounts <b>7.7%</b>. A 5% floor applied to a micro creator would
+      pass an account performing at a tenth of its peers. The gates here are set per tier off your own
+      percentiles instead.</p>
+    <p class="take">Published thresholds are averaged across markets that are not Cambodia and categories
+      that are not beauty. <b>Your 107 rows are a better authority than any of them.</b></p>
+  </div>
+  <div class="pcard">
+    <p><b>&ldquo;Rank creators by engagement rate.&rdquo;</b> The near-universal advice, and in your data
+      it is actively misleading. Comment rate correlates <b>+0.45 with a worse CPM</b> &mdash; the
+      chattiest audiences cost you more per view delivered, not less. Cost efficiency tracks
+      views-per-follower at <b>Spearman &minus;0.69</b>, and follower count at only &minus;0.19.</p>
+    <p class="take">So engagement is scored here as an <b>authenticity check</b>, never as a value driver.
+      The metric that decides the buy is views-per-follower, and it is readable off a public profile
+      before any money is committed.</p>
+  </div>
+</section>
+
 <!-- ================= TAB 2 : PAST DATA ================= -->
 <section class="pane" id="p-data" role="tabpanel" aria-labelledby="t-data">
   <p class="pane-lede">Every campaign in the file, by brand. <strong>CPM is the ranking column</strong> &mdash;
@@ -687,7 +968,7 @@ table.data tbody tr:hover{background:var(--sunken)}
       <div class="worked"><div class="wh">Continuing</div>
         <table><tr><td>98,000 × 0.75</td><td>73,500</td></tr></table></div>
       <div class="why"><b>Be honest about this one:</b> 0.75 is an industry convention, not something your
-        105 campaigns can prove &mdash; the file holds no organic baseline for the same creators to compare
+        107 campaigns can prove &mdash; the file holds no organic baseline for the same creators to compare
         against. It is exposed as a dial for exactly that reason. Ask a creator for their last sponsored
         post's views and you can replace the assumption with a fact.</div>
     </div></div>
@@ -768,7 +1049,7 @@ walk_away = fair_fee × 2</div>
 <section class="pane" id="p-guide" role="tabpanel" aria-labelledby="t-guide">
   <p class="pane-lede">The metrics professional influencer teams actually underwrite on, in the order they
     matter &mdash; and what each one looks like when it goes wrong. Benchmark figures are from your own
-    105 campaigns, not an industry average.</p>
+    107 campaigns, not an industry average.</p>
 
   <div class="sec">
     <div class="sec-h"><span class="eyebrow">Tier 1</span><h2>Decide the buy on these</h2></div>
@@ -900,7 +1181,7 @@ walk_away = fair_fee × 2</div>
         <tr><td>Trust &amp; fit <span class="pill p-mute">checklist</span></td><td>15</td><td>20</td><td class="top">30</td></tr>
       </tbody></table>
     <div class="note"><b>The one finding that contradicts standard practice.</b> Most agency decks rank
-      creators by engagement rate. In your 105 campaigns, comment rate correlates <b>+0.45</b> with a
+      creators by engagement rate. In your 107 campaigns, comment rate correlates <b>+0.45</b> with a
       <em>worse</em> CPM, and share rate <b>+0.22</b> — because engagement ratios are mechanically inflated
       on low-reach posts, where the denominator is small. Ranking on engagement rate systematically selects
       creators who cannot distribute. That is why this desk scores engagement as an authenticity gate and
@@ -975,7 +1256,7 @@ walk_away = fair_fee × 2</div>
 
   <div class="note"><b>Data quality.</b>
     <ul>
-      <li>3 of 105 rows carry no fee and 23 no TikTok view count; those rows sit out of the affected benchmarks.</li>
+      <li>3 of 107 rows carry no fee and 17 no TikTok view count; those rows sit out of the affected benchmarks.</li>
       <li>One row (V Spring, MediAnswer) records 5.7 likes against 36.4K views &mdash; almost certainly 5.7K mistyped.</li>
       <li>Jenny House and efilow rows largely lack follower counts, so they inform CPM but not the VFR benchmark.</li>
     </ul>
@@ -983,12 +1264,12 @@ walk_away = fair_fee × 2</div>
 </section>
 
 <div class="foot">
-  <span>HeBE Cambodia &middot; 105 campaigns &middot; Oct 2024 &ndash; Jun 2026 &middot; Dr.Melaxin, Jenny House, Mary&amp;May, MediAnswer, efilow</span>
+  <span>HeBE Cambodia &middot; 107 campaigns &middot; Oct 2024 &ndash; Jun 2026 &middot; Dr.Melaxin, Jenny House, Mary&amp;May, MediAnswer, efilow</span>
   <span>All figures USD</span>
 </div>
 </div>
 <script>
-const HEBE={"meta":{"campaigns":105,"brands":["Dr.Melaxin","Jenny House","Mary&May","MediAnswer","efilow"],"total_spend_usd":38380,"total_views":32892060,"market":"Cambodia (KH)","period":"Oct 2024 - Jun 2026"},"tiktok":{"n":82,"cpm":{"p10":1.424501,"p25":2.727981,"p50":7.067138,"p75":26.760865,"p90":62.5},"vfr":{"p10":0.014455,"p25":0.054409,"p50":0.127027,"p75":0.269444,"p90":0.627141},"erv":{"p10":0.03747,"p25":0.059755,"p50":0.083324,"p75":0.118727,"p90":0.169096},"share_rate":{"p10":0.000418,"p25":0.000925,"p50":0.001909,"p75":0.003402,"p90":0.005778},"comment_rate":{"p10":0.000151,"p25":0.00034,"p50":0.000527,"p75":0.001299,"p90":0.002812},"cpe":{"p10":0.011898,"p25":0.034626,"p50":0.076365,"p75":0.307377,"p90":0.869565},"agg_cpm":3.946,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":15,"med_vfr":0.5047,"med_cpm":4.96,"avg_fee":217,"blowup_rate":0.4},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":33,"med_vfr":0.127,"med_cpm":10.24,"avg_fee":363,"blowup_rate":0.273},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":18,"med_vfr":0.0881,"med_cpm":4.63,"avg_fee":489,"blowup_rate":0.278},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":16,"med_vfr":0.0767,"med_cpm":3.83,"avg_fee":594,"blowup_rate":0.312}]},"facebook":{"n":61,"cpm":{"p10":0.6,"p25":1.470588,"p50":13.043478,"p75":35.294118,"p90":92.592593},"vfr":{"p10":0.050209,"p25":0.085561,"p50":0.263261,"p75":1.218182,"p90":1.583333},"erv":{"p10":0.023929,"p25":0.038667,"p50":0.053083,"p75":0.066395,"p90":0.08475},"share_rate":{"p10":9.2e-05,"p25":0.000224,"p50":0.000426,"p75":0.000851,"p90":0.0016},"comment_rate":{"p10":0.000113,"p25":0.000224,"p50":0.000485,"p75":0.001125,"p90":0.002252},"cpe":{"p10":0.014864,"p25":0.033102,"p50":0.240385,"p75":0.75431,"p90":2.142857},"agg_cpm":1.257,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":22,"med_vfr":0.2816,"med_cpm":35.32,"avg_fee":293,"blowup_rate":0.682},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":19,"med_vfr":0.1168,"med_cpm":13.89,"avg_fee":468,"blowup_rate":0.368},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":11,"med_vfr":0.2693,"med_cpm":4.06,"avg_fee":609,"blowup_rate":0.091},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":9,"med_vfr":0.5385,"med_cpm":1.31,"avg_fee":922,"blowup_rate":0.0}]},"auth_curve":{"tiktok":{"comment":{"a":-1.6638,"b":0.6685,"sd":0.394},"like":{"a":-0.9878,"b":0.9682,"sd":0.366}},"facebook":{"comment":{"a":-2.2601,"b":0.778,"sd":0.444}}},"market_fee_tiktok":[{"label":"<50K","min":0,"max":50000.0,"p25":100,"median":275,"p75":300},{"label":"50-100K","min":50000.0,"max":100000.0,"p25":100,"median":200,"p75":300},{"label":"100-300K","min":100000.0,"max":300000.0,"p25":200,"median":250,"p75":400},{"label":"300-700K","min":300000.0,"max":700000.0,"p25":200,"median":250,"p75":550},{"label":"700K-1.5M","min":700000.0,"max":1500000.0,"p25":200,"median":500,"p75":650},{"label":"1.5M+","min":1500000.0,"max":9000000000.0,"p25":300,"median":400,"p75":600}],"evidence":{"followers_explain_views_r2":0.124,"vfr_vs_cpm_spearman":-0.691,"followers_vs_cost_spearman":0.396,"cost_vs_views_spearman":0.228,"followers_vs_views_spearman":0.372,"good_half_spend_share":0.43,"good_half_view_share":0.91,"wasted_spend":19150,"views_lost":1885449,"vfr_bands":[{"band":"<0.05","n":19,"med_cpm":48.61,"avg_fee":453},{"band":"0.05-0.15","n":26,"med_cpm":9.28,"avg_fee":433},{"band":"0.15-0.40","n":21,"med_cpm":4.09,"avg_fee":346},{"band":"0.40+","n":16,"med_cpm":2.53,"avg_fee":400}],"fb_multiplier_median":1.09},"best":[{"name":"Jing Gaming","brand":"MediAnswer","followers":2500000.0,"views":564600.0,"cost":300.0,"cpm":0.53,"vfr":0.226},{"name":"Moniroth","brand":"efilow","followers":3500000.0,"views":703000.0,"cost":400.0,"cpm":0.57,"vfr":0.201},{"name":"May Lee","brand":"MediAnswer","followers":89000.0,"views":299000.0,"cost":200.0,"cpm":0.67,"vfr":3.36},{"name":"Wei Ying","brand":"Jenny House","followers":2300000.0,"views":504000.0,"cost":350.0,"cpm":0.69,"vfr":0.219},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":802000.0,"cost":600.0,"cpm":0.75,"vfr":0.617},{"name":"Samnang","brand":"efilow","followers":61000.0,"views":53000.0,"cost":50.0,"cpm":0.94,"vfr":0.869},{"name":"Nuth","brand":"Dr.Melaxin","followers":644000.0,"views":355000.0,"cost":350.0,"cpm":0.99,"vfr":0.551},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":559300.0,"cost":600.0,"cpm":1.07,"vfr":0.43},{"name":"Solly","brand":"efilow","followers":825000.0,"views":70200.0,"cost":100.0,"cpm":1.42,"vfr":0.085},{"name":"Nanac","brand":"Jenny House","followers":1200000.0,"views":345000.0,"cost":500.0,"cpm":1.45,"vfr":0.287}],"worst":[{"name":"Daneth","brand":"Mary&May","followers":959300.0,"views":936.0,"cost":350.0,"cpm":373.93,"vfr":0.001},{"name":"Kalyanney","brand":"Mary&May","followers":522700.00000000006,"views":3126.0,"cost":600.0,"cpm":191.94,"vfr":0.006},{"name":"Noeng Haratey","brand":"Mary&May","followers":323400.0,"views":2293.0,"cost":350.0,"cpm":152.64,"vfr":0.007},{"name":"Jim Gaming","brand":"Mary&May","followers":2500000.0,"views":2256.0,"cost":300.0,"cpm":132.98,"vfr":0.001},{"name":"Niki Niki","brand":"MediAnswer","followers":162000.0,"views":15100.0,"cost":1500.0,"cpm":99.34,"vfr":0.093},{"name":"Marady Tep","brand":"Mary&May","followers":87300.0,"views":3260.0,"cost":300.0,"cpm":92.02,"vfr":0.037},{"name":"Shanel","brand":"Mary&May","followers":653100.0,"views":8905.0,"cost":800.0,"cpm":89.84,"vfr":0.014},{"name":"Sokly","brand":"Mary&May","followers":325200.0,"views":3103.0,"cost":250.0,"cpm":80.57,"vfr":0.01},{"name":"Leng leng","brand":"Mary&May","followers":1100000.0,"views":15900.0,"cost":1000.0,"cpm":62.89,"vfr":0.014},{"name":"Pich sothea","brand":"MediAnswer","followers":67400.0,"views":1600.0,"cost":100.0,"cpm":62.5,"vfr":0.024}],"scatter":[[1300000,802000,0.75,"Mariam Brown","Dr.Melaxin",600],[1300000,559300,1.07,"Mariam Brown","Dr.Melaxin",600],[644000,355000,0.99,"Nuth","Dr.Melaxin",350],[561500,81900,2.44,"Reddy Kim","Dr.Melaxin",200],[1300000,151700,3.96,"Mariam Brown","Dr.Melaxin",600],[103000,9500,31.58,"Kael","Dr.Melaxin",300],[239000,18100,19.34,"Mey Jelly","Dr.Melaxin",350],[225000,32000,6.25,"Liza","Jenny House",200],[2300000,504000,0.69,"Wei Ying","Jenny House",350],[194000,50400,4.96,"Young","Jenny House",250],[1200000,345000,1.45,"Nanac","Jenny House",500],[100200,26700,14.98,"Hong & Hui","Mary&May",400],[2500000,2256,132.98,"Jim Gaming","Mary&May",300],[88100,7936,37.8,"Kael","Mary&May",300],[2500000,4020,24.88,"MaNa-MaNeth","Mary&May",100],[87300,3260,92.02,"Marady Tep","Mary&May",300],[42800,7947,31.46,"Nelly","Mary&May",250],[139200,10800,16.67,"Roi","Mary&May",180],[45000,7537,39.8,"Sak","Mary&May",300],[6600000,359100,2.23,"Samreth","Mary&May",800],[682400,28300,7.07,"Sivelang","Mary&May",200],[130700,122600,3.26,"Terk Kalok","Mary&May",400],[764300,184000,5.16,"Tith HavHeang","Mary&May",950],[434300,70200,2.85,"Narong","Mary&May",200],[59700,69200,2.89,"Siam","Mary&May",200],[959300,936,373.93,"Daneth","Mary&May",350],[770400,188700,2.65,"Dimple","Mary&May",500],[110800,9342,26.76,"Neat","Mary&May",250],[522700,3126,191.94,"Kalyanney","Mary&May",600],[1100000,15900,62.89,"Leng leng","Mary&May",1000],[16400,33200,3.01,"Munichenda","Mary&May",100],[323400,2293,152.64,"Noeng Haratey","Mary&May",350],[653100,8905,89.84,"Shanel","Mary&May",800],[325200,3103,80.57,"Sokly","Mary&May",250],[66900,21400,4.67,"Glowy","MediAnswer",100],[242000,7200,48.61,"Vann David","MediAnswer",350],[363000,15900,12.58,"Cney","MediAnswer",200],[75900,47600,2.1,"Monyneath","MediAnswer",100],[331000,17700,8.47,"Krim boramey","MediAnswer",150],[67400,1600,62.5,"Pich sothea","MediAnswer",100],[269000,36400,6.87,"V Spring","MediAnswer",250],[183000,16600,10.24,"Bella Jing","MediAnswer",170],[124000,24100,12.45,"Jin Ju","MediAnswer",300],[74900,37800,7.94,"Mark Roy","MediAnswer",300],[89000,299000,0.67,"May Lee","MediAnswer",200],[293000,314800,3.81,"Sinora","MediAnswer",1200],[151000,29600,10.14,"So Panha","MediAnswer",300],[1000000,40400,3.71,"You You","MediAnswer",150],[148000,18800,10.64,"Huang Huang","MediAnswer",200],[224000,23100,8.66,"Lii Ly","MediAnswer",200],[212000,24700,8.1,"Pich Diamond","MediAnswer",200],[782000,71200,2.81,"Por Eii","MediAnswer",200],[4100000,33500,22.39,"Phan Rong","MediAnswer",750],[2500000,564600,0.53,"Jing Gaming","MediAnswer",300],[438000,193000,2.85,"Lim Alice","MediAnswer",550],[162000,15100,99.34,"Niki Niki","MediAnswer",1500],[1100000,103000,14.56,"Lin","MediAnswer",1500],[568400,171200,4.09,"Nuth","MediAnswer",700],[668600,47400,25.32,"Xing","MediAnswer",1200],[874000,36500,41.1,"Melia","MediAnswer",1500],[349000,97100,1.54,"Hak beam","MediAnswer",150],[83000,60500,4.96,"Kael","MediAnswer",300],[1100000,65700,9.89,"Nanac","MediAnswer",650],[546000,86500,2.31,"Reddy Kim","MediAnswer",200],[248000,13800,39.86,"Riki","MediAnswer",550],[151000,5807,43.05,"Shuy","MediAnswer",250],[652000,59800,2.51,"Chi lii","MediAnswer",150],[309000,45500,6.59,"Danin","MediAnswer",300],[67000,204900,1.46,"Elnaly","MediAnswer",300],[17300,7402,47.28,"Fern Seng","MediAnswer",350],[108000,29100,13.75,"Neath","MediAnswer",400],[706000,41800,7.18,"Lunlyly","MediAnswer",300],[514000,128300,2.73,"Meov","MediAnswer",350],[444000,360800,2.22,"Tithphally","MediAnswer",800],[1100000,32700,27.52,"Zorng","MediAnswer",900],[216000,12800,35.16,"Joby","MediAnswer",450],[237000,44900,2.67,"Harry","efilow",120],[825000,70200,1.42,"Solly","efilow",100],[516000,22600,6.64,"Meov","efilow",150],[191000,57400,4.36,"Nan","efilow",250],[3500000,703000,0.57,"Moniroth","efilow",400],[61000,53000,0.94,"Samnang","efilow",50]],"rows":[{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":802000.0,"ff":363000.0,"fv":8600000.0,"tot":9402000.0,"eng":120504.0,"cpm":0.06,"vfr":0.617,"fvfr":23.691,"erv":0.0128},{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":559300.0,"ff":363000.0,"fv":1000000.0,"tot":1559300.0,"eng":109958.0,"cpm":0.38,"vfr":0.43,"fvfr":2.755,"erv":0.0705},{"n":"Nuth","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":350.0,"tf":644000.0,"tv":355000.0,"ff":394000.0,"fv":403000.0,"tot":758000.0,"eng":50453.0,"cpm":0.46,"vfr":0.551,"fvfr":1.023,"erv":0.0666},{"n":"Reddy Kim","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel Shot","c":200.0,"tf":561500.0,"tv":81900.0,"ff":241000.0,"fv":11000.0,"tot":92900.0,"eng":9399.0,"cpm":2.15,"vfr":0.146,"fvfr":0.046,"erv":0.1012},{"n":"Mariam Brown","b":"Dr.Melaxin","m":4,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":151700.0,"ff":363000.0,"fv":350000.0,"tot":501700.0,"eng":44741.0,"cpm":1.2,"vfr":0.117,"fvfr":0.964,"erv":0.0892},{"n":"Kael","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel shot","c":300.0,"tf":103000.0,"tv":9500.0,"ff":19000.0,"fv":5400.0,"tot":14900.0,"eng":2178.0,"cpm":20.13,"vfr":0.092,"fvfr":0.284,"erv":0.1462},{"n":"Mey Jelly","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel Shot","c":350.0,"tf":239000.0,"tv":18100.0,"ff":239000.0,"fv":12000.0,"tot":30100.0,"eng":1298.0,"cpm":11.63,"vfr":0.076,"fvfr":0.05,"erv":0.0431},{"n":"Liza","b":"Jenny House","m":5,"y":2025,"p":"","c":200.0,"tf":225000.0,"tv":32000.0,"ff":null,"fv":null,"tot":32000.0,"eng":1541.0,"cpm":6.25,"vfr":0.142,"fvfr":null,"erv":0.0482},{"n":"Mong Chi","b":"Jenny House","m":5,"y":2025,"p":"","c":150.0,"tf":636000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Wei Ying","b":"Jenny House","m":5,"y":2025,"p":"","c":350.0,"tf":2300000.0,"tv":504000.0,"ff":687000.0,"fv":885000.0,"tot":1389000.0,"eng":43168.0,"cpm":0.25,"vfr":0.219,"fvfr":1.288,"erv":0.0311},{"n":"Young","b":"Jenny House","m":5,"y":2025,"p":"","c":250.0,"tf":194000.0,"tv":50400.0,"ff":304000.0,"fv":18000.0,"tot":68400.0,"eng":2831.0,"cpm":3.65,"vfr":0.26,"fvfr":0.059,"erv":0.0414},{"n":"Nanac","b":"Jenny House","m":6,"y":2025,"p":"","c":500.0,"tf":1200000.0,"tv":345000.0,"ff":786000.0,"fv":660000.0,"tot":1005000.0,"eng":58979.0,"cpm":0.5,"vfr":0.287,"fvfr":0.84,"erv":0.0587},{"n":"You You","b":"Jenny House","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":45000.0,"ff":null,"fv":19000.0,"tot":64000.0,"eng":6649.0,"cpm":2.34,"vfr":null,"fvfr":null,"erv":0.1039},{"n":"Hong & Hui","b":"Mary&May","m":3,"y":2026,"p":"Both","c":400.0,"tf":100200.0,"tv":26700.0,"ff":137000.0,"fv":28000.0,"tot":54700.0,"eng":2766.0,"cpm":7.31,"vfr":0.266,"fvfr":0.204,"erv":0.0506},{"n":"Jim Gaming","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":2500000.0,"tv":2256.0,"ff":9000.0,"fv":12000.0,"tot":14256.0,"eng":1548.0,"cpm":21.04,"vfr":0.001,"fvfr":1.333,"erv":0.1086},{"n":"Kael","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":88100.0,"tv":7936.0,"ff":6000.0,"fv":23000.0,"tot":30936.0,"eng":3452.0,"cpm":9.7,"vfr":0.09,"fvfr":3.833,"erv":0.1116},{"n":"MaNa-MaNeth","b":"Mary&May","m":3,"y":2026,"p":"Both","c":100.0,"tf":2500000.0,"tv":4020.0,"ff":41000.0,"fv":3000.0,"tot":7020.0,"eng":431.0,"cpm":14.25,"vfr":0.002,"fvfr":0.073,"erv":0.0614},{"n":"Marady Tep","b":"Mary&May","m":3,"y":2026,"p":"Both","c":300.0,"tf":87300.0,"tv":3260.0,"ff":55000.0,"fv":4700.0,"tot":7960.0,"eng":596.0,"cpm":37.69,"vfr":0.037,"fvfr":0.085,"erv":0.0749},{"n":"Nan Nan","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":600.0,"tf":4300000.0,"tv":null,"ff":890000.0,"fv":1100000.0,"tot":1100000.0,"eng":80738.0,"cpm":0.55,"vfr":null,"fvfr":1.236,"erv":0.0734},{"n":"Nelly","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":250.0,"tf":42800.0,"tv":7947.0,"ff":3500.0,"fv":535.0,"tot":8482.0,"eng":2248.0,"cpm":29.47,"vfr":0.186,"fvfr":0.153,"erv":0.265},{"n":"Roi","b":"Mary&May","m":3,"y":2026,"p":"Both","c":180.0,"tf":139200.0,"tv":10800.0,"ff":1800.0,"fv":null,"tot":10800.0,"eng":775.0,"cpm":16.67,"vfr":0.078,"fvfr":null,"erv":0.0718},{"n":"Sak","b":"Mary&May","m":3,"y":2026,"p":"Both","c":300.0,"tf":45000.0,"tv":7537.0,"ff":10000.0,"fv":21000.0,"tot":28537.0,"eng":1874.0,"cpm":10.51,"vfr":0.167,"fvfr":2.1,"erv":0.0657},{"n":"Samreth","b":"Mary&May","m":3,"y":2026,"p":"Both","c":800.0,"tf":6600000.0,"tv":359100.0,"ff":1200000.0,"fv":240000.0,"tot":599100.0,"eng":23558.0,"cpm":1.34,"vfr":0.054,"fvfr":0.2,"erv":0.0393},{"n":"Sivelang","b":"Mary&May","m":3,"y":2026,"p":"Both","c":200.0,"tf":682400.0,"tv":28300.0,"ff":505000.0,"fv":136000.0,"tot":164300.0,"eng":12669.0,"cpm":1.22,"vfr":0.041,"fvfr":0.269,"erv":0.0771},{"n":"Terk Kalok","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":400.0,"tf":130699.99999999999,"tv":122600.0,"ff":259000.0,"fv":329000.0,"tot":451600.0,"eng":28989.0,"cpm":0.89,"vfr":0.938,"fvfr":1.27,"erv":0.0642},{"n":"Tith HavHeang","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":950.0,"tf":764300.0,"tv":184000.0,"ff":1200000.0,"fv":1900000.0,"tot":2084000.0,"eng":116239.0,"cpm":0.46,"vfr":0.241,"fvfr":1.583,"erv":0.0558},{"n":"Narong","b":"Mary&May","m":4,"y":2026,"p":"PDRN Cream/Soothing Gel","c":200.0,"tf":434300.0,"tv":70200.0,"ff":66000.0,"fv":5500.0,"tot":75700.0,"eng":17602.0,"cpm":2.64,"vfr":0.162,"fvfr":0.083,"erv":0.2325},{"n":"Siam","b":"Mary&May","m":4,"y":2026,"p":"PDRN Cream/Soothing Gel","c":200.0,"tf":59700.0,"tv":69200.0,"ff":78000.0,"fv":12000.0,"tot":81200.0,"eng":5071.0,"cpm":2.46,"vfr":1.159,"fvfr":0.154,"erv":0.0625},{"n":"Daneth","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":350.0,"tf":959300.0,"tv":936.0,"ff":641000.0,"fv":5200.0,"tot":6136.0,"eng":342.0,"cpm":57.04,"vfr":0.001,"fvfr":0.008,"erv":0.0557},{"n":"Dimple","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":500.0,"tf":770400.0,"tv":188700.0,"ff":null,"fv":null,"tot":188700.0,"eng":12440.0,"cpm":2.65,"vfr":0.245,"fvfr":null,"erv":0.0659},{"n":"Neat","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":250.0,"tf":110800.0,"tv":9342.0,"ff":50000.0,"fv":48000.0,"tot":57342.0,"eng":1533.0,"cpm":4.36,"vfr":0.084,"fvfr":0.96,"erv":0.0267},{"n":"Kalyanney","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":600.0,"tf":522700.00000000006,"tv":3126.0,"ff":43000.0,"fv":12000.0,"tot":15126.0,"eng":443.0,"cpm":39.67,"vfr":0.006,"fvfr":0.279,"erv":0.0293},{"n":"Leng leng","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":1000.0,"tf":1100000.0,"tv":15900.0,"ff":808000.0,"fv":76000.0,"tot":91900.0,"eng":5561.0,"cpm":10.88,"vfr":0.014,"fvfr":0.094,"erv":0.0605},{"n":"Munichenda","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":100.0,"tf":16400.0,"tv":33200.0,"ff":null,"fv":null,"tot":33200.0,"eng":2162.0,"cpm":3.01,"vfr":2.024,"fvfr":null,"erv":0.0651},{"n":"Noeng Haratey","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":350.0,"tf":323400.0,"tv":2293.0,"ff":189000.0,"fv":12000.0,"tot":14293.0,"eng":846.0,"cpm":24.49,"vfr":0.007,"fvfr":0.063,"erv":0.0592},{"n":"Shanel","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":800.0,"tf":653100.0,"tv":8905.0,"ff":1700000.0,"fv":424000.0,"tot":432905.0,"eng":21833.0,"cpm":1.85,"vfr":0.014,"fvfr":0.249,"erv":0.0504},{"n":"Sokly","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":250.0,"tf":325200.0,"tv":3103.0,"ff":119000.0,"fv":8200.0,"tot":11303.0,"eng":718.0,"cpm":22.12,"vfr":0.01,"fvfr":0.069,"erv":0.0635},{"n":"Dy Dy","b":"MediAnswer","m":10,"y":2024,"p":"","c":120.0,"tf":759000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jinny","b":"MediAnswer","m":10,"y":2024,"p":"","c":null,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"San Kosoma","b":"MediAnswer","m":10,"y":2024,"p":"","c":600.0,"tf":443000.0,"tv":null,"ff":523000.0,"fv":47000.0,"tot":47000.0,"eng":850.0,"cpm":12.77,"vfr":null,"fvfr":0.09,"erv":0.0181},{"n":"Glowy","b":"MediAnswer","m":11,"y":2024,"p":"","c":100.0,"tf":66900.0,"tv":21400.0,"ff":null,"fv":null,"tot":21400.0,"eng":2033.0,"cpm":4.67,"vfr":0.32,"fvfr":null,"erv":0.095},{"n":"Vann David","b":"MediAnswer","m":11,"y":2024,"p":"","c":350.0,"tf":242000.0,"tv":7200.0,"ff":null,"fv":null,"tot":7200.0,"eng":658.0,"cpm":48.61,"vfr":0.03,"fvfr":null,"erv":0.0914},{"n":"Cney","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":363000.0,"tv":15900.0,"ff":null,"fv":null,"tot":15900.0,"eng":580.0,"cpm":12.58,"vfr":0.044,"fvfr":null,"erv":0.0365},{"n":"Kimmo","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":774000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lin souma","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Monyneath","b":"MediAnswer","m":12,"y":2024,"p":"","c":100.0,"tf":75900.0,"tv":47600.0,"ff":null,"fv":null,"tot":47600.0,"eng":8200.0,"cpm":2.1,"vfr":0.627,"fvfr":null,"erv":0.1723},{"n":"Krim boramey","b":"MediAnswer","m":2,"y":2025,"p":"","c":150.0,"tf":331000.0,"tv":17700.0,"ff":null,"fv":null,"tot":17700.0,"eng":983.0,"cpm":8.47,"vfr":0.053,"fvfr":null,"erv":0.0555},{"n":"Mey Jelly","b":"MediAnswer","m":2,"y":2025,"p":"","c":200.0,"tf":641000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Pich sothea","b":"MediAnswer","m":2,"y":2025,"p":"","c":100.0,"tf":67400.0,"tv":1600.0,"ff":null,"fv":null,"tot":1600.0,"eng":140.0,"cpm":62.5,"vfr":0.024,"fvfr":null,"erv":0.0875},{"n":"V Spring","b":"MediAnswer","m":2,"y":2025,"p":"","c":250.0,"tf":269000.0,"tv":36400.0,"ff":null,"fv":null,"tot":36400.0,"eng":44.7,"cpm":6.87,"vfr":0.135,"fvfr":null,"erv":0.0012},{"n":"Bella Jing","b":"MediAnswer","m":3,"y":2025,"p":"","c":170.0,"tf":183000.0,"tv":16600.0,"ff":null,"fv":null,"tot":16600.0,"eng":622.0,"cpm":10.24,"vfr":0.091,"fvfr":null,"erv":0.0375},{"n":"Jin Ju","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":124000.0,"tv":24100.0,"ff":null,"fv":null,"tot":24100.0,"eng":5133.0,"cpm":12.45,"vfr":0.194,"fvfr":null,"erv":0.213},{"n":"Mark Roy","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":74900.0,"tv":37800.0,"ff":null,"fv":null,"tot":37800.0,"eng":4846.0,"cpm":7.94,"vfr":0.505,"fvfr":null,"erv":0.1282},{"n":"May Lee","b":"MediAnswer","m":3,"y":2025,"p":"","c":200.0,"tf":89000.0,"tv":299000.0,"ff":61000.0,"fv":3300.0,"tot":302300.0,"eng":23487.0,"cpm":0.66,"vfr":3.36,"fvfr":0.054,"erv":0.0777},{"n":"Sinora","b":"MediAnswer","m":3,"y":2025,"p":"","c":1200.0,"tf":293000.0,"tv":314800.0,"ff":1000000.0,"fv":917000.0,"tot":1231800.0,"eng":84762.0,"cpm":0.97,"vfr":1.074,"fvfr":0.917,"erv":0.0688},{"n":"So Panha","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":151000.0,"tv":29600.0,"ff":null,"fv":null,"tot":29600.0,"eng":1085.0,"cpm":10.14,"vfr":0.196,"fvfr":null,"erv":0.0367},{"n":"You You","b":"MediAnswer","m":3,"y":2025,"p":"","c":150.0,"tf":1000000.0,"tv":40400.0,"ff":225000.0,"fv":13000.0,"tot":53400.0,"eng":4083.0,"cpm":2.81,"vfr":0.04,"fvfr":0.058,"erv":0.0765},{"n":"Calixa","b":"MediAnswer","m":4,"y":2025,"p":"","c":100.0,"tf":103000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Huang Huang","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":148000.0,"tv":18800.0,"ff":null,"fv":null,"tot":18800.0,"eng":2619.0,"cpm":10.64,"vfr":0.127,"fvfr":null,"erv":0.1393},{"n":"Julie","b":"MediAnswer","m":4,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Kim Lang","b":"MediAnswer","m":4,"y":2025,"p":"","c":210.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lii Ly","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":224000.0,"tv":23100.0,"ff":null,"fv":null,"tot":23100.0,"eng":2784.0,"cpm":8.66,"vfr":0.103,"fvfr":null,"erv":0.1205},{"n":"Pich Diamond","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":212000.0,"tv":24700.0,"ff":null,"fv":null,"tot":24700.0,"eng":5182.0,"cpm":8.1,"vfr":0.117,"fvfr":null,"erv":0.2098},{"n":"Por Eii","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":782000.0,"tv":71200.0,"ff":null,"fv":null,"tot":71200.0,"eng":3030.0,"cpm":2.81,"vfr":0.091,"fvfr":null,"erv":0.0426},{"n":"Seav Fang","b":"MediAnswer","m":4,"y":2025,"p":"","c":380.0,"tf":1100000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Yan Socheata","b":"MediAnswer","m":4,"y":2025,"p":"","c":null,"tf":619000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Phan Rong","b":"MediAnswer","m":5,"y":2025,"p":"","c":750.0,"tf":4099999.9999999995,"tv":33500.0,"ff":2600000.0,"fv":1400000.0,"tot":1433500.0,"eng":52411.0,"cpm":0.52,"vfr":0.008,"fvfr":0.538,"erv":0.0366},{"n":"Salat sreylang","b":"MediAnswer","m":5,"y":2025,"p":"","c":500.0,"tf":2700000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jing Gaming","b":"MediAnswer","m":6,"y":2025,"p":"","c":300.0,"tf":2500000.0,"tv":564600.0,"ff":1000000.0,"fv":138000.0,"tot":702600.0,"eng":57554.0,"cpm":0.43,"vfr":0.226,"fvfr":0.138,"erv":0.0819},{"n":"Lim Alice","b":"MediAnswer","m":6,"y":2025,"p":"","c":550.0,"tf":438000.0,"tv":193000.0,"ff":509000.0,"fv":134000.0,"tot":327000.0,"eng":12951.0,"cpm":1.68,"vfr":0.441,"fvfr":0.263,"erv":0.0396},{"n":"Niki Niki","b":"MediAnswer","m":8,"y":2025,"p":"","c":1500.0,"tf":162000.0,"tv":15100.0,"ff":1200000.0,"fv":244000.0,"tot":259100.0,"eng":9264.0,"cpm":5.79,"vfr":0.093,"fvfr":0.203,"erv":0.0358},{"n":"Lin","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1500.0,"tf":1100000.0,"tv":103000.0,"ff":631000.0,"fv":319000.0,"tot":422000.0,"eng":24995.0,"cpm":3.55,"vfr":0.094,"fvfr":0.506,"erv":0.0592},{"n":"Nuth","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":700.0,"tf":568400.0,"tv":171200.0,"ff":394000.0,"fv":543000.0,"tot":714200.0,"eng":43317.0,"cpm":0.98,"vfr":0.301,"fvfr":1.378,"erv":0.0607},{"n":"Xing","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1200.0,"tf":668600.0,"tv":47400.0,"ff":1400000.0,"fv":1300000.0,"tot":1347400.0,"eng":76228.0,"cpm":0.89,"vfr":0.071,"fvfr":0.929,"erv":0.0566},{"n":"Melia","b":"MediAnswer","m":12,"y":2025,"p":"Nanoshot","c":1500.0,"tf":874000.0,"tv":36500.0,"ff":374000.0,"fv":32000.0,"tot":68500.0,"eng":7910.0,"cpm":21.9,"vfr":0.042,"fvfr":0.086,"erv":0.1155},{"n":"Hak beam","b":"MediAnswer","m":1,"y":2026,"p":"Toner Pad","c":150.0,"tf":349000.0,"tv":97100.0,"ff":null,"fv":null,"tot":97100.0,"eng":7388.0,"cpm":1.54,"vfr":0.278,"fvfr":null,"erv":0.0761},{"n":"Kael","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":300.0,"tf":83000.0,"tv":60500.0,"ff":14000.0,"fv":2800.0,"tot":63300.0,"eng":7250.0,"cpm":4.74,"vfr":0.729,"fvfr":0.2,"erv":0.1145},{"n":"Nanac","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":650.0,"tf":1100000.0,"tv":65700.0,"ff":697000.0,"fv":160000.0,"tot":225700.0,"eng":10745.0,"cpm":2.88,"vfr":0.06,"fvfr":0.23,"erv":0.0476},{"n":"Reddy Kim","b":"MediAnswer","m":1,"y":2026,"p":"Vita Pad","c":200.0,"tf":546000.0,"tv":86500.0,"ff":241000.0,"fv":37000.0,"tot":123500.0,"eng":14884.0,"cpm":1.62,"vfr":0.158,"fvfr":0.154,"erv":0.1205},{"n":"Riki","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":550.0,"tf":248000.0,"tv":13800.0,"ff":12000.0,"fv":16000.0,"tot":29800.0,"eng":3672.0,"cpm":18.46,"vfr":0.056,"fvfr":1.333,"erv":0.1232},{"n":"Shuy","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":250.0,"tf":151000.0,"tv":5807.0,"ff":61000.0,"fv":2700.0,"tot":8507.0,"eng":429.0,"cpm":29.39,"vfr":0.038,"fvfr":0.044,"erv":0.0504},{"n":"Chi lii","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":150.0,"tf":652000.0,"tv":59800.0,"ff":77000.0,"fv":28000.0,"tot":87800.0,"eng":5848.0,"cpm":1.71,"vfr":0.092,"fvfr":0.364,"erv":0.0666},{"n":"Danin","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/PDRN serum","c":300.0,"tf":309000.0,"tv":45500.0,"ff":69000.0,"fv":2800.0,"tot":48300.0,"eng":7169.0,"cpm":6.21,"vfr":0.147,"fvfr":0.041,"erv":0.1484},{"n":"Elnaly","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":300.0,"tf":67000.0,"tv":204900.0,"ff":19000.0,"fv":38000.0,"tot":242900.0,"eng":19499.0,"cpm":1.24,"vfr":3.058,"fvfr":2.0,"erv":0.0803},{"n":"Fern Seng","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot","c":350.0,"tf":17300.0,"tv":7402.0,"ff":7200.0,"fv":9900.0,"tot":17302.0,"eng":642.0,"cpm":20.23,"vfr":0.428,"fvfr":1.375,"erv":0.0371},{"n":"Neath","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/Toner Pad","c":400.0,"tf":108000.0,"tv":29100.0,"ff":50000.0,"fv":21000.0,"tot":50100.0,"eng":6678.0,"cpm":7.98,"vfr":0.269,"fvfr":0.42,"erv":0.1333},{"n":"Lunlyly","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":300.0,"tf":706000.0,"tv":41800.0,"ff":71000.0,"fv":8500.0,"tot":50300.0,"eng":3323.0,"cpm":5.96,"vfr":0.059,"fvfr":0.12,"erv":0.0661},{"n":"Meov","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":350.0,"tf":514000.0,"tv":128300.00000000001,"ff":220000.0,"fv":268000.0,"tot":396300.0,"eng":22660.0,"cpm":0.88,"vfr":0.25,"fvfr":1.218,"erv":0.0572},{"n":"Tithphally","b":"MediAnswer","m":5,"y":2026,"p":"Nanoshot","c":800.0,"tf":444000.0,"tv":360800.0,"ff":1100000.0,"fv":1600000.0,"tot":1960800.0,"eng":202796.0,"cpm":0.41,"vfr":0.813,"fvfr":1.455,"erv":0.1034},{"n":"Zorng","b":"MediAnswer","m":5,"y":2026,"p":"PDRN Serum","c":900.0,"tf":1100000.0,"tv":32700.000000000004,"ff":274000.0,"fv":32000.0,"tot":64700.0,"eng":7423.0,"cpm":13.91,"vfr":0.03,"fvfr":0.117,"erv":0.1147},{"n":"Joby","b":"MediAnswer","m":6,"y":2026,"p":"Nanoshot","c":450.0,"tf":216000.0,"tv":12800.0,"ff":300000.0,"fv":745.0,"tot":13545.0,"eng":1519.0,"cpm":33.22,"vfr":0.059,"fvfr":0.002,"erv":0.1121},{"n":"Harry","b":"efilow","m":12,"y":2024,"p":"","c":120.0,"tf":237000.0,"tv":44900.0,"ff":null,"fv":null,"tot":44900.0,"eng":1323.0,"cpm":2.67,"vfr":0.189,"fvfr":null,"erv":0.0295},{"n":"Solly","b":"efilow","m":12,"y":2024,"p":"","c":100.0,"tf":825000.0,"tv":70200.0,"ff":null,"fv":null,"tot":70200.0,"eng":9542.0,"cpm":1.42,"vfr":0.085,"fvfr":null,"erv":0.1359},{"n":"Meov","b":"efilow","m":4,"y":2025,"p":"","c":150.0,"tf":516000.0,"tv":22600.0,"ff":null,"fv":null,"tot":22600.0,"eng":4332.0,"cpm":6.64,"vfr":0.044,"fvfr":null,"erv":0.1917},{"n":"Hong & Hui","b":"efilow","m":5,"y":2025,"p":"","c":300.0,"tf":null,"tv":24400.0,"ff":158000.0,"fv":266.0,"tot":24666.0,"eng":770.0,"cpm":12.16,"vfr":null,"fvfr":0.002,"erv":0.0312},{"n":"Nan","b":"efilow","m":5,"y":2025,"p":"","c":250.0,"tf":191000.0,"tv":57400.0,"ff":251.0,"fv":444.0,"tot":57844.0,"eng":6761.0,"cpm":4.32,"vfr":0.301,"fvfr":1.769,"erv":0.1169},{"n":"Moniroth","b":"efilow","m":6,"y":2025,"p":"","c":400.0,"tf":3500000.0,"tv":703000.0,"ff":689000.0,"fv":487000.0,"tot":1190000.0,"eng":65664.0,"cpm":0.34,"vfr":0.201,"fvfr":0.707,"erv":0.0552},{"n":"Samnang","b":"efilow","m":6,"y":2025,"p":"","c":50.0,"tf":61000.0,"tv":53000.0,"ff":null,"fv":null,"tot":53000.0,"eng":1767.0,"cpm":0.94,"vfr":0.869,"fvfr":null,"erv":0.0333},{"n":"Bella Jing","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":10500.0,"ff":null,"fv":null,"tot":10500.0,"eng":478.0,"cpm":14.29,"vfr":null,"fvfr":null,"erv":0.0455},{"n":"Calixa","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Krim boramey","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":42300.0,"ff":null,"fv":null,"tot":42300.0,"eng":2618.0,"cpm":3.55,"vfr":null,"fvfr":null,"erv":0.0619},{"n":"May Lee","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":9500.0,"ff":null,"fv":2500.0,"tot":12000.0,"eng":735.0,"cpm":16.67,"vfr":null,"fvfr":null,"erv":0.0612},{"n":"Mey Jelly","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Vann David","b":"efilow","m":6,"y":2025,"p":"","c":null,"tf":null,"tv":9000.0,"ff":null,"fv":null,"tot":9000.0,"eng":1074.0,"cpm":null,"vfr":null,"fvfr":null,"erv":0.1193},{"n":"You You","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":68800.0,"ff":null,"fv":17000.0,"tot":85800.0,"eng":8728.0,"cpm":1.75,"vfr":null,"fvfr":null,"erv":0.1017}],"brands":[{"brand":"MediAnswer","n":54,"spend":21730,"views":10782454,"cpm":2.02,"med_cpm":5.96,"avg_fee":418,"eng":757677,"blowups":6,"scored":43,"best":{"n":"Tithphally","cpm":0.41,"v":1960800.0,"c":800.0},"worst":{"n":"Pich sothea","cpm":62.5,"v":1600.0,"c":100.0},"period":"10/2024\u20136/2026"},{"brand":"Mary&May","n":24,"spend":9680,"views":5569496,"cpm":1.74,"med_cpm":8.5,"avg_fee":403,"eng":344434,"blowups":7,"scored":24,"best":{"n":"Tith HavHeang","cpm":0.46,"v":2084000.0,"c":950.0},"worst":{"n":"Daneth","cpm":57.04,"v":6136.0,"c":350.0},"period":"3/2026\u20136/2026"},{"brand":"Dr.Melaxin","n":7,"spend":3000,"views":12358900,"cpm":0.24,"med_cpm":1.2,"avg_fee":429,"eng":338531,"blowups":1,"scored":7,"best":{"n":"Mariam Brown","cpm":0.06,"v":9402000.0,"c":600.0},"worst":{"n":"Kael","cpm":20.13,"v":14900.0,"c":300.0},"period":"3/2026\u20136/2026"},{"brand":"efilow","n":14,"spend":2370,"views":1622810,"cpm":1.46,"med_cpm":3.55,"avg_fee":182,"eng":103792,"blowups":0,"scored":11,"best":{"n":"Moniroth","cpm":0.34,"v":1190000.0,"c":400.0},"worst":{"n":"May Lee","cpm":16.67,"v":12000.0,"c":200.0},"period":"12/2024\u20136/2025"},{"brand":"Jenny House","n":6,"spend":1600,"views":2558400,"cpm":0.63,"med_cpm":2.34,"avg_fee":267,"eng":113168,"blowups":0,"scored":5,"best":{"n":"Wei Ying","cpm":0.25,"v":1389000.0,"c":350.0},"worst":{"n":"Liza","cpm":6.25,"v":32000.0,"c":200.0},"period":"5/2025\u20136/2025"}],"objectives":{"awareness":{"label":"Awareness","goal":"Cheapest possible reach","primary":"CPM","w":{"cost":35,"reach":30,"response":5,"reliability":15,"trust":15}},"engagement":{"label":"Engagement","goal":"Conversation and saves","primary":"ER-V / CPE","w":{"cost":20,"reach":20,"response":30,"reliability":10,"trust":20}},"conversion":{"label":"Conversion","goal":"Clicks and purchases","primary":"Share rate + trust","w":{"cost":20,"reach":15,"response":25,"reliability":10,"trust":30}}},"gates":{"micro":{"n":15,"vr_green":0.5047,"vr_amber":0.1675,"cpm_green":2.1,"cpm_amber":4.96,"ver_green":0.094,"ver_amber":0.0646,"minv_green":7537},"mid":{"n":33,"vr_green":0.127,"vr_amber":0.0757,"cpm_green":4.96,"cpm_amber":10.24,"ver_green":0.0838,"ver_amber":0.0448,"minv_green":13800},"macro":{"n":18,"vr_green":0.0851,"vr_amber":0.0418,"cpm_green":2.51,"cpm_amber":4.09,"ver_green":0.0717,"ver_amber":0.06,"minv_green":28300},"mega":{"n":16,"vr_green":0.0597,"vr_amber":0.0145,"cpm_green":0.75,"cpm_amber":3.71,"ver_green":0.0781,"ver_amber":0.0569,"minv_green":32700},"share":{"green":0.00191,"amber":0.00092}},"gatespec":[["G0","Data sufficiency",3,"Are there enough recent posts to judge this account?","Stale or thin accounts that cannot be read reliably",0],["G1","Spike ratio",3,"Do views depend on a few viral hits? (mean \u00f7 median)","Quiet accounts inflated by one or two spikes",0],["G2","Floor ratio",3,"Do weak posts still hold a floor? (p25 \u00f7 median)","Only the wins show; everyday posts barely seen",0],["G3","Peak ratio",2,"Is the best post abnormally spiky? (max \u00f7 median)","One mega-hit distorting the average",0],["G4","Top-3 share",2,"How concentrated are views in the best 3 posts?","Most reach coming from three lucky posts",0],["G5","View rate",5,"How many watch versus follow (views \u00f7 followers)","Big follower count, little real reach",0],["G6","Engagement rate",4,"How strongly viewers react (likes + comments \u00f7 views)","People watch but nobody responds",0],["G7","View floor",2,"Do large accounts hold a minimum view level?","Many followers but bottomed-out views",0],["G8","Share rate",2,"How shareable the content is (shares \u00f7 views)","No organic spread beyond the creator's feed",0],["G9","Cost efficiency",4,"Is the ask fair for the reach (eCPM)","Price far above what the views are worth",0],["G10","Follow-back ratio",2,"Follower count padded by mutual follows? (following \u00f7 followers)","Follow-for-follow padding, bought followers",1],["G11","Upload consistency",3,"Are uploads regular and recent?","Long gaps or burst posting; unreliable delivery",0],["G12","Comment-pod signal",2,"Do the same people comment across many posts?","Engagement pods faking response",1],["G13","Category fit",3,"What share of recent posts are in your category? (CFR)","Off-category creator whose audience ignores the product",0]],"pricebands":[["Great value",0,0.5],["Good deal",0.5,1.0],["Slightly overpriced",1.0,1.6],["Overpriced",1.6,99]]};
+const HEBE={"meta":{"campaigns":107,"brands":["Dr.Melaxin","Jenny House","Mary&May","MediAnswer","efilow"],"total_spend_usd":39450,"total_views":32966060,"market":"Cambodia (KH)","period":"Oct 2024 - Jun 2026"},"tiktok":{"n":82,"cpm":{"p10":1.424501,"p25":2.727981,"p50":7.067138,"p75":26.760865,"p90":62.5},"vfr":{"p10":0.014455,"p25":0.054409,"p50":0.127027,"p75":0.269444,"p90":0.627141},"erv":{"p10":0.03747,"p25":0.059755,"p50":0.083324,"p75":0.118727,"p90":0.169096},"share_rate":{"p10":0.000418,"p25":0.000925,"p50":0.001909,"p75":0.003402,"p90":0.005778},"comment_rate":{"p10":0.000151,"p25":0.00034,"p50":0.000527,"p75":0.001299,"p90":0.002812},"cpe":{"p10":0.011898,"p25":0.034626,"p50":0.076365,"p75":0.307377,"p90":0.869565},"agg_cpm":3.943,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":15,"med_vfr":0.5047,"med_cpm":4.96,"avg_fee":220,"blowup_rate":0.4},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":33,"med_vfr":0.127,"med_cpm":10.24,"avg_fee":360,"blowup_rate":0.273},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":18,"med_vfr":0.0881,"med_cpm":4.63,"avg_fee":489,"blowup_rate":0.278},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":16,"med_vfr":0.0767,"med_cpm":3.83,"avg_fee":594,"blowup_rate":0.312}]},"facebook":{"n":61,"cpm":{"p10":0.6,"p25":1.470588,"p50":12.765957,"p75":35.294118,"p90":92.592593},"vfr":{"p10":0.050209,"p25":0.085561,"p50":0.263261,"p75":1.218182,"p90":1.583333},"erv":{"p10":0.023929,"p25":0.038667,"p50":0.053083,"p75":0.066395,"p90":0.08475},"share_rate":{"p10":9.2e-05,"p25":0.000224,"p50":0.000426,"p75":0.000851,"p90":0.0016},"comment_rate":{"p10":0.000113,"p25":0.000224,"p50":0.000485,"p75":0.001125,"p90":0.002252},"cpe":{"p10":0.014864,"p25":0.033102,"p50":0.240385,"p75":0.75431,"p90":2.142857},"agg_cpm":1.257,"tiers":[{"label":"Nano/Micro <100K","min":0,"max":100000.0,"n":22,"med_vfr":0.2816,"med_cpm":35.32,"avg_fee":295,"blowup_rate":0.682},{"label":"Mid 100-500K","min":100000.0,"max":500000.0,"n":19,"med_vfr":0.1168,"med_cpm":12.5,"avg_fee":466,"blowup_rate":0.368},{"label":"Macro 500K-1M","min":500000.0,"max":1000000.0,"n":11,"med_vfr":0.2693,"med_cpm":4.06,"avg_fee":609,"blowup_rate":0.091},{"label":"Mega 1M+","min":1000000.0,"max":9000000000.0,"n":9,"med_vfr":0.5385,"med_cpm":1.31,"avg_fee":922,"blowup_rate":0.0}]},"auth_curve":{"tiktok":{"comment":{"a":-1.6638,"b":0.6685,"sd":0.394},"like":{"a":-0.9878,"b":0.9682,"sd":0.366}},"facebook":{"comment":{"a":-2.2601,"b":0.778,"sd":0.444}}},"market_fee_tiktok":[{"label":"<50K","min":0,"max":50000.0,"p25":100,"median":275,"p75":300},{"label":"50-100K","min":50000.0,"max":100000.0,"p25":100,"median":200,"p75":300},{"label":"100-300K","min":100000.0,"max":300000.0,"p25":200,"median":250,"p75":400},{"label":"300-700K","min":300000.0,"max":700000.0,"p25":200,"median":250,"p75":550},{"label":"700K-1.5M","min":700000.0,"max":1500000.0,"p25":200,"median":500,"p75":650},{"label":"1.5M+","min":1500000.0,"max":9000000000.0,"p25":300,"median":400,"p75":600}],"evidence":{"followers_explain_views_r2":0.124,"vfr_vs_cpm_spearman":-0.691,"followers_vs_cost_spearman":0.396,"cost_vs_views_spearman":0.228,"followers_vs_views_spearman":0.372,"good_half_spend_share":0.43,"good_half_view_share":0.91,"wasted_spend":19150,"views_lost":1885449,"vfr_bands":[{"band":"<0.05","n":19,"med_cpm":48.61,"avg_fee":453},{"band":"0.05-0.15","n":26,"med_cpm":9.28,"avg_fee":433},{"band":"0.15-0.40","n":21,"med_cpm":4.09,"avg_fee":346},{"band":"0.40+","n":16,"med_cpm":2.53,"avg_fee":400}],"fb_multiplier_median":1.09},"best":[{"name":"Jing Gaming","brand":"MediAnswer","followers":2500000.0,"views":564600.0,"cost":300.0,"cpm":0.53,"vfr":0.226},{"name":"Moniroth","brand":"efilow","followers":3500000.0,"views":703000.0,"cost":400.0,"cpm":0.57,"vfr":0.201},{"name":"May Lee","brand":"MediAnswer","followers":89000.0,"views":299000.0,"cost":200.0,"cpm":0.67,"vfr":3.36},{"name":"Wei Ying","brand":"Jenny House","followers":2300000.0,"views":504000.0,"cost":350.0,"cpm":0.69,"vfr":0.219},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":802000.0,"cost":600.0,"cpm":0.75,"vfr":0.617},{"name":"Samnang","brand":"efilow","followers":61000.0,"views":53000.0,"cost":50.0,"cpm":0.94,"vfr":0.869},{"name":"Nuth","brand":"Dr.Melaxin","followers":644000.0,"views":355000.0,"cost":350.0,"cpm":0.99,"vfr":0.551},{"name":"Mariam Brown","brand":"Dr.Melaxin","followers":1300000.0,"views":559300.0,"cost":600.0,"cpm":1.07,"vfr":0.43},{"name":"Solly","brand":"efilow","followers":825000.0,"views":70200.0,"cost":100.0,"cpm":1.42,"vfr":0.085},{"name":"Nanac","brand":"Jenny House","followers":1200000.0,"views":345000.0,"cost":500.0,"cpm":1.45,"vfr":0.287}],"worst":[{"name":"Daneth","brand":"Mary&May","followers":959300.0,"views":936.0,"cost":350.0,"cpm":373.93,"vfr":0.001},{"name":"Kalyanney","brand":"Mary&May","followers":522700.00000000006,"views":3126.0,"cost":600.0,"cpm":191.94,"vfr":0.006},{"name":"Noeng Haratey","brand":"Mary&May","followers":323400.0,"views":2293.0,"cost":350.0,"cpm":152.64,"vfr":0.007},{"name":"Jim Gaming","brand":"Mary&May","followers":2500000.0,"views":2256.0,"cost":300.0,"cpm":132.98,"vfr":0.001},{"name":"Marady Tep","brand":"Mary&May","followers":87300.0,"views":3260.0,"cost":350.0,"cpm":107.36,"vfr":0.037},{"name":"Niki Niki","brand":"MediAnswer","followers":162000.0,"views":15100.0,"cost":1500.0,"cpm":99.34,"vfr":0.093},{"name":"Shanel","brand":"Mary&May","followers":653100.0,"views":8905.0,"cost":800.0,"cpm":89.84,"vfr":0.014},{"name":"Sokly","brand":"Mary&May","followers":325200.0,"views":3103.0,"cost":250.0,"cpm":80.57,"vfr":0.01},{"name":"Leng leng","brand":"Mary&May","followers":1100000.0,"views":15900.0,"cost":1000.0,"cpm":62.89,"vfr":0.014},{"name":"Pich sothea","brand":"MediAnswer","followers":67400.0,"views":1600.0,"cost":100.0,"cpm":62.5,"vfr":0.024}],"scatter":[[1300000,802000,0.75,"Mariam Brown","Dr.Melaxin",600],[1300000,559300,1.07,"Mariam Brown","Dr.Melaxin",600],[644000,355000,0.99,"Nuth","Dr.Melaxin",350],[561500,81900,2.44,"Reddy Kim","Dr.Melaxin",200],[1300000,151700,3.96,"Mariam Brown","Dr.Melaxin",600],[103000,9500,31.58,"Kael","Dr.Melaxin",300],[239000,18100,19.34,"Mey Jelly","Dr.Melaxin",350],[225000,32000,6.25,"Liza","Jenny House",200],[2300000,504000,0.69,"Wei Ying","Jenny House",350],[194000,50400,4.96,"Young","Jenny House",250],[1200000,345000,1.45,"Nanac","Jenny House",500],[100200,26700,13.11,"Hong & Hui","Mary&May",350],[2500000,2256,132.98,"Jim Gaming","Mary&May",300],[88100,7936,37.8,"Kael","Mary&May",300],[2500000,4020,24.88,"MaNa-MaNeth","Mary&May",100],[87300,3260,107.36,"Marady Tep","Mary&May",350],[42800,7947,31.46,"Nelly","Mary&May",250],[139200,10800,13.89,"Roi","Mary&May",150],[45000,7537,39.8,"Sak","Mary&May",300],[6600000,359100,2.23,"Samreth","Mary&May",800],[682400,28300,7.07,"Sivelang","Mary&May",200],[130700,122600,3.26,"Terk Kalok","Mary&May",400],[764300,184000,5.16,"Tith HavHeang","Mary&May",950],[434300,70200,2.85,"Narong","Mary&May",200],[59700,69200,2.89,"Siam","Mary&May",200],[959300,936,373.93,"Daneth","Mary&May",350],[770400,188700,2.65,"Dimple","Mary&May",500],[110800,9342,26.76,"Neat","Mary&May",250],[522700,3126,191.94,"Kalyanney","Mary&May",600],[1100000,15900,62.89,"Leng leng","Mary&May",1000],[16400,33200,3.01,"Munichenda","Mary&May",100],[323400,2293,152.64,"Noeng Haratey","Mary&May",350],[653100,8905,89.84,"Shanel","Mary&May",800],[325200,3103,80.57,"Sokly","Mary&May",250],[66900,21400,4.67,"Glowy","MediAnswer",100],[242000,7200,48.61,"Vann David","MediAnswer",350],[363000,15900,12.58,"Cney","MediAnswer",200],[75900,47600,2.1,"Monyneath","MediAnswer",100],[331000,17700,8.47,"Krim boramey","MediAnswer",150],[67400,1600,62.5,"Pich sothea","MediAnswer",100],[269000,36400,6.87,"V Spring","MediAnswer",250],[183000,16600,10.24,"Bella Jing","MediAnswer",170],[124000,24100,12.45,"Jin Ju","MediAnswer",300],[74900,37800,7.94,"Mark Roy","MediAnswer",300],[89000,299000,0.67,"May Lee","MediAnswer",200],[293000,314800,3.81,"Sinora","MediAnswer",1200],[151000,29600,10.14,"So Panha","MediAnswer",300],[1000000,40400,3.71,"You You","MediAnswer",150],[148000,18800,10.64,"Huang Huang","MediAnswer",200],[224000,23100,8.66,"Lii Ly","MediAnswer",200],[212000,24700,8.1,"Pich Diamond","MediAnswer",200],[782000,71200,2.81,"Por Eii","MediAnswer",200],[4100000,33500,22.39,"Phan Rong","MediAnswer",750],[2500000,564600,0.53,"Jing Gaming","MediAnswer",300],[438000,193000,2.85,"Lim Alice","MediAnswer",550],[162000,15100,99.34,"Niki Niki","MediAnswer",1500],[1100000,103000,14.56,"Lin","MediAnswer",1500],[568400,171200,4.09,"Nuth","MediAnswer",700],[668600,47400,25.32,"Xing","MediAnswer",1200],[874000,36500,41.1,"Melia","MediAnswer",1500],[349000,97100,1.54,"Hak beam","MediAnswer",150],[83000,60500,4.96,"Kael","MediAnswer",300],[1100000,65700,9.89,"Nanac","MediAnswer",650],[546000,86500,2.31,"Reddy Kim","MediAnswer",200],[248000,13800,39.86,"Riki","MediAnswer",550],[151000,5807,43.05,"Shuy","MediAnswer",250],[652000,59800,2.51,"Chi lii","MediAnswer",150],[309000,45500,6.59,"Danin","MediAnswer",300],[67000,204900,1.46,"Elnaly","MediAnswer",300],[17300,7402,47.28,"Fern Seng","MediAnswer",350],[108000,29100,13.75,"Neath","MediAnswer",400],[706000,41800,7.18,"Lunlyly","MediAnswer",300],[514000,128300,2.73,"Meov","MediAnswer",350],[444000,360800,2.22,"Tithphally","MediAnswer",800],[1100000,32700,27.52,"Zorng","MediAnswer",900],[216000,12800,35.16,"Joby","MediAnswer",450],[237000,44900,2.67,"Harry","efilow",120],[825000,70200,1.42,"Solly","efilow",100],[516000,22600,6.64,"Meov","efilow",150],[191000,57400,4.36,"Nan","efilow",250],[3500000,703000,0.57,"Moniroth","efilow",400],[61000,53000,0.94,"Samnang","efilow",50]],"rows":[{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":802000.0,"ff":363000.0,"fv":8600000.0,"tot":9402000.0,"eng":120504.0,"cpm":0.06,"vfr":0.617,"fvfr":23.691,"erv":0.0128},{"n":"Mariam Brown","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":559300.0,"ff":363000.0,"fv":1000000.0,"tot":1559300.0,"eng":109958.0,"cpm":0.38,"vfr":0.43,"fvfr":2.755,"erv":0.0705},{"n":"Nuth","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel shot","c":350.0,"tf":644000.0,"tv":355000.0,"ff":394000.0,"fv":403000.0,"tot":758000.0,"eng":50453.0,"cpm":0.46,"vfr":0.551,"fvfr":1.023,"erv":0.0666},{"n":"Reddy Kim","b":"Dr.Melaxin","m":3,"y":2026,"p":"Peel Shot","c":200.0,"tf":561500.0,"tv":81900.0,"ff":241000.0,"fv":11000.0,"tot":92900.0,"eng":9399.0,"cpm":2.15,"vfr":0.146,"fvfr":0.046,"erv":0.1012},{"n":"Mariam Brown","b":"Dr.Melaxin","m":4,"y":2026,"p":"Peel shot","c":600.0,"tf":1300000.0,"tv":151700.0,"ff":363000.0,"fv":350000.0,"tot":501700.0,"eng":44741.0,"cpm":1.2,"vfr":0.117,"fvfr":0.964,"erv":0.0892},{"n":"Kael","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel shot","c":300.0,"tf":103000.0,"tv":9500.0,"ff":19000.0,"fv":5400.0,"tot":14900.0,"eng":2178.0,"cpm":20.13,"vfr":0.092,"fvfr":0.284,"erv":0.1462},{"n":"Mey Jelly","b":"Dr.Melaxin","m":6,"y":2026,"p":"Peel Shot","c":350.0,"tf":239000.0,"tv":18100.0,"ff":239000.0,"fv":12000.0,"tot":30100.0,"eng":1298.0,"cpm":11.63,"vfr":0.076,"fvfr":0.05,"erv":0.0431},{"n":"Liza","b":"Jenny House","m":5,"y":2025,"p":"","c":200.0,"tf":225000.0,"tv":32000.0,"ff":null,"fv":null,"tot":32000.0,"eng":1541.0,"cpm":6.25,"vfr":0.142,"fvfr":null,"erv":0.0482},{"n":"Mong Chi","b":"Jenny House","m":5,"y":2025,"p":"","c":150.0,"tf":636000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Wei Ying","b":"Jenny House","m":5,"y":2025,"p":"","c":350.0,"tf":2300000.0,"tv":504000.0,"ff":687000.0,"fv":885000.0,"tot":1389000.0,"eng":43168.0,"cpm":0.25,"vfr":0.219,"fvfr":1.288,"erv":0.0311},{"n":"Young","b":"Jenny House","m":5,"y":2025,"p":"","c":250.0,"tf":194000.0,"tv":50400.0,"ff":304000.0,"fv":18000.0,"tot":68400.0,"eng":2831.0,"cpm":3.65,"vfr":0.26,"fvfr":0.059,"erv":0.0414},{"n":"Nanac","b":"Jenny House","m":6,"y":2025,"p":"","c":500.0,"tf":1200000.0,"tv":345000.0,"ff":786000.0,"fv":660000.0,"tot":1005000.0,"eng":58979.0,"cpm":0.5,"vfr":0.287,"fvfr":0.84,"erv":0.0587},{"n":"You You","b":"Jenny House","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":45000.0,"ff":null,"fv":19000.0,"tot":64000.0,"eng":6649.0,"cpm":2.34,"vfr":null,"fvfr":null,"erv":0.1039},{"n":"Hong & Hui","b":"Mary&May","m":3,"y":2026,"p":"Collagen/Eye Cream","c":350.0,"tf":100200.0,"tv":26700.0,"ff":137000.0,"fv":28000.0,"tot":54700.0,"eng":2766.0,"cpm":6.4,"vfr":0.266,"fvfr":0.204,"erv":0.0506},{"n":"Jim Gaming","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":2500000.0,"tv":2256.0,"ff":9000.0,"fv":12000.0,"tot":14256.0,"eng":1548.0,"cpm":21.04,"vfr":0.001,"fvfr":1.333,"erv":0.1086},{"n":"Kael","b":"Mary&May","m":3,"y":2026,"p":"Eye Cream","c":300.0,"tf":88100.0,"tv":7936.0,"ff":6000.0,"fv":23000.0,"tot":30936.0,"eng":3452.0,"cpm":9.7,"vfr":0.09,"fvfr":3.833,"erv":0.1116},{"n":"MaNa-MaNeth","b":"Mary&May","m":3,"y":2026,"p":"Collagen/Eye Cream","c":100.0,"tf":2500000.0,"tv":4020.0,"ff":41000.0,"fv":3000.0,"tot":7020.0,"eng":431.0,"cpm":14.25,"vfr":0.002,"fvfr":0.073,"erv":0.0614},{"n":"Marady Tep","b":"Mary&May","m":3,"y":2026,"p":"Collagen/Eye Cream","c":350.0,"tf":87300.0,"tv":3260.0,"ff":55000.0,"fv":4700.0,"tot":7960.0,"eng":596.0,"cpm":43.97,"vfr":0.037,"fvfr":0.085,"erv":0.0749},{"n":"Nan Nan","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":600.0,"tf":4300000.0,"tv":null,"ff":890000.0,"fv":1100000.0,"tot":1100000.0,"eng":80738.0,"cpm":0.55,"vfr":null,"fvfr":1.236,"erv":0.0734},{"n":"Nelly","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":250.0,"tf":42800.0,"tv":7947.0,"ff":3500.0,"fv":535.0,"tot":8482.0,"eng":2248.0,"cpm":29.47,"vfr":0.186,"fvfr":0.153,"erv":0.265},{"n":"Roi","b":"Mary&May","m":3,"y":2026,"p":"Collagen/Ratinol Cream","c":150.0,"tf":139200.0,"tv":10800.0,"ff":1800.0,"fv":null,"tot":10800.0,"eng":775.0,"cpm":13.89,"vfr":0.078,"fvfr":null,"erv":0.0718},{"n":"Sak","b":"Mary&May","m":3,"y":2026,"p":"Both","c":300.0,"tf":45000.0,"tv":7537.0,"ff":10000.0,"fv":21000.0,"tot":28537.0,"eng":1874.0,"cpm":10.51,"vfr":0.167,"fvfr":2.1,"erv":0.0657},{"n":"Samreth","b":"Mary&May","m":3,"y":2026,"p":"Collagen/Eye Cream","c":800.0,"tf":6600000.0,"tv":359100.0,"ff":1200000.0,"fv":240000.0,"tot":599100.0,"eng":23558.0,"cpm":1.34,"vfr":0.054,"fvfr":0.2,"erv":0.0393},{"n":"Sivelang","b":"Mary&May","m":3,"y":2026,"p":"Both","c":200.0,"tf":682400.0,"tv":28300.0,"ff":505000.0,"fv":136000.0,"tot":164300.0,"eng":12669.0,"cpm":1.22,"vfr":0.041,"fvfr":0.269,"erv":0.0771},{"n":"Terk Kalok","b":"Mary&May","m":3,"y":2026,"p":"PDRN","c":400.0,"tf":130699.99999999999,"tv":122600.0,"ff":259000.0,"fv":329000.0,"tot":451600.0,"eng":28989.0,"cpm":0.89,"vfr":0.938,"fvfr":1.27,"erv":0.0642},{"n":"Tith HavHeang","b":"Mary&May","m":3,"y":2026,"p":"Collagen Cream","c":950.0,"tf":764300.0,"tv":184000.0,"ff":1200000.0,"fv":1900000.0,"tot":2084000.0,"eng":116239.0,"cpm":0.46,"vfr":0.241,"fvfr":1.583,"erv":0.0558},{"n":"Narong","b":"Mary&May","m":4,"y":2026,"p":"PDRN Cream/Soothing Gel","c":200.0,"tf":434300.0,"tv":70200.0,"ff":66000.0,"fv":5500.0,"tot":75700.0,"eng":17602.0,"cpm":2.64,"vfr":0.162,"fvfr":0.083,"erv":0.2325},{"n":"Siam","b":"Mary&May","m":4,"y":2026,"p":"Collagen/Eye Cream","c":200.0,"tf":59700.0,"tv":69200.0,"ff":78000.0,"fv":12000.0,"tot":81200.0,"eng":5071.0,"cpm":2.46,"vfr":1.159,"fvfr":0.154,"erv":0.0625},{"n":"Daneth","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":350.0,"tf":959300.0,"tv":936.0,"ff":641000.0,"fv":5200.0,"tot":6136.0,"eng":342.0,"cpm":57.04,"vfr":0.001,"fvfr":0.008,"erv":0.0557},{"n":"Dimple","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":500.0,"tf":770400.0,"tv":188700.0,"ff":null,"fv":null,"tot":188700.0,"eng":12440.0,"cpm":2.65,"vfr":0.245,"fvfr":null,"erv":0.0659},{"n":"Neat","b":"Mary&May","m":5,"y":2026,"p":"PDRN Cream/Soothing Gel","c":250.0,"tf":110800.0,"tv":9342.0,"ff":50000.0,"fv":48000.0,"tot":57342.0,"eng":1533.0,"cpm":4.36,"vfr":0.084,"fvfr":0.96,"erv":0.0267},{"n":"Kalyanney","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":600.0,"tf":522700.00000000006,"tv":3126.0,"ff":43000.0,"fv":12000.0,"tot":15126.0,"eng":443.0,"cpm":39.67,"vfr":0.006,"fvfr":0.279,"erv":0.0293},{"n":"Leng leng","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":1000.0,"tf":1100000.0,"tv":15900.0,"ff":808000.0,"fv":76000.0,"tot":91900.0,"eng":5561.0,"cpm":10.88,"vfr":0.014,"fvfr":0.094,"erv":0.0605},{"n":"Munichenda","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":100.0,"tf":16400.0,"tv":33200.0,"ff":null,"fv":null,"tot":33200.0,"eng":2162.0,"cpm":3.01,"vfr":2.024,"fvfr":null,"erv":0.0651},{"n":"Noeng Haratey","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":350.0,"tf":323400.0,"tv":2293.0,"ff":189000.0,"fv":12000.0,"tot":14293.0,"eng":846.0,"cpm":24.49,"vfr":0.007,"fvfr":0.063,"erv":0.0592},{"n":"Shanel","b":"Mary&May","m":6,"y":2026,"p":"PDRN Cream, Ratinol Cream","c":800.0,"tf":653100.0,"tv":8905.0,"ff":1700000.0,"fv":424000.0,"tot":432905.0,"eng":21833.0,"cpm":1.85,"vfr":0.014,"fvfr":0.249,"erv":0.0504},{"n":"Sokly","b":"Mary&May","m":6,"y":2026,"p":"Sun Cream, Mask","c":250.0,"tf":325200.0,"tv":3103.0,"ff":119000.0,"fv":8200.0,"tot":11303.0,"eng":718.0,"cpm":22.12,"vfr":0.01,"fvfr":0.069,"erv":0.0635},{"n":"Dy Dy","b":"MediAnswer","m":10,"y":2024,"p":"","c":120.0,"tf":759000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jinny","b":"MediAnswer","m":10,"y":2024,"p":"","c":null,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"San Kosoma","b":"MediAnswer","m":10,"y":2024,"p":"","c":600.0,"tf":443000.0,"tv":null,"ff":523000.0,"fv":47000.0,"tot":47000.0,"eng":850.0,"cpm":12.77,"vfr":null,"fvfr":0.09,"erv":0.0181},{"n":"Glowy","b":"MediAnswer","m":11,"y":2024,"p":"","c":100.0,"tf":66900.0,"tv":21400.0,"ff":null,"fv":null,"tot":21400.0,"eng":2033.0,"cpm":4.67,"vfr":0.32,"fvfr":null,"erv":0.095},{"n":"Vann David","b":"MediAnswer","m":11,"y":2024,"p":"","c":350.0,"tf":242000.0,"tv":7200.0,"ff":null,"fv":null,"tot":7200.0,"eng":658.0,"cpm":48.61,"vfr":0.03,"fvfr":null,"erv":0.0914},{"n":"Cney","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":363000.0,"tv":15900.0,"ff":null,"fv":null,"tot":15900.0,"eng":580.0,"cpm":12.58,"vfr":0.044,"fvfr":null,"erv":0.0365},{"n":"Kimmo","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":774000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lin souma","b":"MediAnswer","m":12,"y":2024,"p":"","c":200.0,"tf":1300000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Monyneath","b":"MediAnswer","m":12,"y":2024,"p":"","c":100.0,"tf":75900.0,"tv":47600.0,"ff":null,"fv":null,"tot":47600.0,"eng":8200.0,"cpm":2.1,"vfr":0.627,"fvfr":null,"erv":0.1723},{"n":"Krim boramey","b":"MediAnswer","m":2,"y":2025,"p":"","c":150.0,"tf":331000.0,"tv":17700.0,"ff":null,"fv":null,"tot":17700.0,"eng":983.0,"cpm":8.47,"vfr":0.053,"fvfr":null,"erv":0.0555},{"n":"Mey Jelly","b":"MediAnswer","m":2,"y":2025,"p":"","c":200.0,"tf":641000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Pich sothea","b":"MediAnswer","m":2,"y":2025,"p":"","c":100.0,"tf":67400.0,"tv":1600.0,"ff":null,"fv":null,"tot":1600.0,"eng":140.0,"cpm":62.5,"vfr":0.024,"fvfr":null,"erv":0.0875},{"n":"V Spring","b":"MediAnswer","m":2,"y":2025,"p":"","c":250.0,"tf":269000.0,"tv":36400.0,"ff":null,"fv":null,"tot":36400.0,"eng":44.7,"cpm":6.87,"vfr":0.135,"fvfr":null,"erv":0.0012},{"n":"Bella Jing","b":"MediAnswer","m":3,"y":2025,"p":"","c":170.0,"tf":183000.0,"tv":16600.0,"ff":null,"fv":null,"tot":16600.0,"eng":622.0,"cpm":10.24,"vfr":0.091,"fvfr":null,"erv":0.0375},{"n":"Jin Ju","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":124000.0,"tv":24100.0,"ff":null,"fv":null,"tot":24100.0,"eng":5133.0,"cpm":12.45,"vfr":0.194,"fvfr":null,"erv":0.213},{"n":"Mark Roy","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":74900.0,"tv":37800.0,"ff":null,"fv":null,"tot":37800.0,"eng":4846.0,"cpm":7.94,"vfr":0.505,"fvfr":null,"erv":0.1282},{"n":"May Lee","b":"MediAnswer","m":3,"y":2025,"p":"","c":200.0,"tf":89000.0,"tv":299000.0,"ff":61000.0,"fv":3300.0,"tot":302300.0,"eng":23487.0,"cpm":0.66,"vfr":3.36,"fvfr":0.054,"erv":0.0777},{"n":"Sinora","b":"MediAnswer","m":3,"y":2025,"p":"","c":1200.0,"tf":293000.0,"tv":314800.0,"ff":1000000.0,"fv":917000.0,"tot":1231800.0,"eng":84762.0,"cpm":0.97,"vfr":1.074,"fvfr":0.917,"erv":0.0688},{"n":"So Panha","b":"MediAnswer","m":3,"y":2025,"p":"","c":300.0,"tf":151000.0,"tv":29600.0,"ff":null,"fv":null,"tot":29600.0,"eng":1085.0,"cpm":10.14,"vfr":0.196,"fvfr":null,"erv":0.0367},{"n":"You You","b":"MediAnswer","m":3,"y":2025,"p":"","c":150.0,"tf":1000000.0,"tv":40400.0,"ff":225000.0,"fv":13000.0,"tot":53400.0,"eng":4083.0,"cpm":2.81,"vfr":0.04,"fvfr":0.058,"erv":0.0765},{"n":"Calixa","b":"MediAnswer","m":4,"y":2025,"p":"","c":100.0,"tf":103000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Huang Huang","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":148000.0,"tv":18800.0,"ff":null,"fv":null,"tot":18800.0,"eng":2619.0,"cpm":10.64,"vfr":0.127,"fvfr":null,"erv":0.1393},{"n":"Julie","b":"MediAnswer","m":4,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Kim Lang","b":"MediAnswer","m":4,"y":2025,"p":"","c":210.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Lii Ly","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":224000.0,"tv":23100.0,"ff":null,"fv":null,"tot":23100.0,"eng":2784.0,"cpm":8.66,"vfr":0.103,"fvfr":null,"erv":0.1205},{"n":"Pich Diamond","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":212000.0,"tv":24700.0,"ff":null,"fv":null,"tot":24700.0,"eng":5182.0,"cpm":8.1,"vfr":0.117,"fvfr":null,"erv":0.2098},{"n":"Por Eii","b":"MediAnswer","m":4,"y":2025,"p":"","c":200.0,"tf":782000.0,"tv":71200.0,"ff":null,"fv":null,"tot":71200.0,"eng":3030.0,"cpm":2.81,"vfr":0.091,"fvfr":null,"erv":0.0426},{"n":"Seav Fang","b":"MediAnswer","m":4,"y":2025,"p":"","c":380.0,"tf":1100000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Yan Socheata","b":"MediAnswer","m":4,"y":2025,"p":"","c":null,"tf":619000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Phan Rong","b":"MediAnswer","m":5,"y":2025,"p":"","c":750.0,"tf":4099999.9999999995,"tv":33500.0,"ff":2600000.0,"fv":1400000.0,"tot":1433500.0,"eng":52411.0,"cpm":0.52,"vfr":0.008,"fvfr":0.538,"erv":0.0366},{"n":"Salat sreylang","b":"MediAnswer","m":5,"y":2025,"p":"","c":500.0,"tf":2700000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Jing Gaming","b":"MediAnswer","m":6,"y":2025,"p":"","c":300.0,"tf":2500000.0,"tv":564600.0,"ff":1000000.0,"fv":138000.0,"tot":702600.0,"eng":57554.0,"cpm":0.43,"vfr":0.226,"fvfr":0.138,"erv":0.0819},{"n":"Lim Alice","b":"MediAnswer","m":6,"y":2025,"p":"","c":550.0,"tf":438000.0,"tv":193000.0,"ff":509000.0,"fv":134000.0,"tot":327000.0,"eng":12951.0,"cpm":1.68,"vfr":0.441,"fvfr":0.263,"erv":0.0396},{"n":"Niki Niki","b":"MediAnswer","m":8,"y":2025,"p":"","c":1500.0,"tf":162000.0,"tv":15100.0,"ff":1200000.0,"fv":244000.0,"tot":259100.0,"eng":9264.0,"cpm":5.79,"vfr":0.093,"fvfr":0.203,"erv":0.0358},{"n":"Lin","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1500.0,"tf":1100000.0,"tv":103000.0,"ff":631000.0,"fv":319000.0,"tot":422000.0,"eng":24995.0,"cpm":3.55,"vfr":0.094,"fvfr":0.506,"erv":0.0592},{"n":"Nuth","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":700.0,"tf":568400.0,"tv":171200.0,"ff":394000.0,"fv":543000.0,"tot":714200.0,"eng":43317.0,"cpm":0.98,"vfr":0.301,"fvfr":1.378,"erv":0.0607},{"n":"Xing","b":"MediAnswer","m":10,"y":2025,"p":"Nanoshot","c":1200.0,"tf":668600.0,"tv":47400.0,"ff":1400000.0,"fv":1300000.0,"tot":1347400.0,"eng":76228.0,"cpm":0.89,"vfr":0.071,"fvfr":0.929,"erv":0.0566},{"n":"Melia","b":"MediAnswer","m":12,"y":2025,"p":"Nanoshot","c":1500.0,"tf":874000.0,"tv":36500.0,"ff":374000.0,"fv":32000.0,"tot":68500.0,"eng":7910.0,"cpm":21.9,"vfr":0.042,"fvfr":0.086,"erv":0.1155},{"n":"Hak beam","b":"MediAnswer","m":1,"y":2026,"p":"Toner Pad","c":150.0,"tf":349000.0,"tv":97100.0,"ff":null,"fv":null,"tot":97100.0,"eng":7388.0,"cpm":1.54,"vfr":0.278,"fvfr":null,"erv":0.0761},{"n":"Kael","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":300.0,"tf":83000.0,"tv":60500.0,"ff":14000.0,"fv":2800.0,"tot":63300.0,"eng":7250.0,"cpm":4.74,"vfr":0.729,"fvfr":0.2,"erv":0.1145},{"n":"Nanac","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":650.0,"tf":1100000.0,"tv":65700.0,"ff":697000.0,"fv":160000.0,"tot":225700.0,"eng":10745.0,"cpm":2.88,"vfr":0.06,"fvfr":0.23,"erv":0.0476},{"n":"Reddy Kim","b":"MediAnswer","m":1,"y":2026,"p":"Vita Pad","c":200.0,"tf":546000.0,"tv":86500.0,"ff":241000.0,"fv":37000.0,"tot":123500.0,"eng":14884.0,"cpm":1.62,"vfr":0.158,"fvfr":0.154,"erv":0.1205},{"n":"Riki","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":550.0,"tf":248000.0,"tv":13800.0,"ff":12000.0,"fv":16000.0,"tot":29800.0,"eng":3672.0,"cpm":18.46,"vfr":0.056,"fvfr":1.333,"erv":0.1232},{"n":"Shuy","b":"MediAnswer","m":1,"y":2026,"p":"Nanoshot","c":250.0,"tf":151000.0,"tv":5807.0,"ff":61000.0,"fv":2700.0,"tot":8507.0,"eng":429.0,"cpm":29.39,"vfr":0.038,"fvfr":0.044,"erv":0.0504},{"n":"Chi lii","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":150.0,"tf":652000.0,"tv":59800.0,"ff":77000.0,"fv":28000.0,"tot":87800.0,"eng":5848.0,"cpm":1.71,"vfr":0.092,"fvfr":0.364,"erv":0.0666},{"n":"Danin","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/PDRN serum","c":300.0,"tf":309000.0,"tv":45500.0,"ff":69000.0,"fv":2800.0,"tot":48300.0,"eng":7169.0,"cpm":6.21,"vfr":0.147,"fvfr":0.041,"erv":0.1484},{"n":"Elnaly","b":"MediAnswer","m":3,"y":2026,"p":"PDRN serum","c":300.0,"tf":67000.0,"tv":204900.0,"ff":19000.0,"fv":38000.0,"tot":242900.0,"eng":19499.0,"cpm":1.24,"vfr":3.058,"fvfr":2.0,"erv":0.0803},{"n":"Fern Seng","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot","c":350.0,"tf":17300.0,"tv":7402.0,"ff":7200.0,"fv":9900.0,"tot":17302.0,"eng":642.0,"cpm":20.23,"vfr":0.428,"fvfr":1.375,"erv":0.0371},{"n":"Neath","b":"MediAnswer","m":3,"y":2026,"p":"Nanoshot/Toner Pad","c":400.0,"tf":108000.0,"tv":29100.0,"ff":50000.0,"fv":21000.0,"tot":50100.0,"eng":6678.0,"cpm":7.98,"vfr":0.269,"fvfr":0.42,"erv":0.1333},{"n":"Lunlyly","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":300.0,"tf":706000.0,"tv":41800.0,"ff":71000.0,"fv":8500.0,"tot":50300.0,"eng":3323.0,"cpm":5.96,"vfr":0.059,"fvfr":0.12,"erv":0.0661},{"n":"Meov","b":"MediAnswer","m":4,"y":2026,"p":"Nanoshot","c":350.0,"tf":514000.0,"tv":128300.00000000001,"ff":220000.0,"fv":268000.0,"tot":396300.0,"eng":22660.0,"cpm":0.88,"vfr":0.25,"fvfr":1.218,"erv":0.0572},{"n":"Tithphally","b":"MediAnswer","m":5,"y":2026,"p":"Nanoshot","c":800.0,"tf":444000.0,"tv":360800.0,"ff":1100000.0,"fv":1600000.0,"tot":1960800.0,"eng":202796.0,"cpm":0.41,"vfr":0.813,"fvfr":1.455,"erv":0.1034},{"n":"Zorng","b":"MediAnswer","m":5,"y":2026,"p":"PDRN Serum","c":900.0,"tf":1100000.0,"tv":32700.000000000004,"ff":274000.0,"fv":32000.0,"tot":64700.0,"eng":7423.0,"cpm":13.91,"vfr":0.03,"fvfr":0.117,"erv":0.1147},{"n":"Joby","b":"MediAnswer","m":6,"y":2026,"p":"Nanoshot","c":450.0,"tf":216000.0,"tv":12800.0,"ff":300000.0,"fv":745.0,"tot":13545.0,"eng":1519.0,"cpm":33.22,"vfr":0.059,"fvfr":0.002,"erv":0.1121},{"n":"Harry","b":"efilow","m":12,"y":2024,"p":"","c":120.0,"tf":237000.0,"tv":44900.0,"ff":null,"fv":null,"tot":44900.0,"eng":1323.0,"cpm":2.67,"vfr":0.189,"fvfr":null,"erv":0.0295},{"n":"Solly","b":"efilow","m":12,"y":2024,"p":"","c":100.0,"tf":825000.0,"tv":70200.0,"ff":null,"fv":null,"tot":70200.0,"eng":9542.0,"cpm":1.42,"vfr":0.085,"fvfr":null,"erv":0.1359},{"n":"Meov","b":"efilow","m":4,"y":2025,"p":"","c":150.0,"tf":516000.0,"tv":22600.0,"ff":null,"fv":null,"tot":22600.0,"eng":4332.0,"cpm":6.64,"vfr":0.044,"fvfr":null,"erv":0.1917},{"n":"Hong & Hui","b":"efilow","m":5,"y":2025,"p":"","c":300.0,"tf":null,"tv":24400.0,"ff":158000.0,"fv":266.0,"tot":24666.0,"eng":770.0,"cpm":12.16,"vfr":null,"fvfr":0.002,"erv":0.0312},{"n":"Nan","b":"efilow","m":5,"y":2025,"p":"","c":250.0,"tf":191000.0,"tv":57400.0,"ff":251.0,"fv":444.0,"tot":57844.0,"eng":6761.0,"cpm":4.32,"vfr":0.301,"fvfr":1.769,"erv":0.1169},{"n":"Moniroth","b":"efilow","m":6,"y":2025,"p":"","c":400.0,"tf":3500000.0,"tv":703000.0,"ff":689000.0,"fv":487000.0,"tot":1190000.0,"eng":65664.0,"cpm":0.34,"vfr":0.201,"fvfr":0.707,"erv":0.0552},{"n":"Samnang","b":"efilow","m":6,"y":2025,"p":"","c":50.0,"tf":61000.0,"tv":53000.0,"ff":null,"fv":null,"tot":53000.0,"eng":1767.0,"cpm":0.94,"vfr":0.869,"fvfr":null,"erv":0.0333},{"n":"Bella Jing","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":10500.0,"ff":null,"fv":null,"tot":10500.0,"eng":478.0,"cpm":14.29,"vfr":null,"fvfr":null,"erv":0.0455},{"n":"Calixa","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Krim boramey","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":42300.0,"ff":null,"fv":null,"tot":42300.0,"eng":2618.0,"cpm":3.55,"vfr":null,"fvfr":null,"erv":0.0619},{"n":"May Lee","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":9500.0,"ff":null,"fv":2500.0,"tot":12000.0,"eng":735.0,"cpm":16.67,"vfr":null,"fvfr":null,"erv":0.0612},{"n":"Mey Jelly","b":"efilow","m":6,"y":2025,"p":"","c":200.0,"tf":null,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Vann David","b":"efilow","m":6,"y":2025,"p":"","c":null,"tf":null,"tv":9000.0,"ff":null,"fv":null,"tot":9000.0,"eng":1074.0,"cpm":null,"vfr":null,"fvfr":null,"erv":0.1193},{"n":"You You","b":"efilow","m":6,"y":2025,"p":"","c":150.0,"tf":null,"tv":68800.0,"ff":null,"fv":17000.0,"tot":85800.0,"eng":8728.0,"cpm":1.75,"vfr":null,"fvfr":null,"erv":0.1017},{"n":"MonyyHang","b":"MediAnswer","m":6,"y":2026,"p":"Nanoshot","c":1000.0,"tf":435000.0,"tv":null,"ff":null,"fv":null,"tot":null,"eng":null,"cpm":null,"vfr":null,"fvfr":null,"erv":null},{"n":"Solly","b":"MediAnswer","m":12,"y":2024,"p":"","c":100.0,"tf":null,"tv":74000.0,"ff":null,"fv":null,"tot":74000.0,"eng":6506.0,"cpm":1.35,"vfr":null,"fvfr":null,"erv":0.0879}],"brands":[{"brand":"MediAnswer","n":56,"spend":22830,"views":10856454,"cpm":2.1,"med_cpm":5.88,"avg_fee":423,"eng":764183,"blowups":6,"scored":44,"best":{"n":"Tithphally","cpm":0.41,"v":1960800.0,"c":800.0},"worst":{"n":"Pich sothea","cpm":62.5,"v":1600.0,"c":100.0},"period":"10/2024\u20136/2026"},{"brand":"Mary&May","n":24,"spend":9650,"views":5569496,"cpm":1.73,"med_cpm":8.05,"avg_fee":402,"eng":344434,"blowups":7,"scored":24,"best":{"n":"Tith HavHeang","cpm":0.46,"v":2084000.0,"c":950.0},"worst":{"n":"Daneth","cpm":57.04,"v":6136.0,"c":350.0},"period":"3/2026\u20136/2026"},{"brand":"Dr.Melaxin","n":7,"spend":3000,"views":12358900,"cpm":0.24,"med_cpm":1.2,"avg_fee":429,"eng":338531,"blowups":1,"scored":7,"best":{"n":"Mariam Brown","cpm":0.06,"v":9402000.0,"c":600.0},"worst":{"n":"Kael","cpm":20.13,"v":14900.0,"c":300.0},"period":"3/2026\u20136/2026"},{"brand":"efilow","n":14,"spend":2370,"views":1622810,"cpm":1.46,"med_cpm":3.55,"avg_fee":182,"eng":103792,"blowups":0,"scored":11,"best":{"n":"Moniroth","cpm":0.34,"v":1190000.0,"c":400.0},"worst":{"n":"May Lee","cpm":16.67,"v":12000.0,"c":200.0},"period":"12/2024\u20136/2025"},{"brand":"Jenny House","n":6,"spend":1600,"views":2558400,"cpm":0.63,"med_cpm":2.34,"avg_fee":267,"eng":113168,"blowups":0,"scored":5,"best":{"n":"Wei Ying","cpm":0.25,"v":1389000.0,"c":350.0},"worst":{"n":"Liza","cpm":6.25,"v":32000.0,"c":200.0},"period":"5/2025\u20136/2025"}],"objectives":{"awareness":{"label":"Awareness","goal":"Cheapest possible reach","primary":"CPM","w":{"cost":35,"reach":30,"response":5,"reliability":15,"trust":15}},"engagement":{"label":"Engagement","goal":"Conversation and saves","primary":"ER-V / CPE","w":{"cost":20,"reach":20,"response":30,"reliability":10,"trust":20}},"conversion":{"label":"Conversion","goal":"Clicks and purchases","primary":"Share rate + trust","w":{"cost":20,"reach":15,"response":25,"reliability":10,"trust":30}}},"gates":{"micro":{"n":15,"vr_green":0.5047,"vr_amber":0.1675,"cpm_green":2.1,"cpm_amber":4.96,"ver_green":0.094,"ver_amber":0.0646,"minv_green":7537},"mid":{"n":33,"vr_green":0.127,"vr_amber":0.0757,"cpm_green":4.96,"cpm_amber":10.24,"ver_green":0.0838,"ver_amber":0.0448,"minv_green":13800},"macro":{"n":18,"vr_green":0.0851,"vr_amber":0.0418,"cpm_green":2.51,"cpm_amber":4.09,"ver_green":0.0717,"ver_amber":0.06,"minv_green":28300},"mega":{"n":16,"vr_green":0.0597,"vr_amber":0.0145,"cpm_green":0.75,"cpm_amber":3.71,"ver_green":0.0781,"ver_amber":0.0569,"minv_green":32700},"share":{"green":0.00191,"amber":0.00092}},"gatespec":[["G0","Data sufficiency",3,"Are there enough recent posts to judge this account?","Stale or thin accounts that cannot be read reliably",0],["G1","Spike ratio",3,"Do views depend on a few viral hits? (mean \u00f7 median)","Quiet accounts inflated by one or two spikes",0],["G2","Floor ratio",3,"Do weak posts still hold a floor? (p25 \u00f7 median)","Only the wins show; everyday posts barely seen",0],["G3","Peak ratio",2,"Is the best post abnormally spiky? (max \u00f7 median)","One mega-hit distorting the average",0],["G4","Top-3 share",2,"How concentrated are views in the best 3 posts?","Most reach coming from three lucky posts",0],["G5","View rate",5,"How many watch versus follow (views \u00f7 followers)","Big follower count, little real reach",0],["G6","Engagement rate",4,"How strongly viewers react (likes + comments \u00f7 views)","People watch but nobody responds",0],["G7","View floor",2,"Do large accounts hold a minimum view level?","Many followers but bottomed-out views",0],["G8","Share rate",2,"How shareable the content is (shares \u00f7 views)","No organic spread beyond the creator's feed",0],["G9","Cost efficiency",4,"Is the ask fair for the reach (eCPM)","Price far above what the views are worth",0],["G10","Follow-back ratio",2,"Follower count padded by mutual follows? (following \u00f7 followers)","Follow-for-follow padding, bought followers",1],["G11","Upload consistency",3,"Are uploads regular and recent?","Long gaps or burst posting; unreliable delivery",0],["G12","Comment-pod signal",2,"Do the same people comment across many posts?","Engagement pods faking response",1],["G13","Category fit",3,"What share of recent posts are in your category? (CFR)","Off-category creator whose audience ignores the product",0]],"pricebands":[["Great value",0,0.5],["Good deal",0.5,1.0],["Slightly overpriced",1.0,1.6],["Overpriced",1.6,99]]};
 </script>
 <script>
 (function(){
@@ -1047,7 +1328,7 @@ const ICO={
 };
 
 /* ---------------- tabs ---------------- */
-const TABS=["eval","data","calc","guide","bench"];
+const TABS=["eval","data","calc","guide","bench","market"];
 function showTab(k){
   TABS.forEach(t=>{
     const on=t===k;
@@ -1181,6 +1462,7 @@ function run(){
   const podrepeat=$("podrepeat").value===""?null:parseFloat($("podrepeat").value);
   const fits=[...$("fitlist").querySelectorAll("input")];
   const fitPass=fits.filter(f=>f.checked).length, fitTotal=fits.length;
+  const HIST=renderHistory($("kolname").value,url,fee);
 
   if(!posts.length||!followers){
     $("gradebox").className="gradebox g-idle";$("gradeltr").textContent="–";
@@ -1393,6 +1675,13 @@ function run(){
     A.push("Category fit is "+Math.round(GG.cfr*100)+"% beauty content"+
       (GG.cfr<0.40?" — under the 40% bar, so request beauty-specific content or expect weaker response."
                   :" — comfortably on-category."));
+  if(HIST)
+    A.push("HeBE has paid "+HIST.name+" "+HIST.bookings+(HIST.bookings>1?" times":" time")+" before"+
+      (HIST.blendedCpm!=null?", delivering at a blended "+cpmF(HIST.blendedCpm)+" CPM against a book median of "+cpmF(HIST.bookMedianCpm):"")+
+      (HIST.lastFee?"; the last fee was "+money(HIST.lastFee):"")+
+      (HIST.lastFee&&fee>HIST.lastFee*1.05?", so this ask is a rise on what they accepted.":".")); 
+  else if(normName($("kolname").value))
+    A.push("No prior booking on file for this name, so there is no delivery record behind the forecast.");
   A.push("Gates: "+tally.pass+" pass, "+tally.caution+" caution, "+tally.fail+" fail.");
   A.push("Bottom line: "+
     (score<35?"reject — the fundamentals fail regardless of price."
@@ -1401,6 +1690,17 @@ function run(){
      :"pass unless they come down to "+money(fair)+"."));
   $("assesstext").textContent=A.join(" ");
 
+  LAST={platform:plat,handle:h,url:url,objective:B.objectives[OBJ].label,
+    followers:followers,fee:fee,posts:posts.length,medianViews:medV,
+    forecastViews:views,cpm:cpm,fairFee:fair,walkAway:walk,targetCpm:target,
+    vfr:vfr,erv:GG.hasEng?erv:null,shareRate:GG.hasEng?sr:null,
+    tier:GG.tier,spike:GG.spike,floorRatio:GG.floorR,cfr:GG.cfr,
+    score:score,grade:grade,verdict:label,priceBand:pb?pb.label:null,
+    pillars:{cost:sCost,reach:sReach,response:sResp,reliability:sRel,trust:sTrust},
+    pastBookings:HIST,
+    gates:GG.gates.map(function(g){return {code:g.id,name:g.name,state:g.state,value:g.val,bar:g.thr};}),
+    tally:tally,assessment:A.join(" ")};
+  if($("aiopbox"))$("aiopbox").hidden=!AI_OK;
 }
 /* ---------------- data tab ---------------- */
 let BRAND="all", SORT={k:"cpm",dir:"asc"};
@@ -1608,6 +1908,8 @@ $("copybtn").addEventListener("click",function(){
     ta.select();try{document.execCommand("copy");done();}catch(e){}document.body.removeChild(ta);}
 });
 
+var LAST=null, AI_OK=false, AI_LIMITS=null;
+
 /* ---------------- profile importer ---------------- */
 /* The bookmarklet runs in the viewer's own browser on a profile they are
    already looking at, reads the visible counts, and copies a compact line. */
@@ -1765,6 +2067,370 @@ $("parsebtn").addEventListener("click",function(){
       "Partly read — please check every field.", f.length?"ok":"err");
   });
 });
+
+
+/* ---------------- past-booking record ----------------
+   The strongest evidence about a creator is what they did for HeBE last time.
+   Names are matched loosely (case, spacing and punctuation ignored) against the
+   campaign log, and the profile handle is tried as a fallback. */
+function normName(s){return String(s==null?"":s).toLowerCase()
+  .replace(/[^a-z0-9]+/g," ").trim();}
+
+var PAST={}, PASTLABEL={};
+B.rows.forEach(function(r){
+  var k=normName(r.n); if(!k)return;
+  (PAST[k]=PAST[k]||[]).push(r);
+  if(!PASTLABEL[k])PASTLABEL[k]=String(r.n).trim();
+});
+(function(){
+  var keys=Object.keys(PASTLABEL).sort(function(a,b){
+    return PASTLABEL[a].localeCompare(PASTLABEL[b]);});
+  $("pastnames").innerHTML=keys.map(function(k){
+    return '<option value="'+esc(PASTLABEL[k])+'"></option>';}).join("");
+})();
+
+/* book-wide CPM percentiles, used to grade each past booking */
+var BOOKCPM=(function(){
+  var v=B.rows.map(function(r){return r.cpm;})
+    .filter(function(x){return x!=null&&x>0;}).sort(function(a,b){return a-b;});
+  var q=function(p){return v.length?v[Math.floor(p*(v.length-1))]:null;};
+  return {p25:q(0.25),p50:q(0.5),p75:q(0.75),n:v.length};
+})();
+function cpmBand(c){
+  if(c==null||!BOOKCPM.p50)return ["b-ok","—"];
+  if(c<=BOOKCPM.p25)return ["b-good","great value"];
+  if(c<=BOOKCPM.p50)return ["b-ok","good deal"];
+  if(c<=BOOKCPM.p75)return ["b-warn","pricey"];
+  return ["b-bad","blow-up"];
+}
+
+/* find the creator in the log: exact normalised name, else the profile handle */
+function findPast(name,url){
+  var k=normName(name);
+  if(k&&PAST[k])return {key:k,rows:PAST[k],how:"name"};
+  var h=normName(handleOf(url).replace(/^@/,""));
+  if(h&&PAST[h])return {key:h,rows:PAST[h],how:"handle"};
+  if(k&&k.length>=4){
+    var hit=Object.keys(PAST).filter(function(x){
+      return x===k||x.indexOf(k)===0||k.indexOf(x)===0;});
+    if(hit.length===1)return {key:hit[0],rows:PAST[hit[0]],how:"partial"};
+  }
+  return null;
+}
+
+function renderHistory(name,url,fee){
+  var box=$("history"), got=findPast(name,url);
+  if(!got){
+    box.className="history";
+    if(normName(name)){
+      box.hidden=false;
+      box.innerHTML='<div class="hh"><h4>No past booking</h4>'+
+        '<em>'+Object.keys(PAST).length+' creators in the log</em></div>'+
+        '<p class="hnew">HeBE has not paid '+esc(name.trim())+' before, so there is no delivery record '+
+        'to check the ask against. The score below rests entirely on the profile numbers.</p>';
+    } else { box.hidden=true; box.innerHTML=""; }
+    return null;
+  }
+
+  var rows=got.rows.slice().sort(function(a,b){
+    return (b.y||0)-(a.y||0)||(b.m||0)-(a.m||0);});
+  var paid=rows.filter(function(r){return r.c;});
+  var spend=paid.reduce(function(a,r){return a+r.c;},0);
+  var views=rows.reduce(function(a,r){return a+(r.tot||0);},0);
+  /* blend only over campaigns that carry BOTH a fee and a view count — mixing a
+     fee whose views were never recorded into the divisor inflates the CPM. */
+  var scored=rows.filter(function(r){return r.c&&r.tot;});
+  var scoredSpend=scored.reduce(function(a,r){return a+r.c;},0);
+  var scoredViews=scored.reduce(function(a,r){return a+r.tot;},0);
+  var blended=(scoredSpend&&scoredViews)?scoredSpend/scoredViews*1000:null;
+  var fees=paid.map(function(r){return r.c;}).sort(function(a,b){return a-b;});
+  var lastFee=paid.length?paid[0].c:null;
+
+  var MON=["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var body=rows.map(function(r){
+    var b=cpmBand(r.cpm);
+    return "<tr><td>"+esc(r.b)+"</td>"+
+      '<td class="num">'+(r.m?MON[r.m]+" ":"")+(r.y||"")+"</td>"+
+      '<td class="num">'+(r.c?money(r.c):"—")+"</td>"+
+      '<td class="num">'+(r.tot?fmt(r.tot):"—")+"</td>"+
+      '<td class="num">'+(r.cpm!=null?cpmF(r.cpm):"—")+"</td>"+
+      '<td><span class="hband '+b[0]+'">'+b[1]+"</span></td></tr>";
+  }).join("");
+
+  var sum="Booked <b>"+rows.length+(rows.length>1?" times":" time")+"</b>"+
+    (paid.length?" for <b>"+money(spend)+"</b>":"")+
+    (views?", delivering <b>"+fmt(views)+"</b> views":"")+
+    (blended!=null?" &mdash; a blended <b>"+cpmF(blended)+"</b> CPM against a book median of "+
+      cpmF(BOOKCPM.p50)+(scored.length<rows.length
+        ? " (from the "+scored.length+" of "+rows.length+" with a view count on file)":""):"")+".";
+  var ask="";
+  if(fee>0&&lastFee){
+    var d=fee/lastFee;
+    ask=(Math.abs(d-1)<0.05)
+      ? " They are asking the same as last time ("+money(fee)+")."
+      : " They last took <b>"+money(lastFee)+"</b>; the ask on the desk is <b>"+money(fee)+"</b>, "+
+        (d>1?("<b>"+d.toFixed(1)+"×</b> higher"):("<b>"+(1/d).toFixed(1)+"×</b> lower"))+".";
+  }
+
+  box.className="history known";
+  box.hidden=false;
+  box.innerHTML='<div class="hh"><h4>You have booked '+esc(PASTLABEL[got.key])+' before</h4>'+
+    '<em>'+(got.how==="handle"?"matched on handle":got.how==="partial"?"closest name match":"in the log")+'</em></div>'+
+    '<p class="hsum">'+sum+ask+"</p>"+
+    '<table class="htab"><thead><tr><th>Brand</th><th>When</th><th>Fee</th><th>Views</th>'+
+    "<th>CPM</th><th></th></tr></thead><tbody>"+body+"</tbody></table>";
+
+  return {name:PASTLABEL[got.key],bookings:rows.length,totalPaid:spend,
+    totalViews:views,blendedCpm:blended,campaignsWithViewData:scored.length,lastFee:lastFee,bookMedianCpm:BOOKCPM.p50,
+    campaigns:rows.map(function(r){
+      return {brand:r.b,month:r.m,year:r.y,fee:r.c,views:r.tot,cpm:r.cpm};})};
+}
+
+/* ---------------- AI profile reading ----------------
+   The page cannot fetch a profile: TikTok and Meta both block cross-origin
+   reads, and an artifact's own network is closed. So the viewer supplies
+   what is already on their screen — screenshots or copied text — and Claude
+   reads it. Every AI affordance hides itself when sampling is unavailable. */
+var SHOTS=[], AI_NOTES=null;
+function esc(t){return String(t==null?"":t)
+  .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+
+function aiSample(){
+  if(typeof window.claude==="undefined"||!window.claude||!window.claude.use)
+    return Promise.resolve(null);
+  return window.claude.use("sample").catch(function(){return null;});
+}
+function aiErr(e){
+  var c=e&&e.code;
+  if(c==="not_granted")   return "Claude access was declined for this page. Use “Paste the page”, or type the numbers in below.";
+  if(c==="rate_limited")  return "Claude is busy right now — wait a moment and try again.";
+  if(c==="images_unavailable") return "This view cannot send images to Claude. Use “Paste the page” instead.";
+  if(c==="image_rejected")return "One of those images was rejected — try a plain PNG or JPEG screenshot under 20MB.";
+  if(c==="invalid_json")  return "Claude's answer came back unreadable. Try again, or use “Paste the page”.";
+  if(c==="prompt_too_large") return "Too much at once — try fewer screenshots.";
+  if(c==="cancelled")     return "Stopped.";
+  return "Could not complete that. Try again, or fill the fields below by hand.";
+}
+function setShot(msg,cls){
+  var el=$("shotstatus"); if(!el)return;
+  el.textContent=msg; el.className="istatus"+(cls?" "+cls:"");
+}
+
+/* mode switcher */
+$("modes").addEventListener("click",function(e){
+  var b=e.target.closest(".mode"); if(!b)return;
+  [].forEach.call($("modes").children,function(x){x.classList.toggle("on",x===b);});
+  ["shot","paste","button"].forEach(function(k){
+    $("m-"+k).classList.toggle("on",k===b.dataset.mode);
+  });
+});
+
+/* screenshots in */
+function renderThumbs(){
+  var t=$("thumbs"); t.innerHTML="";
+  SHOTS.forEach(function(f,i){
+    var d=document.createElement("div"); d.className="thumb";
+    var img=document.createElement("img"); img.alt="Screenshot "+(i+1);
+    img.src=URL.createObjectURL(f);
+    var b=document.createElement("button"); b.type="button"; b.textContent="×";
+    b.setAttribute("aria-label","Remove screenshot "+(i+1));
+    b.addEventListener("click",function(ev){
+      ev.preventDefault(); ev.stopPropagation();
+      URL.revokeObjectURL(img.src); SHOTS.splice(i,1); renderThumbs();
+      setShot(SHOTS.length?(SHOTS.length+" screenshot"+(SHOTS.length>1?"s":"")+" ready."):"No screenshots yet.");
+    });
+    d.appendChild(img); d.appendChild(b); t.appendChild(d);
+  });
+}
+function addShots(files){
+  var max=(AI_LIMITS&&AI_LIMITS.images&&AI_LIMITS.images.maxCount)||4;
+  var list=[].slice.call(files).filter(function(f){return f&&/^image\//.test(f.type);});
+  if(!list.length){setShot("Those files are not images.","err");return;}
+  var before=SHOTS.length;
+  SHOTS=SHOTS.concat(list).slice(0,max);
+  renderThumbs();
+  var dropped=(before+list.length)-SHOTS.length;
+  setShot(SHOTS.length+" screenshot"+(SHOTS.length>1?"s":"")+" ready"+
+    (dropped>0?" ("+dropped+" over the limit of "+max+" ignored)":"")+" — press Read with AI.");
+}
+(function(){
+  var drop=$("drop");
+  ["dragenter","dragover"].forEach(function(ev){
+    drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.add("over");});});
+  ["dragleave","drop"].forEach(function(ev){
+    drop.addEventListener(ev,function(e){e.preventDefault();drop.classList.remove("over");});});
+  drop.addEventListener("drop",function(e){
+    if(e.dataTransfer&&e.dataTransfer.files)addShots(e.dataTransfer.files);});
+  $("shots").addEventListener("change",function(e){addShots(e.target.files);e.target.value="";});
+})();
+$("shotclear").addEventListener("click",function(){
+  SHOTS=[]; renderThumbs(); setShot("No screenshots yet.");
+  $("airead").hidden=true; AI_NOTES=null;
+});
+
+var SHOT_PROMPT=
+ "These images are screenshots of ONE social-media creator's profile (TikTok or Facebook), taken by a "+
+ "beauty brand in Cambodia that is deciding whether to pay this creator for a sponsored post.\n\n"+
+ "Read only what is actually visible. Never estimate, infer or invent a number: if a value is not "+
+ "legible in the images, use null.\n\n"+
+ "Reply with only this JSON object:\n"+
+ '{"platform":"tiktok"|"facebook"|null,"handle":string|null,"followers":number|null,'+
+ '"following":number|null,"totalLikes":number|null,'+
+ '"posts":[{"views":number|null,"likes":number|null,"comments":number|null,"shares":number|null}],'+
+ '"postsLast30Days":number|null,"beautyPostsOfLast15":number|null,'+
+ '"readable":true|false,"summary":string,'+
+ '"flags":[{"kind":"good"|"warn"|"bad","note":string}]}\n\n'+
+ "Rules. Expand K and M to plain integers (1.3M becomes 1300000; 45.2K becomes 45200). \"posts\" lists "+
+ "the individual posts whose view counts are visible on the grid, most recent first, at most 10; skip "+
+ "any post marked as pinned, since pinned posts are not representative. \"beautyPostsOfLast15\" is how "+
+ "many of the visible recent posts are beauty or skincare content, expressed out of 15 (if only 9 posts "+
+ "are visible and 3 are beauty, that is 5); null if you cannot tell. \"summary\" is two or three plain "+
+ "sentences for a media buyer: what the account is about, what language the captions are in, who appears "+
+ "to watch it, and how heavily sponsored the feed already looks. \"flags\" are short, specific "+
+ "observations that would change a buying decision — a dormant account, a feed that is mostly paid "+
+ "promotions, engagement that looks inorganic, an audience that looks to be outside Cambodia, a large "+
+ "follower count against small view counts. Use kind \"good\" for genuinely reassuring findings. Give at "+
+ "most 5 flags. If the images do not show a creator profile at all, set readable to false and explain in "+
+ "summary.";
+
+function applyAI(j){
+  var filled=[];
+  var handle=j.handle?String(j.handle).replace(/^@/,"").trim():"";
+  if(j.platform==="tiktok"&&handle){$("url").value="https://www.tiktok.com/@"+handle;filled.push("handle");}
+  else if(j.platform==="facebook"&&handle){$("url").value="https://www.facebook.com/"+handle;filled.push("handle");}
+  else if(j.platform==="facebook"){$("url").value="https://www.facebook.com/";}
+  if(handle&&!$("kolname").value.trim())$("kolname").value=handle;
+  if(j.followers>0){$("followers").value=fmt(j.followers);filled.push("followers");}
+  if(j.following!=null&&j.following>=0)$("following").value=j.following?fmt(j.following):"0";
+  if(j.postsLast30Days!=null&&j.postsLast30Days>=0)$("posts30").value=Math.round(j.postsLast30Days);
+  if(j.beautyPostsOfLast15!=null)
+    $("catposts").value=Math.min(15,Math.max(0,Math.round(j.beautyPostsOfLast15)));
+  var ps=(Array.isArray(j.posts)?j.posts:[]).filter(function(x){return x&&x.views>0;});
+  if(ps.length){
+    $("posts").innerHTML="";
+    ps.slice(0,10).forEach(function(x){
+      addRow([fmt(x.views), x.likes>0?fmt(x.likes):"",
+              x.comments!=null?String(Math.round(x.comments)):"",
+              x.shares!=null?String(Math.round(x.shares)):""]);
+    });
+    filled.push(ps.length+" post"+(ps.length>1?"s":""));
+    if(ps.some(function(x){return x.likes>0;}))filled.push("engagement");
+  }
+  run();
+  return filled;
+}
+function showAiRead(j){
+  AI_NOTES=j;
+  var fl=(Array.isArray(j.flags)?j.flags:[]).slice(0,5);
+  $("airead-txt").textContent=j.summary||"";
+  $("airead-flags").innerHTML=fl.map(function(f){
+    var k=f.kind==="good"?"ok":f.kind==="bad"?"bad":"";
+    return '<span class="flag2 '+k+'">'+esc(f.note)+"</span>";
+  }).join("");
+  $("airead").hidden=!(j.summary||fl.length);
+}
+
+$("shotbtn").addEventListener("click",function(){
+  if(!SHOTS.length){setShot("Add at least one screenshot first.","err");return;}
+  var btn=$("shotbtn"); btn.disabled=true;
+  setShot("Claude is reading the screenshots…");
+  aiSample().then(function(sample){
+    if(!sample){
+      btn.disabled=false;
+      setShot("Claude is not available in this view. Use “Paste the page”, or type the numbers in below.","err");
+      return;
+    }
+    return sample.json(SHOT_PROMPT,{images:SHOTS,modelTier:"default"}).then(function(j){
+      btn.disabled=false;
+      if(!j||j.readable===false){
+        setShot((j&&j.summary)?j.summary:"Claude could not find a creator profile in those images.","err");
+        return;
+      }
+      var filled=applyAI(j);
+      showAiRead(j);
+      setShot(filled.length
+        ? "Read "+filled.join(", ")+". Check every field before trusting the score."
+        : "Nothing numeric was legible — check the screenshots show the counts.",
+        filled.length?"ok":"err");
+    });
+  }).catch(function(e){btn.disabled=false;setShot(aiErr(e),"err");});
+});
+
+/* ---------------- Claude's second opinion ---------------- */
+function bookContext(){
+  return JSON.stringify({
+    meta:B.meta,
+    tiktok:{n:B.tiktok.n,cpm:B.tiktok.cpm,vfr:B.tiktok.vfr,erv:B.tiktok.erv,
+            share_rate:B.tiktok.share_rate,tiers:B.tiktok.tiers},
+    facebook:{n:B.facebook.n,cpm:B.facebook.cpm,vfr:B.facebook.vfr,tiers:B.facebook.tiers},
+    evidence:B.evidence,
+    objective_weights:B.objectives
+  });
+}
+var OP_PROMPT=
+ "You are a media buyer underwriting a single influencer booking for HeBE, a beauty distributor in "+
+ "Cambodia. Below is HeBE's own historical book — percentile distributions and follower-tier tables "+
+ "drawn from campaigns they actually paid for — and then the creator currently on the desk, already "+
+ "scored against that book by the tool.\n\n"+
+ "Write 150–200 words of plain prose for a deal memo. No markdown, no headings, no bullet points.\n\n"+
+ "Say whether you agree with the tool's verdict and why, citing specific numbers from the book (for "+
+ "example where this CPM or views-per-follower sits against the percentiles for the platform and tier). "+
+ "Name the single strongest reason to book and the single strongest reason not to. Then state what you "+
+ "would still verify by hand before signing, being concrete about it. If any gate reports “not "+
+ "measured”, treat that as missing evidence rather than a pass, and say so. If \"pastBookings\" is "+
+ "present, HeBE has paid this exact creator before: weigh what they actually delivered then, and any "+
+ "change in the asking fee, above anything the profile numbers suggest. You cannot see the "+
+ "creator's profile and have no data beyond what is given here — never invent audience demographics, "+
+ "past brand deals, or any figure that is not below. End with a one-sentence recommendation naming a "+
+ "number: book at, negotiate to, or walk away.";
+
+$("opbtn").addEventListener("click",function(){
+  if(!LAST){
+    $("opiniontext").textContent="Fill in the creator's numbers first.";
+    return;
+  }
+  var btn=$("opbtn"), out=$("opiniontext");
+  btn.disabled=true; out.className="opinion wait"; out.textContent="Thinking…";
+  aiSample().then(function(sample){
+    if(!sample){
+      btn.disabled=false; out.className="opinion";
+      out.textContent="Claude is not available in this view.";
+      return;
+    }
+    var body=OP_PROMPT+"\n\nHEBE'S BOOK:\n"+bookContext()+
+      "\n\nTHE CREATOR ON THE DESK:\n"+JSON.stringify(LAST)+
+      (AI_NOTES&&AI_NOTES.summary?("\n\nWHAT THE PROFILE SCREENSHOTS SHOWED:\n"+AI_NOTES.summary):"");
+    return sample(body,{modelTier:"complex",cache:false,
+      onText:function(u){out.className="opinion";out.textContent=u.text;}
+    }).then(function(r){
+      btn.disabled=false; out.className="opinion"; out.textContent=r.text;
+    });
+  }).catch(function(e){
+    btn.disabled=false; out.className="opinion";
+    out.textContent=(e&&e.text)?e.text:aiErr(e);
+  });
+});
+
+/* capability probe — decides whether any AI affordance is shown */
+aiSample().then(function(sample){
+  if(!sample){
+    setShot("Claude is not available in this view — use “Paste the page” or type the numbers in below.");
+    $("shotbtn").disabled=true;
+    return;
+  }
+  AI_OK=true;
+  if($("aiopbox"))$("aiopbox").hidden=false;
+  return sample.limits().then(function(l){
+    AI_LIMITS=l;
+    if(l&&l.images){
+      $("shots").accept=l.images.mediaTypes.join(",");
+      $("shotmax").textContent=l.images.maxCount;
+    }else{
+      $("shotbtn").disabled=true;
+      setShot("This view cannot send images to Claude — use “Paste the page” instead.","err");
+    }
+  }).catch(function(){});
+}).catch(function(){});
 
 $("deskform").addEventListener("input",run);
 $("deskform").addEventListener("change",run);

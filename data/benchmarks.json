@@ -1,6 +1,6 @@
 {
  "meta": {
-  "campaigns": 105,
+  "campaigns": 107,
   "brands": [
    "Dr.Melaxin",
    "Jenny House",
@@ -8,8 +8,8 @@
    "MediAnswer",
    "efilow"
   ],
-  "total_spend_usd": 38380,
-  "total_views": 32892060,
+  "total_spend_usd": 39450,
+  "total_views": 32966060,
   "market": "Cambodia (KH)",
   "period": "Oct 2024 - Jun 2026"
  },
@@ -57,7 +57,7 @@
    "p75": 0.307377,
    "p90": 0.869565
   },
-  "agg_cpm": 3.946,
+  "agg_cpm": 3.943,
   "tiers": [
    {
     "label": "Nano/Micro <100K",
@@ -66,7 +66,7 @@
     "n": 15,
     "med_vfr": 0.5047,
     "med_cpm": 4.96,
-    "avg_fee": 217,
+    "avg_fee": 220,
     "blowup_rate": 0.4
    },
    {
@@ -76,7 +76,7 @@
     "n": 33,
     "med_vfr": 0.127,
     "med_cpm": 10.24,
-    "avg_fee": 363,
+    "avg_fee": 360,
     "blowup_rate": 0.273
    },
    {
@@ -106,7 +106,7 @@
   "cpm": {
    "p10": 0.6,
    "p25": 1.470588,
-   "p50": 13.043478,
+   "p50": 12.765957,
    "p75": 35.294118,
    "p90": 92.592593
   },
@@ -154,7 +154,7 @@
     "n": 22,
     "med_vfr": 0.2816,
     "med_cpm": 35.32,
-    "avg_fee": 293,
+    "avg_fee": 295,
     "blowup_rate": 0.682
    },
    {
@@ -163,8 +163,8 @@
     "max": 500000.0,
     "n": 19,
     "med_vfr": 0.1168,
-    "med_cpm": 13.89,
-    "avg_fee": 468,
+    "med_cpm": 12.5,
+    "avg_fee": 466,
     "blowup_rate": 0.368
    },
    {
@@ -428,6 +428,15 @@
    "vfr": 0.001
   },
   {
+   "name": "Marady Tep",
+   "brand": "Mary&May",
+   "followers": 87300.0,
+   "views": 3260.0,
+   "cost": 350.0,
+   "cpm": 107.36,
+   "vfr": 0.037
+  },
+  {
    "name": "Niki Niki",
    "brand": "MediAnswer",
    "followers": 162000.0,
@@ -435,15 +444,6 @@
    "cost": 1500.0,
    "cpm": 99.34,
    "vfr": 0.093
-  },
-  {
-   "name": "Marady Tep",
-   "brand": "Mary&May",
-   "followers": 87300.0,
-   "views": 3260.0,
-   "cost": 300.0,
-   "cpm": 92.02,
-   "vfr": 0.037
   },
   {
    "name": "Shanel",

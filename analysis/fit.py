@@ -1,5 +1,6 @@
 import json, math, statistics as st
-recs=json.load(open('recs.json'))
+from paths import o
+recs=json.load(open(o('recs.json')))
 tt=[r for r in recs if r['tt_v'] and r['tt_c'] is not None and r['tt_v']>0]
 # log-log fit: comments = a * views^b
 X=[math.log10(r['tt_v']) for r in tt]; Y=[math.log10(max(r['tt_c'],0.5)) for r in tt]

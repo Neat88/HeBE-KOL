@@ -1,5 +1,6 @@
 import json, statistics as st
-recs=json.load(open('/tmp/claude-0/-home-user-HeBE-KOL/e7909b51-e34c-500b-a163-0fd30d39b367/scratchpad/recs.json'))
+from paths import o
+recs=json.load(open(o('recs.json')))
 def eng(r,p): 
     return sum(x or 0 for x in [r[p+'_l'],r[p+'_c'],r[p+'_s']])
 rows=[]
@@ -40,4 +41,4 @@ bout.sort(key=lambda x:-x['spend'])
 for b in bout:
     print("%-13s n=%3d spend=$%6d views=%10d aggCPM=$%6.2f medCPM=$%7.2f blowups=%d/%d"%(
       b['brand'],b['n'],b['spend'],b['views'],b['cpm'] or 0,b['med_cpm'] or 0,b['blowups'],b['scored']))
-json.dump({"rows":rows,"brands":bout},open('/tmp/claude-0/-home-user-HeBE-KOL/e7909b51-e34c-500b-a163-0fd30d39b367/scratchpad/brands.json','w'))
+json.dump({"rows":rows,"brands":bout},open(o('brands.json'),'w'))

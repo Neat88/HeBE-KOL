@@ -1,5 +1,6 @@
 import json, statistics as st
-recs=json.load(open('recs.json'))
+from paths import o
+recs=json.load(open(o('recs.json')))
 tt=[r for r in recs if r['cost'] and r['tt_v'] and r['tt_f']]
 for r in tt:
     r['cpm']=r['cost']/r['tt_v']*1000; r['vfr']=r['tt_v']/r['tt_f']

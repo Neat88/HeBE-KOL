@@ -1,4 +1,5 @@
 import openpyxl, json, math, statistics as st
+from paths import XLSX, o
 
 def num(v):
     if v is None: return None
@@ -11,7 +12,7 @@ def num(v):
     try: return float(s)*m
     except: return None
 
-wb=openpyxl.load_workbook("/root/.claude/uploads/e7909b51-e34c-500b-a163-0fd30d39b367/99bea245-HeBE_KH_KOL_Data_Template_update.xlsx",data_only=True)
+wb=openpyxl.load_workbook(XLSX,data_only=True)
 ws=wb["KOL Data"]
 rows=list(ws.iter_rows(values_only=True))
 hdr=[str(h).strip() if h else '' for h in rows[0]]
@@ -52,4 +53,4 @@ for r in recs:
 for b,rs in by_brand.items():
     c=sum(x['cost'] or 0 for x in rs); v=sum((x['tt_v'] or 0)+(x['fb_v'] or 0) for x in rs)
     print(f"{b:14s} n={len(rs):3d} spend=${c:6.0f} views={v:12.0f} CPM=${c/v*1000 if v else 0:7.2f}")
-json.dump(recs,open('recs.json','w'))
+json.dump(recs,open(o('recs.json'),'w'))

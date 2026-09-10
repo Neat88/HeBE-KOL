@@ -1,25 +1,48 @@
 # HeBE KOL Underwriting Desk
 
-A pricing tool for Cambodian beauty KOL buying, built on 105 campaigns HeBE ran across
+A pricing tool for Cambodian beauty KOL buying, built on 107 campaigns HeBE ran across
 Dr.Melaxin, Jenny House, Mary&May, MediAnswer and efilow (Oct 2024 – Jun 2026).
 
-Paste a creator's TikTok or Facebook profile link, enter their public numbers, and the tool
-returns a forecast reach, a fair fee, a walk-away price, and a book / negotiate / pass verdict
-scored against what HeBE has actually paid.
+**Live tool:** https://claude.ai/code/artifact/5bd7e28e-438a-40b9-89fe-294f2288786a
+
+Drop screenshots of a creator's profile, and Claude reads the numbers off them and writes a read on
+the account. The desk returns a forecast reach, a fair fee, a walk-away price, and a
+book / negotiate / pass verdict scored against what HeBE has actually paid — and, if that creator is
+already in the log, their own delivery record.
 
 ## Getting the numbers in
 
-The tool cannot read a profile from a bare link — TikTok and Meta both block cross-origin reads, and
-no browser page can work around that. Three routes get the numbers in instead:
+No website can turn a bare TikTok or Facebook link into numbers: both platforms block cross-origin
+reads, which is exactly why the paid platforms buy API access instead. So the profile comes in as
+whatever is already on screen. Four routes:
 
-1. **One-click button (bookmarklet).** Drag "Grab KOL stats" to the bookmarks bar, open the creator's
-   profile, click it. It reads the visible counts in the user's own browser — followers, following,
-   total likes, and the view count on each post in the grid — and copies a compact `HEBE1|…` line.
-   Paste that into the tool and press Read profile. Nothing is sent anywhere.
+1. **Screenshots, read by AI.** Drop images of the profile header and post grid. They go to Claude
+   through the artifact `sample` capability, which extracts followers, following, per-post views and
+   — where an opened post is included — likes, comments and shares. Claude also returns a short
+   qualitative read: what the account is about, what language the captions are in, how heavily
+   sponsored the feed already looks, and up to five specific buying flags. This is the fastest route
+   and the only one that reads *content* rather than just counts.
 2. **Copy the page.** Ctrl+A / Ctrl+C on the profile, paste the whole blob. A local parser pulls out
-   followers, following and post views; when it comes up short the page asks Claude to parse the text
-   (the `sample` capability) as a fallback.
-3. **By hand.** Type into the fields, as before.
+   followers, following and post views; when it comes up short the page asks Claude to parse the text.
+3. **One-click button (bookmarklet).** Drag "Grab KOL stats" to the bookmarks bar, open the creator's
+   profile, click it. It reads the visible counts in the user's own browser and copies a compact
+   `HEBE1|…` line to paste into the Paste tab. Nothing is sent anywhere.
+4. **By hand.** Type into the fields, as before.
+
+Every AI affordance hides or disables itself when sampling is unavailable — opened outside a Claude
+viewer, or when the viewer declines — and the manual routes still work.
+
+## Have we booked them before?
+
+The strongest evidence about a creator is what they did for HeBE last time. Type a name (the field
+autocompletes from the 88 creators in the log, and the profile handle is tried as a fallback) and the
+desk opens their record: every campaign, the fee, the views delivered, the CPM, and how each one
+graded against the book. It states how the current ask compares with what they last accepted, feeds
+that history into the written assessment, and hands it to Claude for the second opinion. Creators with
+no record are said to have none, rather than passing silently.
+
+Blended CPM is computed only across campaigns carrying both a fee and a view count — 3 of 107 rows
+have no fee and 17 no TikTok view count, and mixing those into the divisor would inflate the figure.
 
 TikTok's grid shows views but not per-post likes, comments or shares, so an auto-filled creator starts
 with engagement unmeasured. Gates G6 and G8 report **not measured** rather than failing, and the
@@ -31,10 +54,11 @@ for data it could not see. Add engagement by opening a few posts if the campaign
 | Tab | Job |
 |---|---|
 | **Evaluate a KOL** | The calculator. Pick a campaign objective, enter the profile numbers, get a graded verdict. |
-| **Past KOL data** | All 105 campaigns by brand — summary cards plus a sortable, searchable, filterable log. |
+| **Past KOL data** | All 107 campaigns by brand — summary cards plus a sortable, searchable, filterable log. |
 | **How it's calculated** | The six-step chain from profile to fee, with formulas and a worked example. |
 | **Metric guide** | The metrics professional teams underwrite on, tiered, with your own benchmarks and red flags. |
 | **Benchmarks** | Percentile distributions, follower-tier tables, and the evidence charts. |
+| **How the big platforms do it** | What HypeAuditor, Modash, Upfluence, CreatorIQ and Traackr measure, feature-by-feature against this desk, and two published benchmarks your own data contradicts. |
 
 ## Scoring
 
@@ -111,7 +135,8 @@ plain-prose assessment sized for a deal memo.
 
 ## Layout
 
-- `tool/page.html` — the calculator (self-contained; benchmarks embedded)
+- `tool/page.html` — the calculator (self-contained; benchmarks embedded). Published as an Artifact
+  declaring the `sample` capability, which is what lets the page ask Claude to read screenshots.
 - `analysis/` — the Python scripts that produced every figure above, in run order:
   `analyze.py` → `corr.py` → `waste.py` → `risk.py` → `weights.py` → `fit.py` → `bench.py` → `blob.py`
 - `data/HeBE_KH_KOL_Data.xlsx` — source campaign data
@@ -121,9 +146,15 @@ plain-prose assessment sized for a deal memo.
 
 ```bash
 pip install openpyxl
-cd analysis && python3 analyze.py && python3 corr.py && python3 waste.py \
-  && python3 risk.py && python3 weights.py && python3 fit.py && python3 bench.py && python3 blob.py
+cd analysis
+python3 analyze.py && python3 bench.py && python3 brands.py && python3 gates.py \
+  && python3 blob.py && python3 blob2.py && python3 blob3.py && python3 inject.py
 ```
+
+Every script reads `data/HeBE_KH_KOL_Data.xlsx` through `analysis/paths.py` and writes to
+`analysis/out/`; `inject.py` writes the rebuilt benchmark blob back into `tool/page.html`. The
+supporting analyses (`corr.py`, `waste.py`, `risk.py`, `weights.py`, `fit.py`) print findings and can
+be run in any order after `analyze.py`.
 
 ## Model
 
@@ -144,6 +175,19 @@ never as a value driver, because engagement per view runs *against* reach in thi
   campaigns is the highest-value extension available.
 - The 0.75 sponsored reach factor is a convention, not something this dataset can prove — it
   holds no organic baseline for the same creators. It is exposed as a dial.
-- 3 of 105 rows carry no fee; 23 carry no TikTok view count. Those rows sit out of the affected
+- 3 of 107 rows carry no fee; 17 carry no TikTok view count. Those rows sit out of the affected
   benchmarks. One row (V Spring) records 5.7 likes against 36.4K views, almost certainly 5.7K
   mistyped.
+
+## Data provenance
+
+`data/HeBE_KH_KOL_Data.xlsx` is the merge of two exports the team supplied. The later template export
+contributed two campaigns that were missing (MonyyHang / MediAnswer, Solly / MediAnswer), three
+corrected fees (Roi $180→$150, Hong & Hui $400→$350, Marady Tep $300→$350) and seven Mary&May product
+names that had been recorded as "Both" or "PDRN". The base file kept the profile-link columns and the
+month/year values, which the template export had shifted a column left on 55 older rows.
+
+One month/year caveat: on the rows the two files disagree about, the template export runs exactly one
+month earlier than the base file. The base file's values were kept. Month is display-only — it feeds
+no score — but if the template's dates are the correct ones, the Month column in the campaign log is
+a month late for those rows.

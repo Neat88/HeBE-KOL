@@ -1,5 +1,6 @@
 import json, math, statistics as st
-recs=json.load(open('recs.json'))
+from paths import o
+recs=json.load(open(o('recs.json')))
 def pear(xs,ys):
     n=len(xs); mx=sum(xs)/n; my=sum(ys)/n
     nu=sum((a-mx)*(b-my) for a,b in zip(xs,ys))

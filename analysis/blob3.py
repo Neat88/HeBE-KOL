@@ -1,6 +1,7 @@
 import json
-S='/tmp/claude-0/-home-user-HeBE-KOL/e7909b51-e34c-500b-a163-0fd30d39b367/scratchpad/'
-b=json.load(open(S+'blob2.json')); g=json.load(open(S+'gates.json'))
+from paths import o
+
+b=json.load(open(o('blob2.json'))); g=json.load(open(o('gates.json')))
 b['gates']=g
 # gate catalogue: id, name, weight, what it means, what it catches, fraud flag
 b['gatespec']=[
@@ -19,6 +20,6 @@ b['gatespec']=[
  ["G12","Comment-pod signal",2,"Do the same people comment across many posts?","Engagement pods faking response",1],
  ["G13","Category fit",3,"What share of recent posts are in your category? (CFR)","Off-category creator whose audience ignores the product",0]]
 b['pricebands']=[["Great value",0,0.5],["Good deal",0.5,1.0],["Slightly overpriced",1.0,1.6],["Overpriced",1.6,99]]
-open(S+'blob3.js','w').write("const HEBE="+json.dumps(b,separators=(',',':'))+";")
+open(o('blob3.js'),'w').write("const HEBE="+json.dumps(b,separators=(',',':'))+";")
 print("gates tiers:",list(g.keys()))
-print("blob bytes:",len(open(S+'blob3.js').read()))
+print("blob bytes:",len(open(o('blob3.js')).read()))

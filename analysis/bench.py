@@ -1,5 +1,6 @@
 import json, math, statistics as st
-recs=json.load(open('recs.json'))
+from paths import o
+recs=json.load(open(o('recs.json')))
 def pct(vals,q): 
     v=sorted(vals); return v[int(q*(len(v)-1))]
 def dist(vals): return {("p%d"%int(q*100)):round(pct(vals,q),6) for q in (.1,.25,.5,.75,.9)}
@@ -65,8 +66,8 @@ key=lambda r:{"name":r['name'],"brand":r['brand'],"followers":r['tt_f'],"views":
               "cost":r['cost'],"cpm":round(r['cpm'],2),"vfr":round(r['vfr'],3)}
 out["best"]=[key(r) for r in s[:10]]
 out["worst"]=[key(r) for r in s[-10:][::-1]]
-json.dump(out,open('benchmarks.json','w'),indent=1)
+json.dump(out,open(o('benchmarks.json'),'w'),indent=1)
 print(json.dumps(out["meta"],indent=1))
 print("tiktok cpm",out["tiktok"]["cpm"]); print("tiktok vfr",out["tiktok"]["vfr"])
 print("facebook cpm",out["facebook"]["cpm"]); print("facebook vfr",out["facebook"]["vfr"])
-print("\nwrote benchmarks.json", len(open('benchmarks.json').read()),"bytes")
+print("\nwrote benchmarks.json", len(open(o('benchmarks.json')).read()),"bytes")
